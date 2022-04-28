@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- dao의 interface와 연결하기 위해 namespace에 해당 인터페이스 경로를 줌 -->
+<mapper namespace="com.mycompany.webapp.dao.AttachDao">
+	<select id="selectByTargetList" parameterType="attach" resultType="attach">
+		SELECT attach_no, attach_target_table, attach_target_index, attach_target_id, attach_content_type, attach_save_name, attach_original_name
+		FROM attach
+		WHERE attach_target_table=#{attable}
+		  AND attach_target_id=#{atid}
+	</select>
+	
+	<select id="selectByTargetList" parameterType="attach" resultType="attach">
+		SELECT attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name
+		FROM attach
+		WHERE attach_target_table=#{attable}
+		  AND attach_target_id=#{atid}
+		  AND attach_target_index=#{atindex}
+	</select>
+	
+	<select id="count" resultType="int">
+		SELECT count(*) FROM attach
+	</select>
+
+	<!-- ano 시퀀스 처리 -->
+	<insert id="insert" parameterType="attach">
+		INSERT INTO attach 
+		(attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name) 
+		VALUES(#{ano}, #{attable}, #{atid]}, #{atindex}, #{acontentType}, #{asname}, #{aoname})
+	</insert>
+	
+	<delete id="deleteByTargetList" parameterType="attach">
+		delete from attach where attach_target_table=#{attable}
+		  					 and attach_target_id=#{atid}
+	</delete>
+	
+	<delete id="deleteByTargetOne" parameterType="int">
+		delete from attach where attach_no=#{ano}
+	</delete>
+	
+	<update id="update" parameterType="attach">
+		update attacj set
+				attach_content_type=#{acontentType},
+				attach_save_name=#{asname},
+				attach_original_name=#{aoname}
+		where attach_no = #{ano}	
+	</update>
+</mapper>
+

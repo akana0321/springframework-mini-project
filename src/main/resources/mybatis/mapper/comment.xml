@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- dao의 interface와 연결하기 위해 namespace에 해당 인터페이스 경로를 줌 -->
+<mapper namespace="com.mycompany.webapp.dao.CommentDao">
+	<select id="selectByQno" parameterType="int" resultType="comment">
+		SELECT comment_no, user_id, question_no, comment_content, comment_date
+		FROM comment
+		WHERE question_no=#{qno}
+	</select>
+	
+	<select id="selectByCno" parameterType="int" resultType="comment">
+		SELECT comment_no, user_id, question_no, comment_content, comment_date
+		FROM comment
+		WHERE comment_no=#{cno}
+	</select>
+	
+	<select id="count" resultType="int">
+		SELECT count(*) FROM comment
+	</select>
+
+	<!-- cno 시퀀스 처리 -->
+	<insert id="insert" parameterType="comment">
+		INSERT INTO comment 
+		(comment_no, user_id, question_no, comment_content, comment_date) 
+		VALUES(#{cno}, #{uid}, #{qno}, #{ccontent}, sysdate)
+	</insert>
+	
+	<delete id="deleteByCno" parameterType="string">
+		delete from comment where comment_cno = #{cno}
+	</delete>
+	
+	<update id="update" parameterType="comment">
+		update comment set
+				comment_content=#{ccontent}
+		where comment_no = #{cno}	
+	</update>
+</mapper>
+

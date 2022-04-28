@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- dao의 interface와 연결하기 위해 namespace에 해당 인터페이스 경로를 줌 -->
+<mapper namespace="com.mycompany.webapp.dao.HospitalDao">
+	<select id="selectByHtel" parameterType="string" resultType="hospital">
+		SELECT hospital_number, user_id, hospital_name, hospital_tel, hospital_zipcode, hostpital_address1, hospital_address2, hospital_employees, hospital_py
+		FROM hospital
+		WHERE hospital_tel=#{htel}
+	</select>
+	
+	<select id="selectByUid" parameterType="string" resultType="hospital">
+		SELECT hospital_number, user_id, hospital_name, hospital_tel, hospital_zipcode, hostpital_address1, hospital_address2, hospital_employees, hospital_py
+		FROM hospital
+		WHERE user_id=#{uid}
+	</select>
+	
+	<select id="count" resultType="int">
+		SELECT count(*) FROM hospital
+	</select>
+
+	<insert id="insert" parameterType="hospital">
+		INSERT INTO hospital 
+		(hospital_number, user_id, hospital_name, hospital_tel, hospital_zipcode, hostpital_address1, hospital_address2, hospital_employees, hospital_py) 
+		VALUES(#{hnumber}, #{uid}, #{hname}, #{htel}, #{hzipcode}, #{haddress1}, #{haddress2}, #{hemployees}, #{hpy})
+	</insert>
+	
+	<delete id="deleteByHtel" parameterType="string">
+		delete from hospital where hospital_tel = #{htel}
+	</delete>
+	
+	<update id="update" parameterType="hospital">
+		update hospital set
+				hospital_name = #{hname},
+				hospital_tel = #{htel},
+				hospital_zipcode = #{hzipcode},
+				hostpital_address1 = #{haddress1},
+				hospital_address2 = #{haddress2},
+				hospital_employees = #{employees},
+				hospital_py = #{hpy}
+		where hospital_number = #{htel}	
+	</update>
+</mapper>
+

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- dao의 interface와 연결하기 위해 namespace에 해당 인터페이스 경로를 줌 -->
+<mapper namespace="com.mycompany.webapp.dao.EstimateDao">
+	<select id="selectByEno" parameterType="int" resultType="estimate">
+		SELECT estimate_no, user_id, py, building_type, dental_type, floor_type, wall_type, k3000B, k5000b, s2100z, furniture1, furniture2, furniture3, estimate_date
+		FROM estimate
+		WHERE estimate_no=#{eno}
+	</select>
+	
+	<select id="selectByUid" parameterType="int" resultType="estimate">
+		SELECT estimate_no, user_id, py, building_type, dental_type, floor_type, wall_type, k3000B, k5000b, s2100z, furniture1, furniture2, furniture3, estimate_date
+		FROM estimate
+		WHERE user_id=#{uid}
+	</select>
+	
+	<select id="count" resultType="int">
+		SELECT count(*) FROM estimate
+	</select>
+
+	<!-- eno 시퀀스 처리 -->
+	<insert id="insert" parameterType="estimate">
+		INSERT INTO estimate 
+		(estimate_no, user_id, py, building_type, dental_type, floor_type, wall_type, k3000B, k5000b, s2100z, furniture1, furniture2, furniture3, estimate_date) 
+		VALUES(#{eno}, #{uid}, #{epy]}, #{ebuildingType}, #{edentalType}, #{efloorType}, #{ewallType}, #{ek3000B}, #{ek5000b}, #{es2100z}, #{efurniture1}, #{efurniture2}, #{efurniture3}, sysdate)
+	</insert>
+	
+	<delete id="deleteByEno" parameterType="int">
+		delete from estimate where estimate_no = #{eno}
+	</delete>
+	
+	<delete id="deleteByUid" parameterType="string">
+		delete from estimate where user_id = #{uid}
+	</delete>
+	
+	<update id="update" parameterType="estimate">
+		update estimate set
+				py=#{epy},
+				building_type=#{ebuildingType},
+				dental_type=#{edentalType},
+				floor_type=#{efloorType},
+				wall_type=#{ewallType},
+				k3000B=#{ek3000b},
+				k5000b=#{ek5000b},
+				s2100z=#{es2100z},
+				furniture1=#{efurniture1},
+				furniture2=#{efurniture2},
+				furniture3=#{efurniture3}
+		where estimate_no = #{eno}	
+	</update>
+</mapper>
+

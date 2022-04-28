@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- dao의 interface와 연결하기 위해 namespace에 해당 인터페이스 경로를 줌 -->
+<mapper namespace="com.mycompany.webapp.dao.QuestionDao">
+	<select id="selectByPage" parameterType="pager" resultType="question">
+		SELECT rnum, question_no, user_id, question_category, question_content, question_date, product_id
+		FROM (
+		  SELECT ROWNUM as rnum, question_no, user_id, question_category, question_content, question_date, product_id
+		  FROM (
+		    SELECT question_no, user_id, question_category, question_content, question_date, product_id
+		    FROM question
+		    ORDER BY question_no DESC
+		  )
+		  WHERE rownum &lt;= #{endRowNo}  
+		)
+		WHERE rnum &gt;= #{startRowNo}
+	</select>
+	
+	<select id="selectByQno" parameterType="int" resultType="question">
+		SELECT question_no, user_id, question_category, question_content, question_date, product_id
+		FROM question
+		WHERE question_no=#{qno}
+	</select>
+	
+	<select id="count" resultType="int">
+		SELECT count(*) FROM question
+	</select>
+
+	<!-- qno 시퀀스 처리 -->
+	<insert id="insert" parameterType="product">
+		INSERT INTO product 
+		(question_no, user_id, question_category, question_content, question_date, product_id) 
+		VALUES(#{qno}, #{uid}, #{qcategory}, #{qcontent}, sysdate, #{pid})
+	</insert>
+	
+	<delete id="deleteByQno" parameterType="string">
+		delete from question where question_no = #{qno}
+	</delete>
+	
+	<update id="update" parameterType="question">
+		update question set
+				question_content=#{qcontent},
+		where question_no = #{qno}	
+	</update>
+</mapper>
+

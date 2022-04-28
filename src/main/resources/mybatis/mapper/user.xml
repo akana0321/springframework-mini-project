@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- dao의 interface와 연결하기 위해 namespace에 해당 인터페이스 경로를 줌 -->
+<mapper namespace="com.mycompany.webapp.dao.UserDao">
+	<select id="selectByUid" parameterType="string" resultType="user">
+		SELECT user_id, user_role, user_enable, user_password, user_name, user_email, user_tel, user_birth, user_sign_up_date, user_zipcode, user_address1, user_address2
+		FROM user
+		WHERE user_id=#{uid}
+	</select>
+	
+	<select id="count" resultType="int">
+		SELECT count(*) FROM user
+	</select>
+
+	<insert id="insert" parameterType="user">
+		INSERT INTO member 
+		(user_id, user_role, user_enable, user_password, user_name, user_email, user_tel, user_birth, user_sign_up_date, user_zipcode, user_address1, user_address2) 
+		VALUES(#{uid}, #{urole}, #{uenable}, #{upassword}, #{uname}, #{uemail}, #{utel}, sysdate, #{ubirth}, #{uzipcode}, #{uaddress1}, #{uaddress2})
+	</insert>
+	
+	<delete id="deleteByUid" parameterType="string">
+		delete from user where user_id = #{uid}
+	</delete>
+	
+	<update id="update" parameterType="user">
+		update user set
+			user_birth = #{ubirth},
+			user_tel = #{utel}.
+			user_email = #{uemail},
+			user_zipcode = #{uzipcode},
+			user_address1 = #{uaddress1},
+			user_address2 = #{uaddress2},
+			user_password = #{upassword}
+		where user_id = #{uid}	
+	</update>
+</mapper>
+

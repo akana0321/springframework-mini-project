@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- dao의 interface와 연결하기 위해 namespace에 해당 인터페이스 경로를 줌 -->
+<mapper namespace="com.mycompany.webapp.dao.ProductDao">
+	<select id="selectByPid" parameterType="string" resultType="product">
+		SELECT product_id, product_name, product_category, product_description, pdoruct_price, product_color
+		FROM product
+		WHERE product_id=#{pid}
+	</select>
+	
+	<select id="count" resultType="int">
+		SELECT count(*) FROM product
+	</select>
+
+	<insert id="insert" parameterType="product">
+		INSERT INTO product 
+		(product_id, product_name, product_category, product_description, pdoruct_price, product_color) 
+		VALUES(#{pid}, #{pname}, #{pcategory}, #{pdescription}, #{pprice}, #{pcolor})
+	</insert>
+	
+	<delete id="deleteByPid" parameterType="string">
+		delete from product where product_id = #{pid}
+	</delete>
+	
+	<update id="update" parameterType="hospital">
+		update product set
+				product_id=#{pid},
+				product_name=#{pname},
+				product_category=#{pcategory},
+				product_description=#{pdescription},
+				pdoruct_price=#{pprice},
+				product_color=#{pcolor}
+		where product_id = #{pid}	
+	</update>
+</mapper>
+
