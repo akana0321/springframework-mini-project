@@ -6,26 +6,26 @@
 <mapper namespace="com.mycompany.webapp.dao.UserDao">
 	<select id="selectByUid" parameterType="string" resultType="user">
 		SELECT user_id, user_role, user_enable, user_password, user_name, user_email, user_tel, user_birth, user_sign_up_date, user_zipcode, user_address1, user_address2
-		FROM user
+		FROM users
 		WHERE user_id=#{uid}
 	</select>
 	
 	<select id="count" resultType="int">
-		SELECT count(*) FROM user
+		SELECT count(*) FROM users
 	</select>
 
 	<insert id="insert" parameterType="user">
-		INSERT INTO member 
+		INSERT INTO users 
 		(user_id, user_role, user_enable, user_password, user_name, user_email, user_tel, user_birth, user_sign_up_date, user_zipcode, user_address1, user_address2) 
 		VALUES(#{uid}, #{urole}, #{uenable}, #{upassword}, #{uname}, #{uemail}, #{utel}, sysdate, #{ubirth}, #{uzipcode}, #{uaddress1}, #{uaddress2})
 	</insert>
 	
 	<delete id="deleteByUid" parameterType="string">
-		delete from user where user_id = #{uid}
+		delete from users where user_id = #{uid}
 	</delete>
 	
 	<update id="update" parameterType="user">
-		update user set
+		update users set
 			user_birth = #{ubirth},
 			user_tel = #{utel}.
 			user_email = #{uemail},

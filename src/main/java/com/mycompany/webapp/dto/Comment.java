@@ -12,5 +12,6 @@ public class Comment {
 	private int qno;
 	private String ccontent;
 	private Date cdate;
+	
 	private List<Attach> cattaches;
 }

@@ -5,7 +5,7 @@
 <!-- dao의 interface와 연결하기 위해 namespace에 해당 인터페이스 경로를 줌 -->
 <mapper namespace="com.mycompany.webapp.dao.AttachDao">
 	<select id="selectByTargetList" parameterType="attach" resultType="attach">
-		SELECT attach_no, attach_target_table, attach_target_index, attach_target_id, attach_content_type, attach_save_name, attach_original_name
+		SELECT attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name
 		FROM attach
 		WHERE attach_target_table=#{attable}
 		  AND attach_target_id=#{atid}
@@ -40,7 +40,7 @@
 	</delete>
 	
 	<update id="update" parameterType="attach">
-		update attacj set
+		update attach set
 				attach_content_type=#{acontentType},
 				attach_save_name=#{asname},
 				attach_original_name=#{aoname}

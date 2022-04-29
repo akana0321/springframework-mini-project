@@ -8,7 +8,7 @@ import com.mycompany.webapp.dto.Hospital;
 
 @Mapper
 public interface HospitalDao {
-	public List<Hospital> selectByHtel(String htel);
+	public List<Hospital> selectByHnumber(String hnumber);
 	public List<Hospital> selectByUid(String uid);
 	public int count();
 	public int insert(Hospital hospital);

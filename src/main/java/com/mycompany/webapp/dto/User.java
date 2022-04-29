@@ -18,5 +18,6 @@ public class User {
 	private String uzipcode;	// 우편번호
 	private String uaddress1;	// 주소
 	private String uaddress2;	// 상세주소
-	private Attach uattach;
+	
+	private Attach hfloorPlan;
 }
