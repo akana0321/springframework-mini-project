@@ -15,9 +15,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	
 	<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/css/mypage/mypage.js"></script>
 </head>
 <body>
 <div id="mypage">
@@ -29,7 +30,7 @@
 					<div class="p-4">
 						<div class="img-circle text-center mb-3" style="position: relative;" >
 							<div id="userimg" data-aos="zoom-out" data-aos-duration="2000" >	
-								<img src="../images/mypage/user.jpg" alt="Image" class="shadow" style="width: 200px; height: 200px;">
+								<img src="${pageContext.request.contextPath }/resources/images/mypage/user.jpg" alt="Image" class="shadow" style="width: 200px; height: 200px;">
 							</div>
 								<div class="fa fa-2x fa-camera  btn float-right " id="imgchange"  onclick="changeUserImg()" data-aos="zoom-out" data-aos-duration="3000">
 							</div>
