@@ -21,18 +21,18 @@
 	</insert>
 	
 	<delete id="deleteByPid" parameterType="string">
-		delete from product where product_id = #{pid}
+		DELETE FROM product WHERE product_id = #{pid}
 	</delete>
 	
-	<update id="update" parameterType="hospital">
-		update product set
+	<update id="update" parameterType="product">
+		UPDATE product SET
 				product_id=#{pid},
 				product_name=#{pname},
 				product_category=#{pcategory},
 				product_description=#{pdescription},
 				pdoruct_price=#{pprice},
 				product_color=#{pcolor}
-		where product_id = #{pid}	
+		WHERE product_id = #{pid}	
 	</update>
 </mapper>
 

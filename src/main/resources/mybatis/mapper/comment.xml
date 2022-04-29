@@ -6,35 +6,35 @@
 <mapper namespace="com.mycompany.webapp.dao.CommentDao">
 	<select id="selectByQno" parameterType="int" resultType="comment">
 		SELECT comment_no, user_id, question_no, comment_content, comment_date
-		FROM comment
+		FROM comments
 		WHERE question_no=#{qno}
 	</select>
 	
 	<select id="selectByCno" parameterType="int" resultType="comment">
 		SELECT comment_no, user_id, question_no, comment_content, comment_date
-		FROM comment
+		FROM comments
 		WHERE comment_no=#{cno}
 	</select>
 	
 	<select id="count" resultType="int">
-		SELECT count(*) FROM comment
+		SELECT count(*) FROM comments
 	</select>
 
 	<!-- cno 시퀀스 처리 -->
 	<insert id="insert" parameterType="comment">
-		INSERT INTO comment 
+		INSERT INTO comments 
 		(comment_no, user_id, question_no, comment_content, comment_date) 
-		VALUES(#{cno}, #{uid}, #{qno}, #{ccontent}, sysdate)
+		VALUES(seq_comment_cno.nextval, #{uid}, #{qno}, #{ccontent}, sysdate)
 	</insert>
 	
-	<delete id="deleteByCno" parameterType="string">
-		delete from comment where comment_cno = #{cno}
+	<delete id="deleteByCno" parameterType="int">
+		DELETE FROM comments WHERE comment_cno = #{cno}
 	</delete>
 	
 	<update id="update" parameterType="comment">
-		update comment set
+		UPDATE comments SET
 				comment_content=#{ccontent}
-		where comment_no = #{cno}	
+		WHERE comment_no = #{cno}	
 	</update>
 </mapper>
 

@@ -16,4 +16,7 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
 	</context:component-scan>
 	
+	<!-- config파일 자동 로드 location="classpath:database.properties" -->
+    <context:property-placeholder location="/config/*.properties" /> 
+	
 </beans:beans>

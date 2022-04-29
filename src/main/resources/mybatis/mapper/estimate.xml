@@ -10,7 +10,7 @@
 		WHERE estimate_no=#{eno}
 	</select>
 	
-	<select id="selectByUid" parameterType="int" resultType="estimate">
+	<select id="selectByUid" parameterType="string" resultType="estimate">
 		SELECT estimate_no, user_id, py, building_type, dental_type, floor_type, wall_type, k3000B, k5000b, s2100z, furniture1, furniture2, furniture3, estimate_date
 		FROM estimate
 		WHERE user_id=#{uid}
@@ -28,15 +28,15 @@
 	</insert>
 	
 	<delete id="deleteByEno" parameterType="int">
-		delete from estimate where estimate_no = #{eno}
+		DELETE FROM estimate WHERE estimate_no = #{eno}
 	</delete>
 	
 	<delete id="deleteByUid" parameterType="string">
-		delete from estimate where user_id = #{uid}
+		DELETE FROM estimate WHERE user_id = #{uid}
 	</delete>
 	
 	<update id="update" parameterType="estimate">
-		update estimate set
+		UPDATE estimate SET
 				py=#{epy},
 				building_type=#{ebuildingType},
 				dental_type=#{edentalType},
@@ -48,7 +48,7 @@
 				furniture1=#{efurniture1},
 				furniture2=#{efurniture2},
 				furniture3=#{efurniture3}
-		where estimate_no = #{eno}	
+		WHERE estimate_no = #{eno}	
 	</update>
 </mapper>
 

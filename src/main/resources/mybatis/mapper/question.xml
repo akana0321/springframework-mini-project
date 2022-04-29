@@ -29,20 +29,20 @@
 	</select>
 
 	<!-- qno 시퀀스 처리 -->
-	<insert id="insert" parameterType="product">
-		INSERT INTO product 
+	<insert id="insert" parameterType="question">
+		INSERT INTO question 
 		(question_no, user_id, question_category, question_content, question_date, product_id) 
-		VALUES(#{qno}, #{uid}, #{qcategory}, #{qcontent}, sysdate, #{pid})
+		VALUES(seq_question_qno.nextval, #{uid}, #{qcategory}, #{qcontent}, sysdate, #{pid})
 	</insert>
 	
-	<delete id="deleteByQno" parameterType="string">
-		delete from question where question_no = #{qno}
+	<delete id="deleteByQno" parameterType="int">
+		DELETE FROM question WHERE question_no = #{qno}
 	</delete>
 	
 	<update id="update" parameterType="question">
-		update question set
+		UPDATE question SET
 				question_content=#{qcontent},
-		where question_no = #{qno}	
+		WHERE question_no = #{qno}	
 	</update>
 </mapper>
 

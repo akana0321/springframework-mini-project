@@ -1,1 +1,3 @@
 /target/
+# ignore properties file
+config.properties
