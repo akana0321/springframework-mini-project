@@ -27,7 +27,7 @@
 	<insert id="insert" parameterType="attach">
 		INSERT INTO attach 
 		(attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name) 
-		VALUES(#{ano}, #{attable}, #{atid]}, #{atindex}, #{acontentType}, #{asname}, #{aoname})
+		VALUES(#{ano}, #{attable}, #{atid}, #{atindex}, #{acontentType}, #{asname}, #{aoname})
 	</insert>
 	
 	<delete id="deleteByTargetList" parameterType="attach">

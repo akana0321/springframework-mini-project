@@ -19,5 +19,5 @@ public class User {
 	private String uaddress1;	// 주소
 	private String uaddress2;	// 상세주소
 	
-	private Attach hfloorPlan;
+	private Attach uattach;
 }
