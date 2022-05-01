@@ -4,11 +4,40 @@
 
 <!-- dao의 interface와 연결하기 위해 namespace에 해당 인터페이스 경로를 줌 -->
 <mapper namespace="com.mycompany.webapp.dao.UserDao">
-	<select id="selectByUid" parameterType="string" resultType="user">
-		SELECT user_id, user_role, user_enable, user_password, user_name, user_email, user_tel, user_sign_up_date, user_birth, user_zipcode, user_address1, user_address2
-		FROM users
-		WHERE user_id=#{uid}
+	<resultMap id="selectByUidResultMap" type="user">
+		<result column="user_id" property="uid"/>
+		<result column="user_role" property="urole"/>
+		<result column="user_enabled" property="uenabled"/>
+		<result column="user_password" property="upassword"/>
+		<result column="user_name" property="uname"/>
+		<result column="user_email" property="uemail"/>
+		<result column="user_tel" property="utel"/>
+		<result column="user_sign_up_date" property="usignUpdate"/>
+		<result column="user_birth" property="ubirth"/>
+		<result column="user_zipcode" property="uzipcode"/>
+		<result column="user_address1" property="uaddress1"/>
+		<result column="user_address2" property="uaddress2"/>
+		
+		<association property="uattach" javaType="attach">
+			<result column="attach_no" property="ano"/>
+			<result column="attach_target_table" property="attable"/>
+			<result column="attach_target_id" property="atid"/>
+			<result column="attach_target_index" property="atindex"/>
+			<result column="attach_content_type" property="acontentType"/>
+			<result column="attach_save_name" property="asname"/>
+			<result column="attach_original_name" property="aoname"/>
+		</association>
+	</resultMap>
+	
+	<select id="selectByUid" parameterType="string" resultMap="selectByUidResultMap">
+		SELECT user_id, user_role, user_enabled, user_password, user_name, user_email, user_tel, user_sign_up_date, user_birth, user_zipcode, user_address1, user_address2,
+			   attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name
+	   	FROM users u, attach a
+	   	WHERE a.attach_target_table like 'USERS'
+	   	 AND u.uid = a.attach_target_id
+	   	 AND u.user_id = #{uid}
 	</select>
+	
 	
 	<select id="count" resultType="int">
 		SELECT count(*) FROM users
@@ -16,16 +45,19 @@
 
 	<insert id="insert" parameterType="user">
 		INSERT INTO users 
-		(user_id, user_role, user_enable, user_password, user_name, user_email, user_tel, user_sign_up_date, user_birth, user_zipcode, user_address1, user_address2) 
-		VALUES(#{uid}, #{urole}, #{uenable}, #{upassword}, #{uname}, #{uemail}, #{utel}, sysdate, #{ubirth}, #{uzipcode}, #{uaddress1}, #{uaddress2})
+		(user_id, user_role, user_enabled, user_password, user_name, user_email, user_tel, user_sign_up_date, user_birth, user_zipcode, user_address1, user_address2) 
+		VALUES(#{uid}, #{urole}, #{uenabled}, #{upassword}, #{uname}, #{uemail}, #{utel}, sysdate, #{ubirth}, #{uzipcode}, #{uaddress1}, #{uaddress2})
 	</insert>
 	
 	<delete id="deleteByUid" parameterType="string">
-		delete from users where user_id = #{uid}
+		DELETE FROM users WHERE user_id = #{uid};
+		DELETE FROM attach
+		WHERE attach_target_table like 'USERS'
+		  AND attach_target_id=#{uid};
 	</delete>
 	
 	<update id="update" parameterType="user">
-		update users set
+		UPDATE users SET
 			user_birth = #{ubirth},
 			user_tel = #{utel}.
 			user_email = #{uemail},
@@ -33,7 +65,7 @@
 			user_address1 = #{uaddress1},
 			user_address2 = #{uaddress2},
 			user_password = #{upassword}
-		where user_id = #{uid}	
+		WHERE user_id = #{uid}	
 	</update>
 </mapper>
 

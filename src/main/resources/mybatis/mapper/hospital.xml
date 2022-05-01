@@ -26,7 +26,7 @@
 		</association>
 	</resultMap>
 	
-	<select id="selectByHnumber" parameterType="string" resultMap="selectByHnumberResultMap">
+	<select id="selectByHnumber" parameterType="int" resultMap="selectByHnumberResultMap">
 		SELECT hospital_number, user_id, hospital_name, hospital_tel, hospital_zipcode, hostpital_address1, hospital_address2, hospital_employees, hospital_py,
 			   attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name
 	   	FROM hospital h, attach a
@@ -71,13 +71,22 @@
 	</select>
 
 	<insert id="insert" parameterType="hospital">
-		INSERT INTO hospital 
-		(hospital_number, user_id, hospital_name, hospital_tel, hospital_zipcode, hostpital_address1, hospital_address2, hospital_employees, hospital_py) 
-		VALUES(#{hnumber}, #{uid}, #{hname}, #{htel}, #{hzipcode}, #{haddress1}, #{haddress2}, #{hemployees}, #{hpy})
+		INSERT ALL
+			INTO hospital (hospital_number, user_id, hospital_name, hospital_tel, hospital_zipcode, hostpital_address1, hospital_address2, hospital_employees, hospital_py) 
+			VALUES(#{hnumber}, #{uid}, #{hname}, #{htel}, #{hzipcode}, #{haddress1}, #{haddress2}, #{hemployees}, #{hpy})
+			<if test="hattaches != null">
+				<foreach collection="hattaches" item="hattach" separator=" " close="SELECT * FROM DUAL">
+					INTO attach (attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name)
+					value VALUES(SEQ_ATTACH_ANO, #{hattach.attable}, #{hattach.atid}, #{hattach.atindex}, #{hattach.acontentType}, #{hattach.asname}, #{hattach.aoname})
+				</foreach>
+			</if>
 	</insert>
 	
-	<delete id="deleteByHtel" parameterType="string">
-		DELETE FROM hospital WHERE hospital_tel = #{htel}
+	<delete id="deleteByHnumber" parameterType="int">
+		DELETE FROM hospital WHERE hospital_number = #{hnumber};
+		DELETE FROM attach
+		WHERE attach_target_table like 'HOSPITAL'
+		  AND attach_target_id=#{hnumber};
 	</delete>
 	
 	<update id="update" parameterType="hospital">
@@ -88,8 +97,15 @@
 				hostpital_address1 = #{haddress1},
 				hospital_address2 = #{haddress2},
 				hospital_employees = #{employees},
-				hospital_py = #{hpy}
-		WHERE hospital_number = #{htel}	
+				hospital_py = #{hpy},
+		WHERE hospital_number = #{hnumber}
+		<foreach collection="hattaches" item="hattach" separator=";">
+			UPDATE attach SET
+				attach_content_type=#{hattach.acontentType},
+				attach_save_name=#{hattach.asname},
+				attach_original_name=#{hattach.aoname}
+			WHERE attach_no = #{hattach.ano}
+		</foreach>	
 	</update>
 </mapper>
 

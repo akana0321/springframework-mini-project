@@ -12,6 +12,6 @@ public interface HospitalDao {
 	public List<Hospital> selectByUid(String uid);
 	public int count();
 	public int insert(Hospital hospital);
-	public int deleteByHtel(String htel);
+	public int deleteByHnumber(String htel);
 	public int update(Hospital hospital);
 }

@@ -75,11 +75,11 @@
 	</filter>
 
 	<!-- 클라이언트가 http://localhost:8080/webapp/* 이렇게 요청 했을 때 DispatcherServlet로 
-		모두 처리
+		모두 처리 --> 
 	<filter-mapping>
-		<filter-name>encodingFilter</filter-name> --> <!-- 위에 정의한 필터
-		<url-pattern>/*</url-pattern> --><!-- 언제 실행할지
-	</filter-mapping> -->
+		<filter-name>encodingFilter</filter-name><!-- 위에 정의한 필터 -->
+		<url-pattern>/*</url-pattern><!-- 언제 실행할지 -->
+	</filter-mapping>
 
 	<!-- 404에러 처리 <error-page> <error-code>404</error-code> <location>/WEB-INF/views/ch10/404.jsp</location> 
 		</error-page> -->
