@@ -13,7 +13,7 @@ public class MypageController {
 
 	@RequestMapping("/mypage")
 	public String method() {
-		log.info("실행");
+		// log.info("실행");
 		return "mypage/mypage";
 	}
 }

@@ -1,0 +1,65 @@
+.yellow-round-button{
+    border-radius:2rem;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: black;
+    background-color: #ffb440;
+}
+
+.yellow-button{
+    border-radius:0.2rem;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: black;
+    background-color: #ffb440;
+}
+
+.gray-round-button{
+    border-radius:2rem;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: white;
+    background-color: gray;
+}
+
+.gray-button{
+    border-radius:0.2rem;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: white;
+    background-color: gray;
+}
+
+.white-round-button{
+    border-radius:2rem;
+    font-weight: bold;
+    font-size: 1.25em;
+    color: black;
+    background-color: white;
+}
+
+.white-button{
+    border-radius:0.2rem;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: black;
+}
+
+.card-div-button{
+    position: absolute; 
+    bottom: 1vh; 
+    padding-right: 2rem;
+    width: 100%; 
+}
+
+.user_button {
+    background-color: #ffb440;
+    border: none;
+    color: black;
+    width: 100%;
+    height: 3em;
+    margin: 1em 0;
+    font-size: 1.2em;
+    border-radius: 1em;
+    cursor: pointer;
+}
