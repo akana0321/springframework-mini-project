@@ -8,6 +8,7 @@ import lombok.Data;
 public class Estimate {
 	private int eno;
 	private String uid;
+	private int qno;
 	private int epy;
 	private String ebuildingType;
 	private String edentalType;
