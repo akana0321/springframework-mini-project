@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/header.css"/>
     <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/title.css"/>
-    <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/question/question_result.css" />
+    <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/question/question_index.css" />
     <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/mypage/style_interialQ.css"/>
     
     <script src="${ pageContext.request.contextPath }/resources/js/question/question.js"></script>
@@ -48,7 +48,7 @@
             </ul>
         </div>
 
-        <form id="questionForm" method="post">  <!-- action="#">    Spring RequestMapping에 action 지정 -->
+        <form id="questionForm" method="post" action="questionValue">
             <div id="questionContainer" class="d-flex justify-content-center align-items-center">
                 <div class="fullscrean text-center" style="padding-left: 0; padding-right: 0;">
                     <div id="questionStart" class="fullscrean d-flex flex-column align-items-center" style="padding-left: 7rem;">
@@ -69,7 +69,7 @@
                             <div class="card-title" style="height: 30%;">평수를 입력해주세요</div>
                             <div class="d-flex flex-column justify-content-center align-items-center">
                                 <div>
-                                    <input type="text" name="py" id="py" placeholder="평수" value="" required  style="border-bottom: 0.1em solid black;"/> 평
+                                    <input type="text" name="epy" id="py" placeholder="평수" value="" required  style="border-bottom: 0.1em solid black;"/> 평
                                     <small id="pyHelp" class="form-text text-muted" hidden></small>
                                 </div> 
                                 <a id="pyComplete" onclick="pyInputComplete()">입력완료</a>
@@ -78,12 +78,50 @@
                     </div>
                 </div>
                 <div id="questionContent01" class="form-group fullscrean" style="display: none; background-color: #f1f3f5;">
+                    <p class="card-title" style="padding-left: 10rem;">시공할 치과의 건물 유형을 선택해주세요</p>
+                    <div class="d-flex justify-content-center align-content-center" style="padding-left: 10rem;">
+                        <!-- 단독 -->
+                        <div>
+                            <label>
+                                <input type="radio" name="ebuildingType" id="house" value="house"/>
+                                <div class="card text-center">
+                                    <div class="card-header card-title">
+                                        단독
+                                    </div>
+                        
+                                    <div class="card-body p-3">
+                                        <img src="${ pageContext.request.contextPath }/resources/images/question/house.png" class="card-img"/>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                        <!-- 상가/오피스텔 -->
+                        <div>
+                            <label>
+                                <input type="radio" name="ebuildingType" id="officetel" value="officetel"/>
+                                <div class="card">
+                                    <div class="card-header card-title">
+                                        상가/오피스텔
+                                    </div>
+                        
+                                    <div class="card-body p-3">
+                                        <img src="${ pageContext.request.contextPath }/resources/images/question/officetel.png"  class="card-img"/>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center align-content-center" style="padding-left: 10rem;">
+                        <a href="#questionContent02" onclick="setDisplay('questionContent02')" class="btn-move-even"><img id="arrow" src="${ pageContext.request.contextPath }/resources/images/question/arrow.png"/></a>
+                    </div>
+                </div>
+                <div id="questionContent02" class="form-group fullscrean" style="display: none;">
                     <p class="card-title mb-5" style="padding-left: 10rem;">치과의 목적을 선택해주세요</p>
                     <div class="d-flex justify-content-center align-content-center" style="padding-left: 10rem;">
                         <!-- 일반치과 -->
                         <div>
                             <label>
-                                <input type="radio" name="dental" id="normalDental" value="normal"/>
+                                <input type="radio" name="edentalType" id="normalDental" value="normal"/>
                                 <div class="card">
                                     <div class="card-header card-title" for="normalDental">
                                         일반치과
@@ -102,7 +140,7 @@
                         <!-- 교정치과 -->
                         <div>
                             <label>
-                                <input type="radio" name="dental" id="barcesDental" value="barces"/>
+                                <input type="radio" name="edentalType" id="barcesDental" value="barces"/>
                                     <div class="card">
                                         <div class="card-header card-title">
                                             교정치과
@@ -121,7 +159,7 @@
                         <!-- 어린이치과 -->
                         <div>
                             <label>
-                                <input type="radio" name="dental" id="childrenDental" value="children">
+                                <input type="radio" name="edentalType" id="childrenDental" value="children">
                                 <div class="card card-title">
                                     <div class="card-header">
                                         어린이 치과
@@ -137,45 +175,7 @@
                                 </div>
                             </label>
                         </div>
-                    </div>
-                    <div class="d-flex justify-content-center align-content-center" style="padding-left: 10rem;">
-                        <a href="#questionContent02" onclick="setDisplay('questionContent02')" class="btn-move-even"><img id="arrow" src="${ pageContext.request.contextPath }/resources/images/question/arrow.png"/></a>
-                    </div>
-                </div>
-                <div id="questionContent02" class="form-group fullscrean" style="display: none;">
-                    <p class="card-title" style="padding-left: 10rem;">시공할 치과의 건물 유형을 선택해주세요</p>
-                    <div class="d-flex justify-content-center align-content-center" style="padding-left: 10rem;">
-                        <!-- 단독 -->
-                        <div>
-                            <label>
-                                <input type="radio" name="building" id="house" value="house"/>
-                                <div class="card text-center">
-                                    <div class="card-header card-title">
-                                        단독
-                                    </div>
-                        
-                                    <div class="card-body p-3">
-                                        <img src="${ pageContext.request.contextPath }/resources/images/question/house.png" class="card-img"/>
-                                    </div>
-                                </div>
-                            </label>
-                        </div>
-                        <!-- 상가/오피스텔 -->
-                        <div>
-                            <label>
-                                <input type="radio" name="building" id="officetel" value="officetel"/>
-                                <div class="card">
-                                    <div class="card-header card-title">
-                                        상가/오피스텔
-                                    </div>
-                        
-                                    <div class="card-body p-3">
-                                        <img src="${ pageContext.request.contextPath }/resources/images/question/officetel.png"  class="card-img"/>
-                                    </div>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
+                    </div>              
                     <a href="#questionContent03" onclick="setDisplay('questionContent03')" class="btn-move-odd" style="padding-left: 8rem;"><img id="arrow" src="${ pageContext.request.contextPath }/resources/images/question/arrow.png"/></a>
                 </div>
                 <div id="questionContent03" class="form-group fullscrean" style="display: none; background-color: #f1f3f5;">
@@ -184,7 +184,7 @@
                         <!-- 강화마루 -->
                         <div>
                             <label>
-                                <input type="radio" name="floor" id="floorLaminate" value="laminate"/>
+                                <input type="radio" name="efloorType" id="floorLaminate" value="laminate"/>
                                 <div class="card">
                                     <div class="card-header card-title">
                                         강화마루
@@ -203,7 +203,7 @@
                         <!-- 강마루 -->
                         <div>
                             <label>
-                                <input type="radio" name="floor" id="floorGangmaru" value="gangmaru"/>
+                                <input type="radio" name="efloorType" id="floorGangmaru" value="gangmaru"/>
                                 <div class="card">
                                     <div class="card-header card-title">
                                         강마루
@@ -222,7 +222,7 @@
                         <!-- 대리석 -->
                         <div>
                             <label>
-                                <input type="radio" name="floor" id="floorMarble" value="marble"/>
+                                <input type="radio" name="efloorType" id="floorMarble" value="marble"/>
                                 <div class="card">
                                     <div class="card-header card-title">
                                         대리석
@@ -247,7 +247,7 @@
                         <!-- 합지 -->
                         <div>
                             <label>
-                                <input type="radio" name="wall" id="wallPaper" value="paper"/>
+                                <input type="radio" name="ewallType" id="wallPaper" value="paper"/>
                                 <div class="card">
                                     <div class="card-header card-title">
                                         합지
@@ -267,7 +267,7 @@
                         <!-- 실크벽지 -->
                         <div>
                             <label>
-                                <input type="radio" name="wall" id="wallSilk" value="silk"/>
+                                <input type="radio" name="ewallType" id="wallSilk" value="silk"/>
                                 <div class="card">
                                     <div class="card-header card-title">
                                         실크벽지
@@ -287,7 +287,7 @@
                         <!-- 대리석 -->
                         <div>
                             <label>
-                                <input type="radio" name="wall" id="wallMarble" value="marble"/>
+                                <input type="radio" name="ewallType" id="wallMarble" value="marble"/>
                                 <div class="card">
                                     <div class="card-header card-title">
                                         대리석
@@ -328,7 +328,7 @@
                                     <div class="card-footer">
                                         <div class="d-flex justify-content-center align-items-center mb-3">
                                             <a onclick="javascript:fnCalCount('m', 'k3000bCount');" class="counting btn btn-lg">-</a>
-                                            <input type="text" name="k3000b" id="k3000bCount" class="countingInput" value="0" readonly="readonly"/>
+                                            <input type="text" name="ek3000b" id="k3000bCount" class="countingInput" value="0" readonly="readonly"/>
                                             <a onclick="javascript:fnCalCount('p', 'k3000bCount');" class="counting btn">+</a>
                                         </div>
                                     </div>
@@ -353,7 +353,7 @@
                                     <div class="card-footer">
                                         <div class="d-flex justify-content-center align-items-center mb-3">
                                             <a onclick="javascript:fnCalCount('m', 'k5000bCount');" class="counting btn btn-sm">-</a>
-                                            <input type="text" name="k5000b" id="k5000bCount" class="countingInput" value="0" readonly="readonly"/>
+                                            <input type="text" name="ek5000b" id="k5000bCount" class="countingInput" value="0" readonly="readonly"/>
                                             <a onclick="javascript:fnCalCount('p', 'k5000bCount');" class="counting btn btn-sm">+</a>
                                         </div>
                                     </div>
@@ -378,7 +378,7 @@
                                     <div class="card-footer">
                                         <div class="d-flex justify-content-center align-items-center mb-3">
                                             <a onclick="javascript:fnCalCount('m', 's2100zCount');" class="counting btn btn-sm">-</a>
-                                            <input type="text" name="s2100z" id="s2100zCount" class="countingInput" value="0" readonly="readonly"/>
+                                            <input type="text" name="es2100z" id="s2100zCount" class="countingInput" value="0" readonly="readonly"/>
                                             <a onclick="javascript:fnCalCount('p', 's2100zCount');" class="counting btn btn-sm">+</a>
                                         </div>
                                     </div>
@@ -420,7 +420,7 @@
                                     <td style="width: 10%;">
                                         <div class="d-flex justify-content-center align-items-center mt-5">
                                             <span><a onclick="javascript:fnCalCountNSum('m', 'furniture1Count', 'furniture1', 'furniture1Sum');" class="counting btn btn-sm mt-3">-</a></span>
-                                            <span><input type="text" name="furniture1" id="furniture1Count" class="countingInput mt-3" value="0" readonly/></span>
+                                            <span><input type="text" name="efurniture1" id="furniture1Count" class="countingInput mt-3" value="0" readonly/></span>
                                             <span><a onclick="javascript:fnCalCountNSum('p', 'furniture1Count', 'furniture1', 'furniture1Sum');" class="counting btn btn-sm mt-3">+</a></span>
                                         </div>
                                     </td>
@@ -448,7 +448,7 @@
                                     <td style="width: 10%;">
                                         <div class="d-flex justify-content-center align-items-center mt-5">
                                             <span><a onclick="javascript:fnCalCountNSum('m', 'furniture2Count', 'furniture2', 'furniture2Sum');" class="counting btn btn-sm mt-3">-</a></span>
-                                            <span><input type="text" name="furniture2" id="furniture2Count" class="countingInput mt-3" value="0" readonly/></span>
+                                            <span><input type="text" name="efurniture2" id="furniture2Count" class="countingInput mt-3" value="0" readonly/></span>
                                             <span><a onclick="javascript:fnCalCountNSum('p', 'furniture2Count', 'furniture2', 'furniture2Sum');" class="counting btn btn-sm mt-3">+</a></span>
                                         </div>
                                     </td>
@@ -476,7 +476,7 @@
                                     <td style="width: 10%;">
                                         <div class="d-flex justify-content-center align-items-center mt-5">
                                             <span><a onclick="javascript:fnCalCountNSum('m', 'furniture3Count', 'furniture3', 'furniture3Sum');" class="counting btn btn-sm mt-3">-</a></span>
-                                            <span><input type="text" name="furniture3" id="furniture3Count" class="countingInput mt-3" value="0" readonly/></span>
+                                            <span><input type="text" name="efurniture3" id="furniture3Count" class="countingInput mt-3" value="0" readonly/></span>
                                             <span><a onclick="javascript:fnCalCountNSum('p', 'furniture3Count', 'furniture3', 'furniture3Sum');" class="counting btn btn-sm mt-3">+</a></span>
                                         </div>
                                     </td>
@@ -500,7 +500,7 @@
                     <div class="spin-btn d-flex justify-content-center align-content-center">
                         <!-- 이거 submit으로 만들어주기 -->
                         <span>
-                            <a href="questionResult" class="btn-end"></a>
+                            <a href="javascript:submitForm()" class="btn-end"></a>
                         </span>
                     </div>
                 </div>

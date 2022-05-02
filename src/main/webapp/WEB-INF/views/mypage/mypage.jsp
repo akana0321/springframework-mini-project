@@ -10,6 +10,11 @@
     <title>Studio765</title>
 	
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<<<<<<< HEAD
+=======
+	<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/mypage/style_mypage.css">
+	<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/mypage/style_FAQ.css">
+>>>>>>> branch 'master' of https://github.com/akana0321/springframework-mini-project.git
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -17,9 +22,13 @@
 	<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
+<<<<<<< HEAD
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/mypage/mypage.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/mypage/style_mypage.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/mypage/style_FAQ.css">
+=======
+    <script type="text/javascript" src="${ pageContext.request.contextPath }/resources/js/mypage/mypage.js"></script>
+>>>>>>> branch 'master' of https://github.com/akana0321/springframework-mini-project.git
 </head>
 <body>
 <div id="mypage">

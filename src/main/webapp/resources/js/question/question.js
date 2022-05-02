@@ -1,5 +1,5 @@
 // 서버로 보낼 JSON Object
-var jsonObject;
+var formJsonObject;
 
 // 수량 올리기
 function fnCalCount(type, inputId) {
@@ -71,16 +71,6 @@ function setDisplay(target) {
     $(divName).css("alignItems", "center");
 
     $(liClass).addClass("active");
-
-    // if(target == "questionResult01") {
-    //     $("#questionForm").submit();
-    //     console.log($("#questionForm").serializeArray());
-    //     jsonObject = objectifyForm($("#questionForm").serializeArray());
-    //     console.log(jsonObject);
-    //     // 이후 json 객체 보내는 것 작성
-    // }
-    jsonObject = objectifyForm($("#questionForm").serializeArray());
-        console.log(jsonObject);
 }
 
 /* questionResult */
@@ -113,6 +103,18 @@ function pyInputComplete() {
             setDisplay("questionContent01");
             location.href = "#questionContent01";
         }
-    }
-    
-}    
+    } 
+}   
+
+function submitForm() {
+	formJsonObject = objectifyForm($("#questionForm").serializeArray());
+	$.ajax({
+		type: "post",
+		url: "questionValue",
+		data: formJsonObject,
+		dataType: "json",		
+	}).done((data) => {
+		//$('#questionForm').submit();
+		console.log("성공");
+	});
+} 
