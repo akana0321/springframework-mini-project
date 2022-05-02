@@ -1,0 +1,79 @@
+.signup1 {
+  background-color: #f1f3f5;
+  width: 100%;
+}
+
+.signup1 .background {
+  padding: 2%;
+  background-color: #f1f3f5;
+  margin: 0 25%;
+}
+
+.signup1 .title {
+  margin-top: 2%;
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+.signup1 .checkbox {
+  text-align: right;
+}
+
+.signup1 textarea {
+  width: 100%;
+  height: 10em;
+  padding: 2em;
+  background-color: #f7f7f7;
+  color: rgb(124, 124, 124);
+  border: none;
+}
+
+.signup1 .button {
+  border-width: 0.07em;
+  border-radius: 0.2rem;
+  border-style: none;
+  width: 100%;
+  padding: 0.6em;
+  background-color: #ffb440;
+  border: none;
+  color: black;
+  font-size: medium;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.signup2 {
+  background-color: #f1f3f5;
+  width: 100%;
+}
+
+.signup2 .background {
+  padding: 2%;
+  background-color: #f1f3f5;
+  margin: 0 25%;
+}
+
+.signup2 label {
+  margin: 5% 0 0 0;
+  font-size: 4;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+
+.signup2 input {
+  border-width: 0.07em;
+  border-radius: 0.2rem;
+  border-style: none;
+  width: 100%;
+  padding: 0.6em;
+}
+
+.signup2 .button {
+  background-color: #ffb440;
+  border: none;
+  color: black;
+  font-size: medium;
+  text-decoration: none;
+  cursor: pointer;
+}
