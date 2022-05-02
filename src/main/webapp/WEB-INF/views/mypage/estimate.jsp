@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/mypage/estimate.css" />
+ <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/mypage/style_estimate.css" />
  <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.js"></script>
 </head>
-<body style="background-image:  url('${pageContext.request.contextPath }/resources/images/question/background.jpg'); background-size: cover; background-repeat: no-repeat;">
+<body style="background-image:  url('${pageContext.request.contextPath }/resources/images/mypage/background.jpg'); background-size: cover; background-repeat: no-repeat;">
 <div id="interialq" >
     <div  class="text-center" style="padding-right: 10%;" id="table">
             <div style="font-size: 40px; color: #343434; font-weight: 700;" class="mb-5">예상 견적서</div>

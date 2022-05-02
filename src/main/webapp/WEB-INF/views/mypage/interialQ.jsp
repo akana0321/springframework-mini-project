@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/mypage/interialQ.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/mypage/style_interialQ.css" />
     <script src="${pageContext.request.contextPath }/resources/js/mypage/interialQ.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -28,7 +28,7 @@
         <div class="d-flex flex-column" >
           <div class="d-flex shadow mb-3" style="background-color: #ffb3400c">
             <div class="col-md-12 pt-5 text-left">
-              <div class="fa fa-3x fa-arrow-circle-left float-left ml-5" onclick="location.href='mypage.html'" id="back" data-aos="fade-in" data-aos-duration="1500"></div>
+              <div class="fa fa-3x fa-arrow-circle-left float-left ml-5" onclick="location.href='mypage'" id="back" data-aos="fade-in" data-aos-duration="1500"></div>
                 <div style="font-size: 40px; color: #343434; font-weight: 700; text-align: center; margin: 0 10%;" class="mb-5 " data-aos="fade-up" data-aos-duration="2000">예상 견적서</div>
               <div data-aos="slide-up" data-aos-duration="3000">
                 <div>

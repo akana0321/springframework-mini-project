@@ -12,9 +12,8 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resource/css/portfolio/style_portfolio.css">
-    <link rel="stylesheet" href="../css/header.css"/>
-    <script src="${pageContext.request.contextPath }/resource/js/portfolio/portfolio.js"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/portfolio/style_portfolio.css">
+    <script src="${pageContext.request.contextPath }/resources/js/portfolio/portfolio.js"></script>
 
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -35,65 +34,65 @@
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                 <div id="portfolioImg" class="d-flex justify-content-center m-4"  >
                     <div data-aos="fade-up" data-aos-duration="1000" id="showimg" class="col-md-4" onmouseenter="show('sub_10')" onmouseleave="document.getElementById('sub_10').style.visibility = 'hidden'">
-                        <a href="#" class="trigger"><img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_10.jpg"  id="thumbnail" /></a>
+                        <a href="#" class="trigger"><img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_10.jpg"  id="thumbnail" /></a>
                     </div>
                     <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_10">안녕하세요</strong></div>
                     
                     <div data-aos="fade-up" data-aos-duration="2000" id="showimg" class="col-md-4" onmouseenter="show('sub_6')" onmouseleave="document.getElementById('sub_6').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_6.jpg"  id="thumbnail" />
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_6.jpg"  id="thumbnail" />
                     </div>
                     <div id="content" class="text-center col-md-10" ><strong id="sub_6">안녕하세요.</strong></div>
 
                     <div data-aos="fade-up" data-aos-duration="3000" id="showimg" class="col-md-4" onmouseenter="show('sub_3')" onmouseleave="document.getElementById('sub_3').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_3.jpg"  id="thumbnail"/>
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_3.jpg"  id="thumbnail"/>
                     </div>
                     <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_3">안녕하세요.</strong></div>
                 </div>
                 <div id="portfolioImg" class="d-flex justify-content-center m-4" >
                     <div data-aos="fade-up" data-aos-offset="350" data-aos-duration="1000" id="showimg" class="col-md-4" onmouseenter="show('sub_20')" onmouseleave="document.getElementById('sub_20').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_20.jpg"  id="thumbnail" />
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_20.jpg"  id="thumbnail" />
                     </div>
                     <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_20">안녕하세요</strong></div>
                     
                     <div data-aos="fade-up" data-aos-offset="350" data-aos-duration="2000" id="showimg" class="col-md-4" onmouseenter="show('sub_19')" onmouseleave="document.getElementById('sub_19').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_19.jpg"  id="thumbnail" />
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_19.jpg"  id="thumbnail" />
                     </div>
                     <div id="content" class="text-center col-md-10" ><strong id="sub_19">안녕하세요.</strong></div>
 
                     <div data-aos="fade-up" data-aos-offset="350" data-aos-duration="3000" id="showimg" class="col-md-4" onmouseenter="show('sub_18')" onmouseleave="document.getElementById('sub_18').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_18.jpg"  id="thumbnail"/>
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_18.jpg"  id="thumbnail"/>
                     </div>
                     <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_18">안녕하세요.</strong></div>
                 </div>
                 <div id="portfolioImg" class="d-flex justify-content-center m-4" >
                     <div data-aos="fade-up" data-aos-offset="350" data-aos-duration="1000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_17')" onmouseleave="document.getElementById('sub_17').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_17.jpg"  id="thumbnail" />
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_17.jpg"  id="thumbnail" />
                     </div>
                     <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_17">안녕하세요</strong></div>
                     
                     <div data-aos="fade-up" data-aos-offset="350" data-aos-duration="2000"  data-aos-easing="easw-out-cublic"id="showimg" class="col-md-4" onmouseenter="show('sub_16')" onmouseleave="document.getElementById('sub_16').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_16.jpg"  id="thumbnail" />
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_16.jpg"  id="thumbnail" />
                     </div>
                     <div id="content" class="text-center col-md-10" ><strong id="sub_16">안녕하세요.</strong></div>
 
                     <div data-aos="fade-up" data-aos-offset="350" data-aos-duration="3000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_15')" onmouseleave="document.getElementById('sub_15').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_15.jpg"  id="thumbnail"/>
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_15.jpg"  id="thumbnail"/>
                     </div>
                     <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_15">안녕하세요.</strong></div>
                 </div>
                 <div id="portfolioImg" class="d-flex justify-content-center m-4" >
                     <div  data-aos="fade-up" data-aos-offset="150" data-aos-duration="1000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_14')" onmouseleave="document.getElementById('sub_14').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_14.jpg"  id="thumbnail" />
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_14.jpg"  id="thumbnail" />
                     </div>
                     <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_14">안녕하세요</strong></div>
                     
                     <div  data-aos="fade-up" data-aos-offset="150" data-aos-duration="2000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_13')" onmouseleave="document.getElementById('sub_13').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_13.jpg"  id="thumbnail" />
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_13.jpg"  id="thumbnail" />
                     </div>
                     <div id="content" class="text-center col-md-10" ><strong id="sub_13">안녕하세요.</strong></div>
 
                     <div  data-aos="fade-up" data-aos-offset="150" data-aos-duration="3000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_12')" onmouseleave="document.getElementById('sub_12').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_12.jpg"  id="thumbnail"/>
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_12.jpg"  id="thumbnail"/>
                     </div>
                     <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_12">안녕하세요.</strong></div>
                 </div>
@@ -116,7 +115,7 @@
                                                 <div class="testimonial-block_content position-absolute " id="subtitle">
                                                     <p>상담실</p>
                                                 </div>
-                                                <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_10.jpg" >
+                                                <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_10.jpg" >
                                                 
                                             </div>
                                             
@@ -126,7 +125,7 @@
                                                 <div class="testimonial-block_content position-absolute " id="subtitle">
                                                     <p>진료실</p>
                                                 </div>
-                                                <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_9.jpg">
+                                                <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_9.jpg">
                                             </div>
                                         </div>
                                         <div class="carousel-item">
@@ -134,7 +133,7 @@
                                                 <div class="testimonial-block_content position-absolute " id="subtitle">
                                                     <p>대기실</p>
                                                 </div>
-                                                <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_6.jpg">
+                                                <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_6.jpg">
                                             </div>
                                         </div>
                                     </div>
@@ -157,66 +156,66 @@
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" >
                 <div id="portfolioImg" class="d-flex justify-content-center m-4">
                     <div data-aos="fade-up" data-aos-duration="1000"  id="showimg" class="col-md-4" onmouseenter="show('sub_11')" onmouseleave="document.getElementById('sub_11').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_11.jpg"  id="thumbnail" />
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_11.jpg"  id="thumbnail" />
                     </div>
                     <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_11">안녕하세요.z</strong></div>
                     
                     <div data-aos="fade-up" data-aos-duration="2000" id="showimg" class="col-md-4" onmouseenter="show('sub_7')" onmouseleave="document.getElementById('sub_7').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_7.jpg"  id="thumbnail" />
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_7.jpg"  id="thumbnail" />
                     </div>
                     <div id="content" class="text-center col-md-10" ><strong id="sub_7">안녕하세요.</strong></div>
 
                     <div data-aos="fade-up" data-aos-duration="3000" id="showimg" class="col-md-4" onmouseenter="show('sub_4')" onmouseleave="document.getElementById('sub_4').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_4.jpg"  id="thumbnail"/>
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_4.jpg"  id="thumbnail"/>
                     </div>
                     <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_4">안녕하세요.</strong></div>
                 </div>
                 
                 <div id="portfolioImg" class="d-flex justify-content-center m-4" >
                     <div data-aos="fade-up" data-aos-offset="350" data-aos-duration="1000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_17')" onmouseleave="document.getElementById('sub_17').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_17.jpg"  id="thumbnail" />
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_17.jpg"  id="thumbnail" />
                     </div>
                     <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_17">안녕하세요</strong></div>
                     
                     <div data-aos="fade-up" data-aos-offset="350" data-aos-duration="2000"  data-aos-easing="easw-out-cublic"id="showimg" class="col-md-4" onmouseenter="show('sub_16')" onmouseleave="document.getElementById('sub_16').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_16.jpg"  id="thumbnail" />
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_16.jpg"  id="thumbnail" />
                     </div>
                     <div id="content" class="text-center col-md-10" ><strong id="sub_16">안녕하세요.</strong></div>
 
                     <div data-aos="fade-up" data-aos-offset="350" data-aos-duration="3000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_15')" onmouseleave="document.getElementById('sub_15').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_15.jpg"  id="thumbnail"/>
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_15.jpg"  id="thumbnail"/>
                     </div>
                     <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_15">안녕하세요.</strong></div>
                 </div>
                 <div id="portfolioImg" class="d-flex justify-content-center m-4" >
                     <div data-aos="fade-up" data-aos-offset="150" data-aos-duration="1000" id="showimg" class="col-md-4" onmouseenter="show('sub_20')" onmouseleave="document.getElementById('sub_20').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_20.jpg"  id="thumbnail" />
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_20.jpg"  id="thumbnail" />
                     </div>
                     <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_20">안녕하세요</strong></div>
                     
                     <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="2000" id="showimg" class="col-md-4" onmouseenter="show('sub_19')" onmouseleave="document.getElementById('sub_19').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_19.jpg"  id="thumbnail" />
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_19.jpg"  id="thumbnail" />
                     </div>
                     <div id="content" class="text-center col-md-10" ><strong id="sub_19">안녕하세요.</strong></div>
 
                     <div data-aos="fade-up" data-aos-offset="250" data-aos-duration="3000" id="showimg" class="col-md-4" onmouseenter="show('sub_18')" onmouseleave="document.getElementById('sub_18').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_18.jpg"  id="thumbnail"/>
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_18.jpg"  id="thumbnail"/>
                     </div>
                     <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_18">안녕하세요.</strong></div>
                 </div>
                 <div id="portfolioImg" class="d-flex justify-content-center m-4" >
                     <div  data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_14')" onmouseleave="document.getElementById('sub_14').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_14.jpg"  id="thumbnail" />
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_14.jpg"  id="thumbnail" />
                     </div>
                     <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_14">안녕하세요</strong></div>
                     
                     <div  data-aos="fade-up" data-aos-offset="200" data-aos-duration="2000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_13')" onmouseleave="document.getElementById('sub_13').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_13.jpg"  id="thumbnail" />
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_13.jpg"  id="thumbnail" />
                     </div>
                     <div id="content" class="text-center col-md-10" ><strong id="sub_13">안녕하세요.</strong></div>
 
                     <div  data-aos="fade-up" data-aos-offset="300" data-aos-duration="3000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_12')" onmouseleave="document.getElementById('sub_12').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_12.jpg"  id="thumbnail"/>
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_12.jpg"  id="thumbnail"/>
                     </div>
                     <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_12">안녕하세요.</strong></div>
                 </div>
@@ -225,65 +224,65 @@
             <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                 <div id="portfolioImg" class="d-flex justify-content-center m-4">
                     <div id="showimg" data-aos="fade-up" data-aos-duration="1000" class="col-md-4" onmouseenter="show('sub_1')" onmouseleave="document.getElementById('sub_1').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_1.jpg"  id="thumbnail" />
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_1.jpg"  id="thumbnail" />
                     </div>
                     <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_1">안녕하세요.z</strong></div>
                     
                     <div id="showimg" data-aos="fade-up" data-aos-duration="2000" class="col-md-4" onmouseenter="show('sub_8')" onmouseleave="document.getElementById('sub_8').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_8.jpg"  id="thumbnail" />
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_8.jpg"  id="thumbnail" />
                     </div>
                     <div id="content" class="text-center col-md-10" ><strong id="sub_8">안녕하세요.</strong></div>
 
                     <div id="showimg" data-aos="fade-up" data-aos-duration="3000" class="col-md-4" onmouseenter="show('sub_9')" onmouseleave="document.getElementById('sub_9').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_9.jpg"  id="thumbnail"/>
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_9.jpg"  id="thumbnail"/>
                     </div>
                     <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_9">안녕하세요.</strong></div>
                 </div>
                 <div id="portfolioImg" class="d-flex justify-content-center m-4" >
                     <div  data-aos="fade-up" data-aos-offset="300" data-aos-duration="1000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_14')" onmouseleave="document.getElementById('sub_14').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_14.jpg"  id="thumbnail" />
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_14.jpg"  id="thumbnail" />
                     </div>
                     <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_14">안녕하세요</strong></div>
                     
                     <div  data-aos="fade-up" data-aos-offset="300" data-aos-duration="2000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_13')" onmouseleave="document.getElementById('sub_13').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_13.jpg"  id="thumbnail" />
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_13.jpg"  id="thumbnail" />
                     </div>
                     <div id="content" class="text-center col-md-10" ><strong id="sub_13">안녕하세요.</strong></div>
 
                     <div  data-aos="fade-up" data-aos-offset="300" data-aos-duration="3000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_12')" onmouseleave="document.getElementById('sub_12').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_12.jpg"  id="thumbnail"/>
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_12.jpg"  id="thumbnail"/>
                     </div>
                     <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_12">안녕하세요.</strong></div>
                 </div>
                 <div id="portfolioImg" class="d-flex justify-content-center m-4" >
                     <div data-aos="fade-up" data-aos-offset="350" data-aos-duration="1000" id="showimg" class="col-md-4" onmouseenter="show('sub_20')" onmouseleave="document.getElementById('sub_20').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_20.jpg"  id="thumbnail" />
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_20.jpg"  id="thumbnail" />
                     </div>
                     <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_20">안녕하세요</strong></div>
                     
                     <div data-aos="fade-up" data-aos-offset="350" data-aos-duration="2000" id="showimg" class="col-md-4" onmouseenter="show('sub_19')" onmouseleave="document.getElementById('sub_19').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_19.jpg"  id="thumbnail" />
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_19.jpg"  id="thumbnail" />
                     </div>
                     <div id="content" class="text-center col-md-10" ><strong id="sub_19">안녕하세요.</strong></div>
 
                     <div data-aos="fade-up" data-aos-offset="350" data-aos-duration="3000" id="showimg" class="col-md-4" onmouseenter="show('sub_18')" onmouseleave="document.getElementById('sub_18').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_18.jpg"  id="thumbnail"/>
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_18.jpg"  id="thumbnail"/>
                     </div>
                     <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_18">안녕하세요.</strong></div>
                 </div>
                 <div id="portfolioImg" class="d-flex justify-content-center m-4" >
                     <div data-aos="fade-up" data-aos-offset="350" data-aos-duration="1000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_17')" onmouseleave="document.getElementById('sub_17').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_17.jpg"  id="thumbnail" />
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_17.jpg"  id="thumbnail" />
                     </div>
                     <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_17">안녕하세요</strong></div>
                     
                     <div data-aos="fade-up" data-aos-offset="300" data-aos-duration="2000"  data-aos-easing="easw-out-cublic"id="showimg" class="col-md-4" onmouseenter="show('sub_16')" onmouseleave="document.getElementById('sub_16').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_16.jpg"  id="thumbnail" />
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_16.jpg"  id="thumbnail" />
                     </div>
                     <div id="content" class="text-center col-md-10" ><strong id="sub_16">안녕하세요.</strong></div>
 
                     <div data-aos="fade-up" data-aos-offset="300" data-aos-duration="3000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_15')" onmouseleave="document.getElementById('sub_15').style.visibility = 'hidden'">
-                        <img src="${pageContext.request.contextPath }/resource/images/portfolio/sub_15.jpg"  id="thumbnail"/>
+                        <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_15.jpg"  id="thumbnail"/>
                     </div>
                     <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_15">안녕하세요.</strong></div>
                 </div>
