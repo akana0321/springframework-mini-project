@@ -34,7 +34,7 @@
 			   attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name
 	   	FROM users u, attach a
 	   	WHERE a.attach_target_table like 'USERS'
-	   	 AND u.uid = a.attach_target_id
+	   	 AND u.user_id = a.attach_target_id
 	   	 AND u.user_id = #{uid}
 	</select>
 	
