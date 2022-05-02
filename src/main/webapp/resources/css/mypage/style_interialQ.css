@@ -1,0 +1,77 @@
+@charset "UTF-8";
+#interialq #titleLine{
+    border: 0;
+    height: 4px; 
+    background: #ffb440;
+
+    top: 0.8em;
+	-webkit-animation: thread2 1s normal;
+  	-moz-animation:    thread2 1s normal;
+  	-o-animation:      thread2 1s normal;
+  	animation:         thread2 5s normal;
+
+}
+
+#interialq #inquire{
+    background-color: rgb(239, 239, 239);
+}
+
+#interialq .txt{
+    margin-right: 2%; font-size: 14px; font-weight: 800;
+}
+
+#interialq #table_top{
+    border-bottom:solid;
+    border-collapse: separate;
+	border-spacing: 10px 40px;
+    border-color: gray;
+}
+#interialq #table_bottom{
+    border-top:solid;
+    border-collapse: separate;
+	border-spacing: 0px 40px;
+    border-color: gray;
+}
+
+#interialq #table_top td{
+    width: 8%;
+}
+
+#interialq{
+    margin-top: 6%;
+    margin-left: 10%;
+}
+
+#interialq #back:hover{
+    cursor: pointer;
+}
+
+#interialq pre{
+    font-size: 15px;
+    font-weight: 700;
+}
+
+@-webkit-keyframes thread2 {
+    0%   { width: 0px; }
+    50% { width: 100%; }
+    80% { width: 100%;}
+    100%{ width:100%;}
+}
+@-moz-keyframes thread2 {
+    0%   { width: 0px; }
+    50% { width: 100%; }
+    80% { width: 100%;}
+    100%{ width:100%;}
+}
+@-o-keyframes thread2 {
+    0%   { width: 0px; }
+    50% { width: 100%; }
+    80% { width: 100%;}
+    100%{ width:100%;}
+}
+@keyframes thread2 {
+    0%   { width: 0px; }
+    50% { width: 100%; }
+    80% { width: 100%;}
+    100%{ width:100%;}
+}

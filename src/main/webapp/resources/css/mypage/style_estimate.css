@@ -1,0 +1,62 @@
+@charset "UTF-8";
+#interialq #inquire{
+    background-color: rgb(239, 239, 239);
+}
+
+#interialq #table_top{
+    border-bottom:solid;
+    border-collapse: separate;
+	border-spacing: 10px 40px;
+    border-color: gray;
+}
+#interialq #table_bottom{
+    border-top:solid;
+    border-collapse: separate;
+	border-spacing: 0px 40px;
+    border-color: gray;
+}
+
+#interialq #table_top td{
+    width: 8%;
+}
+
+/* #interialq{
+    margin-top: 6%;
+    margin-left: 10%;
+} */
+
+/* #interialq .box{
+    opacity: 0;
+}
+#interialq .box.visible{
+    opacity: 1;
+}
+#interialq .box2{
+    opacity: 0;
+}
+#interialq .box2.visible{
+    opacity: 1;
+} */
+#interialq #animation:hover{
+    font-weight: 900;
+    
+}
+#interialq #animation2:hover{
+    font-weight: 900;
+}
+#interialq #down{
+    animation:  vertical 2.0s ease-in-out infinite;
+}
+@keyframes vertical {
+    0%{
+        opacity: 0;
+        transform: translate(0.5em, -2em);
+      }
+      50%{
+        opacity: 1;
+      }
+      100%{
+        opacity: 0;
+        transform: translate(0.5em, 0.5em);
+      }
+  }

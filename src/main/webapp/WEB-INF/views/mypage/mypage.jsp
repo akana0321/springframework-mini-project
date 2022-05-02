@@ -6,7 +6,7 @@
    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Studio765</title>
 	
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/webapp/resources/css/mypage/style_mypage.css">
@@ -18,7 +18,7 @@
 	<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
-    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/css/mypage/mypage.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/mypage/mypage.js"></script>
 </head>
 <body>
 <div id="mypage">
