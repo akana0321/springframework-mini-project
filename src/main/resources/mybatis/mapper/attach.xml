@@ -11,7 +11,7 @@
 		  AND attach_target_id=#{atid}
 	</select>
 	
-	<select id="selectByTargetList" parameterType="attach" resultType="attach">
+	<select id="selectByTargetOne" parameterType="attach" resultType="attach">
 		SELECT attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name
 		FROM attach
 		WHERE attach_target_table=#{attable}
