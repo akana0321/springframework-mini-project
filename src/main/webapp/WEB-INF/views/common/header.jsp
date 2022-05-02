@@ -1,38 +1,85 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <title>Document</title>
-	    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-	    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-	    
-	    <link rel="stylesheet" href="/webapp/resources/css/app.css" />
-	</head>
-	<body>
-		<div class="d-flex flex-column vh-100">
-			<nav class="navbar navbar-dark bg-dark font-weight-bold">
-				<a class="navbar-brand" href="#">
-				    <img src="${ pageContext.request.contextPath }/resources/images/logo-spring.png" width="30" height="30" class="d-inline-block align-top"> Spring
-				    <%-- <img src="<%=request.getContextPath() %>/resources/images/logo-spring.png" width="30" height="30" class="d-inline-block align-top"> Spring --%>
-				</a>
-				<div>
-					<a href="#" class="btn btn-success btn-sm">로그인</a>
-				</div>
-			</nav>
-			<div class="container-fluid flex-grow-1">
-				<div class="row h-100">
-					<div class="col-md-4 bg-dark p-3">
-						<div class="h-100 d-flex flex-column">
-							<div class="flex-grow-1" style="height: 0px; overflow-y: auto; overflow-x: hidden;">
-								<%@ include file="/WEB-INF/views/common/menu.jsp" %>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-md-8 p-3">
-						<div class="h-100 d-flex flex-column">
-							<div class="flex-grow-1 pr-3" style="height: 0px overflow-y: auto; overflow-x: auto;">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STUDIO 765</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./resources/css/mainheader.css" />
+    <link rel="stylesheet" href="./resources/css/footer.css" />
+    <style>
+    .main {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+      }
+
+      .main label {
+        font-size: 4em;
+        font-weight: 700;
+      }
+
+      .main .btn {
+        display: flex;
+        padding: 0;
+        margin-top: 10%;
+      }
+
+      .main .maincon {
+        top: 0em;
+        left: 0em;
+        padding: 15em 7em 15em 14em;
+        width: 50em;
+        height: 100%;
+        background-color: #ffffff;
+        background-color: rgba( 255, 255, 255, 0.5 );
+      }
+
+      .main .mainbtn1 {
+        border: 0.08em solid black;
+        background-color: black;
+        color: white;
+        padding: 1rem 1.3rem;
+        font-size: 1.3em;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      .main .mainbtn2 {
+        border: 0.08em solid black;
+        color: black;
+        padding: 1rem;
+        font-size: 1.3em;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      .main .mainbtn1:hover,
+      .mainbtn2:hover {
+        border: 0.08em solid white;
+        background-color: white;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+  	<script src="./resources/js/main.js"></script>
+    <header>
+      <a href="main.html"><img src="./resources/images/logo.png" class="img" /></a>
+      <div class="menu" style="height: max-content">
+        <div><a href="studio765/765_advantage.jsp" class="menubtn">ABOUT US</a></div>
+        <div><a href="studio765/765_pickYourPY.jsp" class="menubtn">시스템 소개</a></div>
+        <div><a href="../portfolio/portfolio.jsp" class="menubtn">포트폴리오</a></div>
+        <div><a href="question/questionIndex.jsp" class="menubtn">견적문의</a></div>
+        <div><a href="/user/login.jsp" class="menubtn">로그인</a></div>
+        <div><a href="user/signUp1.jsp" class="menubtn">회원가입</a></div>
+      </div>
+    </header>
