@@ -1,0 +1,445 @@
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#progressbarContainer {
+    position:fixed;
+    width: 10%;
+    height: auto;
+    z-index: 999;
+    margin-top: 3.5em;
+}
+
+#progressbarContainer #progressbar {
+    padding: 0rem;
+    width: 20rem;
+    height: 5em;
+    /* overflow: hidden; */
+    counter-reset: step;
+    /* text-align: center; */
+}
+
+#progressbarContainer #progressbar li {
+    list-style-type: none;
+    width: 10rem;
+    height: 100%;
+    color: rgb(95, 95, 95);
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    padding: 0.5em;
+    margin: -0.1em;
+    border-right: 0.1em solid rgb(160, 160, 160);
+}
+
+#progressbarContainer #progressbar li::before {
+    content: counter(step);
+    counter-increment: step;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    /* display: block; */
+    font-size: 1.2rem;
+    color: rgb(95, 95, 95);
+    /* background: #cde0f3; */
+    /* border-radius: 3px; */
+    margin: 0 0.3rem 0.3rem auto;
+}
+
+#progressbarContainer #progressbar li::after {
+    /* content: ""; */
+    /* width: 100%; */
+    /* height: 2px; */
+    /* background: #cde0f3; */
+    /* left: -50%; */
+    /* top: 9px; */
+    z-index: -1;
+}
+
+#progressbarContainer #progressbar li:first-child::after {
+    content: none;
+}
+
+#progressbarContainer #progressbar li.active {
+    background-color: rgb(154, 154, 154);
+    color: white;
+    font-size: 1.2rem;
+}
+
+#progressbarContainer #progressbar li.active::before, ::after {
+    /* background: #ff9a76; */
+    color: white;
+}
+
+#questionContainer {
+    position: relative;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#questionContainer * {
+    margin-top: 1rem;
+}
+
+#questionContainer .fullscrean {
+    width: 100%;
+    height: 100vh;
+}
+
+#questionContainer .btn-start {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10rem;
+    height: 4rem;
+    font-size: 1.5rem;
+    color: black;
+    text-decoration: none;
+}
+
+#questionContainer .wrap-start {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10rem;
+    height: 4rem;
+    border: 0.1rem solid #333;
+    margin: 0 0;
+    font-size: 1.5rem;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    z-index: 0;
+    transition: 1s;
+}
+
+#questionContainer .wrap-start::before {
+    position: absolute;
+    background: #fff;
+    z-index: -1;
+    transition: 1s;
+    content: '';
+}
+
+#questionContainer .wrap-start::after {
+    position: absolute;
+    background: #fff;
+    z-index: -1;
+    transition: 1s;
+    content: '';
+    width: 10rem;
+    height: 3rem;
+}
+
+#questionContainer .wrap-start::before {
+    height: 4rem;
+    width: 9rem;
+}
+/* 
+#questionContainer .wrap-start .noselect {
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+} */
+
+#questionContainer .wrap-start:hover::before {
+    width: 0px;
+    background-color: #fff;
+}
+
+#questionContainer .wrap-start:hover::after {
+    height: 0px;
+    background-color: #fff;
+}
+
+#questionContainer .wrap-start:hover {
+    background-color: #fff;
+}
+
+#questionContainer .wrap-start span {
+    margin-top: 0;
+}
+
+#questionContainer #arrow {
+    width: 4rem;
+    height: 4rem;
+}
+
+#questionContainer .btn-move-even {
+    margin-top: 2rem;
+    width: 10rem;
+    height: 4rem;
+    text-align: center;
+    border: 0.08em solid #f1f3f5;
+    border-radius: .5rem;
+    background-color: #f1f3f5;
+    font-size: 3rem;
+    color: black;
+    text-decoration: none;
+}
+
+#questionContainer .btn-move-odd {
+    margin-top: 2rem;
+    width: 10rem;
+    height: 4rem;
+    text-align: center;
+    border: 0.08em solid white;
+    border-radius: .5rem;
+    background-color: white;
+    font-size: 3rem;
+    color: black;
+    text-decoration: none;
+}
+
+#questionContainer label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#questionContainer #wrap > span {
+    font-size: 1.75rem; 
+}
+
+#questionContainer #questionStart img {
+    width: 40%;
+    height: auto;
+}
+
+#questionContainer #questionPY {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.form-popup {
+    position: fixed;
+    width: 25%;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f1f3f5;
+    border-radius: 0.5rem;
+    padding: 0 1rem 1rem 1rem;
+}
+
+#py {
+    width: 70%;
+    margin-top: 5rem;
+    padding: 15px;
+    margin: 0.1em 0;
+    border: none;
+    border-radius: 0;
+    
+    background-color: #f1f3f5;
+}
+
+#pyComplete {
+    width: auto;
+    margin-top: 2rem;
+    margin-right: 1rem;
+    padding: .3rem;
+    border: none;
+    border-radius: 0;
+    border: 0.08rem solid black;
+    text-decoration: none;
+    color: black;
+}
+  
+.cancel {
+    color: black;
+    font-size: 0.9rem;
+    text-align: right;
+    cursor: pointer;
+    margin-right: 1rem;
+    margin-top: .25rem;
+}
+  
+.popup_form_control {
+    /* width: 100%; */
+    height: 3rem;
+    padding: 0rem 1rem;
+    border-radius: 0;
+    box-sizing: border-box;
+    border-style: none;
+    border-bottom: 0.08rem solid black;
+    font-size: 1.1rem;
+    color: #f1f3f5;
+}
+
+#questionContainer input {
+    text-align:center;
+    border: none;
+}
+
+#questionContainer .card{
+    width: 90%;
+    height: 100%;
+    border-radius: 2rem;
+    text-align: center;
+    margin: 0 2rem;
+}
+
+#questionContainer .card .card-header {
+    background-color: inherit;
+    border-radius: 3rem;
+    border-style: none;
+    padding-top: 0%;
+}
+
+#questionContainer .card .card-body {
+    padding: 0% 0%;
+    margin-top: 0%;
+    font-size: small;
+}
+
+#questionContainer .card .card-body .card-img {
+    width: 100%;
+    height: auto;
+}
+
+#questionContainer .card .card-body ul {
+    list-style-image: url('../../images/question/check.png');
+    list-style-position: outside;
+    text-align: center;
+}
+
+#questionContainer .card .card-body li {
+    padding-left: 1rem;
+}
+
+#questionContainer .card .card-footer {
+    background-color: inherit;
+    border-radius: 3rem;
+    border-style: none;
+    padding-top: 0%;
+    height: 15%;
+}
+
+#questionContainer input[type="radio"] {
+    display: none;
+}
+
+#questionContainer input[type="radio"]:checked + .card {
+    transform: scale(1, 1);
+    border-width: .3rem;
+    border-color: #ffb440;
+    background-color: #f5d19a;
+    /* opacity: 1;  선택시 배경 옅게 하기*/
+}
+
+#questionContainer input[type="radio"]:checked + .card > .card-body > ul {
+    list-style-image: url('../../images/question/checkAfter.png');
+}
+
+#questionContainer .counting {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 0rem;
+}
+
+#questionContainer .countingInput {
+    width: 3rem;
+    font-size: 1.5rem;
+    margin-top: 0%;
+}
+
+#questionContainer input:focus {
+    outline: none;
+}
+
+#questionContainer #questionContent05 .card .card-body .card-img {
+    width: 100%;
+    height: 80%;
+}
+
+#questionContainer #questionContent06 table {
+    width: 100%;
+    height: auto;
+    margin: 0 0;
+}
+
+#questionContainer #questionContent06 #grayTh {
+    background-color: #f1f3f5;
+}
+
+#questionContainer #questionContent06 #grayTh span:first-child {
+    font-size: 1.2rem;
+}
+
+#questionContainer #questionContent06 #grayTh span:last-child {
+    margin-top: 1.5rem;
+    margin-right: 1.5rem;
+    color: #86939E;
+}
+
+#questionContainer #questionContent06 img {
+    margin-left: 4rem;
+    margin-right: 3rem;
+}
+
+.spin-btn div a {
+    text-decoration: none;
+    color: black;
+}
+
+.spin-btn span{
+    position: relative;
+    display: inline-flex;
+    width: 10rem;
+    height: 4rem;
+    margin: 0 1rem;
+    perspective: 90rem;
+}
+
+.spin-btn span a{
+    font-size: 1.25rem;
+    letter-spacing: .1rem;
+    transform-style: preserve-3d;
+    transform: translateZ(-1.85rem);
+    transition: transform .25s;    
+}
+
+.spin-btn span a:before,
+.spin-btn span a:after{
+  position: absolute;
+  content: "확인하기";
+  width: 10rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: .2rem solid black;
+  box-sizing: border-box;
+  border-radius: .3rem;
+}
+
+.spin-btn span a:before{
+  color: #fff;
+  background: #000;
+  transform: rotateY(0deg) translateZ(1.85rem);
+}
+
+.spin-btn span a:after{
+  color: #000;
+  background-color: white;
+  transform: rotateX(90deg) translateZ(1.85rem);
+}
+
+.spin-btn span a:hover{
+  transform: translateZ(-1.85rem) rotateX(-90deg);
+}
