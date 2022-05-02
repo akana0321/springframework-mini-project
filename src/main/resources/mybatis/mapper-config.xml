@@ -11,7 +11,7 @@
 	
 	<typeAliases>
       <typeAlias type="com.mycompany.webapp.dto.User" alias="user"/>
-      <typeAlias type="com.mycompany.webapp.dto.Hospital" alias="hospital"/>
+      <typeAlias type="com.mycompany.webapp.dto.Dentist" alias="dentist"/>
       <typeAlias type="com.mycompany.webapp.dto.Product" alias="product"/> 
       <typeAlias type="com.mycompany.webapp.dto.Attach" alias="attach"/> 
       <typeAlias type="com.mycompany.webapp.dto.Question" alias="question"/> 
