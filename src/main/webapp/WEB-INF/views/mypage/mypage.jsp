@@ -41,7 +41,7 @@
 							</div>
 						</div>
 						<input type="file" id="myimg" oninput="clickimg()">
-						<h4 class="text-center" style="font-weight: 700;">회원이름</h4>
+						<h4 class="text-center" style="font-weight: 700;">${user.uname}</h4>
 					</div>
 					<div class="text-right ">
 						<a class="mr-3" href="#" style="color: black; "> 회원 탈퇴</a>
