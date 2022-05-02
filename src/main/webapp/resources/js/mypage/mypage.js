@@ -1,7 +1,7 @@
 
 function requestAjaxPr() {
 	  $.ajax({
-	    url: "product.html",
+	    url: "ajax/product",
 	    method: "get",
 	    data: { pageNo: 1 },
 	    success: function (data) {
@@ -13,12 +13,12 @@ function requestAjaxPr() {
 	  });
 
 	  var let = document.getElementById("int_btn");
-	  let.innerHTML("<strong>");
+	  let.innerHTML="<strong>";
 	}
 
 	function requestAjaxIn() {
 	  $.ajax({
-	    url: "interial.html",
+	    url: "ajax/interial",
 	    method: "get",
 	    data: { pageNo: 1 },
 	    success: function (data) {
@@ -44,7 +44,7 @@ function requestAjaxPr() {
 	  
 
 	    $.ajax({
-	    url: "addinfo.html",
+	    url: "ajax/addinfo",
 	    method: "get",
 	    data: { pageNo: 1 },
 	    success: function (data) {
@@ -90,7 +90,7 @@ function requestAjaxPr() {
 	  console.log(tmp.files);
 	  
 	  var userimg = document.getElementById("userimg");
-	  var data = "<img src='../images/mypage/";
+	  var data = "<img src='${pageContext.request.contextPath }/resources/images/mypage/";
 	  data += tmp.files[0].name;
 	  data += "' alt='Image' class='shadow' style='width: 20px; height: 20px; object-fit: cover;'>";
 	  userimg.innerHTML = data;

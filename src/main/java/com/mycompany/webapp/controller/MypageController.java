@@ -12,28 +12,38 @@ import lombok.extern.log4j.Log4j2;
 public class MypageController {
 
 	@RequestMapping("/mypage")
-	public String method1() {
+	public String getMypage() {
 		log.info("실행");
 		return "mypage/mypage";
 	}
 	@RequestMapping("/interialQ")
-	public String method2() {
+	public String getInterialQ() {
 		log.info("실행");
 		return "mypage/interialQ";
 	}
 	@RequestMapping("/interialP")
-	public String method3() {
+	public String getInterialP() {
 		log.info("실행");
 		return "mypage/interialP";
 	}
-	@RequestMapping("/addinfo")
-	public String method4() {
+	@RequestMapping("ajax/addinfo")
+	public String getAddinfo() {
 		log.info("실행");
-		return "mypage/addinfo";
+		return "mypage/ajax/addinfo";
+	}
+	@RequestMapping("ajax/interial")
+	public String getInterialJsp() {
+		log.info("실행");
+		return "mypage/ajax/interial";
+	}
+	@RequestMapping("ajax/product")
+	public String getProductJsp() {
+		log.info("실행");
+		return "mypage/ajax/product";
 	}
 	
 	@RequestMapping("/estimate")
-	public String method5() {
+	public String getEstimate() {
 		log.info("실행");
 		return "mypage/estimate";
 	}

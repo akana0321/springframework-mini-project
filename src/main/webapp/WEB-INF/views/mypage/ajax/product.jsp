@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <h4 class="mb-4">
   <a class="btn" onclick="requestAjaxIn()" id="int_btn">인테리어 문의</a> <a class="btn" onclick="requestAjaxPr()" id="pro_btn"><strong>상품 문의</strong></a>
 </h4>
@@ -9,7 +11,7 @@
   </tr>
   <tr id="tb">
     <td>1</td>
-    <td id="line"><a href="interialP.html">상품 문의</a></td>
+    <td id="line"><a href="interialP">상품 문의</a></td>
     <td>2022/04/18</td>
   </tr>
   <tr id="tb">

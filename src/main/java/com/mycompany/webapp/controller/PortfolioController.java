@@ -11,7 +11,7 @@ import lombok.extern.log4j.Log4j2;
 public class PortfolioController {
 
 	@RequestMapping("/portfolio")
-	public String method1() {
+	public String getPortfolio() {
 		log.info("실행");
 		return "portfolio/portfolio";
 	}
