@@ -1,10 +1,9 @@
 package com.mycompany.webapp.controller;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -24,8 +23,10 @@ public class MypageController {
 	private UserService userService;
 	
 	@RequestMapping("/mypage")
-	public String getMypage() {
-		log.info(userService.getUserByUid("userid01").getUname());
+	public String getMypage(Model model) {
+//		log.info(userService.getUserByUid("userid01").getUname());
+		User user = userService.getUserByUid("userid01");
+		model.addAttribute("user",user);
 		return "mypage/mypage";
 	}
 
