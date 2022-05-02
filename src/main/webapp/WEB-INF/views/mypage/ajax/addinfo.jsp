@@ -1,23 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 </h4>
+	
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
                 <label>병원 등록 번호</label>
-                <input type="text" class="form-control col-md-4" value="병원 등록 번호">
+                <input type="text" class="form-control col-md-4" value="1111" name="dentalNumber">
             </div>
         </div>
         <div class="col-md-7">
             <div class="form-group">
                 <label>병원 이름</label>
-                <input type="text" class="form-control col-md-8" value="병원 이름">
+                <input type="text" class="form-control col-md-8" value="병원 이름" name="dentalName">
             </div>
         </div>
         <div class="col-md-5">
             <div class="form-group">
                 <label>병원 전화번호</label>
-                <input type="text" class="form-control col-md-8" value="연락처">
+                <input type="text" class="form-control col-md-8" value="연락처" name="dentalTel">
             </div>
         </div>
         <div class="col-md-12">
@@ -26,7 +27,7 @@
                 <div class="row">
                     <div class="col-md-12 row">
                         <div class="col-md-6">
-                            <input class="form-control col-md-8" type="text" id="zonecode" placeholder="우편번호" />
+                            <input class="form-control col-md-8" type="text" id="zonecode" placeholder="우편번호" name="dentalZoneCode"/>
                         </div>
                         <div class="col-md-6">
                             <input id="buttonForFind" class="form-control col-md-6" type="button" class="button" style="margin-bottom: 1em" value="우편번호 찾기" /><br />
@@ -34,10 +35,10 @@
                     </div>
                     <div class="col-md-12 row">
                         <div class="col-md-6">
-                            <input class="form-control col-md-12" type="text" id="address" placeholder="주소" /><br />
+                            <input class="form-control col-md-12" type="text" id="address" placeholder="주소" name="dentalAddr" /><br />
                         </div>
                         <div class="col-md-6">
-                            <input class="form-control col-md-6" type="text" id="detailAddress" placeholder="상세주소" />
+                            <input class="form-control col-md-6" type="text" id="detailAddress" placeholder="상세주소" name="detailDentalAddr"/>
                         </div>
                     </div>
                 </div>
@@ -47,14 +48,14 @@
         <div class="col-md-6">
             <div class="form-group ">
                 <label>병원 직원수</label>
-                <input type="number" class="form-control col-md-6" value="30">
+                <input type="number" class="form-control col-md-6" value="30" name="dentalEmployees">
             </div>
         </div>
         <div class="col-md-12"></div>
         <div class="col-md-6">
             <div class="form-group">
                 <label>병원 평수</label>
-                <input type="number" class="form-control col-md-6" value="65">
+                <input type="number" class="form-control col-md-6" value="65" name="dentalPY">
             </div>
         </div>
         <div class="col-md-12 mt-2">

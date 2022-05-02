@@ -64,32 +64,34 @@
 				</div>
 				<div class="tab-content p-4 p-md-5 " id="v-pills-tabContent">
 					<div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
+						<form method="post" action="myInfo">
 						<h3 class="mb-4"><strong>내 정보</strong></h3>
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>이름</label>
-								  	<input type="text" class="form-control col-md-6" value="name">
+								  	<input type="text" class="form-control col-md-6" value="name" name="userName">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>생년월일</label>
-								  	<input type="date" class="form-control col-md-6" value="연락처">
+								  	<input type="date" class="form-control col-md-6" value="2022-04-21" name="userBirth">
 								</div>
 							</div>
 
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>휴대전화</label>
-								  	<input type="text" class="form-control col-md-6" value="연락처">
+								  	<input type="text" class="form-control col-md-6" value="연락처" name="userTel">
 								</div>
 							</div>
 							
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>이메일</label>
-								  	<input type="text" class="form-control col-md-8" value="user@company.com">
+								  	<input type="text" class="form-control col-md-8" value="user@company.com" name="userEmail">
+								  	
 								</div>
 							</div>
 							<div class="col-md-12">
@@ -109,7 +111,7 @@
 												<input class="form-control col-md-12" type="text"  name="userAddr2" placeholder="주소" /><br />
 											</div>
 											<div class="col-md-6">
-												<input class="form-control col-md-6" type="text" id="detailAddress" placeholder="상세주소" />
+												<input class="form-control col-md-6" type="text" id="detailAddress" placeholder="상세주소"  name="detailUserAddr"/>
 											</div>
 										</div>
 									</div>
@@ -122,7 +124,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>이전 비밀번호</label>
-								  	<input type="password" class="form-control col-md-8">
+								  	<input type="password" class="form-control col-md-8" name="nowPass">
 								</div>
 							</div>
 						</div>
@@ -131,22 +133,24 @@
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>새로운 비밀번호</label>
-								  	<input type="password" class="form-control col-md-8">
+								  	<input type="password" class="form-control col-md-8" name="newPass">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>비밀번호 재확인</label>
-								  	<input type="password" class="form-control col-md-8">
+								  	<input type="password" class="form-control col-md-8" name="reNewPass">
 								</div>
 							</div>
 						</div>
 						<div class="mt-5 text-right">
-							<button class="btn  " style="background-color: rgba(128, 128, 128, 0.614); color:white;"><strong>저장하기</strong></button>
+							<input type="submit" class="btn" style="background-color: rgba(128, 128, 128, 0.614); color:white;" value="저장하기">
 						</div>
+						</form>
 					</div>
 					
 					<div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
+					<form method="post" action=dentalInfo>
 						<div id="addinfo">
 							<h3 class="mb-5"><strong>병원 정보</strong></h3>
 							
@@ -223,10 +227,11 @@
 									</div>
 								</div>
 								<div class="col-md-6  text-right">
-								<button class="btn  " style="background-color: rgba(128, 128, 128, 0.614); color:white;"><strong>저장하기</strong></button>
+								<input class="btn " type="submit" style="background-color: rgba(128, 128, 128, 0.614); color:white;" value="저장하기">
 								</div>
 							</div>
 						</div>
+						</form>
 					</div>
 					
 					<div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
