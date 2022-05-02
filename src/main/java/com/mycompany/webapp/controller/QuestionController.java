@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.webapp.dto.Estimate;
 import com.mycompany.webapp.service.CommentService;
+import com.mycompany.webapp.service.UserService;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -16,11 +17,11 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class QuestionController {
 	@Resource
-	CommentService commentService;
+	UserService userService;
 	
 	@RequestMapping("/questionIndex")
 	public String questionIndex() {
-		log.info(commentService.getCommentByCno(1).getCno());
+		log.info(userService.getUserByUid("userid01"));
 		return "/question/questionIndex";
 	}
 	
