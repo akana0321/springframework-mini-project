@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class Hospital {
-	private int hnumber;
+	private String hnumber;
 	private String uid;
 	private String hname;
 	private String htel;
