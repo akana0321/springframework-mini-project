@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 
-<%@ include file="/WEB-INF/views/common/header.jsp" %>
+<%@ include file="/WEB-INF/views/common/mainheader.jsp" %>
 
 <div class="main">
       <div style="top: 0; position: absolute; z-index: -1; width: 100%; height: 100%;">
@@ -25,7 +25,7 @@
         </p>
         <div class="btn ml-0">
           <div class="mr-3">
-            <a href="user/login.html" class="mainbtn1">튜토리얼 시작</a>
+            <a href="${pageContext.request.contextPath}/user/login" class="mainbtn1">튜토리얼 시작</a>
           </div>
           <div>
             <a href="studio765/765_advantage.html" class="mainbtn2"

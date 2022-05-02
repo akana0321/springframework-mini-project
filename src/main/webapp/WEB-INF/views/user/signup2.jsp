@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
+ 
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,44 +10,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="../css/header.css" />
-
-    <style>
-      .signup {
-        background-color: #f1f3f5;
-        width: 100%;
-      }
-
-      .signup .background {
-        padding: 2%;
-        background-color: #f1f3f5;
-        margin: 0 25%;
-      }
-
-      .signup label {
-        margin: 5% 0 0 0;
-        font-size: 4;
-        font-weight: 700;
-        margin-bottom: 0.5em;
-      }
-
-      .signup input {
-        border-width: 0.07em;
-        border-radius: 0.2rem;
-        border-style: none;
-        width: 100%;
-        padding: 0.6em;
-      }
-
-      .signup .button {
-        background-color: #ffb440;
-        border: none;
-        color: black;
-        font-size: medium;
-        text-decoration: none;
-        cursor: pointer;
-      }
-    </style>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/user/signup.css" />
 
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <!-- <script>
@@ -64,23 +29,12 @@
     </script> -->
   </head>
   <body>
-    <script src="signUp.js"></script>
-    <header>
-      <a href="../main.html"><img src="/images/logo.png" class="img" /></a>
-      <div class="menu" style="height: max-content">
-        <div><a href="../studio765/765_advantage.html" class="menubtn">ABOUT US</a></div>
-        <div><a href="../studio765/765_pickYourPY.html" class="menubtn">시스템 소개</a></div>
-        <div><a href="../portfolio/portfolio.html" class="menubtn">포트폴리오</a></div>
-        <div><a href="../question/questionIndex.html" class="menubtn">견적문의</a></div>
-        <div><a href="../user/login.html" class="menubtn">로그인</a></div>
-        <div><a href="../user/signUp1.html" class="menubtn_clicked">회원가입</a></div>
-      </div>
-    </header>
-
-    <div class="signup">
-      <form class="background col-6" action="/user/login.html" method="get">
+  <%@ include file="/WEB-INF/views/common/header.jsp" %>
+  <script src="${pageContext.request.contextPath}/resources/js/signup.js"></script>
+    <div class="signup2">
+      <form class="background col-6" action="${pageContext.request.contextPath}/user/login" method="get">
         <div style="text-align: center; margin-bottom: 4%">
-          <a href="../main.html"><img src="/images/logo.png" style="width: 30%" /></a>
+          <a href="../main.html"><img src="${pageContext.request.contextPath}/resources/images/logo.png" style="width: 30%" /></a>
         </div>
         <label>* 아이디</label>
         <div class="row">
@@ -194,3 +148,5 @@
     </div>
   </body>
 </html>
+
+<%-- <%@ include file="/WEB-INF/views/common/footer.jsp" %> --%>

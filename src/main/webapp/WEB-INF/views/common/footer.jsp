@@ -2,12 +2,12 @@
 <footer>
       <div class="content">
         <div>
-          <img src="./resources/images/footer/logo2.png" class="img" />
+          <img src="${pageContext.request.contextPath}/resources/images/footer/logo2.png" class="img" />
           <div style="text-align: center">
-            <a href="https://www.instagram.com/osstem/"><img src="./resources/images/footer/instagram.png" style="height: 1.2em; width: 1.2em" /></a>
-            <a href="https://www.youtube.com/"><img src="./resources/images/footer/youtube.png" style="height: 1.2em; width: 1.2em" /></a>
-            <a href="https://www.facebook.com/OSSTEM/"><img src="./resources/images/footer/facebook.png" style="height: 1.2em; width: 1.2em" /></a>
-            <a href="https://www.twitter.com/"><img src="./resources/images/footer/twitter.png" style="height: 1.2em; width: 1.2em" /></a>
+            <a href="https://www.instagram.com/osstem/"><img src="${pageContext.request.contextPath}/resources/images/footer/instagram.png" style="height: 1.2em; width: 1.2em" /></a>
+            <a href="https://www.youtube.com/"><img src="${pageContext.request.contextPath}/resources/images/footer/youtube.png" style="height: 1.2em; width: 1.2em" /></a>
+            <a href="https://www.facebook.com/OSSTEM/"><img src="${pageContext.request.contextPath}/resources/images/footer/facebook.png" style="height: 1.2em; width: 1.2em" /></a>
+            <a href="https://www.twitter.com/"><img src="${pageContext.request.contextPath}/resources/images/footer/twitter.png" style="height: 1.2em; width: 1.2em" /></a>
           </div>
         </div>
         <div class="inform">
