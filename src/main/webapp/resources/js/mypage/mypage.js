@@ -50,7 +50,7 @@ function requestAjaxPr() {
 	    success: function (data) {
 	      tmp += data;
 	      tmp += "<div id='image_container" + count;
-	      tmp += "'></div><input type='file'  value='도안' name='attachFile' class='mt-2' onchange=\"setThumbnail(event,'image_container" + count;
+	      tmp += "'></div><input type='file'  value='도안' name='dattaches' class='mt-2' onchange=\"setThumbnail(event,'image_container" + count;
 	      tmp += "');\"></div></div></div>";
 	      let div = document.createElement("div");
 	      div.setAttribute("id",count);

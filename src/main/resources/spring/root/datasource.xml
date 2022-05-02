@@ -11,11 +11,11 @@
 		 -->
 		 
 		<!-- log를 확인하기 위해 log4jdbc 사용(개발 후에는 위에걸로 변경) -->
-		<property name="driverClassName" value="${spring.datasource.driverClassName}"></property>
-		<property name="url" value="${spring.datasource.url}"/>
+		<property name="driverClassName" value="net.sf.log4jdbc.DriverSpy"></property>
+		<property name="url" value="jdbc:log4jdbc:oracle:thin:@kosa1.iptime.org:50103:orcl"/>
 		
-		<property name="username" value="${spring.datasource.username}"/>
-		<property name="password" value="${spring.datasource.password}"/>
+		<property name="username" value="mini_project"/>
+		<property name="password" value="kosa12345"/>
 		<property name="initialSize" value="2"/>
 		<property name="maxTotal" value="3"/>
 		<property name="maxIdle" value="2"/>

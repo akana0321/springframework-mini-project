@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +37,7 @@
 							</div>
 						</div>
 						<input type="file" id="myimg" oninput="clickimg()">
-						<h4 class="text-center" style="font-weight: 700;">회원 이름</h4>
+						<h4 class="text-center" style="font-weight: 700;">회원이름</h4>
 					</div>
 					<div class="text-right ">
 						<a class="mr-3" href="#" style="color: black; "> 회원 탈퇴</a>
@@ -150,8 +151,9 @@
 					</div>
 					
 					<div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
-					<form method="post" action=dentalInfo>
+					<form method="post" modelAttribute="dentist" action="dentalInfo">
 						<div id="addinfo">
+						
 							<h3 class="mb-5"><strong>병원 정보</strong></h3>
 							
 							<!-- <div class="row">

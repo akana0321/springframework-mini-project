@@ -1,10 +1,16 @@
 package com.mycompany.webapp.controller;
 
-import java.util.Date;
+import java.util.List;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.mycompany.webapp.dto.Dentist;
+import com.mycompany.webapp.dto.User;
+import com.mycompany.webapp.service.UserService;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -13,12 +19,17 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 
 public class MypageController {
-
+	
+	@Resource
+	private UserService userService;
+	
 	@RequestMapping("/mypage")
 	public String getMypage() {
+		log.info(userService.getUserByUid("userid01").getUname());
 		return "mypage/mypage";
 	}
-	
+
+
 	@RequestMapping("/myInfo")
 	public String myInfo(
 			String userName,String userBirth, String userTel, String userEmail, 
@@ -33,19 +44,35 @@ public class MypageController {
 		return "redirect:/mypage/mypage";
 	}
 	
+//	@RequestMapping("/dentalInfo")
+//	public String dentalInfo(
+//			String dentalNumber, String dentalName, String dentalTel, String dentalZoneCode,
+//			String dentalAddr, String detailDentalAddr, int dentalEmployees, int dentalPY) {
+//		log.info(Integer.parseInt(dentalNumber));
+//		log.info(dentalName);
+//		log.info(dentalTel);
+//		log.info(dentalZoneCode);
+//		log.info(dentalAddr);
+//		log.info(detailDentalAddr);
+//		log.info(dentalEmployees);
+//		log.info(dentalPY);
+//		
+//		return "redirect:/mypage/mypage";
+//	}
+	
+	
 	@RequestMapping("/dentalInfo")
-	public String dentalInfo(
-			String dentalNumber, String dentalName, String dentalTel, String dentalZoneCode,
-			String dentalAddr, String detailDentalAddr, int dentalEmployees, int dentalPY) {
-		log.info(Integer.parseInt(dentalNumber));
-		log.info(dentalName);
-		log.info(dentalTel);
-		log.info(dentalZoneCode);
-		log.info(dentalAddr);
-		log.info(detailDentalAddr);
-		log.info(dentalEmployees);
-		log.info(dentalPY);
-		
+	public String dentalInfo(@ModelAttribute("dentist") Dentist dentist) {
+		log.info(dentist);
+//		log.info(member.getHnumber());
+//		log.info(member.getHname());
+//		log.info(member.getHtel());
+//		log.info(member.getHzipcode());
+//		log.info(member.getHaddress1());
+//		log.info(member.getHaddress2());
+//		log.info(member.getHemployees());
+//		log.info(member.getHpy());
+//		log.info(member.getHattaches());
 		return "redirect:/mypage/mypage";
 	}
 
