@@ -25,6 +25,10 @@
 
 	<!-- ano 시퀀스 처리 -->
 	<insert id="insert" parameterType="attach">
+		<selectKey keyProperty="ano" resultType="int" order="BEFORE">
+			seq_attach_ano.nextval from dual
+		</selectKey>
+		
 		INSERT INTO attach 
 		(attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name) 
 		VALUES(#{ano}, #{attable}, #{atid}, #{atindex}, #{acontentType}, #{asname}, #{aoname})

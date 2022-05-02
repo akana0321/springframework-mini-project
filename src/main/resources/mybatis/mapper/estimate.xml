@@ -5,15 +5,15 @@
 <!-- dao의 interface와 연결하기 위해 namespace에 해당 인터페이스 경로를 줌 -->
 <mapper namespace="com.mycompany.webapp.dao.EstimateDao">
 	<select id="selectByEno" parameterType="int" resultType="estimate">
-		SELECT estimate_no, user_id, py, building_type, dental_type, floor_type, wall_type, k3000B, k5000b, s2100z, furniture1, furniture2, furniture3, estimate_date
+		SELECT estimate_no, user_id, question_no, py, building_type, dental_type, floor_type, wall_type, k3000B, k5000b, s2100z, furniture1, furniture2, furniture3, estimate_date
 		FROM estimate
 		WHERE estimate_no=#{eno}
 	</select>
 	
-	<select id="selectByUid" parameterType="string" resultType="estimate">
-		SELECT estimate_no, user_id, py, building_type, dental_type, floor_type, wall_type, k3000B, k5000b, s2100z, furniture1, furniture2, furniture3, estimate_date
+	<select id="selectByQno" parameterType="int" resultType="estimate">
+		SELECT estimate_no, user_id, question_no, py, building_type, dental_type, floor_type, wall_type, k3000B, k5000b, s2100z, furniture1, furniture2, furniture3, estimate_date
 		FROM estimate
-		WHERE user_id=#{uid}
+		WHERE question_no=#{qno}
 	</select>
 	
 	<select id="count" resultType="int">
@@ -22,17 +22,17 @@
 
 	<!-- eno 시퀀스 처리 -->
 	<insert id="insert" parameterType="estimate">
+		<selectKey keyProperty="qno" resultType="int" order="BEFORE">
+			seq_estimate_eno.nextval from dual
+		</selectKey>
+		
 		INSERT INTO estimate 
-		(estimate_no, user_id, py, building_type, dental_type, floor_type, wall_type, k3000B, k5000b, s2100z, furniture1, furniture2, furniture3, estimate_date) 
-		VALUES(#{eno}, #{uid}, #{epy]}, #{ebuildingType}, #{edentalType}, #{efloorType}, #{ewallType}, #{ek3000B}, #{ek5000b}, #{es2100z}, #{efurniture1}, #{efurniture2}, #{efurniture3}, sysdate)
+		(estimate_no, user_id, question_no, py, building_type, dental_type, floor_type, wall_type, k3000B, k5000b, s2100z, furniture1, furniture2, furniture3, estimate_date) 
+		VALUES(#{eno}, #{uid}, #{qno}, #{epy]}, #{ebuildingType}, #{edentalType}, #{efloorType}, #{ewallType}, #{ek3000B}, #{ek5000b}, #{es2100z}, #{efurniture1}, #{efurniture2}, #{efurniture3}, sysdate)
 	</insert>
 	
 	<delete id="deleteByEno" parameterType="int">
 		DELETE FROM estimate WHERE estimate_no = #{eno}
-	</delete>
-	
-	<delete id="deleteByUid" parameterType="string">
-		DELETE FROM estimate WHERE user_id = #{uid}
 	</delete>
 	
 	<update id="update" parameterType="estimate">
