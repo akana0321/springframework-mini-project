@@ -12,7 +12,6 @@ public class PortfolioController {
 
 	@RequestMapping("/portfolio")
 	public String getPortfolio() {
-		log.info("실행");
 		return "portfolio/portfolio";
 	}
 }
