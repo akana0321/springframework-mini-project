@@ -23,7 +23,7 @@ function selectAll(selectAll) {
 }
 
 //회원 주소
-function execDaumPostcode1() {
+function execDaumPostcode() {
   new daum.Postcode({
     oncomplete: function (data) {
       var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
@@ -49,8 +49,8 @@ function execDaumPostcode1() {
           console.log(data.zonecode);//우편번호
           console.log(fullRoadAddr);//주소정보
           
-          $("[name=addr1]").val(data.zonecode);
-          $("[name=addr2]").val(fullRoadAddr);
+          $("[name=uzipcode]").val(data.zonecode);
+          $("[name=uaddress1]").val(fullRoadAddr);
     }
   }).open();
 }

@@ -32,14 +32,14 @@
   <%@ include file="/WEB-INF/views/common/header.jsp" %>
   <script src="${pageContext.request.contextPath}/resources/js/signup.js"></script>
     <div class="signup2">
-      <form class="background col-6" action="${pageContext.request.contextPath}/user/login" method="get">
+      <form class="background col-6" action="${pageContext.request.contextPath}/user/login" method="post">
         <div style="text-align: center; margin-bottom: 4%">
           <a href="../main.html"><img src="${pageContext.request.contextPath}/resources/images/logo.png" style="width: 30%" /></a>
         </div>
         <label>* 아이디</label>
         <div class="row">
           <div class="col-9">
-            <input type="text" name="user_ID" placeholder="아이디 입력" />
+            <input type="text" name="uid" value="${user.uid}" placeholder="아이디 입력" />
           </div>
           <div class="col-3">
             <input type="button" class="button" name="certification" value="아이디 중복 확인" />
@@ -48,43 +48,61 @@
         <div class="row">
           <div class="col-6">
             <label>* 비밀번호</label>
-            <input type="password" name="user_PW1" value="123456" />
+            <input type="password" name="upassword" value="${user.upassword}" />
           </div>
           <div class="col-6">
             <label>* 비밀번호 재확인</label>
-            <input type="password" name="user_PW2" value="123456" />
+            <input type="password" name="user_password2" />
           </div>
         </div>
         <div class="row">
           <div class="col-6">
             <label>* 이름</label>
-            <input type="text" name="user_name" value="홍길동" />
+            <input type="text" name="uname" value="${user.uname}" placeholder="홍길동" />
           </div>
           <div class="col-6">
             <label>생년월일</label>
-            <input type="date" id="birthday" name="birthday" />
+            <input type="date" id="ubirth" value="${user.ubirth}" name="birthday" />
           </div>
         </div>
         <label>* 주소</label>
         <div class="row">
           <div class="col-6">
-            <input type="text" id="zonecode" name="addr1" placeholder="우편번호" />
+            <input type="text" id="zonecode" name="uzipcode" value="${user.uzipcode}" placeholder="우편번호" />
           </div>
-          <div class="col-6"><input type="button" class="button" style="margin-bottom: 1em" onclick="execDaumPostcode1()" value="우편번호 찾기" /><br /></div>
+          <div class="col-6"><input type="button" class="button" style="margin-bottom: 1em" onclick="execDaumPostcode()" value="우편번호 찾기" /><br /></div>
         </div>
         <div class="row">
-          <div class="col-7"><input type="text" id="address" name="addr2" placeholder="주소" /><br /></div>
+          <div class="col-7"><input type="text" id="address" name="uaddress1" value="${user.uaddress1}" placeholder="주소" /><br /></div>
           <div class="col-5">
-            <input type="text" id="detailAddress" placeholder="상세주소" />
+            <input type="text" id="detailAddress" value="${user.uaddress2}" placeholder="상세주소" />
           </div>
         </div>
+        <%-- <div class="row"> 
+        	<div class="col-md-12 row">
+             	<div class="col-md-6">
+                  	<input class="form-control col-md-8" type="text"  name="uzipcode" value="${user.uzipcode}" placeholder="우편번호" />
+             	</div>
+             	<div class="col-md-6">
+                   	<input class="form-control col-md-6" type="button" class="button" style="margin-bottom: 1em" onclick="execDaumPostcode3()" value="우편번호 찾기" /><br />
+              	</div>
+           	</div>
+           	<div class="col-md-12 row">
+               	<div class="col-md-6">
+                  	<input class="form-control col-md-12" type="text"  name="uaddress1" value="${user.uaddress1}" placeholder="주소" /><br />
+              	</div>
+            	<div class="col-md-6">
+                 	<input class="form-control col-md-6" type="text" id="detailAddress" placeholder="상세주소" value="${user.uaddress2}"  name="uaddress2"/>
+               	</div>
+         	</div>
+       	</div> --%>
 
         <label>* 이메일</label>
-        <input type="email" name="user_email" placeholder="email@gmail.com" />
+        <input type="email" name="user_email" value="${user.uemail}"  placeholder="email@gmail.com" />
         <label>* 휴대전화</label>
         <div class="row mb-2">
           <div class="col-9">
-            <input type="tel" name="user_phone" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" placeholder="010-****-****" />
+            <input type="tel" name="user_tel" value="${user.utel}" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" placeholder="010-****-****" />
           </div>
           <div class="col-3">
             <input type="button" class="button" name="certification" value="인증번호 받기" />
@@ -140,7 +158,7 @@
         <br />
         <br />
         <!-- Spring으로 넘어가면 살리기 -->
-        <input type="submit" class="button" name="" value="제출" />
+        <input type="submit" class="button" value="제출" />
         <!-- <div class="text-center">
                     <a href="../user/signUp2.html" class="btn" style="background-color: #ffb440; color: black; font-size: 1.1em; width: 15%">제출</a>
                 </div> -->
