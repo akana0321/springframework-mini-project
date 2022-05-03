@@ -1,7 +1,6 @@
 package com.mycompany.webapp.controller;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpSession;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -79,7 +77,6 @@ public class MypageController {
 		
 		return json;
 	}
-	
 
 	@RequestMapping("/myInfo")
 	public String myInfo(
@@ -114,12 +111,16 @@ public class MypageController {
 	}
 	
 
-	
-	
 	@RequestMapping("/dentalInfo")
-	public String dentalInfo(Dentist dentist) {
-
-//		log.info(dentistArray);
+	public String dentalInfo(
+			String[] dnumber,String[] dname,String[] dtel,String[] dzipcode, 
+			String[] daddress1,String[] daddress2,int[] demployees, int[] dpy ,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		int dentalSize = (int) session.getAttribute("dentistSize");
+		log.info(dentalSize);
+		for(int i=0; i<dentalSize;i++) {
+			
+		}
 		
 		return "redirect:/mypage/mypage";
 	}

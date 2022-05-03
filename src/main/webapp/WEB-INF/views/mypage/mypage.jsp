@@ -107,7 +107,7 @@
 												<input class="form-control col-md-8" type="text"  name="uzipcode" value="${user.uzipcode}" placeholder="우편번호" />
 											</div>
 											<div class="col-md-6">
-												<input class="form-control col-md-6" type="button" class="button" style="margin-bottom: 1em" onclick="execDaumPostcode1()" value="우편번호 찾기" /><br />
+												<input class="form-control col-md-6" type="button" class="button" style="margin-bottom: 1em" onclick="execDaumPostcode3()" value="우편번호 찾기" /><br />
 											</div>
 										</div>
 										<div class="col-md-12 row">
@@ -165,7 +165,7 @@
 								        <div class="col-md-12">
 								            <div class="form-group">
 								                <label for="hnumber">병원 등록 번호</label>
-								                <input type="text" class="form-control col-md-4" value="${dentist.dnumber} " name="dnumber" />
+								                <input type="text" class="form-control col-md-4" value="${dentist.dnumber}" name="dnumber" />
 								            </div>
 								        </div>
 								        <div class="col-md-7">
