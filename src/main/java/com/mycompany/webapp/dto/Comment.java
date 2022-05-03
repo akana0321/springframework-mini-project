@@ -1,6 +1,5 @@
 package com.mycompany.webapp.dto;
 
-import java.util.Date;
 import java.util.List;
 
 import lombok.Data;
@@ -11,7 +10,7 @@ public class Comment {
 	private String uid;
 	private int qno;
 	private String ccontent;
-	private Date cdate;
+	private String cdate;
 	
 	private List<Attach> cattaches;
 }
