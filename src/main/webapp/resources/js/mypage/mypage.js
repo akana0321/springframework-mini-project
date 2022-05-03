@@ -131,9 +131,19 @@ function requestAjaxPr() {
 	  reader.readAsDataURL(event.target.files[0]);
 	}
 
+	function setThumbnailF(event,idx) {
+	  var reader = new FileReader();
+	  reader.onload = function (event) {
+	    var img = document.createElement("img");
+	    img.setAttribute("src", event.target.result);
+	    img.setAttribute("style", "width: 80%; height: 80%; border:solid; border-radius:1%;object-fit: cover;");
+	    $("#" + idx).html(img);
+	  };
+	  reader.readAsDataURL(event.target.files[0]);
+	}
 
 	//회원 주소
-	function execDaumPostcode1() {
+	function execDaumPostcode1(infoNum) {
 
 	  new daum.Postcode({
 	    oncomplete: function (data) {
@@ -159,8 +169,8 @@ function requestAjaxPr() {
 
 	          console.log(data.zonecode);//우편번호
 	          console.log(fullRoadAddr);//주소정보
-	          $("[name=uzipcode]").val(data.zonecode);
-	          $("[name=uaddress1]").val(fullRoadAddr);
+	          $("[id=zonecode"+infoNum+"]").val(data.zonecode);
+	          $("[id=address"+infoNum+"]").val(fullRoadAddr);
 
 	    }
 	  }).open();

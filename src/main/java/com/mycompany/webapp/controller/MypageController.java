@@ -117,19 +117,13 @@ public class MypageController {
 	
 	
 	@RequestMapping("/dentalInfo")
-	public String dentalInfo(@ModelAttribute("dentist") Dentist dentist) {
-		log.info(dentist);
-//		log.info(member.getHnumber());
-//		log.info(member.getHname());
-//		log.info(member.getHtel());
-//		log.info(member.getHzipcode());
-//		log.info(member.getHaddress1());
-//		log.info(member.getHaddress2());
-//		log.info(member.getHemployees());
-//		log.info(member.getHpy());
-//		log.info(member.getHattaches());
+	public String dentalInfo(Dentist dentist) {
+
+//		log.info(dentistArray);
+		
 		return "redirect:/mypage/mypage";
 	}
+	
 
 	@RequestMapping("/interialQ")
 	public String getInterialQ() {
