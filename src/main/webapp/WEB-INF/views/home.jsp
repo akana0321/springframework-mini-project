@@ -1,7 +1,21 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STUDIO 765</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/mainheader.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
+  </head>
 <%@ include file="/WEB-INF/views/common/mainheader.jsp" %>
 
+<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
 <div class="main">
       <div style="top: 0; position: absolute; z-index: -1; width: 100%; height: 100%;">
         <img class="slide1" style="width: 100vw; height: 100vh;" src="./resources/images/main/main1.png" />

@@ -12,29 +12,15 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/header.css"/>
-    <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/title.css"/>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" />    
+	<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/title.css"/>
     <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/question/question_index.css" />
     <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/mypage/style_interialQ.css"/>
     
     <script src="${ pageContext.request.contextPath }/resources/js/question/question.js"></script>
 </head>
 <body>
-    
-    <header>
-        <div>
-            <a href="../main.html"><img src="/images/logo.png" class="img"/></a>
-            <div class="menu" style="height: max-content;">
-            <div><a href="../studio765/765_advantage.html" class="menubtn">ABOUT US</a></div>
-            <div><a href="../studio765/765_pickYourPY.html" class="menubtn">시스템 소개</a></div>
-            <div><a href="../portfolio/portfolio.html" class="menubtn">포트폴리오</a></div>
-            <div><a href="../question/questionIndex.html" class="menubtn_clicked">견적문의</a></div>
-            <div><a href="../user/login.html" class="menubtn">로그인</a></div>
-            <div><a href="../user/signUp1.html" class="menubtn">회원가입</a></div>
-          </div>
-        </div>
-    </header>
-
+   	<%@ include file="/WEB-INF/views/common/header.jsp" %>
     <div id="questionFormContainer">
         <div id="progressbarContainer" class="navbar">
             <ul id="progressbar">

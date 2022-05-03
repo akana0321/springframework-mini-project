@@ -1,100 +1,24 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 
-<%@ include file="/WEB-INF/views/common/mainheader.jsp" %>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <meta charset="UTF-8" />
+    <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>STUDIO 765</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mainheader.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/title.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/user/login.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/button.css" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mainheader.css" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
-
-    <style>
-      .loginmain {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        height: 100%;
-      }
-
-      .loginmain label {
-        font-size: 4em;
-        font-weight: 700;
-      }
-
-      .loginmain .btn {
-        display: flex;
-        padding: 0;
-        margin-top: 10%;
-      }
-    </style>
-
-    <script>
-      var index = 0;
-      window.onload = function () {
-        slideShow();
-      };
-
-      function slideShow() {
-        var i;
-        var x = document.getElementsByClassName("slide1");
-        for (i = 0; i < x.length; i++) {
-          x[i].style.display = "none";
-        }
-        index++;
-        if (index > x.length) {
-          index = 1;
-        }
-        x[index - 1].style.display = "block";
-        setTimeout(slideShow, 4000);
-      }
-
-      function idFindopen() {
-        document.getElementById("idFind").style.display = "block";
-      }
-
-      function idFindclose() {
-        document.getElementById("idFind").style.display = "none";
-      }
-
-      function idFindCompleteopen() {
-        document.getElementById("idFind").style.display = "none";
-        document.getElementById("idFindComplete").style.display = "block";
-      }
-
-      function idFindCompleteclose() {
-        document.getElementById("idFindComplete").style.display = "none";
-      }
-
-      function pwFindopen() {
-        document.getElementById("idFindComplete").style.display = "none";
-        document.getElementById("pwFind").style.display = "block";
-      }
-
-      function pwFindclose() {
-        document.getElementById("pwFind").style.display = "none";
-      }
-
-      function pwFindCompleteopen() {
-        document.getElementById("pwFind").style.display = "none";
-        document.getElementById("pwFindComplete").style.display = "block";
-      }
-
-      function pwFindCompleteclose() {
-        document.getElementById("pwFindComplete").style.display = "none";
-      }
-    </script>
   </head>
   <body>
+  <%@ include file="/WEB-INF/views/common/mainheader.jsp" %>
+  <script src="${pageContext.request.contextPath}/resources/js/login.js"></script>
     <div class="loginmain">
       <div style="top: 0; position: absolute; z-index: -1; width: 100%; height: 100%">
         <img class="slide1" style="width: 100%; height: 100%" src="${pageContext.request.contextPath}/resources/images/main/main9.png" />
