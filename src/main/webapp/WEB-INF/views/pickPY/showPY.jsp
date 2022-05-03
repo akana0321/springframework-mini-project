@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
    <!DOCTYPE html>
 <html lang="en">
@@ -30,8 +31,6 @@
     crossorigin="anonymous"
   />
 
-   <!-- header CSS -->
-   <link rel="stylesheet" href="../css/header.css" />
   <!-- title CSS -->
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aboutus/title.css" />
   <!-- button CSS -->
@@ -50,9 +49,7 @@
 
 	<script>
 	$(function() {
-
 		$(".zoom").anythingZoomer();
-
 	});
 	</script>
 </head>
@@ -73,6 +70,11 @@
 		</div>
 	</div>
     <div class="card-subtitle" style="position: absolute; top: 25%; right:10%;">
+    	<%
+    	request.setCharacterEncoding("euc-kr");
+		int version = Integer.parseInt(request.getParameter("version"));
+		System.out.println("version:"+version);
+    	%>
         <ul class="card-subtitle list-unstyled mt-3 mb-4 ml-3">
             <li>
               <img src="${pageContext.request.contextPath }/resources/images/pickPY/check.png" class="m-2" />대기실
@@ -94,6 +96,18 @@
               <img src="${pageContext.request.contextPath }/resources/images/pickPY/check.png" class="m-2" />진료실
               수납기구
             </li>
+            <c:set var="version" value="<%=version%>" scope="session"/>
+			  <c:if test="${version != '50'}">
+			     <li>
+              <img src="${pageContext.request.contextPath }/resources/images/pickPY/check.png" class="m-2" />기공실
+            	</li>
+            	
+			  </c:if>
+			  <c:if test="${version > '65'}">
+			     <li>
+              <img src="${pageContext.request.contextPath }/resources/images/pickPY/check.png" class="m-2" />메이크업실 
+            	</li>
+			  </c:if>
           </ul>
           <div class="card-div-button mt-5 p-0" style="position: relative;">
                 <a

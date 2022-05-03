@@ -2,6 +2,8 @@ package com.mycompany.webapp.service;
 
 import javax.annotation.Resource;
 
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.UserDao;
@@ -9,13 +11,8 @@ import com.mycompany.webapp.dto.User;
 
 @Service
 public class UserService {
-	public enum JoinResult {
-		SUCCESS, FAIL, DUPLICATED
-	}
-	
-	public enum LoginResult {
-		SUCCESS, FAIL_UID, FAIL_UPASSWORD, FAIL
-	}
+	public enum JoinResult { SUCCESS, FAIL, DUPLICATED }
+	public enum LoginResult { SUCCESS, FAIL_UID, FAIL_UPASSWORD, FAIL }
 	
 	@Resource
 	private UserDao userDao;
@@ -37,28 +34,40 @@ public class UserService {
 	
 	// Sing Up
 	public JoinResult signUp(User user) {
-		User dbUser = userDao.selectByUid(user.getUid());
-		if(dbUser == null) {
-			// 비밀번호 Security 적용하기
-			userDao.insert(user);
-			return JoinResult.SUCCESS;
-		} else {
-			return JoinResult.DUPLICATED;
+		try {
+			User dbUser = userDao.selectByUid(user.getUid());
+			if(dbUser == null) {
+				PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+				user.setUpassword(passwordEncoder.encode(user.getUpassword()));
+				userDao.insert(user);
+				return JoinResult.SUCCESS;
+			} else {
+				return JoinResult.DUPLICATED;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+			return JoinResult.FAIL;
 		}
+		
 	}
 	
 	// Login
 	public LoginResult login(User user) {
-		User dbUser = userDao.selectByUid(user.getUid());
-		if(dbUser == null) {
-			// 비밀번호 Security 적용하기
-			if(dbUser.getUpassword().equals(user.getUpassword())) {
-				return LoginResult.SUCCESS;
+		try {
+			User dbUser = userDao.selectByUid(user.getUid());
+			if(dbUser == null) {
+				return LoginResult.FAIL_UID;
 			} else {
-				return LoginResult.FAIL_UPASSWORD;
+				PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+				if(passwordEncoder.matches(user.getUpassword(), dbUser.getUpassword())) {
+					return LoginResult.SUCCESS;
+				} else {
+					return LoginResult.FAIL_UPASSWORD;
+				}
 			}
-		} else {
-			return LoginResult.FAIL_UID;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return LoginResult.FAIL;
 		}
 	}
 }

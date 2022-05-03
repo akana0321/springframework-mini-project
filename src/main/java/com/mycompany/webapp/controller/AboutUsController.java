@@ -6,13 +6,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/aboutus")
+@RequestMapping("/test")
 public class AboutUsController {
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(AboutUsController.class);
 		
-		@RequestMapping("/content")
-		public String content() {
+		@RequestMapping("/test")
+		public String test() {
 			logger.info("실행");
-			return "aboutus/content";
+			return "test/test";
+		}
+		
+		@RequestMapping("/test1")
+		public String test1() {
+			logger.info("실행");
+			return "test/test1";
 		}
 }

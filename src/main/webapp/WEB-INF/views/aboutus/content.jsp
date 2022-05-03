@@ -3,16 +3,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      * {
-        font-family: ‘Noto Sans KR’, sans-serif;
-      }
-    </style>
-    <title>Title</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STUDIO 765</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mainheader.css" />
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
@@ -40,7 +39,7 @@
    
   </head>
   <body>
-    <!-- main thumnail -->
+	<%@ include file="/WEB-INF/views/common/mainheader.jsp" %>
     <div
       style="top: 0; position: absolute; z-index: -1; width: 100%; height: 100%"
     >
