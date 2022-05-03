@@ -135,8 +135,8 @@ function requestAjaxPr() {
 
 	          console.log(data.zonecode);//우편번호
 	          console.log(fullRoadAddr);//주소정보
-	          $("[name=userAddr1]").val(data.zonecode);
-	          $("[name=userAddr2]").val(fullRoadAddr);
+	          $("[name=uzipcode]").val(data.zonecode);
+	          $("[name=uaddress1]").val(fullRoadAddr);
 
 	    }
 	  }).open();

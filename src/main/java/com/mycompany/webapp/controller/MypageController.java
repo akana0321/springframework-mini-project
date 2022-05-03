@@ -1,5 +1,7 @@
 package com.mycompany.webapp.controller;
 
+import java.time.LocalDateTime;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -27,39 +29,32 @@ public class MypageController {
 //		log.info(userService.getUserByUid("userid01").getUname());
 		User user = userService.getUserByUid("userid01");
 		model.addAttribute("user",user);
+		
 		return "mypage/mypage";
 	}
 
 
 	@RequestMapping("/myInfo")
 	public String myInfo(
-			String userName,String userBirth, String userTel, String userEmail, 
-			String userAddr1, String userAddr2, String detailUserAddr, String nowPass, String newPass, String reNewPass){
-		log.info(userName);
-		log.info(userBirth);
-		log.info(userTel);
-		log.info(userEmail);
-		log.info(userAddr1);
-		log.info(userAddr2);
-		log.info(detailUserAddr);
+			String uname,String ubirth, String utel, String uemail, 
+			String uzipcode, String uaddress1, String uaddress2, String upassword, String newPass, String reNewPass){
+		log.info(uname);
+		log.info(ubirth);
+		log.info(utel);
+		log.info(uemail);
+		log.info(uzipcode);
+		log.info(uaddress1);
+		log.info(uaddress2);
+		log.info(upassword);
+		log.info(newPass);
+		log.info(reNewPass);
+		
+		
 		return "redirect:/mypage/mypage";
 	}
 	
-//	@RequestMapping("/dentalInfo")
-//	public String dentalInfo(
-//			String dentalNumber, String dentalName, String dentalTel, String dentalZoneCode,
-//			String dentalAddr, String detailDentalAddr, int dentalEmployees, int dentalPY) {
-//		log.info(Integer.parseInt(dentalNumber));
-//		log.info(dentalName);
-//		log.info(dentalTel);
-//		log.info(dentalZoneCode);
-//		log.info(dentalAddr);
-//		log.info(detailDentalAddr);
-//		log.info(dentalEmployees);
-//		log.info(dentalPY);
-//		
-//		return "redirect:/mypage/mypage";
-//	}
+
+
 	
 	
 	@RequestMapping("/dentalInfo")

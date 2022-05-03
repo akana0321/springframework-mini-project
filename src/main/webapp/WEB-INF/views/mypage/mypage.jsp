@@ -10,11 +10,7 @@
     <title>Studio765</title>
 	
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-<<<<<<< HEAD
-=======
-	<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/mypage/style_mypage.css">
-	<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/mypage/style_FAQ.css">
->>>>>>> branch 'master' of https://github.com/akana0321/springframework-mini-project.git
+
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -22,13 +18,10 @@
 	<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
-<<<<<<< HEAD
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/mypage/mypage.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/mypage/style_mypage.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/mypage/style_FAQ.css">
-=======
-    <script type="text/javascript" src="${ pageContext.request.contextPath }/resources/js/mypage/mypage.js"></script>
->>>>>>> branch 'master' of https://github.com/akana0321/springframework-mini-project.git
+
 </head>
 <body>
 <div id="mypage">
@@ -80,27 +73,27 @@
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>이름</label>
-								  	<input type="text" class="form-control col-md-6" value="name" name="userName">
+								  	<input type="text" class="form-control col-md-6" value="${user.uname}" name="uname">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>생년월일</label>
-								  	<input type="date" class="form-control col-md-6" value="2022-04-21" name="userBirth">
+								  	<input type="date" class="form-control col-md-6" value="${user.ubirth}" name="ubirth">
 								</div>
 							</div>
 
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>휴대전화</label>
-								  	<input type="text" class="form-control col-md-6" value="연락처" name="userTel">
+								  	<input type="text" class="form-control col-md-6" value="${user.utel}" name="utel">
 								</div>
 							</div>
 							
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>이메일</label>
-								  	<input type="text" class="form-control col-md-8" value="user@company.com" name="userEmail">
+								  	<input type="text" class="form-control col-md-8" value="${user.uemail}" name="uemail">
 								  	
 								</div>
 							</div>
@@ -110,7 +103,7 @@
 									<div class="row">
 										<div class="col-md-12 row">
 											<div class="col-md-6">
-												<input class="form-control col-md-8" type="text"  name="userAddr1" placeholder="우편번호" />
+												<input class="form-control col-md-8" type="text"  name="uzipcode" value="${user.uzipcode}" placeholder="우편번호" />
 											</div>
 											<div class="col-md-6">
 												<input class="form-control col-md-6" type="button" class="button" style="margin-bottom: 1em" onclick="execDaumPostcode1()" value="우편번호 찾기" /><br />
@@ -118,10 +111,10 @@
 										</div>
 										<div class="col-md-12 row">
 											<div class="col-md-6">
-												<input class="form-control col-md-12" type="text"  name="userAddr2" placeholder="주소" /><br />
+												<input class="form-control col-md-12" type="text"  name="uaddress1" value="${user.uaddress1}" placeholder="주소" /><br />
 											</div>
 											<div class="col-md-6">
-												<input class="form-control col-md-6" type="text" id="detailAddress" placeholder="상세주소"  name="detailUserAddr"/>
+												<input class="form-control col-md-6" type="text" id="detailAddress" placeholder="상세주소" value="${user.uaddress2}"  name="uaddress2"/>
 											</div>
 										</div>
 									</div>
@@ -134,7 +127,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>이전 비밀번호</label>
-								  	<input type="password" class="form-control col-md-8" name="nowPass">
+								  	<input type="password" class="form-control col-md-8" name="upassword">
 								</div>
 							</div>
 						</div>
