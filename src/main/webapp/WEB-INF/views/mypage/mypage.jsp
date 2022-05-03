@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,12 +34,12 @@
 					<div class="p-4">
 						<div class="img-circle text-center mb-3" style="position: relative;" >
 							<div id="userimg" data-aos="zoom-out" data-aos-duration="2000" >	
-								<img src="${pageContext.request.contextPath }/resources/images/mypage/user.jpg" alt="Image" class="shadow" style="width: 200px; height: 200px;">
+								<img src="${pageContext.request.contextPath}/resources/images/mypage/${userimg.asname}" alt="Image" class="shadow" style="width: 200px; height: 200px;">
 							</div>
 								<div class="fa fa-2x fa-camera  btn float-right " id="imgchange"  onclick="changeUserImg()" data-aos="zoom-out" data-aos-duration="3000">
 							</div>
 						</div>
-						<input type="file" id="myimg" oninput="clickimg()">
+						<input type="file" id="myimg" oninput="clickimg(event)">
 						<h4 class="text-center" style="font-weight: 700;">${user.uname}</h4>
 					</div>
 					<div class="text-right ">
@@ -73,7 +74,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>이름</label>
-								  	<input type="text" class="form-control col-md-6" value="${user.uname}" name="uname">
+								  	<input type="text" class="form-control col-md-6" value="${user.uname}" name="uname" readonly>
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -123,14 +124,6 @@
 						</div>
 						<hr class="mb-5">
 						<h4 class="mb-3"><strong>비밀번호 변경</strong></h4>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-								  	<label>이전 비밀번호</label>
-								  	<input type="password" class="form-control col-md-8" name="upassword">
-								</div>
-							</div>
-						</div>
 						
 						<div class="row">
 							<div class="col-md-6">
@@ -142,6 +135,11 @@
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>비밀번호 재확인</label>
+								  	<c:if test="${error != null}">
+												<span class="" style="color:red; font-size:0.5em" role="alert">
+			  								${error}
+										</span>			
+									</c:if>
 								  	<input type="password" class="form-control col-md-8" name="reNewPass">
 								</div>
 							</div>

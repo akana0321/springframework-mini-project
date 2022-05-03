@@ -59,7 +59,7 @@
 	<update id="update" parameterType="user">
 		UPDATE users SET
 			user_birth = #{ubirth},
-			user_tel = #{utel}.
+			user_tel = #{utel},
 			user_email = #{uemail},
 			user_zipcode = #{uzipcode},
 			user_address1 = #{uaddress1},
