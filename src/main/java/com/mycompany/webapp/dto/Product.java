@@ -11,7 +11,7 @@ public class Product {
 	private String pcategory;
 	private String pdescription;
 	private double pprice;
-	private String pcolor;	// 리스트일까 그냥 String일까
+	private String pcolor;
 	
 	private List<Attach> pattaches;
 }
