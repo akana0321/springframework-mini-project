@@ -45,6 +45,7 @@ public class UserController {
 	public String join(User user, Model model) {
 		user.setUenabled(true);
 		user.setUrole("U");
+		log.info(user);
 		JoinResult jr = userService.signUp(user);
 		if(jr == JoinResult.SUCCESS) {
 			return "redirect:/home";
