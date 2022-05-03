@@ -21,19 +21,7 @@
 </head>
 <body>
     
-    <header>
-        <div>
-            <a href="../main.html"><img src="/images/logo.png" class="img"/></a>
-            <div class="menu" style="height: max-content;">
-            <div><a href="../studio765/765_advantage.html" class="menubtn">ABOUT US</a></div>
-            <div><a href="../studio765/765_pickYourPY.html" class="menubtn">시스템 소개</a></div>
-            <div><a href="../portfolio/portfolio.html" class="menubtn">포트폴리오</a></div>
-            <div><a href="../question/questionIndex.html" class="menubtn_clicked">견적문의</a></div>
-            <div><a href="../user/login.html" class="menubtn">로그인</a></div>
-            <div><a href="../user/signUp1.html" class="menubtn">회원가입</a></div>
-          </div>
-        </div>
-    </header>
+    <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
     <div id="questionFormContainer">
         <div id="progressbarContainer" class="navbar">
@@ -500,7 +488,7 @@
                     <div class="spin-btn d-flex justify-content-center align-content-center">
                         <!-- 이거 submit으로 만들어주기 -->
                         <span>
-                            <a href="javascript:submitForm()" class="btn-end"></a>
+                           <input id="submitIp" type="submit" value="확인하기" />
                         </span>
                     </div>
                 </div>
