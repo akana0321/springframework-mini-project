@@ -155,7 +155,81 @@
 						<div id="addinfo">
 						
 							<h3 class="mb-5"><strong>병원 정보</strong></h3>
-							
+							<c:if test="${dentistSize != 0}">
+								<c:forEach var="dentist" items="${dentistArray}" varStatus="status">
+									<div><strong>병원 정보 ${status.count}</strong></div>
+									<hr>
+								    <div class="row">
+								    	
+								        <div class="col-md-12">
+								            <div class="form-group">
+								                <label for="hnumber">병원 등록 번호</label>
+								                <input type="text" class="form-control col-md-4" value="${dentist.dnumber} " name="dnumber"/>
+								            </div>
+								        </div>
+								        <div class="col-md-7">
+								            <div class="form-group">
+								                <label>병원 이름</label>
+								                <input type="text" class="form-control col-md-8" value="${dentist.dname}" name="dname"/>
+								            </div>
+								        </div>
+								        <div class="col-md-5">
+								            <div class="form-group">
+								                <label>병원 전화번호</label>
+								                <input type="text" class="form-control col-md-8" value="${dentist.dtel}" name="dtel"/>
+								            </div>
+								        </div>
+								        <div class="col-md-12">
+								            <div class="form-group">
+								                <label>병원 주소</label>
+								                <div class="row">
+								                    <div class="col-md-12 row">
+								                        <div class="col-md-6">
+								                            <input class="form-control col-md-8" type="text" id="zonecode_${status.count}" placeholder="우편번호" name="dzipcode" value="${dentist.dzipcode}"/>
+								                        </div>
+								                        <div class="col-md-6">
+								                            <input id="buttonForFind" class="form-control col-md-6" type="button" class="button" style="margin-bottom: 1em" value="우편번호 찾기" /><br />
+								                        </div>
+								                    </div>
+								                    <div class="col-md-12 row">
+								                        <div class="col-md-6">
+								                            <input class="form-control col-md-12" type="text" id="address_${status.count}" placeholder="주소" name="daddress1" value="${dentist.daddress1}" /><br />
+								                        </div>
+								                        <div class="col-md-6">
+								                            <input class="form-control col-md-6" type="text" id="detailAddress_${status.count}" placeholder="상세주소" name="daddress2" value="${dentist.daddress2}"/>
+								                        </div>
+								                    </div>
+								                </div>
+								            </div>
+								        </div>
+								        
+								        <div class="col-md-6">
+								            <div class="form-group ">
+								                <label>병원 직원수</label>
+								                <input type="number" class="form-control col-md-6"  name="demployees" value="${dentist.demployees}">
+								            </div>
+								        </div>
+								        <div class="col-md-12"></div>
+								        <div class="col-md-6">
+								            <div class="form-group">
+								                <label>병원 평수</label>
+								                <input type="number" class="form-control col-md-6"  name="dpy" value="${dentist.dpy}">
+								            </div>
+								        </div>
+								        <div class="col-md-12 mt-2">
+								            <div class="form-group">
+								                <label>병원 도면</label>
+								                <br>
+												
+					          				</div>
+					        			</div>
+					
+					    			</div> 
+								</c:forEach>
+							</c:if>
+							<c:if test="${dentistSize == 0}">
+								<div>병원 정보가 없습니다.</div>
+							</c:if>
 							<!-- <div class="row">
 								<div class="col-md-12">
 									<div class="form-group">

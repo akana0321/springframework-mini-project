@@ -26,7 +26,7 @@
 		</association>
 	</resultMap>
 	
-	<select id="selectByDnumber" parameterType="int" resultMap="selectByDnumberResultMap">
+	<select id="selectByDnumber" parameterType="string" resultMap="selectByDnumberResultMap">
 		SELECT dentist_number, user_id, dentist_name, dentist_tel, dentist_zipcode, dentist_address1, dentist_address2, dentist_employees, dentist_py,
 			   attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name
 	   	FROM dentist d, attach a

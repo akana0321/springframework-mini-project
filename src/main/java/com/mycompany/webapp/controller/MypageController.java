@@ -1,8 +1,8 @@
 package com.mycompany.webapp.controller;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +20,7 @@ import com.mycompany.webapp.dto.Attach;
 import com.mycompany.webapp.dto.Dentist;
 import com.mycompany.webapp.dto.User;
 import com.mycompany.webapp.service.AttachService;
+import com.mycompany.webapp.service.DentistService;
 import com.mycompany.webapp.service.UserService;
 
 import lombok.extern.log4j.Log4j2;
@@ -36,17 +37,25 @@ public class MypageController {
 	@Resource
 	private AttachService attachService;
 	
+	@Resource
+	private DentistService dentistService;
+	
 	@RequestMapping("/mypage")
 	public String getMypage(Model model, HttpSession session) {
 		User user = userService.getUserByUid("userid02");
-
 		Attach attach = user.getUattach();
-		log.info(attach);
+		List<Dentist> dentist= dentistService.getDentistsByUid("userid04");
+		
+		int dentistSize = dentist.size();
 		
 		user.setUbirth(user.getUbirth().split(" ")[0]);
 		model.addAttribute("user",user);
 		session.setAttribute("userSession", user);
 		session.setAttribute("userimg", attach);
+
+		session.setAttribute("dentistArray", dentist);
+		session.setAttribute("dentistSize", dentistSize);
+		
 		return "mypage/mypage";
 	}
 
@@ -104,22 +113,6 @@ public class MypageController {
 		return "redirect:/mypage/mypage";
 	}
 	
-	
-//	@PostMapping("/login")
-//	public String login(String upassword, HttpSession session, Model model) {
-//		LoginResult result = memberService.login(member);
-//		if(result == LoginResult.SUCCESS) {
-//			session.setAttribute("sessionMid", member.getMid());
-//			return "redirect:/ch14/content";
-//		}else if(result == LoginResult.FAIL_MID) {
-//			model.addAttribute("error","아이디가 존재하지 않습니다.");
-//			return "ch14/loginForm";
-//		}else {
-//			model.addAttribute("error","패스워드가 틀립니다.");
-//			return "ch14/loginForm";
-//		}
-//	}
-
 
 	
 	
