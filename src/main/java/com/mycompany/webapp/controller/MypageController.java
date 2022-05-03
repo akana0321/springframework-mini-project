@@ -1,14 +1,26 @@
 package com.mycompany.webapp.controller;
 
-import javax.annotation.Resource;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mycompany.webapp.dto.Attach;
 import com.mycompany.webapp.dto.Dentist;
 import com.mycompany.webapp.dto.User;
+import com.mycompany.webapp.service.AttachService;
+import com.mycompany.webapp.service.DentistService;
 import com.mycompany.webapp.service.UserService;
 
 import lombok.extern.log4j.Log4j2;
@@ -22,44 +34,86 @@ public class MypageController {
 	@Resource
 	private UserService userService;
 	
+	@Resource
+	private AttachService attachService;
+	
+	@Resource
+	private DentistService dentistService;
+	
 	@RequestMapping("/mypage")
-	public String getMypage(Model model) {
-//		log.info(userService.getUserByUid("userid01").getUname());
-		User user = userService.getUserByUid("userid01");
+	public String getMypage(Model model, HttpSession session) {
+		User user = userService.getUserByUid("userid02");
+		Attach attach = user.getUattach();
+		List<Dentist> dentist= dentistService.getDentistsByUid("userid04");
+		
+		int dentistSize = dentist.size();
+		
+		user.setUbirth(user.getUbirth().split(" ")[0]);
 		model.addAttribute("user",user);
+		session.setAttribute("userSession", user);
+		session.setAttribute("userimg", attach);
+
+		session.setAttribute("dentistArray", dentist);
+		session.setAttribute("dentistSize", dentistSize);
+		
 		return "mypage/mypage";
 	}
 
+	@PostMapping(value = "/fileuploadAjax",produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public String changeProfile(Attach attach, HttpServletRequest request) throws Exception {
+		HttpSession session = request.getSession();
+		Attach attachSession = (Attach)session.getAttribute("userimg");
+		attachSession.setAttach(attach.getAttach());
+		
+		//String saveFilename = new Date().getTime() + "-" + attachSession.getAttach().getOriginalFilename(); 
+		File file = new File("/mypage/" + attachSession.getAsname());
+		attachSession.getAttach().transferTo(file);
+
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("result", "success");
+		jsonObject.put("saveFilename", attachSession.getAsname());
+		String json = jsonObject.toString();
+		
+		request.removeAttribute("userimg");
+		
+		return json;
+	}
+	
 
 	@RequestMapping("/myInfo")
 	public String myInfo(
-			String userName,String userBirth, String userTel, String userEmail, 
-			String userAddr1, String userAddr2, String detailUserAddr, String nowPass, String newPass, String reNewPass){
-		log.info(userName);
-		log.info(userBirth);
-		log.info(userTel);
-		log.info(userEmail);
-		log.info(userAddr1);
-		log.info(userAddr2);
-		log.info(detailUserAddr);
+			User user, String newPass, String reNewPass,Model model, HttpServletRequest request){
+
+		
+		HttpSession session = request.getSession();
+		log.info(session.getAttribute("userSession"));
+		User userUpdate = (User) session.getAttribute("userSession");
+		
+		userUpdate.setUbirth(user.getUbirth());
+		userUpdate.setUtel(user.getUtel());
+		userUpdate.setUemail(user.getUemail());
+		userUpdate.setUzipcode(user.getUzipcode());
+		userUpdate.setUaddress1(user.getUaddress1());
+		userUpdate.setUaddress2(user.getUaddress2());
+
+		if(!newPass.equals("") && !reNewPass.equals("")) {
+			if(!newPass.equals(reNewPass)) {
+				model.addAttribute("user",user);
+				model.addAttribute("error","비밀번호가 틀립니다.");
+				return "mypage/mypage";
+			}
+			else {
+				userUpdate.setUpassword(newPass);
+
+			}
+		}
+		log.info(userUpdate);
+		userService.updateUser(userUpdate);
 		return "redirect:/mypage/mypage";
 	}
 	
-//	@RequestMapping("/dentalInfo")
-//	public String dentalInfo(
-//			String dentalNumber, String dentalName, String dentalTel, String dentalZoneCode,
-//			String dentalAddr, String detailDentalAddr, int dentalEmployees, int dentalPY) {
-//		log.info(Integer.parseInt(dentalNumber));
-//		log.info(dentalName);
-//		log.info(dentalTel);
-//		log.info(dentalZoneCode);
-//		log.info(dentalAddr);
-//		log.info(detailDentalAddr);
-//		log.info(dentalEmployees);
-//		log.info(dentalPY);
-//		
-//		return "redirect:/mypage/mypage";
-//	}
+
 	
 	
 	@RequestMapping("/dentalInfo")

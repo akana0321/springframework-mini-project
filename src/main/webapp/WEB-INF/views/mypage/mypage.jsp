@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +11,6 @@
     <title>Studio765</title>
 	
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/mypage/style_mypage.css">
-	<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/mypage/style_FAQ.css">
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -23,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/mypage/style_mypage.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/mypage/style_FAQ.css">
 
-    <script type="text/javascript" src="${ pageContext.request.contextPath }/resources/js/mypage/mypage.js"></script>
+
 </head>
 <body>
 <div id="mypage">
@@ -35,12 +34,12 @@
 					<div class="p-4">
 						<div class="img-circle text-center mb-3" style="position: relative;" >
 							<div id="userimg" data-aos="zoom-out" data-aos-duration="2000" >	
-								<img src="${pageContext.request.contextPath }/resources/images/mypage/user.jpg" alt="Image" class="shadow" style="width: 200px; height: 200px;">
+								<img src="${pageContext.request.contextPath}/resources/images/mypage/${userimg.asname}" alt="Image" class="shadow" style="width: 200px; height: 200px;">
 							</div>
 								<div class="fa fa-2x fa-camera  btn float-right " id="imgchange"  onclick="changeUserImg()" data-aos="zoom-out" data-aos-duration="3000">
 							</div>
 						</div>
-						<input type="file" id="myimg" oninput="clickimg()">
+						<input type="file" id="myimg" oninput="clickimg(event)">
 						<h4 class="text-center" style="font-weight: 700;">${user.uname}</h4>
 					</div>
 					<div class="text-right ">
@@ -75,27 +74,27 @@
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>이름</label>
-								  	<input type="text" class="form-control col-md-6" value="name" name="userName">
+								  	<input type="text" class="form-control col-md-6" value="${user.uname}" name="uname" readonly>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>생년월일</label>
-								  	<input type="date" class="form-control col-md-6" value="2022-04-21" name="userBirth">
+								  	<input type="date" class="form-control col-md-6" value="${user.ubirth}" name="ubirth">
 								</div>
 							</div>
 
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>휴대전화</label>
-								  	<input type="text" class="form-control col-md-6" value="연락처" name="userTel">
+								  	<input type="text" class="form-control col-md-6" value="${user.utel}" name="utel">
 								</div>
 							</div>
 							
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>이메일</label>
-								  	<input type="text" class="form-control col-md-8" value="user@company.com" name="userEmail">
+								  	<input type="text" class="form-control col-md-8" value="${user.uemail}" name="uemail">
 								  	
 								</div>
 							</div>
@@ -105,7 +104,7 @@
 									<div class="row">
 										<div class="col-md-12 row">
 											<div class="col-md-6">
-												<input class="form-control col-md-8" type="text"  name="userAddr1" placeholder="우편번호" />
+												<input class="form-control col-md-8" type="text"  name="uzipcode" value="${user.uzipcode}" placeholder="우편번호" />
 											</div>
 											<div class="col-md-6">
 												<input class="form-control col-md-6" type="button" class="button" style="margin-bottom: 1em" onclick="execDaumPostcode1()" value="우편번호 찾기" /><br />
@@ -113,10 +112,10 @@
 										</div>
 										<div class="col-md-12 row">
 											<div class="col-md-6">
-												<input class="form-control col-md-12" type="text"  name="userAddr2" placeholder="주소" /><br />
+												<input class="form-control col-md-12" type="text"  name="uaddress1" value="${user.uaddress1}" placeholder="주소" /><br />
 											</div>
 											<div class="col-md-6">
-												<input class="form-control col-md-6" type="text" id="detailAddress" placeholder="상세주소"  name="detailUserAddr"/>
+												<input class="form-control col-md-6" type="text" id="detailAddress" placeholder="상세주소" value="${user.uaddress2}"  name="uaddress2"/>
 											</div>
 										</div>
 									</div>
@@ -125,14 +124,6 @@
 						</div>
 						<hr class="mb-5">
 						<h4 class="mb-3"><strong>비밀번호 변경</strong></h4>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-								  	<label>이전 비밀번호</label>
-								  	<input type="password" class="form-control col-md-8" name="nowPass">
-								</div>
-							</div>
-						</div>
 						
 						<div class="row">
 							<div class="col-md-6">
@@ -144,6 +135,11 @@
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>비밀번호 재확인</label>
+								  	<c:if test="${error != null}">
+												<span class="" style="color:red; font-size:0.5em" role="alert">
+			  								${error}
+										</span>			
+									</c:if>
 								  	<input type="password" class="form-control col-md-8" name="reNewPass">
 								</div>
 							</div>
@@ -159,7 +155,81 @@
 						<div id="addinfo">
 						
 							<h3 class="mb-5"><strong>병원 정보</strong></h3>
-							
+							<c:if test="${dentistSize != 0}">
+								<c:forEach var="dentist" items="${dentistArray}" varStatus="status">
+									<div><strong>병원 정보 ${status.count}</strong></div>
+									<hr>
+								    <div class="row">
+								    	
+								        <div class="col-md-12">
+								            <div class="form-group">
+								                <label for="hnumber">병원 등록 번호</label>
+								                <input type="text" class="form-control col-md-4" value="${dentist.dnumber} " name="dnumber"/>
+								            </div>
+								        </div>
+								        <div class="col-md-7">
+								            <div class="form-group">
+								                <label>병원 이름</label>
+								                <input type="text" class="form-control col-md-8" value="${dentist.dname}" name="dname"/>
+								            </div>
+								        </div>
+								        <div class="col-md-5">
+								            <div class="form-group">
+								                <label>병원 전화번호</label>
+								                <input type="text" class="form-control col-md-8" value="${dentist.dtel}" name="dtel"/>
+								            </div>
+								        </div>
+								        <div class="col-md-12">
+								            <div class="form-group">
+								                <label>병원 주소</label>
+								                <div class="row">
+								                    <div class="col-md-12 row">
+								                        <div class="col-md-6">
+								                            <input class="form-control col-md-8" type="text" id="zonecode_${status.count}" placeholder="우편번호" name="dzipcode" value="${dentist.dzipcode}"/>
+								                        </div>
+								                        <div class="col-md-6">
+								                            <input id="buttonForFind" class="form-control col-md-6" type="button" class="button" style="margin-bottom: 1em" value="우편번호 찾기" /><br />
+								                        </div>
+								                    </div>
+								                    <div class="col-md-12 row">
+								                        <div class="col-md-6">
+								                            <input class="form-control col-md-12" type="text" id="address_${status.count}" placeholder="주소" name="daddress1" value="${dentist.daddress1}" /><br />
+								                        </div>
+								                        <div class="col-md-6">
+								                            <input class="form-control col-md-6" type="text" id="detailAddress_${status.count}" placeholder="상세주소" name="daddress2" value="${dentist.daddress2}"/>
+								                        </div>
+								                    </div>
+								                </div>
+								            </div>
+								        </div>
+								        
+								        <div class="col-md-6">
+								            <div class="form-group ">
+								                <label>병원 직원수</label>
+								                <input type="number" class="form-control col-md-6"  name="demployees" value="${dentist.demployees}">
+								            </div>
+								        </div>
+								        <div class="col-md-12"></div>
+								        <div class="col-md-6">
+								            <div class="form-group">
+								                <label>병원 평수</label>
+								                <input type="number" class="form-control col-md-6"  name="dpy" value="${dentist.dpy}">
+								            </div>
+								        </div>
+								        <div class="col-md-12 mt-2">
+								            <div class="form-group">
+								                <label>병원 도면</label>
+								                <br>
+												
+					          				</div>
+					        			</div>
+					
+					    			</div> 
+								</c:forEach>
+							</c:if>
+							<c:if test="${dentistSize == 0}">
+								<div>병원 정보가 없습니다.</div>
+							</c:if>
 							<!-- <div class="row">
 								<div class="col-md-12">
 									<div class="form-group">

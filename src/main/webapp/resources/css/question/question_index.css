@@ -392,12 +392,25 @@ html {
     margin-right: 3rem;
 }
 
-.spin-btn div a {
-    text-decoration: none;
-    color: black;
+#submitIp {
+    color: #f1f3f5;
+    border: .2rem solid black;
+    background-color: #000;
+    width: 10rem;
+    height: 4rem;
 }
 
-.spin-btn span{
+#submitIp:hover {
+    color: #000;
+    border: .1rem solid black;
+    background-color: #f1f3f5;
+    width: 10rem;
+    height: 4rem;
+    transition: 0.5s;
+    transform: translateZ(-2rem);
+}
+
+/* .spin-btn span {
     position: relative;
     display: inline-flex;
     width: 10rem;
@@ -406,7 +419,7 @@ html {
     perspective: 90rem;
 }
 
-.spin-btn span a{
+.spin-btn span #submitIp {
     font-size: 1.25rem;
     letter-spacing: .1rem;
     transform-style: preserve-3d;
@@ -414,8 +427,8 @@ html {
     transition: transform .25s;    
 }
 
-.spin-btn span a:before,
-.spin-btn span a:after{
+.spin-btn span #submitIp:before,
+.spin-btn span #submitIp:after{
   position: absolute;
   content: "확인하기";
   width: 10rem;
@@ -428,18 +441,18 @@ html {
   border-radius: .3rem;
 }
 
-.spin-btn span a:before{
+.spin-btn span #submitIp:before{
   color: #fff;
   background: #000;
   transform: rotateY(0deg) translateZ(1.85rem);
 }
 
-.spin-btn span a:after{
+.spin-btn span #submitIp:after{
   color: #000;
   background-color: white;
   transform: rotateX(90deg) translateZ(1.85rem);
 }
 
-.spin-btn span a:hover{
+.spin-btn span #submitIp:hover{
   transform: translateZ(-1.85rem) rotateX(-90deg);
-}
+} */
