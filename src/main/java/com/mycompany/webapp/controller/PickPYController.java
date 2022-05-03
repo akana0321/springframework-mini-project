@@ -1,5 +1,12 @@
 package com.mycompany.webapp.controller;
 
+import com.mycompany.webapp.dto.Product;
+import com.mycompany.webapp.service.ProductService;
+
+import lombok.extern.log4j.Log4j2;
+
+import javax.annotation.Resource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -8,12 +15,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/pickPY")
+@Log4j2
 public class PickPYController {
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+
+	@Resource
+	private ProductService productService;
 		
 		@RequestMapping("/content")
 		public String content() {
-			logger.info("실행");
+			log.info("실행");
 			return "pickPY/content";
 		}
 		
@@ -29,5 +39,11 @@ public class PickPYController {
 		@GetMapping("/customerSupport")
 		public String customerSupport() {
 			return "pickPY/customerSupport";
+		}
+		@GetMapping("/productInfo")
+		public String productInfo() {
+			Product product = productService.getProductByPid("unit-k3000b");
+			log.info(product);
+			return "pickPY/productInfo";
 		}
 }

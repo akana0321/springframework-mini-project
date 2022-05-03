@@ -133,7 +133,7 @@
                   <a
                     type="button"
                     class="btn btn-lg btn-block gray-button"
-                    href="showPY"
+                    href="showPY?version=50"
                     style="color: white;"
                   >
                     구경하기
@@ -218,7 +218,7 @@
                 <a
                     type="button"
                     class="btn btn-lg btn-block gray-button"
-                    href="showPY"
+                    href="showPY?version=65"
                     style="color: white;"
                   >
                구경하기
@@ -313,7 +313,7 @@
                   <a
                     type="button"
                     class="btn btn-lg btn-block gray-button"
-                    href="showPY"
+                    href="showPY?version=100"
                     style="color: white;"
                   >
                    구경하기
