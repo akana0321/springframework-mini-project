@@ -12,7 +12,7 @@
 		<result column="product_price" property="pprice"/>
 		<result column="product_color" property="pcolor"/>
 		
-		<association property="pattaches" javaType="attach">
+		<collection property="pattaches" javaType="ArrayList" ofType="attach">
 			<result column="attach_no" property="ano"/>
 			<result column="attach_target_table" property="attable"/>
 			<result column="attach_target_id" property="atid"/>
@@ -20,13 +20,16 @@
 			<result column="attach_content_type" property="acontentType"/>
 			<result column="attach_save_name" property="asname"/>
 			<result column="attach_original_name" property="aoname"/>
-		</association>
+		</collection>
 	</resultMap>
 
 	<select id="selectByPid" parameterType="string" resultMap="productMap">
-		SELECT product_id, product_name, product_category, product_description, product_price, product_color
-		FROM product
-		WHERE product_id=#{pid}
+		SELECT product_id, product_name, product_category, product_description, product_price, product_color,
+			   attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name
+		FROM product p
+		LEFT OUTER JOIN attach a ON a.attach_target_table like 'PRODUCT'
+	   	 AND p.product_id = a.attach_target_id
+		WHERE p.product_id=#{pid}
 	</select>
 	
 	<select id="count" resultType="int">

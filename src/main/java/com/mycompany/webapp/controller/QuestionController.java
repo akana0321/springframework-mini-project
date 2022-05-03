@@ -13,6 +13,9 @@ import com.mycompany.webapp.dto.Product;
 import com.mycompany.webapp.dto.Question;
 import com.mycompany.webapp.items.EstimateProcess;
 import com.mycompany.webapp.service.AttachService;
+import com.mycompany.webapp.service.CommentService;
+import com.mycompany.webapp.service.DentistService;
+import com.mycompany.webapp.service.EstimateService;
 import com.mycompany.webapp.service.ProductService;
 import com.mycompany.webapp.service.QuestionService;
 import com.mycompany.webapp.service.UserService;
@@ -26,34 +29,55 @@ public class QuestionController {
 	@Resource
 	UserService userService;
 	@Resource
+	DentistService dentistService;
+	@Resource
 	ProductService productService;
 	@Resource
 	QuestionService questionService;
 	@Resource
+	CommentService commentService;
+	@Resource
 	AttachService attachService;
+	@Resource
+	EstimateService estimateService;
 	
 	EstimateProcess ep = new EstimateProcess();
 	
 	@RequestMapping("/questionIndex")
-	public String questionIndex() {
-		Product product = new Product();
-		product.setPid("table-macaron2");
-		product.setPname("마카롱 테이블2");
-		product.setPcategory("TABLE");
-		product.setPdescription("기존 마카롱 테이블의 상위 제품");
-		product.setPprice(50);
-		product.setPcolor("ivory");
-		log.info(productService.getTotalProductsNum());
-		log.info(productService.getProductByPid(product.getPid()));
+	public String questionIndex() {		
+		/*//User Service Test
+		log.info(userService.getUserByUid("userid01"));
+		log.info(userService.getUserByUid("userid04"));*/
 		
-		Question question = questionService.getQuestionByQno(1);
+		/*//Dentist Service Test
+		log.info(dentistService.getDentistsByUid("userid04")+"\n\n\n\n");
+		log.info(dentistService.getDentistByDnumber("1112233333"));*/
+		
+		/*//Product Service Test
+		log.info(productService.getProductByPid("unit-k3000b")+"\n\n");
+		log.info(productService.getProductByPid("building-house"));*/
+		
+		/*//Question Service Test
+		log.info(questionService.getQuestionByQno(3));
+		log.info(questionService.getQuestionByQno(1));*/
+		
+		/*//Comment Service Test
+		log.info(commentService.getCommentByCno(1)+"-----------------------------------------");
+		log.info(commentService.getCommentByCno(4)+"-----------------------------------------");
+		log.info(commentService.getCommentsByQno(4)+"-----------------------------------------");*/
+		
+		/*//Attach Service Test
 		Attach target = new Attach();
 		target.setAttable("QUESTION");
 		target.setAtid("1");
 		target.setAtindex("1");
-		question.setQattaches(attachService.getAttachList(target));
+		log.info(attachService.getAttachList(target)+"\n--------------------------------------");
+		log.info(attachService.getAttachOne(target)+"\n--------------------------------------");*/
 		
-		log.info(questionService.getQuestionByQno(1));
+		/*//Estimate Service Test
+		log.info(estimateService.getEstimateByEno(1)+"\n--------------------------------------");
+		log.info(estimateService.getEstimateByQno(2)+"\n--------------------------------------");
+		log.info(estimateService.getEstimateByEno(11)+"\n--------------------------------------");*/
 
 		return "/question/questionIndex";
 	}
