@@ -1,7 +1,5 @@
 package com.mycompany.webapp.dto;
 
-import java.util.Date;
-
 import lombok.Data;
 
 @Data
@@ -20,5 +18,5 @@ public class Estimate {
 	private int efurniture1;
 	private int efurniture2;
 	private int efurniture3;
-	private Date edate;
+	private String edate;
 }
