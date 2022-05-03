@@ -27,19 +27,55 @@
         reader.readAsDataURL(event.target.files[0]);
       }
     </script> -->
+    <script>
+    	function execDaumPostcode1() {
+      		new daum.Postcode({
+        		oncomplete: function(data) {
+          			var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+          			var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+
+          			// 법정동명이 있을 경우 추가
+          			if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+            			extraRoadAddr += data.bname;
+         			}
+              
+              		// 건물명이 있고, 공동주택일 경우 추가
+              		if(data.buildingName !== '' && data.apartment === 'Y'){
+                 		extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+              		}
+              
+              		// 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열
+              		if(extraRoadAddr !== ''){
+                  		extraRoadAddr = ' (' + extraRoadAddr + ')';
+              		}
+              
+              		// 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가
+              		if(fullRoadAddr !== ''){
+                  		fullRoadAddr += extraRoadAddr;
+              		}
+
+              		console.log(data.zonecode);//우편번호
+              		console.log(fullRoadAddr);//주소정보
+              
+              		$("[name=uzipcode]").val(data.zonecode);
+              		$("[name=uaddress1]").val(fullRoadAddr);
+        		}
+      		}).open();
+    	}
+    </script>
   </head>
   <body>
   <%@ include file="/WEB-INF/views/common/header.jsp" %>
-  <script src="${pageContext.request.contextPath}/resources/js/signup.js"></script>
+  <%-- <script src="${pageContext.request.contextPath}/resources/js/signup.js"></script> --%>
     <div class="signup2">
-      <form class="background col-6" action="${pageContext.request.contextPath}/user/login" method="get">
+      <form class="background col-6" action="${pageContext.request.contextPath}/user/signup2" method="post">
         <div style="text-align: center; margin-bottom: 4%">
           <a href="../main.html"><img src="${pageContext.request.contextPath}/resources/images/logo.png" style="width: 30%" /></a>
         </div>
         <label>* 아이디</label>
         <div class="row">
           <div class="col-9">
-            <input type="text" name="user_ID" placeholder="아이디 입력" />
+            <input type="text" name="uid" value="${user.uid}" placeholder="아이디 입력" />
           </div>
           <div class="col-3">
             <input type="button" class="button" name="certification" value="아이디 중복 확인" />
@@ -48,49 +84,48 @@
         <div class="row">
           <div class="col-6">
             <label>* 비밀번호</label>
-            <input type="password" name="user_PW1" value="123456" />
+            <input type="password" name="upassword" value="${user.upassword}" />
           </div>
-          <div class="col-6">
+          <!-- <div class="col-6">
             <label>* 비밀번호 재확인</label>
-            <input type="password" name="user_PW2" value="123456" />
-          </div>
+            <input type="password" name="user_password2" />
+          </div> -->
         </div>
         <div class="row">
           <div class="col-6">
             <label>* 이름</label>
-            <input type="text" name="user_name" value="홍길동" />
+            <input type="text" name="uname" value="${user.uname}" placeholder="홍길동" />
           </div>
           <div class="col-6">
             <label>생년월일</label>
-            <input type="date" id="birthday" name="birthday" />
+            <input type="date" id="ubirth" name="ubirth" value="${user.ubirth}" name="birthday" />
           </div>
         </div>
         <label>* 주소</label>
         <div class="row">
           <div class="col-6">
-            <input type="text" id="zonecode" name="addr1" placeholder="우편번호" />
+            <input type="text" id="zonecode" name="uzipcode" value="${user.uzipcode}" placeholder="우편번호" />
           </div>
           <div class="col-6"><input type="button" class="button" style="margin-bottom: 1em" onclick="execDaumPostcode1()" value="우편번호 찾기" /><br /></div>
         </div>
         <div class="row">
-          <div class="col-7"><input type="text" id="address" name="addr2" placeholder="주소" /><br /></div>
+          <div class="col-7"><input type="text" id="address" name="uaddress1" value="${user.uaddress1}" placeholder="주소" /><br /></div>
           <div class="col-5">
-            <input type="text" id="detailAddress" placeholder="상세주소" />
+            <input type="text" id="detailAddress" name="uaddress2" value="${user.uaddress2}" placeholder="상세주소" />
           </div>
         </div>
-
         <label>* 이메일</label>
-        <input type="email" name="user_email" placeholder="email@gmail.com" />
+        <input type="email" name="uemail" value="${user.uemail}"  placeholder="email@gmail.com" />
         <label>* 휴대전화</label>
         <div class="row mb-2">
           <div class="col-9">
-            <input type="tel" name="user_phone" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" placeholder="010-****-****" />
+            <input type="tel" name="utel" value="${user.utel}" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" placeholder="010-****-****" />
           </div>
-          <div class="col-3">
+          <!-- <div class="col-3">
             <input type="button" class="button" name="certification" value="인증번호 받기" />
-          </div>
+          </div> -->
         </div>
-        <input type="text" name="certification" placeholder="인증번호를 입력하세요" />
+        <!-- <input type="text" name="certification" placeholder="인증번호를 입력하세요" /> -->
         <br />
         <br />
 
@@ -140,7 +175,7 @@
         <br />
         <br />
         <!-- Spring으로 넘어가면 살리기 -->
-        <input type="submit" class="button" name="" value="제출" />
+        <input type="submit" class="button" value="제출" />
         <!-- <div class="text-center">
                     <a href="../user/signUp2.html" class="btn" style="background-color: #ffb440; color: black; font-size: 1.1em; width: 15%">제출</a>
                 </div> -->

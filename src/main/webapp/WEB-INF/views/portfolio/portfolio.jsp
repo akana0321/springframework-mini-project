@@ -6,13 +6,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>STUDIO 765</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/portfolio/style_portfolio.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" />
     <script src="${pageContext.request.contextPath }/resources/js/portfolio/portfolio.js"></script>
 
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
@@ -20,8 +21,9 @@
 
 </head>
 <body>
- <div id="portfolio" class="d-flex flex-column justify-content-center align-content-center mt-5">
-        <nav >
+	<%@ include file="/WEB-INF/views/common/header.jsp" %>
+ 	<div id="portfolio" class="d-flex flex-column justify-content-center align-content-center mt-5">
+		<nav >
             <div class="nav nav-pills justify-content-center" id="nav-tab" role="tablist" >
               <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><strong >50PY</strong></a>
               <a class="nav-link ml-2 mr-2" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><strong >65PY</strong></a>
