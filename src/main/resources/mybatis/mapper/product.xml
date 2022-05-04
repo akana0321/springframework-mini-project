@@ -37,24 +37,49 @@
 	</select>
 
 	<insert id="insert" parameterType="product">
-		INSERT INTO product 
-		(product_id, product_name, product_category, product_description, product_price, product_color) 
-		VALUES(#{pid}, #{pname}, #{pcategory}, #{pdescription}, #{pprice}, #{pcolor})
+		INSERT ALL 
+			INTO product (product_id, product_name, product_category, product_description, product_price, product_color) 
+			VALUES(#{pid}, #{pname}, #{pcategory}, #{pdescription}, #{pprice}, #{pcolor})
+		<if test="pattaches != null">
+			<foreach collection="pattaches" item="pattach" separator=" "  close="SELECT * FROM DUAL">
+				INTO attach (attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name)
+				value VALUES(SEQ_ATTACH_ANO, #{pattach.attable}, #{pattach.atid}, #{pattach.atindex}, #{pattach.acontentType}, #{pattach.asname}, #{pattach.aoname})
+			</foreach>
+		</if>
 	</insert>
 	
 	<delete id="deleteByPid" parameterType="string">
-		DELETE FROM product WHERE product_id = #{pid}
+		DECLARE
+		BEGIN
+			DELETE FROM product WHERE product_id = #{pid}
+			
+			DELETE FROM attach
+			WHERE attach_target_table like 'PRODUCT'
+			   AND attach_target_id = #{pid};
+		END;
 	</delete>
 	
 	<update id="update" parameterType="product">
-		UPDATE product SET
-				product_id=#{pid},
-				product_name=#{pname},
-				product_category=#{pcategory},
-				product_description=#{pdescription},
-				product_price=#{pprice},
-				product_color=#{pcolor}
-		WHERE product_id = #{pid}	
+		DECLARE
+		BEGIN
+			UPDATE product SET
+					product_id=#{pid},
+					product_name=#{pname},
+					product_category=#{pcategory},
+					product_description=#{pdescription},
+					product_price=#{pprice},
+					product_color=#{pcolor}
+			WHERE product_id = #{pid};
+			<if test="pattaches != null">
+				<foreach collection="pattaches" item="pattach" separator=" "  close="SELECT * FROM DUAL">
+					UPDATE attach SET
+						attach_content_type=#{pattach.acontentType},
+						attach_save_name=#{pattach.asname},
+						attach_original_name=#{pattach.aoname}
+					WHERE attach_no = #{pattach.ano};
+				</foreach>
+			</if>
+		END;
 	</update>
 </mapper>
 

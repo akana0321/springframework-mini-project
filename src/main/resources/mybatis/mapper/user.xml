@@ -50,11 +50,14 @@
 	</insert>
 	
 	<delete id="deleteByUid" parameterType="string">
-		DELETE FROM users WHERE user_id = #{uid};
-		
-		DELETE FROM attach
-		WHERE attach_target_table like 'USERS'
-		  AND attach_target_id=#{uid};
+		DECLARE
+		BEGIN
+			DELETE FROM users WHERE user_id = #{uid};
+			
+			DELETE FROM attach
+			WHERE attach_target_table like 'USERS'
+			  AND attach_target_id=#{uid};
+		END;
 	</delete>
 	
 	<update id="update" parameterType="user">
