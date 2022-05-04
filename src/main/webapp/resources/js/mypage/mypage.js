@@ -120,6 +120,10 @@ function requestAjaxPr() {
 			}
 		});
 	}
+	
+	
+	
+	
 
 	function setThumbnail(event,idx) {
 	  var reader = new FileReader();
@@ -132,7 +136,7 @@ function requestAjaxPr() {
 	  reader.readAsDataURL(event.target.files[0]);
 	}
 
-	function setThumbnailF(event,idx) {
+	function setThumbnailF(event,idx,imgNum) {
 	  var reader = new FileReader();
 	  reader.onload = function (event) {
 	    var img = document.createElement("img");
@@ -141,6 +145,30 @@ function requestAjaxPr() {
 	    $("#" + idx).html(img);
 	  };
 	  reader.readAsDataURL(event.target.files[0]);
+	  
+	  const dattaches = document.querySelector("#"+imgNum).files[1];
+		//${"#attach"}[0].files[0];
+		
+		//Multipart/form-data
+		const formData = new FormData();
+		formData.append("dattaches", dattaches);
+		
+		//Ajax로 서버로 전송
+		$.ajax({
+			url: "fileuploadAjax2",
+			method: "post",
+			data: formData,
+			cache: false,		// 파일이 포함되어 있으니, 브라우저 메모리에 저장 x
+			processData: false, // title=xxx&desc=yyy 식으로 x
+			contentType: false	// 파트마다 Content-Type이 포함되기 때문에 따로 헤더에 Content-Type에 추가 x
+		}).done((data) => {
+			console.log(data);
+			if(data.result === "success") {
+				window.alert("프로필 이미지 변경 완료");
+			}
+		});
+	  
+	  
 	}
 
 	//회원 주소

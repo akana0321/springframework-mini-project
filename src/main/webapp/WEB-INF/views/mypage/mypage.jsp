@@ -223,14 +223,18 @@
 								                <label>병원 도면</label>
 								                <br>
 												<div id="image_container_${status.count}">
-												</div>									
-											
-												<input type="file"  name="dattaches" class="mt-2" onchange="setThumbnailF(event,'image_container_${status.count}')">
+												</div>							
+												
+												<input type="file" multiple class="mt-2" id="dentalimg${status.count}" onchange="setThumbnailF(event,'image_container_${status.count}','dentalimg${status.count}')">
+												<c:forEach var="attach" items="${dentist.dattaches}" varStatus="val">
+													<div id="${status.count}_${val.count}"><li class="fa fa-minus"  onclick="removeFile(${status.count},${val.count})"></li> ${attach.aoname}</div>
+												</c:forEach>
 					          				</div>
 					        			</div>
 					
 					    			</div> 
 								</c:forEach>
+								
 							</c:if>
 							<c:if test="${dentistSize == 0}">
 								<div>병원 정보가 없습니다.</div>

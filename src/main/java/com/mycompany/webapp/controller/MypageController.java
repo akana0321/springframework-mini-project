@@ -2,6 +2,7 @@ package com.mycompany.webapp.controller;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -14,7 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.mycompany.webapp.dto.Attach;
 import com.mycompany.webapp.dto.Dentist;
@@ -45,9 +45,19 @@ public class MypageController {
 		User user = userService.getUserByUid("userid02");
 		Attach attach = user.getUattach();
 		List<Dentist> dentist= dentistService.getDentistsByUid("userid04");
-//		List<Attach> attach = attachService.getAttachList(dentist.get(0).get);
-		
 		int dentistSize = dentist.size();
+		
+		
+//		List<Attach> attachList = new ArrayList();
+//		
+//		for(int i=0; i<dentistSize; i++) {
+//			int attachSize = dentist.get(i).getDattaches().size();
+//			for(int j=0; j<attachSize; j++) {
+//				attachList.add(dentist.get(i).getDattaches().get(j));
+//			}
+//		}
+//		session.setAttribute("attachList", attachList);
+//		
 		
 		user.setUbirth(user.getUbirth().split(" ")[0]);
 		model.addAttribute("user",user);
@@ -79,6 +89,31 @@ public class MypageController {
 		request.removeAttribute("userimg");
 		
 		return json;
+	}
+	
+	
+	@PostMapping(value = "/fileuploadAjax2",produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public void uploadImg(Attach dattaches, HttpServletRequest request) throws Exception {
+		log.info("싫핼");
+		HttpSession session = request.getSession();
+		log.info(dattaches);
+		//log.info(session.getAttribute("userimg"));
+//		Attach attachSession = (Attach)session.getAttribute("userimg");
+//		attachSession.setAttach(dattaches.getAttach());
+//		
+//		String saveFilename = new Date().getTime() + "-" + attachSession.getAttach().getOriginalFilename(); 
+//		File file = new File("/mypage/" + saveFilename);
+//		attachSession.getAttach().transferTo(file);
+//
+//		JSONObject jsonObject = new JSONObject();
+//		jsonObject.put("result", "success");
+//		jsonObject.put("saveFilename", attachSession.getAsname());
+//		String json = jsonObject.toString();
+//		
+//		request.removeAttribute("userimg");
+		
+//		return json;
 	}
 
 	@RequestMapping("/myInfo")
@@ -117,13 +152,14 @@ public class MypageController {
 	@RequestMapping("/dentalInfo")
 	public String dentalInfo(
 			String[] dnumber,String[] dname,String[] dtel,String[] dzipcode, 
-			String[] daddress1,String[] daddress2,int[] demployees, int[] dpy,MultipartFile[] dattaches ,HttpServletRequest request) {
+			String[] daddress1,String[] daddress2,int[] demployees, int[] dpy,Attach dattaches ,HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		int dentalSize = (int) session.getAttribute("dentistSize");
 		log.info(dentalSize);
 		List<Dentist> dentist = (List<Dentist>) session.getAttribute("dentistArray");
 		log.info(dentist.get(0).getUid());
 		Dentist updateDentist = new Dentist();
+		log.info(dattaches);
 		
 		for(int i=0; i<dentalSize;i++) {
 			updateDentist.setUid(dentist.get(i).getUid());
@@ -142,8 +178,10 @@ public class MypageController {
 			
 			for(int j=0; j<size; j++) {
 				attach.add((Attach)dentist.get(i).getDattaches().get(j));
-				log.info(dentist.get(i).getDattaches().get(j));
+				//log.info(dentist.get(i).getDattaches().get(j));
 			}
+			//attach.add(dattaches);
+			
 		
 //			updateDentist.setDattaches(attach);
 			
@@ -153,8 +191,17 @@ public class MypageController {
 		
 		return "redirect:/mypage/mypage";
 	}
-	@PostMapping(value = "/fileuploadAjax",produces = "application/json; charset=UTF-8")
-	@ResponseBody
+	
+	
+	
+	
+	
+
+	@RequestMapping("/dentalRemove")
+	public String dentalRemove(HttpServletRequest request, int dentist, int file) {
+		
+		return "/mypage/mypage";
+	}
 
 	@RequestMapping("/interialQ")
 	public String getInterialQ() {
