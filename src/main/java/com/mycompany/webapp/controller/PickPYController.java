@@ -6,10 +6,12 @@ import com.mycompany.webapp.service.ProductService;
 import lombok.extern.log4j.Log4j2;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -41,9 +43,11 @@ public class PickPYController {
 			return "pickPY/customerSupport";
 		}
 		@GetMapping("/productInfo")
-		public String productInfo() {
+		public String productInfo(Model model, HttpSession session) {
 			Product product = productService.getProductByPid("unit-k3000b");
-			log.info(product);
+			//log.info(product);
+			session.setAttribute("product", product);
+			
 			return "pickPY/productInfo";
 		}
 }
