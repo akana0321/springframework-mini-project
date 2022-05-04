@@ -35,11 +35,12 @@ function requestAjaxPr() {
 	var addrNum = 0;
 
 	function addinfo(){
+	  
 	  var add = document.getElementById("addinfo");
 	  count += 1;
 	  var tmp ="<hr>";
 	  tmp += "<h4 class='mb-5 '>";
-	  tmp +=  "<div class='fa fa-minus-circle mr-2' onclick='removeinfo("+count+")' ${dentistSize}+=1 ></div>";
+	  tmp +=  "<div class='fa fa-minus-circle mr-2' onclick='removeinfo("+count+")' ></div>";
 	  tmp += "병원 정보<span style='font-size: 5px;'>(추가)</span>";
 	  
 

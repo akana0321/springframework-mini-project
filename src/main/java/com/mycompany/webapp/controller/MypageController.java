@@ -1,6 +1,7 @@
 package com.mycompany.webapp.controller;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mycompany.webapp.dto.Attach;
 import com.mycompany.webapp.dto.Dentist;
@@ -43,6 +45,7 @@ public class MypageController {
 		User user = userService.getUserByUid("userid02");
 		Attach attach = user.getUattach();
 		List<Dentist> dentist= dentistService.getDentistsByUid("userid04");
+//		List<Attach> attach = attachService.getAttachList(dentist.get(0).get);
 		
 		int dentistSize = dentist.size();
 		
@@ -114,17 +117,44 @@ public class MypageController {
 	@RequestMapping("/dentalInfo")
 	public String dentalInfo(
 			String[] dnumber,String[] dname,String[] dtel,String[] dzipcode, 
-			String[] daddress1,String[] daddress2,int[] demployees, int[] dpy ,HttpServletRequest request) {
+			String[] daddress1,String[] daddress2,int[] demployees, int[] dpy,MultipartFile[] dattaches ,HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		int dentalSize = (int) session.getAttribute("dentistSize");
 		log.info(dentalSize);
+		List<Dentist> dentist = (List<Dentist>) session.getAttribute("dentistArray");
+		log.info(dentist.get(0).getUid());
+		Dentist updateDentist = new Dentist();
+		
 		for(int i=0; i<dentalSize;i++) {
+			updateDentist.setUid(dentist.get(i).getUid());
+			updateDentist.setDnumber(dnumber[i]);
+			updateDentist.setDname(dname[i]);
+			updateDentist.setDtel(dtel[i]);
+			updateDentist.setDzipcode(dzipcode[i]);
+			updateDentist.setDaddress1(daddress1[i]);
+			updateDentist.setDaddress2(daddress2[i]);
+			updateDentist.setDemployees(demployees[i]);
+			updateDentist.setDpy(dpy[i]);
+			//updateDentist.setDattaches((List<Attach>)dentist.get(i).getDattaches());
+			//log.info(updateDentist.getDattaches());
+			int size = dentist.get(i).getDattaches().size();
+			List<Attach> attach = new ArrayList();
 			
+			for(int j=0; j<size; j++) {
+				attach.add((Attach)dentist.get(i).getDattaches().get(j));
+				log.info(dentist.get(i).getDattaches().get(j));
+			}
+		
+//			updateDentist.setDattaches(attach);
+			
+			
+			dentistService.updateDentist(updateDentist);
 		}
 		
 		return "redirect:/mypage/mypage";
 	}
-	
+	@PostMapping(value = "/fileuploadAjax",produces = "application/json; charset=UTF-8")
+	@ResponseBody
 
 	@RequestMapping("/interialQ")
 	public String getInterialQ() {

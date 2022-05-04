@@ -14,4 +14,5 @@ public interface DentistDao {
 	public int insert(Dentist dentist);
 	public int deleteByDnumber(String dnumber);
 	public int update(Dentist dentist);
+	
 }

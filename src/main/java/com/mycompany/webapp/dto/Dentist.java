@@ -16,5 +16,5 @@ public class Dentist {
 	private int demployees;
 	private int dpy;
 	
-	private Attach dattaches;
+	private List<Attach> dattaches;
 }
