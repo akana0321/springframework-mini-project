@@ -39,11 +39,11 @@
 	<insert id="insert" parameterType="product">
 		INSERT ALL 
 			INTO product (product_id, product_name, product_category, product_description, product_price, product_color) 
-			VALUES(#{pid}, #{pname}, #{pcategory}, #{pdescription}, #{pprice}, #{pcolor})
+			VALUES (#{pid}, #{pname}, #{pcategory}, #{pdescription}, #{pprice}, #{pcolor})
 		<if test="pattaches != null">
 			<foreach collection="pattaches" item="pattach" separator=" "  close="SELECT * FROM DUAL">
 				INTO attach (attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name)
-				value VALUES(SEQ_ATTACH_ANO, #{pattach.attable}, #{pattach.atid}, #{pattach.atindex}, #{pattach.acontentType}, #{pattach.asname}, #{pattach.aoname})
+				VALUES (#{pattach.ano}, #{pattach.attable}, #{pattach.atid}, #{pattach.atindex}, #{pattach.acontentType}, #{pattach.asname}, #{pattach.aoname})
 			</foreach>
 		</if>
 	</insert>

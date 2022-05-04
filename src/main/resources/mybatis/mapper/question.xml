@@ -77,11 +77,11 @@
 		
 		INSERT ALL
 			INTO question (question_no, user_id, question_category, question_content, question_date, product_id) 
-			VALUES(#{qno}, #{uid}, #{qcategory}, #{qcontent}, sysdate, #{pid})
+			VALUES (#{qno}, #{uid}, #{qcategory}, #{qcontent}, sysdate, #{pid})
 		<if test="qattaches != null">
 			<foreach collection="qattaches" item="qattach" separator=" " close="SELECT * FROM DUAL">
 				INTO attach (attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name)
-				value VALUES(SEQ_ATTACH_ANO, #{qattach.attable}, #{qattach.atid}, #{qattach.atindex}, #{qattach.acontentType}, #{qattach.asname}, #{qattach.aoname})
+				VALUES (#{qattach.ano}, #{qattach.attable}, #{qattach.atid}, #{qattach.atindex}, #{qattach.acontentType}, #{qattach.asname}, #{qattach.aoname})
 			</foreach>
 		</if>
 	</insert>

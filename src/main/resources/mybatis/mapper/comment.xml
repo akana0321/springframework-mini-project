@@ -55,7 +55,7 @@
 		<if test="cattaches != null">
 			<foreach collection="cattaches" item="cattach" separator=" " close="SELECT * FROM DUAL">
 				INTO attach (attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name)
-				value VALUES(SEQ_ATTACH_ANO, #{cattach.attable}, #{cattach.atid}, #{cattach.atindex}, #{cattach.acontentType}, #{cattach.asname}, #{cattach.aoname})
+				VALUES (#{cattach.ano}, #{cattach.attable}, #{cattach.atid}, #{cattach.atindex}, #{cattach.acontentType}, #{cattach.asname}, #{cattach.aoname})
 			</foreach>
 		</if>
 	</insert>
