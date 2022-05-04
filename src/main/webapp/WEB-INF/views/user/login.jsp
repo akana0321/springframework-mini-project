@@ -32,17 +32,15 @@
 	        	<img class="slide1" style="width: 100%; height: 100%" src="${pageContext.request.contextPath}/resources/images/main/main1.png" />
 	      	</div>
 	      	<div>
-	   			<c:if test="${error != null}">
-					<div class="alert alert-danger mb-2" role="alert">
-				  		${error}
-					</div>			
-				</c:if>
 	        	<form class="Form" method="post" action="${pageContext.request.contextPath}/user/login">
 	          		<div class="login-title">로그인</div>
 	          		<div>
-	            		<input type="text" name="uid" class="form-control" value="${user.uid}" placeholder="아이디" required /><br />
-	            		<input type="password" name=upassword class="form-control" placeholder="비밀번호" required /><br />
-	            		<input type="submit" class="user_button" value="로그인" onclick="location.href='../mypage/mypage.html'" />
+	            		<input type="text" name="uid" class="form-control" value="${user.uid}" placeholder="아이디"/><br />
+	            		<input type="password" name=upassword class="form-control" placeholder="비밀번호" /><br />
+	            		<c:if test="${error != null}">
+							<small style="color:red;" id="loginError">${error}</small>		
+						</c:if>
+	            		<input type="submit" class="user_button" value="로그인"/>
 	          		</div>
 	
 	          		<div style="text-align: center">

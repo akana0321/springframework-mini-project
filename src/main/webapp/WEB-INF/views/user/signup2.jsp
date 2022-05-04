@@ -67,33 +67,29 @@
   <body>
   <%@ include file="/WEB-INF/views/common/header.jsp" %>
   <%-- <script src="${pageContext.request.contextPath}/resources/js/signup.js"></script> --%>
+  <script src="${pageContext.request.contextPath}/resources/js/signup.js"></script>
     <div class="signup2">
-    	<c:if test="${error != null}">
-			<div class="alert alert-danger mb-2" role="alert">
-			  ${error}
-			</div>			
-		</c:if>
       <form class="background col-6" action="${pageContext.request.contextPath}/user/signup2" method="post">
         <div style="text-align: center; margin-bottom: 4%">
           <a href="../main.html"><img src="${pageContext.request.contextPath}/resources/images/logo.png" style="width: 30%" /></a>
         </div>
-        <label>* 아이디</label>
-        <div class="row">
-          <div class="col-9">
-            <input type="text" name="uid" value="${user.uid}" placeholder="아이디 입력" required/>
-          </div>
-          <div class="col-3">
-            <input type="button" class="button" name="certification" value="아이디 중복 확인" />
-          </div>
-        </div>
+        <div>
+	        <label>* 아이디</label>
+	        <input type="text" name="uid" value="${user.uid}" placeholder="아이디 입력" required/>
+	        <c:if test="${error != null}">
+				<small style="color:red;" id="idError">${error}</small>		
+			</c:if>
+		</div>
         <div class="row">
           <div class="col-6">
             <label>* 비밀번호</label>
-            <input type="password" name="upassword" value="${user.upassword}" required/>
+            <input type="password" name="upassword" id="upassword1" value="${user.upassword}" placeholder="비밀번호" required/>
+            <small>8~16자 영문 대소문자, 숫자, 특수문자</small>
           </div>
           <div class="col-6">
-            <label>* 비밀번호 재확인</label>
-            <input type="password" name="upassword" required/>
+            <label>* 비밀번호 확인</label>
+            <input type="password" name="upassword" id="upassword2" placeholder="비밀번호 확인" required/>
+            <small id="pwCheck"></small>
           </div>
         </div>
         <div class="row">
@@ -180,7 +176,7 @@
         <br />
         <br />
         <!-- Spring으로 넘어가면 살리기 -->
-        <input type="submit" class="button" value="제출" />
+        <input type="submit" class="button" onclick="inputCheck()" value="제출" />
         <!-- <div class="text-center">
                     <a href="../user/signUp2.html" class="btn" style="background-color: #ffb440; color: black; font-size: 1.1em; width: 15%">제출</a>
                 </div> -->

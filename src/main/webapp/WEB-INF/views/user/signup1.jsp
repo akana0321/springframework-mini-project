@@ -98,7 +98,7 @@ STUDIO 765는 본 약관의 내용을 여러분이 쉽게 확인할 수 있도�
           </textarea>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="agreement" value="1" onclick="checkSelectAll()" oninvalid="this.setCustomValidity('필수 선택 사항입니다.')" required />
+              <input type="checkbox" name="agreement" value="1" onclick="checkSelectAll()" required oninvalid="this.setCustomValidity('필수 선택 사항입니다.')" />
               <span>이용약관에 동의합니다.</span>
             </label>
           </div>
@@ -164,7 +164,7 @@ STUDIO 765는 본 약관의 내용을 여러분이 쉽게 확인할 수 있도�
         </textarea>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="agreement" value="2" onclick="checkSelectAll()" oninvalid="this.setCustomValidity('필수 선택 사항입니다.')" required/>
+              <input type="checkbox" name="agreement" value="2" onclick="checkSelectAll()" required oninvalid="this.setCustomValidity('필수 선택 사항입니다.')"/>
               <span>이용약관에 동의합니다.</span>
             </label>
           </div>

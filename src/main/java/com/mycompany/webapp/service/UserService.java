@@ -39,15 +39,12 @@ public class UserService {
 	public JoinResult signUp(User user) {
 		try {
 			User dbUser = userDao.selectByUid(user.getUid());
-			log.info(user.getUid());
-			log.info(dbUser);
 			if(dbUser == null) {
 				PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 				user.setUpassword(passwordEncoder.encode(user.getUpassword()));
 				userDao.insert(user);
 				return JoinResult.SUCCESS;
 			} else {
-				log.info("dgggggg");
 				return JoinResult.DUPLICATED;
 			}
 		} catch(Exception e) {

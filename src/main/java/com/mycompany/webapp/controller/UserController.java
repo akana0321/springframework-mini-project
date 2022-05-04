@@ -45,16 +45,13 @@ public class UserController {
 	public String join(User user, Model model) {
 		user.setUenabled(true);
 		user.setUrole("U");
-		log.info(user);
 		JoinResult jr = userService.signUp(user);
 		if(jr == JoinResult.SUCCESS) {
 			return "redirect:/home";
 		} else if(jr == JoinResult.DUPLICATED) {
-			log.info("dddd");
-			model.addAttribute("error", "중복된 아이디가 있습니다");
+			model.addAttribute("error", "중복된 아이디가 있습니다.");
 			return "user/signup2";
 		} else {
-			log.info("ddddsggeqwegd");
 			model.addAttribute("error", "회원 가입이 실패했습니다. 다시 시도해주세요.");
 			return "user/signup2";
 		}
@@ -74,10 +71,10 @@ public class UserController {
 			session.setAttribute("sessionUid", user.getUid());
 			return "redirect:/home";
 		} else if(result == LoginResult.FAIL_UID) {
-			model.addAttribute("error", "아이디가 존재하지 않습니다");
+			model.addAttribute("error", "아이디가 존재하지 않습니다.");
 			return "user/login";
 		} else {
-			model.addAttribute("error", "패스워드가 틀립니다.");
+			model.addAttribute("error", "비밀번호가 올바르지 않습니다.");
 			return "user/login";
 		}
 	}
