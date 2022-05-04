@@ -96,7 +96,7 @@ function requestAjaxPr() {
     	$("#userimg").html(img);
   		};
   		reader.readAsDataURL(event.target.files[0]);
-  		
+ 
   		
   		const attach = document.querySelector("#myimg").files[0];
 		//${"#attach"}[0].files[0];
@@ -146,18 +146,18 @@ function requestAjaxPr() {
 	  };
 	  reader.readAsDataURL(event.target.files[0]);
 	  
-	  const dattaches = document.querySelector("#"+imgNum).files[1];
+	  const attach = document.querySelector("#"+imgNum).files[0];
 		//${"#attach"}[0].files[0];
-		
+		console.log(attach);
 		//Multipart/form-data
-		const formData = new FormData();
-		formData.append("dattaches", dattaches);
+		const formData1 = new FormData();
+		formData1.append("attach", attach);
 		
 		//Ajax로 서버로 전송
 		$.ajax({
 			url: "fileuploadAjax2",
 			method: "post",
-			data: formData,
+			data: formData1,
 			cache: false,		// 파일이 포함되어 있으니, 브라우저 메모리에 저장 x
 			processData: false, // title=xxx&desc=yyy 식으로 x
 			contentType: false	// 파트마다 Content-Type이 포함되기 때문에 따로 헤더에 Content-Type에 추가 x

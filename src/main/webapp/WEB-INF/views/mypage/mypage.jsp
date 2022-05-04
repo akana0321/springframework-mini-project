@@ -225,7 +225,7 @@
 												<div id="image_container_${status.count}">
 												</div>							
 												
-												<input type="file" multiple class="mt-2" id="dentalimg${status.count}" onchange="setThumbnailF(event,'image_container_${status.count}','dentalimg${status.count}')">
+												<input type="file" multiple class="mt-2" id="dentalimg${status.count}" oninput="setThumbnailF(event,'image_container_${status.count}','dentalimg${status.count}')">
 												<c:forEach var="attach" items="${dentist.dattaches}" varStatus="val">
 													<div id="${status.count}_${val.count}"><li class="fa fa-minus"  onclick="removeFile(${status.count},${val.count})"></li> ${attach.aoname}</div>
 												</c:forEach>

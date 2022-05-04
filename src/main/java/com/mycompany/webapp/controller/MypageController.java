@@ -47,17 +47,16 @@ public class MypageController {
 		List<Dentist> dentist= dentistService.getDentistsByUid("userid04");
 		int dentistSize = dentist.size();
 		
+		List<Attach> attachList = new ArrayList();
 		
-//		List<Attach> attachList = new ArrayList();
-//		
-//		for(int i=0; i<dentistSize; i++) {
-//			int attachSize = dentist.get(i).getDattaches().size();
-//			for(int j=0; j<attachSize; j++) {
-//				attachList.add(dentist.get(i).getDattaches().get(j));
-//			}
-//		}
-//		session.setAttribute("attachList", attachList);
-//		
+		for(int i=0; i<dentistSize; i++) {
+			int attachSize = dentist.get(i).getDattaches().size();
+			for(int j=0; j<attachSize; j++) {
+				attachList.add(dentist.get(i).getDattaches().get(j));
+			}
+		}
+		session.setAttribute("attachList", attachList);
+		session.setAttribute("attachSize", dentistSize);
 		
 		user.setUbirth(user.getUbirth().split(" ")[0]);
 		model.addAttribute("user",user);
@@ -86,7 +85,7 @@ public class MypageController {
 		jsonObject.put("saveFilename", attachSession.getAsname());
 		String json = jsonObject.toString();
 		
-		request.removeAttribute("userimg");
+		session.removeAttribute("userimg");
 		
 		return json;
 	}
@@ -94,11 +93,14 @@ public class MypageController {
 	
 	@PostMapping(value = "/fileuploadAjax2",produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public void uploadImg(Attach dattaches, HttpServletRequest request) throws Exception {
+	public void uploadImg(Attach attach, HttpServletRequest request) throws Exception {
 		log.info("싫핼");
 		HttpSession session = request.getSession();
-		log.info(dattaches);
-		//log.info(session.getAttribute("userimg"));
+//		log.info(session.getAttribute());
+		log.info(attach);
+
+		List<Attach> attachList = (List<Attach>) session.getAttribute("attachList");
+		List
 //		Attach attachSession = (Attach)session.getAttribute("userimg");
 //		attachSession.setAttach(dattaches.getAttach());
 //		
@@ -111,7 +113,7 @@ public class MypageController {
 //		jsonObject.put("saveFilename", attachSession.getAsname());
 //		String json = jsonObject.toString();
 //		
-//		request.removeAttribute("userimg");
+//		session.removeAttribute("userimg");
 		
 //		return json;
 	}
