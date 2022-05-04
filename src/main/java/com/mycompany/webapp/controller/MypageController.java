@@ -100,7 +100,7 @@ public class MypageController {
 		log.info(attach);
 
 		List<Attach> attachList = (List<Attach>) session.getAttribute("attachList");
-		List
+
 //		Attach attachSession = (Attach)session.getAttribute("userimg");
 //		attachSession.setAttach(dattaches.getAttach());
 //		
