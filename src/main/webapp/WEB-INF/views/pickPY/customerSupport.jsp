@@ -15,7 +15,12 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aboutus/title.css" />
     <!-- button CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aboutus/button.css" />
-
+	
+	 <%
+    	request.setCharacterEncoding("euc-kr");
+		int version = Integer.parseInt(request.getParameter("version"));
+		System.out.println("PYRoom = version:"+version);
+    	%>
         
   </head>
   <body>
