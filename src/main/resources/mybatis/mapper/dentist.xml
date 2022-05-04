@@ -4,7 +4,7 @@
 
 <!-- dao의 interface와 연결하기 위해 namespace에 해당 인터페이스 경로를 줌 -->
 <mapper namespace="com.mycompany.webapp.dao.DentistDao">
-	<resultMap id="selectByDnumberResultMap" type="dentist">
+	<resultMap id="dentistMap" type="dentist">
 		<result column="dentist_number" property="dnumber"/>
 		<result column="user_id" property="uid"/>
 		<result column="dentist_name" property="dname"/>
@@ -15,7 +15,7 @@
 		<result column="dentist_employees" property="demployees"/>
 		<result column="dentist_py" property="dpy"/>
 		
-		<association property="dattaches" javaType="attach">
+		<collection property="dattaches" javaType="ArrayList" ofType="attach">
 			<result column="attach_no" property="ano"/>
 			<result column="attach_target_table" property="attable"/>
 			<result column="attach_target_id" property="atid"/>
@@ -23,47 +23,25 @@
 			<result column="attach_content_type" property="acontentType"/>
 			<result column="attach_save_name" property="asname"/>
 			<result column="attach_original_name" property="aoname"/>
-		</association>
+		</collection>
 	</resultMap>
 	
-	<select id="selectByDnumber" parameterType="int" resultMap="selectByDnumberResultMap">
+	<select id="selectByDnumber" parameterType="string" resultMap="dentistMap">
 		SELECT dentist_number, user_id, dentist_name, dentist_tel, dentist_zipcode, dentist_address1, dentist_address2, dentist_employees, dentist_py,
 			   attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name
-	   	FROM dentist d, attach a
-	   	WHERE a.attach_target_table like 'HOSPITAL'
+	   	FROM dentist d
+	   	LEFT OUTER JOIN attach a ON a.attach_target_table = 'DENTIST' 
 	   	 AND d.dentist_number = a.attach_target_id
-	   	 AND d.dentist_number = #{dnumber}
+	   	WHERE d.dentist_number = #{dnumber}
 	</select>
 	
-	<resultMap id="selectByUidResultMap" type="dentist">
-		<result column="dentist_number" property="dnumber"/>
-		<result column="user_id" property="uid"/>
-		<result column="dentist_name" property="dname"/>
-		<result column="dentist_tel" property="dtel"/>
-		<result column="dentist_zipcode" property="dzipcode"/>
-		<result column="dentist_address1" property="daddress1"/>
-		<result column="dentist_address2" property="daddress2"/>
-		<result column="dentist_employees" property="demployees"/>
-		<result column="dentist_py" property="dpy"/>
-		
-		<association property="dattaches" javaType="attach">
-			<result column="attach_no" property="ano"/>
-			<result column="attach_target_table" property="attable"/>
-			<result column="attach_target_id" property="atid"/>
-			<result column="attach_target_index" property="atindex"/>
-			<result column="attach_content_type" property="acontentType"/>
-			<result column="attach_save_name" property="asname"/>
-			<result column="attach_original_name" property="aoname"/>
-		</association>
-	</resultMap>
-	
-	<select id="selectByUid" parameterType="string" resultMap="selectByUidResultMap">
+	<select id="selectByUid" parameterType="string" resultMap="dentistMap">
 		SELECT dentist_number, user_id, dentist_name, dentist_tel, dentist_zipcode, dentist_address1, dentist_address2, dentist_employees, dentist_py,
 			   attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name
-	   	FROM dentist d, attach a
-	   	WHERE a.attach_target_table like 'DENTIST'
+	   	FROM dentist d
+	   	LEFT OUTER JOIN attach a ON a.attach_target_table = 'DENTIST' 
 	   	 AND d.dentist_number = a.attach_target_id
-	   	 AND d.user_id = #{uid}
+	   	WHERE d.user_id = #{uid}
 	</select>
 	
 	<select id="count" resultType="int">
@@ -74,7 +52,7 @@
 		INSERT ALL
 			INTO dentist (dentist_number, user_id, dentist_name, dentist_tel, dentist_zipcode, dentist_address1, dentist_address2, dentist_employees, dentist_py) 
 			VALUES(#{dnumber}, #{uid}, #{dname}, #{dtel}, #{dzipcode}, #{daddress1}, #{daddress2}, #{demployees}, #{dpy})
-			<if test="hattaches != null">
+			<if test="dattaches != null">
 				<foreach collection="dattaches" item="dattach" separator=" " close="SELECT * FROM DUAL">
 					INTO attach (attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name)
 					value VALUES(SEQ_ATTACH_ANO, #{dattach.attable}, #{dattach.atid}, #{dattach.atindex}, #{dattach.acontentType}, #{dattach.asname}, #{dattach.aoname})
@@ -82,30 +60,38 @@
 			</if>
 	</insert>
 	
-	<delete id="deleteByDnumber" parameterType="int">
-		DELETE FROM dentist WHERE dentist_number = #{dnumber};
-		DELETE FROM attach
-		WHERE attach_target_table like 'DENTIST'
-		  AND attach_target_id=#{dnumber};
+	<delete id="deleteByDnumber" parameterType="string">
+		DECLARE
+      	BEGIN
+			DELETE FROM dentist WHERE dentist_number = #{dnumber};
+			
+			DELETE FROM attach
+			WHERE attach_target_table like 'DENTIST'
+			  AND attach_target_id=#{dnumber};
+		END;
 	</delete>
 	
 	<update id="update" parameterType="dentist">
-		UPDATE dentist SET
-				dentist_name = #{dname},
-				dentist_tel = #{dtel},
-				dentist_zipcode = #{dzipcode},
-				dentist_address1 = #{daddress1},
-				dentist_address2 = #{daddress2},
-				dentist_employees = #{demployees},
-				dentist_py = #{dpy},
-		WHERE dattach_number = #{dnumber}
-		<foreach collection="dattaches" item="dattach" separator=";">
-			UPDATE attach SET
-				attach_content_type=#{dattach.acontentType},
-				attach_save_name=#{dattach.asname},
-				attach_original_name=#{dattach.aoname}
-			WHERE attach_no = #{dattach.ano}
-		</foreach>	
+		DECLARE
+      	BEGIN
+         UPDATE dentist SET
+               dentist_name = #{dname},
+               dentist_tel = #{dtel},
+               dentist_zipcode = #{dzipcode},
+               dentist_address1 = #{daddress1},
+               dentist_address2 = #{daddress2},
+               dentist_employees = #{demployees},
+               dentist_py = #{dpy}
+         WHERE dentist_number = #{dnumber};
+         <if test="dattaches != null">
+            <foreach collection="dattaches" item="dattach" separator=" ">
+               UPDATE attach SET
+                  attach_content_type=#{dattach.acontentType},
+                  attach_save_name=#{dattach.asname},
+                  attach_original_name=#{dattach.aoname}
+               WHERE attach_no = #{dattach.ano};
+            </foreach>
+         </if>
+         END;
 	</update>
 </mapper>
-

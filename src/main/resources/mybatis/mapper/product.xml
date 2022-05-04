@@ -4,10 +4,32 @@
 
 <!-- dao의 interface와 연결하기 위해 namespace에 해당 인터페이스 경로를 줌 -->
 <mapper namespace="com.mycompany.webapp.dao.ProductDao">
-	<select id="selectByPid" parameterType="string" resultType="product">
-		SELECT product_id, product_name, product_category, product_description, pdoruct_price, product_color
-		FROM product
-		WHERE product_id=#{pid}
+	<resultMap id="productMap" type="product">
+		<result column="product_id" property="pid"/>
+		<result column="product_name" property="pname"/>
+		<result column="product_category" property="pcategory"/>
+		<result column="product_description" property="pdescription"/>
+		<result column="product_price" property="pprice"/>
+		<result column="product_color" property="pcolor"/>
+		
+		<collection property="pattaches" javaType="ArrayList" ofType="attach">
+			<result column="attach_no" property="ano"/>
+			<result column="attach_target_table" property="attable"/>
+			<result column="attach_target_id" property="atid"/>
+			<result column="attach_target_index" property="atindex"/>
+			<result column="attach_content_type" property="acontentType"/>
+			<result column="attach_save_name" property="asname"/>
+			<result column="attach_original_name" property="aoname"/>
+		</collection>
+	</resultMap>
+
+	<select id="selectByPid" parameterType="string" resultMap="productMap">
+		SELECT product_id, product_name, product_category, product_description, product_price, product_color,
+			   attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name
+		FROM product p
+		LEFT OUTER JOIN attach a ON a.attach_target_table like 'PRODUCT'
+	   	 AND p.product_id = a.attach_target_id
+		WHERE p.product_id=#{pid}
 	</select>
 	
 	<select id="count" resultType="int">
@@ -15,24 +37,49 @@
 	</select>
 
 	<insert id="insert" parameterType="product">
-		INSERT INTO product 
-		(product_id, product_name, product_category, product_description, pdoruct_price, product_color) 
-		VALUES(#{pid}, #{pname}, #{pcategory}, #{pdescription}, #{pprice}, #{pcolor})
+		INSERT ALL 
+			INTO product (product_id, product_name, product_category, product_description, product_price, product_color) 
+			VALUES(#{pid}, #{pname}, #{pcategory}, #{pdescription}, #{pprice}, #{pcolor})
+		<if test="pattaches != null">
+			<foreach collection="pattaches" item="pattach" separator=" "  close="SELECT * FROM DUAL">
+				INTO attach (attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name)
+				value VALUES(SEQ_ATTACH_ANO, #{pattach.attable}, #{pattach.atid}, #{pattach.atindex}, #{pattach.acontentType}, #{pattach.asname}, #{pattach.aoname})
+			</foreach>
+		</if>
 	</insert>
 	
 	<delete id="deleteByPid" parameterType="string">
-		DELETE FROM product WHERE product_id = #{pid}
+		DECLARE
+		BEGIN
+			DELETE FROM product WHERE product_id = #{pid}
+			
+			DELETE FROM attach
+			WHERE attach_target_table like 'PRODUCT'
+			   AND attach_target_id = #{pid};
+		END;
 	</delete>
 	
 	<update id="update" parameterType="product">
-		UPDATE product SET
-				product_id=#{pid},
-				product_name=#{pname},
-				product_category=#{pcategory},
-				product_description=#{pdescription},
-				pdoruct_price=#{pprice},
-				product_color=#{pcolor}
-		WHERE product_id = #{pid}	
+		DECLARE
+		BEGIN
+			UPDATE product SET
+					product_id=#{pid},
+					product_name=#{pname},
+					product_category=#{pcategory},
+					product_description=#{pdescription},
+					product_price=#{pprice},
+					product_color=#{pcolor}
+			WHERE product_id = #{pid};
+			<if test="pattaches != null">
+				<foreach collection="pattaches" item="pattach" separator=" "  close="SELECT * FROM DUAL">
+					UPDATE attach SET
+						attach_content_type=#{pattach.acontentType},
+						attach_save_name=#{pattach.asname},
+						attach_original_name=#{pattach.aoname}
+					WHERE attach_no = #{pattach.ano};
+				</foreach>
+			</if>
+		END;
 	</update>
 </mapper>
 

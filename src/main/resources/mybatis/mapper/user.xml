@@ -4,7 +4,7 @@
 
 <!-- dao의 interface와 연결하기 위해 namespace에 해당 인터페이스 경로를 줌 -->
 <mapper namespace="com.mycompany.webapp.dao.UserDao">
-	<resultMap id="selectByUidResultMap" type="user">
+	<resultMap id="userMap" type="user">
 		<result column="user_id" property="uid"/>
 		<result column="user_role" property="urole"/>
 		<result column="user_enabled" property="uenabled"/>
@@ -29,13 +29,13 @@
 		</association>
 	</resultMap>
 	
-	<select id="selectByUid" parameterType="string" resultMap="selectByUidResultMap">
+	<select id="selectByUid" parameterType="string" resultMap="userMap">
 		SELECT user_id, user_role, user_enabled, user_password, user_name, user_email, user_tel, user_sign_up_date, user_birth, user_zipcode, user_address1, user_address2,
 			   attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name
-	   	FROM users u, attach a
-	   	WHERE a.attach_target_table like 'USERS'
+	   	FROM users u
+	    LEFT OUTER JOIN attach a ON a.attach_target_table like 'USERS'
 	   	 AND u.user_id = a.attach_target_id
-	   	 AND u.user_id = #{uid}
+	   	WHERE u.user_id = #{uid}
 	</select>
 	
 	
@@ -50,10 +50,14 @@
 	</insert>
 	
 	<delete id="deleteByUid" parameterType="string">
-		DELETE FROM users WHERE user_id = #{uid};
-		DELETE FROM attach
-		WHERE attach_target_table like 'USERS'
-		  AND attach_target_id=#{uid};
+		DECLARE
+		BEGIN
+			DELETE FROM users WHERE user_id = #{uid};
+			
+			DELETE FROM attach
+			WHERE attach_target_table like 'USERS'
+			  AND attach_target_id=#{uid};
+		END;
 	</delete>
 	
 	<update id="update" parameterType="user">

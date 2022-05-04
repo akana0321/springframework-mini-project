@@ -107,7 +107,7 @@
 												<input class="form-control col-md-8" type="text"  name="uzipcode" value="${user.uzipcode}" placeholder="우편번호" />
 											</div>
 											<div class="col-md-6">
-												<input class="form-control col-md-6" type="button" class="button" style="margin-bottom: 1em" onclick="execDaumPostcode1()" value="우편번호 찾기" /><br />
+												<input class="form-control col-md-6" type="button" class="button" style="margin-bottom: 1em" onclick="execDaumPostcode3()" value="우편번호 찾기" /><br />
 											</div>
 										</div>
 										<div class="col-md-12 row">
@@ -151,76 +151,98 @@
 					</div>
 					
 					<div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
-					<form method="post" modelAttribute="dentist" action="dentalInfo">
+					
 						<div id="addinfo">
 						
 							<h3 class="mb-5"><strong>병원 정보</strong></h3>
-							
-							<!-- <div class="row">
-								<div class="col-md-12">
-									<div class="form-group">
-										<label>병원 등록 번호</label>
-										<input type="text" class="form-control col-md-4" value="병원 등록 번호">
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<label>병원 이름</label>
-										<input type="text" class="form-control col-md-6" value="병원 이름">
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<label>병원 전화번호</label>
-										<input type="text" class="form-control col-md-6" value="연락처">
-									</div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-										<label>병원 주소</label>
-										<div class="row">
-										<div class="col-md-12 row">
-											<div class="col-md-6">
-												<input class="form-control col-md-8" type="text" id="zonecode" name="addr1" placeholder="우편번호" />
-											</div>
-											<div class="col-md-6">
-												<input class="form-control col-md-6" type="button" class="button" style="margin-bottom: 1em" onclick="execDaumPostcode2()" value="우편번호 찾기" /><br />
-											</div>
-										</div>
-										<div class="col-md-12 row">
-											<div class="col-md-6">
-												<input class="form-control col-md-12" type="text" id="address" name="addr2" placeholder="주소" /><br />
-											</div>
-											<div class="col-md-6">
-												<input class="form-control col-md-6" type="text" id="detailAddress" placeholder="상세주소" />
-											</div>
-										</div>
-									</div>
-									</div>
-								</div>
+							<form method="post" modelAttribute="dentist" action="dentalInfo">
+							<c:if test="${dentistSize != 0}">
+								<c:forEach var="dentist" items="${dentistArray}" varStatus="status">
+									<script>window.onload = function checkNumber(){count = ${status.count};}</script>
+									<div><strong>병원 정보 ${status.count}</strong></div>
+									<hr>
+								    <div class="row">
+								    	
+								        <div class="col-md-12">
+								            <div class="form-group">
+								                <label for="hnumber">병원 등록 번호</label>
+								                <input type="text" class="form-control col-md-4" value="${dentist.dnumber}" name="dnumber" />
+								            </div>
+								        </div>
+								        <div class="col-md-7">
+								            <div class="form-group">
+								                <label>병원 이름</label>
+								                <input type="text" class="form-control col-md-8" value="${dentist.dname}" name="dname"/>
+								            </div>
+								        </div>
+								        <div class="col-md-5">
+								            <div class="form-group">
+								                <label>병원 전화번호</label>
+								                <input type="text" class="form-control col-md-8" value="${dentist.dtel}" name="dtel"/>
+								            </div>
+								        </div>
+								        <div class="col-md-12">
+								            <div class="form-group">
+								                <label>병원 주소</label>
+								                <div class="row">
+								                    <div class="col-md-12 row">
+								                        <div class="col-md-6">
+								                            <input class="form-control col-md-8" type="text" id="zonecode_${status.count}" placeholder="우편번호" name="dzipcode" value="${dentist.dzipcode}"/>
+								                        </div>
+								                        <div class="col-md-6">
+								                            <input onclick="execDaumPostcode1(${status.count})" class="form-control col-md-6" type="button" class="button" style="margin-bottom: 1em" value="우편번호 찾기" /><br />
+								                        </div>
+								                    </div>
+								                    <div class="col-md-12 row">
+								                        <div class="col-md-6">
+								                            <input class="form-control col-md-12" type="text" id="address${status.count}" placeholder="주소" name="daddress1" value="${dentist.daddress1}" /><br />
+								                        </div>
+								                        <div class="col-md-6">
+								                            <input class="form-control col-md-6" type="text" id="detailAddress${status.count}" placeholder="상세주소" name="daddress2" value="${dentist.daddress2}"/>
+								                        </div>
+								                    </div>
+								                </div>
+								            </div>
+								        </div>
+								        
+								        <div class="col-md-6">
+								            <div class="form-group ">
+								                <label>병원 직원수</label>
+								                <input type="number" class="form-control col-md-6"  name="demployees" value="${dentist.demployees}">
+								            </div>
+								        </div>
+								        <div class="col-md-12"></div>
+								        <div class="col-md-6">
+								            <div class="form-group">
+								                <label>병원 평수</label>
+								                <input type="number" class="form-control col-md-6"  name="dpy" value="${dentist.dpy}">
+								            </div>
+								        </div>
+								        <div class="col-md-12 mt-2">
+								            <div class="form-group">
+								                <label>병원 도면</label>
+								                <br>
+												<div id="image_container_${status.count}">
+												</div>							
+												
+												<input type="file" multiple class="mt-2" id="dentalimg${status.count}" onchange="setThumbnailF(event,'image_container_${status.count}','dentalimg${status.count}')">
+												<c:forEach var="attach" items="${dentist.dattaches}" varStatus="val">
+													<div id="${status.count}_${val.count}"><li class="fa fa-minus"  onclick="removeFile(${status.count},${val.count})"></li> ${attach.aoname}</div>
+												</c:forEach>
+					          				</div>
+					        			</div>
+					
+					    			</div> 
+								</c:forEach>
 								
-								<div class="col-md-6">
-									<div class="form-group ">
-										<label>병원 직원수</label>
-										<input type="number" class="form-control col-md-6" value="30">
-									</div>
-								</div>
-								<div class="col-md-12"></div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<label>병원 평수</label>
-										<input type="number" class="form-control col-md-6" value="65">
-									</div>
-								</div>
-								<div class="col-md-12 mt-2">
-									<div class="form-group">
-										<label>병원 도면</label>
-										<br>
-										<div id="image_container0" ></div>
-										<input  type="file"  value="도안" class="mt-2" onchange="setThumbnail(event,'image_container0');" >
-									</div>
-								</div>
-							</div> -->
+							</c:if>
+							<c:if test="${dentistSize == 0}">
+								<div>병원 정보가 없습니다.</div>
+							</c:if>
+							<div class="col-md-6  text-right">
+								<input class="btn " type="submit" style="background-color: rgba(128, 128, 128, 0.614); color:white;" value="저장하기">
+							</div>
+							
 						</div>
 						<div class="col-md-12" >
 							<div class="mt-5 d-flex ">
@@ -229,7 +251,7 @@
 									</div>
 								</div>
 								<div class="col-md-6  text-right">
-								<input class="btn " type="submit" style="background-color: rgba(128, 128, 128, 0.614); color:white;" value="저장하기">
+									<input class="btn " type="submit" style="background-color: rgba(128, 128, 128, 0.614); color:white;" value="저장하기">
 								</div>
 							</div>
 						</div>

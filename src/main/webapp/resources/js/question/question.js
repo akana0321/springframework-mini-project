@@ -108,13 +108,23 @@ function pyInputComplete() {
 
 function submitForm() {
 	formJsonObject = objectifyForm($("#questionForm").serializeArray());
+	console.log("ajax 시작 전");
 	$.ajax({
 		type: "post",
 		url: "questionValue",
 		data: formJsonObject,
 		dataType: "json",		
 	}).done((data) => {
-		//$('#questionForm').submit();
-		console.log("성공");
+		let result = data;
+		console.log(result);
+		$.ajax({
+			type: "post",
+			url: "questionResult",
+			data: result,
+			dataType: "json",	
+		}).done((data) => {
+			console.log("두번째 ajax");
+			console.log(data);
+		})
 	});
 } 

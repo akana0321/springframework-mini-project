@@ -35,6 +35,7 @@ function requestAjaxPr() {
 	var addrNum = 0;
 
 	function addinfo(){
+	  
 	  var add = document.getElementById("addinfo");
 	  count += 1;
 	  var tmp ="<hr>";
@@ -119,6 +120,10 @@ function requestAjaxPr() {
 			}
 		});
 	}
+	
+	
+	
+	
 
 	function setThumbnail(event,idx) {
 	  var reader = new FileReader();
@@ -131,9 +136,43 @@ function requestAjaxPr() {
 	  reader.readAsDataURL(event.target.files[0]);
 	}
 
+	function setThumbnailF(event,idx,imgNum) {
+	  var reader = new FileReader();
+	  reader.onload = function (event) {
+	    var img = document.createElement("img");
+	    img.setAttribute("src", event.target.result);
+	    img.setAttribute("style", "width: 80%; height: 80%; border:solid; border-radius:1%;object-fit: cover;");
+	    $("#" + idx).html(img);
+	  };
+	  reader.readAsDataURL(event.target.files[0]);
+	  
+	  const dattaches = document.querySelector("#"+imgNum).files[1];
+		//${"#attach"}[0].files[0];
+		
+		//Multipart/form-data
+		const formData = new FormData();
+		formData.append("dattaches", dattaches);
+		
+		//Ajax로 서버로 전송
+		$.ajax({
+			url: "fileuploadAjax2",
+			method: "post",
+			data: formData,
+			cache: false,		// 파일이 포함되어 있으니, 브라우저 메모리에 저장 x
+			processData: false, // title=xxx&desc=yyy 식으로 x
+			contentType: false	// 파트마다 Content-Type이 포함되기 때문에 따로 헤더에 Content-Type에 추가 x
+		}).done((data) => {
+			console.log(data);
+			if(data.result === "success") {
+				window.alert("프로필 이미지 변경 완료");
+			}
+		});
+	  
+	  
+	}
 
 	//회원 주소
-	function execDaumPostcode1() {
+	function execDaumPostcode1(infoNum) {
 
 	  new daum.Postcode({
 	    oncomplete: function (data) {
@@ -159,12 +198,14 @@ function requestAjaxPr() {
 
 	          console.log(data.zonecode);//우편번호
 	          console.log(fullRoadAddr);//주소정보
-	          $("[name=uzipcode]").val(data.zonecode);
-	          $("[name=uaddress1]").val(fullRoadAddr);
+	          $("[id=zonecode"+infoNum+"]").val(data.zonecode);
+	          $("[id=address"+infoNum+"]").val(fullRoadAddr);
 
 	    }
 	  }).open();
 	}
+	
+	
 
 	//병원 주소
 	function execDaumPostcode2(num) {
@@ -197,6 +238,39 @@ function requestAjaxPr() {
 	          $("[id=address"+num+"]").val(fullRoadAddr);
 
 	          
+	    }
+	  }).open();
+	}
+	
+	function execDaumPostcode3() {
+
+	  new daum.Postcode({
+	    oncomplete: function (data) {
+	      var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+	          var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+
+	          // 법정동명이 있을 경우 추가
+	          if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+	              extraRoadAddr += data.bname;
+	          }
+	          // 건물명이 있고, 공동주택일 경우 추가
+	          if(data.buildingName !== '' && data.apartment === 'Y'){
+	             extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+	          }
+	          // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열
+	          if(extraRoadAddr !== ''){
+	              extraRoadAddr = ' (' + extraRoadAddr + ')';
+	          }
+	          // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가
+	          if(fullRoadAddr !== ''){
+	              fullRoadAddr += extraRoadAddr;
+	          }
+
+	          console.log(data.zonecode);//우편번호
+	          console.log(fullRoadAddr);//주소정보
+	          $("[name=uzipcode]").val(data.zonecode);
+	          $("[name=uaddress1]").val(fullRoadAddr);
+
 	    }
 	  }).open();
 	}
