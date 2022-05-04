@@ -4,14 +4,14 @@
 
 <!-- dao의 interface와 연결하기 위해 namespace에 해당 인터페이스 경로를 줌 -->
 <mapper namespace="com.mycompany.webapp.dao.CommentDao">
-	<resultMap id="selectByQnoResultMap" type="comment">
+	<resultMap id="commentMap" type="comment">
 		<result column="comment_no" property="cno"/>
 		<result column="user_id" property="uid"/>
 		<result column="question_no" property="qno"/>
 		<result column="comment_content" property="ccontent"/>
 		<result column="comment_date" property="cdate"/>
 		
-		<association property="cattaches" javaType="attach">
+		<collection property="cattaches" javaType="ArrayList" ofType="attach">
 			<result column="attach_no" property="ano"/>
 			<result column="attach_target_table" property="attable"/>
 			<result column="attach_target_id" property="atid"/>
@@ -19,43 +19,25 @@
 			<result column="attach_content_type" property="acontentType"/>
 			<result column="attach_save_name" property="asname"/>
 			<result column="attach_original_name" property="aoname"/>
-		</association>
+		</collection>
 	</resultMap>
 	
-	<select id="selectByQno" parameterType="int" resultMap="selectByQnoResultMap">
+	<select id="selectByQno" parameterType="int" resultMap="commentMap">
 		SELECT comment_no, user_id, question_no, comment_content, comment_date,
 			   attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name
-	   	FROM comments c, attach a
-	   	WHERE a.attach_target_table like 'COMMENTS'
+	   	FROM comments c
+	   	LEFT OUTER JOIN attach a ON a.attach_target_table like 'COMMENTS'
 	   	 AND c.question_no = a.attach_target_id
-	   	 AND c.question_no = #{qno}
+	   	WHERE c.question_no = #{qno}
 	</select>
-
-	<resultMap id="selectByCnoResultMap" type="comment">
-		<result column="comment_no" property="cno"/>
-		<result column="user_id" property="uid"/>
-		<result column="question_no" property="qno"/>
-		<result column="comment_content" property="ccontent"/>
-		<result column="comment_date" property="cdate"/>
-		
-		<association property="cattaches" javaType="attach">
-			<result column="attach_no" property="ano"/>
-			<result column="attach_target_table" property="attable"/>
-			<result column="attach_target_id" property="atid"/>
-			<result column="attach_target_index" property="atindex"/>
-			<result column="attach_content_type" property="acontentType"/>
-			<result column="attach_save_name" property="asname"/>
-			<result column="attach_original_name" property="aoname"/>
-		</association>
-	</resultMap>
 	
-	<select id="selectByCno" parameterType="int" resultMap="selectByCnoResultMap">
+	<select id="selectByCno" parameterType="int" resultMap="commentMap">
 		SELECT comment_no, user_id, question_no, comment_content, comment_date,
 			   attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name
-	   	FROM comments c, attach a
-	   	WHERE a.attach_target_table like 'COMMENTS'
+	   	FROM comments c
+	   	LEFT OUTER JOIN attach a ON a.attach_target_table like 'COMMENTS'
 	   	 AND c.comment_no = a.attach_target_id
-	   	 AND c.comment_no=#{cno}
+	   	WHERE c.comment_no=#{cno}
 	</select>
 	
 	<select id="count" resultType="int">
@@ -73,29 +55,38 @@
 		<if test="cattaches != null">
 			<foreach collection="cattaches" item="cattach" separator=" " close="SELECT * FROM DUAL">
 				INTO attach (attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name)
-				value VALUES(SEQ_ATTACH_ANO, #{cattach.attable}, #{cattach.atid}, #{cattach.atindex}, #{cattach.acontentType}, #{cattach.asname}, #{cattach.aoname})
+				VALUES (#{cattach.ano}, #{cattach.attable}, #{cattach.atid}, #{cattach.atindex}, #{cattach.acontentType}, #{cattach.asname}, #{cattach.aoname})
 			</foreach>
 		</if>
 	</insert>
 	
 	<delete id="deleteByCno" parameterType="int">
-		DELETE FROM comments WHERE comment_cno = #{cno}
-		DELETE FROM attach
-		 WHERE attach_target_table like 'QUESTION'
-		   AND attach_target_id = #{cno};
+		DECLARE
+		BEGIN
+			DELETE FROM comments WHERE comment_cno = #{cno};
+			
+			DELETE FROM attach
+			 WHERE attach_target_table like 'QUESTION'
+			   AND attach_target_id = #{cno};
+		END;
 	</delete>
 	
 	<update id="update" parameterType="comment">
-		UPDATE comments SET
-				comment_content=#{ccontent}
-		WHERE comment_no = #{cno}	
-		<foreach collection="cattaches" item="cattach" separator=";">
-			UPDATE attach SET
-				attach_content_type=#{cattach.acontentType},
-				attach_save_name=#{cattach.asname},
-				attach_original_name=#{cattach.aoname}
-			WHERE attach_no = #{cattach.ano}
-		</foreach>
+		DECLARE
+		BEGIN
+			UPDATE comments SET
+					comment_content=#{ccontent}
+			WHERE comment_no = #{cno};
+			<if test="cattaches != null">	
+				<foreach collection="cattaches" item="cattach" separator=" ">
+					UPDATE attach SET
+						attach_content_type=#{cattach.acontentType},
+						attach_save_name=#{cattach.asname},
+						attach_original_name=#{cattach.aoname}
+					WHERE attach_no = #{cattach.ano};
+				</foreach>
+			</if>
+		END;
 	</update>
 </mapper>
 

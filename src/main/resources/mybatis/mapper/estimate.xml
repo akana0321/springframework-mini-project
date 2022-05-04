@@ -4,13 +4,30 @@
 
 <!-- dao의 interface와 연결하기 위해 namespace에 해당 인터페이스 경로를 줌 -->
 <mapper namespace="com.mycompany.webapp.dao.EstimateDao">
-	<select id="selectByEno" parameterType="int" resultType="estimate">
+	<resultMap id="estimateMap" type="estimate">
+		<result column="estimate_no" property="eno"/>
+		<result column="user_id" property="uid"/>
+		<result column="py" property="epy"/>
+		<result column="building_type" property="ebuildingType"/>
+		<result column="dental_type" property="edentalType"/>
+		<result column="floor_type" property="efloorType"/>
+		<result column="wall_type" property="ewallType"/>
+		<result column="k3000B" property="ek3000b"/>
+		<result column="k5000b" property="ek5000b"/>
+		<result column="s2100z" property="es2100z"/>
+		<result column="furniture1" property="efurniture1"/>
+		<result column="furniture2" property="efurniture2"/>
+		<result column="furniture3" property="efurniture3"/>
+		<result column="estimate_date" property="edate"/>
+	</resultMap>
+	
+	<select id="selectByEno" parameterType="int" resultMap="estimateMap">
 		SELECT estimate_no, user_id, question_no, py, building_type, dental_type, floor_type, wall_type, k3000B, k5000b, s2100z, furniture1, furniture2, furniture3, estimate_date
 		FROM estimate
 		WHERE estimate_no=#{eno}
 	</select>
 	
-	<select id="selectByQno" parameterType="int" resultType="estimate">
+	<select id="selectByQno" parameterType="int" resultMap="estimateMap">
 		SELECT estimate_no, user_id, question_no, py, building_type, dental_type, floor_type, wall_type, k3000B, k5000b, s2100z, furniture1, furniture2, furniture3, estimate_date
 		FROM estimate
 		WHERE question_no=#{qno}
@@ -28,7 +45,7 @@
 		
 		INSERT INTO estimate 
 		(estimate_no, user_id, question_no, py, building_type, dental_type, floor_type, wall_type, k3000B, k5000b, s2100z, furniture1, furniture2, furniture3, estimate_date) 
-		VALUES(#{eno}, #{uid}, #{qno}, #{epy]}, #{ebuildingType}, #{edentalType}, #{efloorType}, #{ewallType}, #{ek3000B}, #{ek5000b}, #{es2100z}, #{efurniture1}, #{efurniture2}, #{efurniture3}, sysdate)
+		VALUES (#{eno}, #{uid}, #{qno}, #{epy]}, #{ebuildingType}, #{edentalType}, #{efloorType}, #{ewallType}, #{ek3000B}, #{ek5000b}, #{es2100z}, #{efurniture1}, #{efurniture2}, #{efurniture3}, sysdate)
 	</insert>
 	
 	<delete id="deleteByEno" parameterType="int">

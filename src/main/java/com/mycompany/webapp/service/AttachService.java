@@ -24,6 +24,21 @@ public class AttachService {
 		return attachDao.selectByTargetOne(target);
 	}
 	
+	// Get Attach Total Count
+	public int getTotalCount() {
+		return attachDao.count();
+	}
+	
+	// Get Attach Last No
+	public int getLastAno() {
+		Integer lastAno = attachDao.selectLastAno();
+		if(lastAno == null) {
+			return 0;
+		} else {
+			return lastAno;
+		}
+	}
+	
 	// Insert Attach by Target
 	public int insertAttach(Attach attach) {
 		return attachDao.insert(attach);

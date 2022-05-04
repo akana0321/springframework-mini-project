@@ -4,14 +4,24 @@
 
 <!-- dao의 interface와 연결하기 위해 namespace에 해당 인터페이스 경로를 줌 -->
 <mapper namespace="com.mycompany.webapp.dao.AttachDao">
-	<select id="selectByTargetList" parameterType="attach" resultType="attach">
+	<resultMap id="attachMap" type="attach">
+		<result column="attach_no" property="ano"/>
+		<result column="attach_target_table" property="attable"/>
+		<result column="attach_target_id" property="atid"/>
+		<result column="attach_target_index" property="atindex"/>
+		<result column="attach_content_type" property="acontentType"/>
+		<result column="attach_save_name" property="asname"/>
+		<result column="attach_original_name" property="aoname"/>
+	</resultMap>
+	
+	<select id="selectByTargetList" parameterType="attach" resultMap="attachMap">
 		SELECT attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name
 		FROM attach
 		WHERE attach_target_table=#{attable}
 		  AND attach_target_id=#{atid}
 	</select>
 	
-	<select id="selectByTargetOne" parameterType="attach" resultType="attach">
+	<select id="selectByTargetOne" parameterType="attach" resultMap="attachMap">
 		SELECT attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name
 		FROM attach
 		WHERE attach_target_table=#{attable}
@@ -22,16 +32,16 @@
 	<select id="count" resultType="int">
 		SELECT count(*) FROM attach
 	</select>
+	
+	<select id="selectLastAno" resultType="Integer">
+		SELECT attach_no FROM attach WHERE rownum = 1 ORDER BY attach_no DESC
+	</select>
 
 	<!-- ano 시퀀스 처리 -->
-	<insert id="insert" parameterType="attach">
-		<selectKey keyProperty="ano" resultType="int" order="BEFORE">
-			seq_attach_ano.nextval from dual
-		</selectKey>
-		
+	<insert id="insert" parameterType="attach">	
 		INSERT INTO attach 
 		(attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name) 
-		VALUES(#{ano}, #{attable}, #{atid}, #{atindex}, #{acontentType}, #{asname}, #{aoname})
+		VALUES (#{ano}, #{attable}, #{atid}, #{atindex}, #{acontentType}, #{asname}, #{aoname})
 	</insert>
 	
 	<delete id="deleteByTargetList" parameterType="attach">

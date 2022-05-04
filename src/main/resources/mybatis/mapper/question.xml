@@ -4,7 +4,26 @@
 
 <!-- dao의 interface와 연결하기 위해 namespace에 해당 인터페이스 경로를 줌 -->
 <mapper namespace="com.mycompany.webapp.dao.QuestionDao">
-	<select id="selectByPage" parameterType="pager" resultType="question">
+	<resultMap id="questionMap" type="question">
+		<result column="question_no" property="pid"/>
+		<result column="user_id" property="uid"/>
+		<result column="question_category" property="qcategory"/>
+		<result column="question_content" property="qcontent"/>
+		<result column="question_date" property="qdate"/>
+		<result column="product_id" property="pid"/>
+		
+		<association property="qattaches" javaType="attach">
+			<result column="attach_no" property="ano"/>
+			<result column="attach_target_table" property="attable"/>
+			<result column="attach_target_id" property="atid"/>
+			<result column="attach_target_index" property="atindex"/>
+			<result column="attach_content_type" property="acontentType"/>
+			<result column="attach_save_name" property="asname"/>
+			<result column="attach_original_name" property="aoname"/>
+		</association>
+	</resultMap>
+
+	<select id="selectByPage" parameterType="pager" resultMap="questionMap">
 		SELECT rnum, question_no, user_id, question_category, question_content, question_date, product_id
 		FROM (
 		  SELECT ROWNUM as rnum, question_no, user_id, question_category, question_content, question_date, product_id
@@ -27,7 +46,7 @@
 		<result column="question_date" property="qdate"/>
 		<result column="product_id" property="pid"/>
 		
-		<association property="qattaches" javaType="attach">
+		<collection property="qattaches" javaType="ArrayList" ofType="attach">
 			<result column="attach_no" property="ano"/>
 			<result column="attach_target_table" property="attable"/>
 			<result column="attach_target_id" property="atid"/>
@@ -35,16 +54,16 @@
 			<result column="attach_content_type" property="acontentType"/>
 			<result column="attach_save_name" property="asname"/>
 			<result column="attach_original_name" property="aoname"/>
-		</association>
+		</collection>
 	</resultMap>
 	
 	<select id="selectByQno" parameterType="int" resultMap="selectByQnoResultMap">
 		SELECT question_no, user_id, question_category, question_content, question_date, product_id,
 			   attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name
-	   	FROM question q, attach a
-	   	WHERE a.attach_target_table like 'QUESTION'
-	   	 AND q.qno = a.attach_target_id
-	   	 AND q.qno = #{qno}
+	   	FROM question q
+	   	LEFT OUTER JOIN attach a on a.attach_target_table like 'QUESTION'
+	   	AND	 q.question_no = a.attach_target_id
+	   	WHERE q.question_no = #{qno}
 	</select>
 	
 	<select id="count" resultType="int">
@@ -58,36 +77,44 @@
 		
 		INSERT ALL
 			INTO question (question_no, user_id, question_category, question_content, question_date, product_id) 
-			VALUES(#{qno}, #{uid}, #{qcategory}, #{qcontent}, sysdate, #{pid})
+			VALUES (#{qno}, #{uid}, #{qcategory}, #{qcontent}, sysdate, #{pid})
 		<if test="qattaches != null">
 			<foreach collection="qattaches" item="qattach" separator=" " close="SELECT * FROM DUAL">
 				INTO attach (attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name)
-				value VALUES(SEQ_ATTACH_ANO, #{qattach.attable}, #{qattach.atid}, #{qattach.atindex}, #{qattach.acontentType}, #{qattach.asname}, #{qattach.aoname})
+				VALUES (#{qattach.ano}, #{qattach.attable}, #{qattach.atid}, #{qattach.atindex}, #{qattach.acontentType}, #{qattach.asname}, #{qattach.aoname})
 			</foreach>
 		</if>
 	</insert>
 	
 	<delete id="deleteByQno" parameterType="int">
-		DELETE FROM question WHERE question_no = #{qno};
-		
-		DELETE FROM comments WHERE qno=#{qno}
-		
-		DELETE FROM attach
-		 WHERE attach_target_table like 'QUESTION'
-		   AND attach_target_id = #{qno};
+		DECLARE
+		BEGIN
+			DELETE FROM question WHERE question_no = #{qno};
+			
+			DELETE FROM comments WHERE question_no=#{qno}
+			
+			DELETE FROM attach
+			 WHERE attach_target_table like 'QUESTION'
+			   AND attach_target_id = #{qno};
+		END;
 	</delete>
 	
 	<update id="update" parameterType="question">
-		UPDATE question SET
-				question_content=#{qcontent},
-		WHERE question_no = #{qno}
-		<foreach collection="qattaches" item="qattach" separator=";">
-			UPDATE attach SET
-				attach_content_type=#{qattach.acontentType},
-				attach_save_name=#{qattach.asname},
-				attach_original_name=#{qattach.aoname}
-			WHERE attach_no = #{qattach.ano}
-		</foreach>
+		DECLARE
+		BEGIN
+			UPDATE question SET
+					question_content=#{qcontent},
+			WHERE question_no = #{qno};
+			<if test="qattaches != null">
+				<foreach collection="qattaches" item="qattach" separator=" ">
+					UPDATE attach SET
+						attach_content_type=#{qattach.acontentType},
+						attach_save_name=#{qattach.asname},
+						attach_original_name=#{qattach.aoname}
+					WHERE attach_no = #{qattach.ano};
+				</foreach>
+			</if>
+		END;
 	</update>
 </mapper>
 

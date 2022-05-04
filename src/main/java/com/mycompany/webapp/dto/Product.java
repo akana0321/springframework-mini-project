@@ -10,8 +10,8 @@ public class Product {
 	private String pname;
 	private String pcategory;
 	private String pdescription;
-	private int pprice;
-	private String pcolor;	// 리스트일까 그냥 String일까
+	private double pprice;
+	private String pcolor;
 	
 	private List<Attach> pattaches;
 }

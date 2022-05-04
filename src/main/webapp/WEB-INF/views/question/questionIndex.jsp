@@ -20,7 +20,9 @@
     <script src="${ pageContext.request.contextPath }/resources/js/question/question.js"></script>
 </head>
 <body>
-   	<%@ include file="/WEB-INF/views/common/header.jsp" %>
+    
+    <%@ include file="/WEB-INF/views/common/header.jsp" %>
+
     <div id="questionFormContainer">
         <div id="progressbarContainer" class="navbar">
             <ul id="progressbar">
@@ -486,7 +488,7 @@
                     <div class="spin-btn d-flex justify-content-center align-content-center">
                         <!-- 이거 submit으로 만들어주기 -->
                         <span>
-                            <a href="javascript:submitForm()" class="btn-end"></a>
+                           <input id="submitIp" type="submit" value="확인하기" />
                         </span>
                     </div>
                 </div>

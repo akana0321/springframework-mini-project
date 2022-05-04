@@ -11,6 +11,7 @@ public interface AttachDao {
 	public List<Attach> selectByTargetList(Attach target);
 	public Attach selectByTargetOne(Attach target);
 	public int count();
+	public Integer selectLastAno();
 	public int insert(Attach attach);
 	public int deleteByTargetList(Attach target);
 	public int deleteByTargetOne(int ano);
