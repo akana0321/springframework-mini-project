@@ -60,16 +60,20 @@
 			</if>
 	</insert>
 	
-	<delete id="deleteByDnumber" parameterType="int">
-		DELETE FROM dentist WHERE dentist_number = #{dnumber};
-		DELETE FROM attach
-		WHERE attach_target_table like 'DENTIST'
-		  AND attach_target_id=#{dnumber}
+	<delete id="deleteByDnumber" parameterType="string">
+		DECLARE
+      	BEGIN
+			DELETE FROM dentist WHERE dentist_number = #{dnumber};
+			
+			DELETE FROM attach
+			WHERE attach_target_table like 'DENTIST'
+			  AND attach_target_id=#{dnumber};
+		END;
 	</delete>
 	
-	<update id="update" parameterType="dentist" >
-	DECLARE
-      BEGIN
+	<update id="update" parameterType="dentist">
+		DECLARE
+      	BEGIN
          UPDATE dentist SET
                dentist_name = #{dname},
                dentist_tel = #{dtel},
@@ -80,15 +84,14 @@
                dentist_py = #{dpy}
          WHERE dentist_number = #{dnumber};
          <if test="dattaches != null">
-		      <foreach collection="dattaches" item="dattach" separator=" ">
-		         UPDATE attach SET
-		            attach_content_type=#{dattach.acontentType},
-		            attach_save_name=#{dattach.asname},
-		            attach_original_name=#{dattach.aoname}
-		         WHERE attach_no = #{dattach.ano};
-		      </foreach>
-      	</if>
-      	END;
+            <foreach collection="dattaches" item="dattach" separator=" ">
+               UPDATE attach SET
+                  attach_content_type=#{dattach.acontentType},
+                  attach_save_name=#{dattach.asname},
+                  attach_original_name=#{dattach.aoname}
+               WHERE attach_no = #{dattach.ano};
+            </foreach>
+         </if>
+         END;
 	</update>
 </mapper>
-

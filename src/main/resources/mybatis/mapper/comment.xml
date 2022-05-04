@@ -61,23 +61,32 @@
 	</insert>
 	
 	<delete id="deleteByCno" parameterType="int">
-		DELETE FROM comments WHERE comment_cno = #{cno}
-		DELETE FROM attach
-		 WHERE attach_target_table like 'QUESTION'
-		   AND attach_target_id = #{cno};
+		DECLARE
+		BEGIN
+			DELETE FROM comments WHERE comment_cno = #{cno};
+			
+			DELETE FROM attach
+			 WHERE attach_target_table like 'QUESTION'
+			   AND attach_target_id = #{cno};
+		END;
 	</delete>
 	
 	<update id="update" parameterType="comment">
-		UPDATE comments SET
-				comment_content=#{ccontent}
-		WHERE comment_no = #{cno}	
-		<foreach collection="cattaches" item="cattach" separator=";">
-			UPDATE attach SET
-				attach_content_type=#{cattach.acontentType},
-				attach_save_name=#{cattach.asname},
-				attach_original_name=#{cattach.aoname}
-			WHERE attach_no = #{cattach.ano}
-		</foreach>
+		DECLARE
+		BEGIN
+			UPDATE comments SET
+					comment_content=#{ccontent}
+			WHERE comment_no = #{cno};
+			<if test="cattaches != null">	
+				<foreach collection="cattaches" item="cattach" separator=" ">
+					UPDATE attach SET
+						attach_content_type=#{cattach.acontentType},
+						attach_save_name=#{cattach.asname},
+						attach_original_name=#{cattach.aoname}
+					WHERE attach_no = #{cattach.ano};
+				</foreach>
+			</if>
+		END;
 	</update>
 </mapper>
 
