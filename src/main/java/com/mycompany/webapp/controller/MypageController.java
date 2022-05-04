@@ -75,7 +75,6 @@ public class MypageController {
 		HttpSession session = request.getSession();
 		Attach attachSession = (Attach)session.getAttribute("userimg");
 		attachSession.setAttach(attach.getAttach());
-		
 		//String saveFilename = new Date().getTime() + "-" + attachSession.getAttach().getOriginalFilename(); 
 		File file = new File("/mypage/" + attachSession.getAsname());
 		attachSession.getAttach().transferTo(file);
@@ -90,31 +89,33 @@ public class MypageController {
 		return json;
 	}
 	
+	public int count = 0;
 	
 	@PostMapping(value = "/fileuploadAjax2",produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public void uploadImg(Attach attach, HttpServletRequest request) throws Exception {
 		log.info("싫핼");
 		HttpSession session = request.getSession();
-//		log.info(session.getAttribute());
+		int lastAno = attachService.getLastAno();
+		count++;
 		log.info(attach);
-
 		List<Attach> attachList = (List<Attach>) session.getAttribute("attachList");
-
-//		Attach attachSession = (Attach)session.getAttribute("userimg");
-//		attachSession.setAttach(dattaches.getAttach());
-//		
-//		String saveFilename = new Date().getTime() + "-" + attachSession.getAttach().getOriginalFilename(); 
-//		File file = new File("/mypage/" + saveFilename);
-//		attachSession.getAttach().transferTo(file);
-//
-//		JSONObject jsonObject = new JSONObject();
-//		jsonObject.put("result", "success");
-//		jsonObject.put("saveFilename", attachSession.getAsname());
-//		String json = jsonObject.toString();
-//		
-//		session.removeAttribute("userimg");
+		attach.setAcontentType(attach.getAttach().getContentType());
+		attach.setAoname(attach.getAttach().getOriginalFilename());
+		attach.setAsname(new Date().getTime() + "-" + attach.getAttach().getOriginalFilename());
+		attach.setAttable("DENTIST");
+		attach.setAno(lastAno+1);
+		attach.setAtid(attachList.get(0).getAtid());
+		attach.setAtindex(String.valueOf(attachList.size()+1));
+		attachList.add(attach);
+		log.info(lastAno);
 		
+		if(count > 1) {
+			attachList.remove(attachList.size()-1);
+			count = 1;
+		}
+		session.setAttribute("attachList", attachList);
+		log.info(attachList);
 //		return json;
 	}
 
@@ -154,15 +155,16 @@ public class MypageController {
 	@RequestMapping("/dentalInfo")
 	public String dentalInfo(
 			String[] dnumber,String[] dname,String[] dtel,String[] dzipcode, 
-			String[] daddress1,String[] daddress2,int[] demployees, int[] dpy,Attach dattaches ,HttpServletRequest request) {
+			String[] daddress1,String[] daddress2,int[] demployees, int[] dpy,HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		int dentalSize = (int) session.getAttribute("dentistSize");
 		log.info(dentalSize);
 		List<Dentist> dentist = (List<Dentist>) session.getAttribute("dentistArray");
 		log.info(dentist.get(0).getUid());
 		Dentist updateDentist = new Dentist();
-		log.info(dattaches);
-		
+
+		List<Attach> attach = (List<Attach>) session.getAttribute("attachList");
+		log.info(attach);
 		for(int i=0; i<dentalSize;i++) {
 			updateDentist.setUid(dentist.get(i).getUid());
 			updateDentist.setDnumber(dnumber[i]);
@@ -175,22 +177,12 @@ public class MypageController {
 			updateDentist.setDpy(dpy[i]);
 			//updateDentist.setDattaches((List<Attach>)dentist.get(i).getDattaches());
 			//log.info(updateDentist.getDattaches());
-			int size = dentist.get(i).getDattaches().size();
-			List<Attach> attach = new ArrayList();
-			
-			for(int j=0; j<size; j++) {
-				attach.add((Attach)dentist.get(i).getDattaches().get(j));
-				//log.info(dentist.get(i).getDattaches().get(j));
-			}
-			//attach.add(dattaches);
-			
-		
-//			updateDentist.setDattaches(attach);
 			
 			
+			//updateDentist.setDattaches(attach);
 			dentistService.updateDentist(updateDentist);
 		}
-		
+		attachService.insertAttach(attach.get(attach.size()-1));
 		return "redirect:/mypage/mypage";
 	}
 	

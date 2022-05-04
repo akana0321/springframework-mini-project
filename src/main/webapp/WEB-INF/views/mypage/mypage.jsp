@@ -155,9 +155,10 @@
 						<div id="addinfo">
 						
 							<h3 class="mb-5"><strong>병원 정보</strong></h3>
-							<form method="post" modelAttribute="dentist" action="dentalInfo">
+							
 							<c:if test="${dentistSize != 0}">
 								<c:forEach var="dentist" items="${dentistArray}" varStatus="status">
+								<form method="post" modelAttribute="dentist" action="dentalInfo">
 									<script>window.onload = function checkNumber(){count = ${status.count};}</script>
 									<div><strong>병원 정보 ${status.count}</strong></div>
 									<hr>
@@ -187,7 +188,7 @@
 								                <div class="row">
 								                    <div class="col-md-12 row">
 								                        <div class="col-md-6">
-								                            <input class="form-control col-md-8" type="text" id="zonecode_${status.count}" placeholder="우편번호" name="dzipcode" value="${dentist.dzipcode}"/>
+								                            <input class="form-control col-md-8" type="text" id="zonecode${status.count}" placeholder="우편번호" name="dzipcode" value="${dentist.dzipcode}"/>
 								                        </div>
 								                        <div class="col-md-6">
 								                            <input onclick="execDaumPostcode1(${status.count})" class="form-control col-md-6" type="button" class="button" style="margin-bottom: 1em" value="우편번호 찾기" /><br />
@@ -227,10 +228,13 @@
 												
 												<input type="file" multiple class="mt-2" id="dentalimg${status.count}" oninput="setThumbnailF(event,'image_container_${status.count}','dentalimg${status.count}')">
 												<c:forEach var="attach" items="${dentist.dattaches}" varStatus="val">
-													<div id="${status.count}_${val.count}"><li class="fa fa-minus"  onclick="removeFile(${status.count},${val.count})"></li> ${attach.aoname}</div>
+													<br><div id='${status.count}_${val.count}' class="fa fa-minus"  onclick="removeFile(this.id)"> ${attach.aoname}</div>
 												</c:forEach>
 					          				</div>
 					        			</div>
+					        			<div class="col-md-6  text-right">
+											<input class="btn " type="submit" style="background-color: rgba(128, 128, 128, 0.614); color:white;" value="저장하기">
+										</div>
 					
 					    			</div> 
 								</c:forEach>
@@ -239,9 +243,7 @@
 							<c:if test="${dentistSize == 0}">
 								<div>병원 정보가 없습니다.</div>
 							</c:if>
-							<div class="col-md-6  text-right">
-								<input class="btn " type="submit" style="background-color: rgba(128, 128, 128, 0.614); color:white;" value="저장하기">
-							</div>
+							
 							
 						</div>
 						<div class="col-md-12" >

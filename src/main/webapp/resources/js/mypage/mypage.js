@@ -79,6 +79,13 @@ function requestAjaxPr() {
 	  let div = document.getElementById(value);
 	  div.remove();
 	}
+	
+	function removeFile(value){
+		console.log(value);
+	  var div = document.getElementById(value);
+	  div.remove();
+	}
+
 
 
 	function changeUserImg() {
