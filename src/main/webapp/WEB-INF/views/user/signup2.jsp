@@ -68,6 +68,11 @@
   <%@ include file="/WEB-INF/views/common/header.jsp" %>
   <%-- <script src="${pageContext.request.contextPath}/resources/js/signup.js"></script> --%>
     <div class="signup2">
+    	<c:if test="${error != null}">
+			<div class="alert alert-danger mb-2" role="alert">
+			  ${error}
+			</div>			
+		</c:if>
       <form class="background col-6" action="${pageContext.request.contextPath}/user/signup2" method="post">
         <div style="text-align: center; margin-bottom: 4%">
           <a href="../main.html"><img src="${pageContext.request.contextPath}/resources/images/logo.png" style="width: 30%" /></a>
@@ -75,7 +80,7 @@
         <label>* 아이디</label>
         <div class="row">
           <div class="col-9">
-            <input type="text" name="uid" value="${user.uid}" placeholder="아이디 입력" />
+            <input type="text" name="uid" value="${user.uid}" placeholder="아이디 입력" required/>
           </div>
           <div class="col-3">
             <input type="button" class="button" name="certification" value="아이디 중복 확인" />
@@ -84,17 +89,17 @@
         <div class="row">
           <div class="col-6">
             <label>* 비밀번호</label>
-            <input type="password" name="upassword" value="${user.upassword}" />
+            <input type="password" name="upassword" value="${user.upassword}" required/>
           </div>
-          <!-- <div class="col-6">
+          <div class="col-6">
             <label>* 비밀번호 재확인</label>
-            <input type="password" name="user_password2" />
-          </div> -->
+            <input type="password" name="upassword" required/>
+          </div>
         </div>
         <div class="row">
           <div class="col-6">
             <label>* 이름</label>
-            <input type="text" name="uname" value="${user.uname}" placeholder="홍길동" />
+            <input type="text" name="uname" value="${user.uname}" placeholder="홍길동" required/>
           </div>
           <div class="col-6">
             <label>생년월일</label>
@@ -104,22 +109,22 @@
         <label>* 주소</label>
         <div class="row">
           <div class="col-6">
-            <input type="text" id="zonecode" name="uzipcode" value="${user.uzipcode}" placeholder="우편번호" />
+            <input type="text" id="zonecode" name="uzipcode" value="${user.uzipcode}" placeholder="우편번호" required/>
           </div>
           <div class="col-6"><input type="button" class="button" style="margin-bottom: 1em" onclick="execDaumPostcode1()" value="우편번호 찾기" /><br /></div>
         </div>
         <div class="row">
-          <div class="col-7"><input type="text" id="address" name="uaddress1" value="${user.uaddress1}" placeholder="주소" /><br /></div>
+          <div class="col-7"><input type="text" id="address" name="uaddress1" value="${user.uaddress1}" placeholder="주소" required/><br /></div>
           <div class="col-5">
             <input type="text" id="detailAddress" name="uaddress2" value="${user.uaddress2}" placeholder="상세주소" />
           </div>
         </div>
         <label>* 이메일</label>
-        <input type="email" name="uemail" value="${user.uemail}"  placeholder="email@gmail.com" />
+        <input type="email" name="uemail" value="${user.uemail}"  placeholder="email@gmail.com" required/>
         <label>* 휴대전화</label>
         <div class="row mb-2">
           <div class="col-9">
-            <input type="tel" name="utel" value="${user.utel}" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" placeholder="010-****-****" />
+            <input type="tel" name="utel" value="${user.utel}" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" placeholder="010-****-****" required/>
           </div>
           <!-- <div class="col-3">
             <input type="button" class="button" name="certification" value="인증번호 받기" />

@@ -50,9 +50,11 @@ public class UserController {
 		if(jr == JoinResult.SUCCESS) {
 			return "redirect:/home";
 		} else if(jr == JoinResult.DUPLICATED) {
+			log.info("dddd");
 			model.addAttribute("error", "중복된 아이디가 있습니다");
 			return "user/signup2";
 		} else {
+			log.info("ddddsggeqwegd");
 			model.addAttribute("error", "회원 가입이 실패했습니다. 다시 시도해주세요.");
 			return "user/signup2";
 		}

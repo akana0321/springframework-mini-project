@@ -98,12 +98,12 @@ STUDIO 765는 본 약관의 내용을 여러분이 쉽게 확인할 수 있도�
           </textarea>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="agreement" value="1" onclick="checkSelectAll()"/>
+              <input type="checkbox" name="agreement" value="1" onclick="checkSelectAll()" oninvalid="this.setCustomValidity('필수 선택 사항입니다.')" required />
               <span>이용약관에 동의합니다.</span>
             </label>
           </div>
 
-          <label class="title">개인정보 수집 및 이용 동의</label>
+          <label class="title">개인정보 수집 및 이용 동의 (필수)</label>
           <textarea readonly>
 개인정보보호법에 따라 STUDIO 765에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간, 동의 거부권 및 동의 거부 시 불이익에 관한 사항을 안내 드리오니 자세히 읽은 후 동의하여 주시기 바랍니다.
 
@@ -164,7 +164,7 @@ STUDIO 765는 본 약관의 내용을 여러분이 쉽게 확인할 수 있도�
         </textarea>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="agreement" value="2" onclick="checkSelectAll()"/>
+              <input type="checkbox" name="agreement" value="2" onclick="checkSelectAll()" oninvalid="this.setCustomValidity('필수 선택 사항입니다.')" required/>
               <span>이용약관에 동의합니다.</span>
             </label>
           </div>

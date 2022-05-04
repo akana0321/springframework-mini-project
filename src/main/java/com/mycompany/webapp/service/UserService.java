@@ -9,7 +9,10 @@ import org.springframework.stereotype.Service;
 import com.mycompany.webapp.dao.UserDao;
 import com.mycompany.webapp.dto.User;
 
+import lombok.extern.log4j.Log4j2;
+
 @Service
+@Log4j2
 public class UserService {
 	public enum JoinResult { SUCCESS, FAIL, DUPLICATED }
 	public enum LoginResult { SUCCESS, FAIL_UID, FAIL_UPASSWORD, FAIL }
@@ -36,12 +39,15 @@ public class UserService {
 	public JoinResult signUp(User user) {
 		try {
 			User dbUser = userDao.selectByUid(user.getUid());
+			log.info(user.getUid());
+			log.info(dbUser);
 			if(dbUser == null) {
 				PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 				user.setUpassword(passwordEncoder.encode(user.getUpassword()));
 				userDao.insert(user);
 				return JoinResult.SUCCESS;
 			} else {
+				log.info("dgggggg");
 				return JoinResult.DUPLICATED;
 			}
 		} catch(Exception e) {
@@ -53,21 +59,16 @@ public class UserService {
 	
 	// Login
 	public LoginResult login(User user) {
-		try {
-			User dbUser = userDao.selectByUid(user.getUid());
-			if(dbUser == null) {
-				return LoginResult.FAIL_UID;
+		User dbUser = userDao.selectByUid(user.getUid());
+		if(dbUser == null) {
+			return LoginResult.FAIL_UID;
+		} else {
+			PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+			if(passwordEncoder.matches(user.getUpassword(), dbUser.getUpassword())) {
+				return LoginResult.SUCCESS;
 			} else {
-				PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-				if(passwordEncoder.matches(user.getUpassword(), dbUser.getUpassword())) {
-					return LoginResult.SUCCESS;
-				} else {
-					return LoginResult.FAIL_UPASSWORD;
-				}
+				return LoginResult.FAIL_UPASSWORD;
 			}
-		} catch(Exception e) {
-			e.printStackTrace();
-			return LoginResult.FAIL;
 		}
 	}
 }
