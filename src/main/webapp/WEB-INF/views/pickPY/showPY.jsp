@@ -113,7 +113,7 @@
                 <a
                   type="button"
                   class="btn btn-lg btn-block gray-button"
-                  href="PYroom"
+                  href="PYroom?version=${version}"
                 >
                   구경하기
                 </a>
