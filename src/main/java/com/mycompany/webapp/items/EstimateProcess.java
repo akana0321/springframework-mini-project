@@ -2,17 +2,19 @@ package com.mycompany.webapp.items;
 
 import java.util.HashMap;
 
+import javax.annotation.Resource;
+
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
 import com.mycompany.webapp.dto.Estimate;
 
-@Component
 public class EstimateProcess {
 	private HashMap<String, Double> typeWeightMap = new HashMap<>();
 	private HashMap<String, Integer> priceMap = new HashMap<>();
 	private int totalPrice;
 	private JSONObject jsonObject = new JSONObject();
+	@Resource
 	private Estimate estimate;
 	
 	public EstimateProcess(Estimate estimate) {
@@ -35,24 +37,18 @@ public class EstimateProcess {
 		priceMap.put("furniture1", 40000);
 		priceMap.put("furniture2", 30000);
 		priceMap.put("furniture3", 30000);
+		
+		
 	}
 	
-	public HashMap<String, Double> getTypeWeightMap() {
-		return typeWeightMap;
+	public int returnUnitPrice(String targetName) {
+		return priceMap.get(targetName);
 	}
 	
 	public int materialTotalPrice(String targetName, int targetCount) {
 		int price = priceMap.get(targetName);
 		int result = price * targetCount;
 		totalPrice += result;
-		
-		if(targetName.charAt(0) == 'w') {
-			estimate.setWallUnitPrice(price);
-			estimate.setWallTotalPrice(result);
-		} else {
-			estimate.setFloorUnitPrice(price);
-			estimate.setFloorTotalPrice(result);
-		}
 		
 		return result;
 	}
@@ -62,8 +58,6 @@ public class EstimateProcess {
 		int result = price * targetCount;
 		totalPrice += result;
 		
-		jsonObject.put(targetName, targetCount);
-		jsonObject.put(targetName+"Total", result);
 		return result;
 	}
 	
