@@ -48,7 +48,7 @@ public class MypageController {
 		log.info(userId);
 		User user = userService.getUserByUid(userId);
 		Attach attach = user.getUattach();
-		List<Dentist> dentist= dentistService.getDentistsByUid("userid04");
+		List<Dentist> dentist= dentistService.getDentistsByUid(userId);
 		int dentistSize = dentist.size();
 		
 		
@@ -197,13 +197,27 @@ public class MypageController {
 	
 	//병원 정보 추가
 	@RequestMapping("/dentalInfoAdd")
-	public String dentalInfoAdd(String[] dnumber,String[] dname,String[] dtel,String[] dzipcode, 
-			String[] daddress1,String[] daddress2,int[] demployees, int[] dpy,HttpServletRequest request) {
+	public String dentalInfoAdd(String dnumber,String dname,String dtel,String dzipcode, 
+			String daddress1,String daddress2,int demployees, int dpy,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String userId = (String) session.getAttribute("sessionUid");
+		
 		
 		Dentist dentist = new Dentist();
+		dentist.setUid(userId);
+		dentist.setDaddress1(daddress1);
+		dentist.setDaddress2(daddress2);
+		dentist.setDemployees(demployees);
+		dentist.setDname(dname);
+		dentist.setDnumber(dnumber);
+		dentist.setDtel(dtel);
+		dentist.setDpy(dpy);
+		dentist.setDzipcode(dzipcode);
 		
+		dentistService.insertDentist(dentist);
 		
-		return "/mypage/mypage";
+
+		return "redirect:/mypage/mypage";
 	}
 	
 	

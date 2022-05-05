@@ -58,6 +58,8 @@
 					VALUES (#{dattach.ano}, #{dattach.attable}, #{dattach.atid}, #{dattach.atindex}, #{dattach.acontentType}, #{dattach.asname}, #{dattach.aoname})
 				</foreach>
 			</if>
+			SELECT *
+			FROM DUAL
 	</insert>
 	
 	<delete id="deleteByDnumber" parameterType="string">
