@@ -83,7 +83,7 @@
 									<c:if test="${ estimate.ek3000b != 0 }">
 										<tr>
 											<td  style="text-align: left;"> 치과의자 - K3000B </td>
-											<td> <fmt:formatNumber value="${ priceMap[estimate.ek3000b]}" pattern="#,###"/> ₩</td>
+											<td> <fmt:formatNumber value="${ priceMap['k3000b']}" pattern="#,###"/> ₩</td>
 											<td> <fmt:formatNumber value="${ estimate.ek3000b }" pattern="#,###"/></td>
 											<td> <fmt:formatNumber value="${ estimate.k3000bTotalPrice }" pattern="#,###"/> ₩</td>
 										</tr>
@@ -91,7 +91,7 @@
 									<c:if test="${ estimate.ek5000b != 0 }">
 										<tr>
 											<td  style="text-align: left;"> 치과의자 - K5000B </td>
-											<td> <fmt:formatNumber value="${ priceMap[estimate.ek5000b]}" pattern="#,###"/> ₩</td>
+											<td> <fmt:formatNumber value="${ priceMap['k5000b']}" pattern="#,###"/> ₩</td>
 											<td> <fmt:formatNumber value="${ estimate.ek5000b }" pattern="#,###"/></td>
 											<td> <fmt:formatNumber value="${ estimate.k5000bTotalPrice }" pattern="#,###"/> ₩</td>
 										</tr>
@@ -99,7 +99,7 @@
 									<c:if test="${ estimate.es2100z != 0 }">
 										<tr>
 											<td  style="text-align: left;"> 치과의자 - S2100Z </td>
-											<td> <fmt:formatNumber value="${ priceMap[estimate.es2100z]}" pattern="#,###"/> ₩</td>
+											<td> <fmt:formatNumber value="${ priceMap['s2100z']}" pattern="#,###"/> ₩</td>
 											<td> <fmt:formatNumber value="${ estimate.es2100z }" pattern="#,###"/></td>
 											<td> <fmt:formatNumber value="${ estimate.s2100zTotalPrice }" pattern="#,###"/> ₩</td>
 										</tr>
@@ -107,7 +107,7 @@
 									<c:if test="${ estimate.efurniture1 != 0 }">
 										<tr>
 											<td  style="text-align: left;"> 가구 - 마카롱 테이블 </td>
-											<td> <fmt:formatNumber value="${ priceMap[estimate.efurniture1]}" pattern="#,###"/> ₩</td>
+											<td> <fmt:formatNumber value="${ priceMap['furniture1']}" pattern="#,###"/> ₩</td>
 											<td> <fmt:formatNumber value="${ estimate.efurniture1 }" pattern="#,###"/></td>
 											<td> <fmt:formatNumber value="${ estimate.furniture1TotalPrice }" pattern="#,###"/> ₩</td>
 										</tr>
@@ -115,7 +115,7 @@
 									<c:if test="${ estimate.efurniture2 != 0 }">
 										<tr>
 											<td  style="text-align: left;"> 가구 - 블랑드 테이블 </td>
-											<td> <fmt:formatNumber value="${ priceMap[estimate.efurniture2]}" pattern="#,###"/> ₩</td>
+											<td> <fmt:formatNumber value="${ priceMap['furniture2']}" pattern="#,###"/> ₩</td>
 											<td> <fmt:formatNumber value="${ estimate.efurniture2 }" pattern="#,###"/></td>
 											<td> <fmt:formatNumber value="${ estimate.furniture2TotalPrice }" pattern="#,###"/> ₩</td>
 										</tr>
@@ -123,7 +123,7 @@
 									<c:if test="${ estimate.efurniture3 != 0 }">
 										<tr>
 											<td  style="text-align: left;"> 가구 - 마카롱 체어 </td>
-											<td> <fmt:formatNumber value="${ priceMap[estimate.efurniture3]}" pattern="#,###"/> ₩</td>
+											<td> <fmt:formatNumber value="${ priceMap['furniture3']}" pattern="#,###"/> ₩</td>
 											<td> <fmt:formatNumber value="${ estimate.efurniture3 }" pattern="#,###"/></td>
 											<td> <fmt:formatNumber value="${ estimate.furniture3TotalPrice }" pattern="#,###"/> ₩</td>
 										</tr>
