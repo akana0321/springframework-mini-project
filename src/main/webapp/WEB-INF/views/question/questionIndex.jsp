@@ -36,7 +36,7 @@
             </ul>
         </div>
 
-        <form id="questionForm" method="post" action="questionValue">
+        <form id="questionForm" method="post" action="questionResult">
             <div id="questionContainer" class="d-flex justify-content-center align-items-center">
                 <div class="fullscrean text-center" style="padding-left: 0; padding-right: 0;">
                     <div id="questionStart" class="fullscrean d-flex flex-column align-items-center" style="padding-left: 7rem;">
@@ -128,7 +128,7 @@
                         <!-- 교정치과 -->
                         <div>
                             <label>
-                                <input type="radio" name="edentalType" id="barcesDental" value="barces"/>
+                                <input type="radio" name="edentalType" id="bracesDental" value="braces"/>
                                     <div class="card">
                                         <div class="card-header card-title">
                                             교정치과

@@ -5,7 +5,6 @@ import java.util.HashMap;
 import javax.annotation.Resource;
 
 import org.json.JSONObject;
-import org.springframework.stereotype.Component;
 
 import com.mycompany.webapp.dto.Estimate;
 
@@ -37,12 +36,10 @@ public class EstimateProcess {
 		priceMap.put("furniture1", 40000);
 		priceMap.put("furniture2", 30000);
 		priceMap.put("furniture3", 30000);
-		
-		
 	}
 	
-	public int returnUnitPrice(String targetName) {
-		return priceMap.get(targetName);
+	public HashMap<String, Integer> getpPiceMap() {
+		return priceMap;
 	}
 	
 	public int materialTotalPrice(String targetName, int targetCount) {
@@ -87,5 +84,30 @@ public class EstimateProcess {
 		estimate.setTotalPrice(totalPrice);
 		
 		return estimate;
+	}
+	
+	public HashMap<String, String> getEstimateResult() {
+		HashMap<String, String> er = new HashMap<>(); // Estimate Result
+		er.put("building", estimate.getEbuildingType());
+		
+		er.put("dental", estimate.getEdentalType());
+		
+		er.put("floor", estimate.getEfloorType());
+		
+		er.put("wall", estimate.getEwallType());
+		
+		er.put("k3000bCount", ""+estimate.getEk3000b());
+		
+		er.put("k5000bCount", ""+estimate.getEk5000b());
+		
+		er.put("s2100zCount", ""+estimate.getEs2100z());
+		
+		er.put("furniture1Count", ""+estimate.getEfurniture1());
+		
+		er.put("furniture2Count", ""+estimate.getEfurniture2());
+		
+		er.put("furniture3Count", ""+estimate.getEfurniture3());
+		
+		return er;
 	}
 }
