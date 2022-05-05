@@ -8,9 +8,9 @@
         <div><a href="${pageContext.request.contextPath}/pickPY/content" class="menubtn">시스템 소개</a></div>
         <div><a href="${pageContext.request.contextPath}/portfolio/portfolio" class="menubtn">포트폴리오</a></div>
         <div><a href="${pageContext.request.contextPath}/question/questionIndex" class="menubtn">견적문의</a></div>
-        <div><a href="${pageContext.request.contextPath}/user/login" class="menubtn">로그인</a></div> 
-        <div><a href="${pageContext.request.contextPath}/user/signup1" class="menubtn">회원가입</a></div>
-        <%-- <div>
+       <%--  <div><a href="${pageContext.request.contextPath}/user/login" class="menubtn">로그인</a></div> 
+        <div><a href="${pageContext.request.contextPath}/user/signup1" class="menubtn">회원가입</a></div> --%>
+        <div>
         	<c:if test="${sessionUid == null}">
 				<a href="${pageContext.request.contextPath}/user/login" class="menubtn">로그인</a>
 			</c:if>
@@ -25,6 +25,6 @@
 			<c:if test="${sessionUid != null}">
 				<a href="${pageContext.request.contextPath}/mypage/mypage" class="menubtn">마이페이지</a>
 			</c:if>
-        </div> --%>
+        </div>
       </div>
     </header>
