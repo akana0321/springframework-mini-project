@@ -40,6 +40,7 @@ public class MypageController {
 	@Resource
 	private DentistService dentistService;
 	
+	// MyPage 로드시 실행
 	@RequestMapping("/mypage")
 	public String getMypage(Model model, HttpSession session) {
 		User user = userService.getUserByUid("userid02");
@@ -69,6 +70,7 @@ public class MypageController {
 		return "mypage/mypage";
 	}
 
+	//프로필 사진 변경
 	@PostMapping(value = "/fileuploadAjax",produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public String changeProfile(Attach attach, HttpServletRequest request) throws Exception {
@@ -91,6 +93,7 @@ public class MypageController {
 	
 	public int count = 0;
 	
+	//병원 정보 업로드된 파일 가져오기
 	@PostMapping(value = "/fileuploadAjax2",produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public void uploadImg(Attach attach, HttpServletRequest request) throws Exception {
@@ -119,6 +122,7 @@ public class MypageController {
 //		return json;
 	}
 
+	//내 정보 변경시 DB update
 	@RequestMapping("/myInfo")
 	public String myInfo(
 			User user, String newPass, String reNewPass,Model model, HttpServletRequest request){
@@ -152,6 +156,7 @@ public class MypageController {
 	}
 	
 
+	//병원 정보 Update
 	@RequestMapping("/dentalInfo")
 	public String dentalInfo(
 			String[] dnumber,String[] dname,String[] dtel,String[] dzipcode, 
@@ -177,8 +182,7 @@ public class MypageController {
 			updateDentist.setDpy(dpy[i]);
 			//updateDentist.setDattaches((List<Attach>)dentist.get(i).getDattaches());
 			//log.info(updateDentist.getDattaches());
-			
-			
+
 			//updateDentist.setDattaches(attach);
 			dentistService.updateDentist(updateDentist);
 		}
@@ -190,7 +194,7 @@ public class MypageController {
 	
 	
 	
-
+	//병원 정보 업로드 이미지 삭제
 	@RequestMapping("/dentalRemove")
 	public String dentalRemove(HttpServletRequest request, int dentist, int file) {
 		
