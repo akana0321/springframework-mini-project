@@ -40,12 +40,17 @@ public class MypageController {
 	@Resource
 	private DentistService dentistService;
 	
+	// MyPage 로드시 실행
 	@RequestMapping("/mypage")
-	public String getMypage(Model model, HttpSession session) {
-		User user = userService.getUserByUid("userid02");
+	public String getMypage(Model model, HttpSession session,HttpServletRequest request) {
+		
+		String userId = (String) request.getSession().getAttribute("sessionUid");
+		log.info(userId);
+		User user = userService.getUserByUid(userId);
 		Attach attach = user.getUattach();
-		List<Dentist> dentist= dentistService.getDentistsByUid("userid04");
+		List<Dentist> dentist= dentistService.getDentistsByUid(userId);
 		int dentistSize = dentist.size();
+		
 		
 		List<Attach> attachList = new ArrayList();
 		
@@ -69,19 +74,21 @@ public class MypageController {
 		return "mypage/mypage";
 	}
 
+	//프로필 사진 변경
 	@PostMapping(value = "/fileuploadAjax",produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public String changeProfile(Attach attach, HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
-		Attach attachSession = (Attach)session.getAttribute("userimg");
+		Attach attachSession = new Attach();
 		attachSession.setAttach(attach.getAttach());
+		attachSession.setAoname("profileImg_"+session.getAttribute("sessionUid").toString() +".jpg");
 		//String saveFilename = new Date().getTime() + "-" + attachSession.getAttach().getOriginalFilename(); 
-		File file = new File("/mypage/" + attachSession.getAsname());
+		File file = new File("/mypage/" + attachSession.getAoname());
 		attachSession.getAttach().transferTo(file);
 
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("result", "success");
-		jsonObject.put("saveFilename", attachSession.getAsname());
+		jsonObject.put("saveFilename", attachSession.getAoname());
 		String json = jsonObject.toString();
 		
 		session.removeAttribute("userimg");
@@ -91,6 +98,7 @@ public class MypageController {
 	
 	public int count = 0;
 	
+	//병원 정보 업로드된 파일 가져오기
 	@PostMapping(value = "/fileuploadAjax2",produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public void uploadImg(Attach attach, HttpServletRequest request) throws Exception {
@@ -119,6 +127,7 @@ public class MypageController {
 //		return json;
 	}
 
+	//내 정보 변경시 DB update
 	@RequestMapping("/myInfo")
 	public String myInfo(
 			User user, String newPass, String reNewPass,Model model, HttpServletRequest request){
@@ -152,6 +161,7 @@ public class MypageController {
 	}
 	
 
+	//병원 정보 Update
 	@RequestMapping("/dentalInfo")
 	public String dentalInfo(
 			String[] dnumber,String[] dname,String[] dtel,String[] dzipcode, 
@@ -177,8 +187,7 @@ public class MypageController {
 			updateDentist.setDpy(dpy[i]);
 			//updateDentist.setDattaches((List<Attach>)dentist.get(i).getDattaches());
 			//log.info(updateDentist.getDattaches());
-			
-			
+
 			//updateDentist.setDattaches(attach);
 			dentistService.updateDentist(updateDentist);
 		}
@@ -186,11 +195,34 @@ public class MypageController {
 		return "redirect:/mypage/mypage";
 	}
 	
-	
-	
-	
-	
+	//병원 정보 추가
+	@RequestMapping("/dentalInfoAdd")
+	public String dentalInfoAdd(String dnumber,String dname,String dtel,String dzipcode, 
+			String daddress1,String daddress2,int demployees, int dpy,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String userId = (String) session.getAttribute("sessionUid");
+		
+		
+		Dentist dentist = new Dentist();
+		dentist.setUid(userId);
+		dentist.setDaddress1(daddress1);
+		dentist.setDaddress2(daddress2);
+		dentist.setDemployees(demployees);
+		dentist.setDname(dname);
+		dentist.setDnumber(dnumber);
+		dentist.setDtel(dtel);
+		dentist.setDpy(dpy);
+		dentist.setDzipcode(dzipcode);
+		
+		dentistService.insertDentist(dentist);
+		
 
+		return "redirect:/mypage/mypage";
+	}
+	
+	
+	
+	//병원 정보 업로드 이미지 삭제
 	@RequestMapping("/dentalRemove")
 	public String dentalRemove(HttpServletRequest request, int dentist, int file) {
 		

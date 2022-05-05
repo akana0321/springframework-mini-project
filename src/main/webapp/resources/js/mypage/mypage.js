@@ -1,4 +1,4 @@
-
+//상품 문의
 function requestAjaxPr() {
 	  $.ajax({
 	    url: "ajax/product",
@@ -15,25 +15,25 @@ function requestAjaxPr() {
 	  var let = document.getElementById("int_btn");
 	  let.innerHTML="<strong>";
 	}
+//인테리어 문의
+function requestAjaxIn() {
+  $.ajax({
+    url: "ajax/interial",
+    method: "get",
+    data: { pageNo: 1 },
+    success: function (data) {
+      $("#content").html(data);
+    },
+    error: function (response) {
+      console.log(response.status);
+    },
+  });
+}
 
-	function requestAjaxIn() {
-	  $.ajax({
-	    url: "ajax/interial",
-	    method: "get",
-	    data: { pageNo: 1 },
-	    success: function (data) {
-	      $("#content").html(data);
-	    },
-	    error: function (response) {
-	      console.log(response.status);
-	    },
-	  });
-	}
-
-	// 병원 추가
+	
 	var count = 0;
 	var addrNum = 0;
-
+	// 병원 추가
 	function addinfo(){
 	  
 	  var add = document.getElementById("addinfo");
@@ -51,8 +51,10 @@ function requestAjaxPr() {
 	    success: function (data) {
 	      tmp += data;
 	      tmp += "<div id='image_container" + count;
-	      tmp += "'></div><input type='file'  value='도안' name='dattaches' class='mt-2' onchange=\"setThumbnail(event,'image_container" + count;
-	      tmp += "');\"></div></div></div>";
+	      tmp += "'></div><input type='file'  name='dattaches' class='mt-2' onchange=\"setThumbnail(event,'image_container" + count;
+	      tmp += "');\"></div></div>";
+	      tmp += "<div class='col-md-6  text-right'><input class='btn' type='submit' style='background-color: rgba(128, 128, 128, 0.614); color:white;' value='저장하기'></div></div> </form>";
+	      
 	      let div = document.createElement("div");
 	      div.setAttribute("id",count);
 	      div.setAttribute("data-aos","fade-out ");
@@ -74,7 +76,8 @@ function requestAjaxPr() {
 	  });
 
 	}
-
+	
+	//병원 정보 삭제
 	function removeinfo(value){
 	  let div = document.getElementById(value);
 	  div.remove();
@@ -87,12 +90,14 @@ function requestAjaxPr() {
 	}
 
 
-
+	//유저 프로필 이미지 변경
 	function changeUserImg() {
 	  let myImg = document.getElementById("myimg");
 	  myImg.click();
 	  //<img src="../images/mypage/user.jpg" alt="Image" class="shadow" style="width: 70%; height: 70%;">
 	}
+	
+	//이미지 변경 클릭 이벤트
 	function clickimg(event) {
 	   	var reader = new FileReader();
   		reader.onload = function (event) {
@@ -131,7 +136,7 @@ function requestAjaxPr() {
 	
 	
 	
-
+	//추가하는 병원 정보 업로드 파일 미리보기
 	function setThumbnail(event,idx) {
 	  var reader = new FileReader();
 	  reader.onload = function (event) {
@@ -141,8 +146,33 @@ function requestAjaxPr() {
 	    $("#" + idx).html(img);
 	  };
 	  reader.readAsDataURL(event.target.files[0]);
+	  
+	  const attach = document.querySelector("#"+imgNum).files[0];
+		//${"#attach"}[0].files[0];
+		console.log(attach);
+		//Multipart/form-data
+		const formData2 = new FormData();
+		formData2.append("attach", attach);
+		
+		//Ajax로 서버로 전송
+		$.ajax({
+			url: "fileuploadAjax2",
+			method: "post",
+			data: formData2,
+			cache: false,		// 파일이 포함되어 있으니, 브라우저 메모리에 저장 x
+			processData: false, // title=xxx&desc=yyy 식으로 x
+			contentType: false	// 파트마다 Content-Type이 포함되기 때문에 따로 헤더에 Content-Type에 추가 x
+		}).done((data) => {
+			console.log(data);
+			if(data.result === "success") {
+				window.alert("프로필 이미지 변경 완료");
+			}
+		});
+	  
+	  
 	}
 
+	//업로드 파일 미리보기
 	function setThumbnailF(event,idx,imgNum) {
 	  var reader = new FileReader();
 	  reader.onload = function (event) {
