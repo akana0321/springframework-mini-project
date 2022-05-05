@@ -98,7 +98,7 @@ STUDIO 765는 본 약관의 내용을 여러분이 쉽게 확인할 수 있도�
           </textarea>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="agreement" value="1" onclick="checkSelectAll()" required oninvalid="this.setCustomValidity('필수 선택 사항입니다.')" />
+              <input type="checkbox" name="agreement" id="agree1" value="1" onclick="checkSelectAll() btnActive()" required oninvalid="this.setCustomValidity('필수 선택 사항입니다.')" />
               <span>이용약관에 동의합니다.</span>
             </label>
           </div>
@@ -278,7 +278,7 @@ STUDIO 765에서 제공하는 이벤트/혜택 등 다양한 정보를 휴대전
         <br />
                 <br />
         <!-- Spring으로 넘어가면 살리기 -->
-        <input type="submit" class="button" name="" value="제출" />
+        <input type="submit" class="button" value="제출" />
         <!-- <div class="text-center">
           <a
             href="../user/signUp2.html"
