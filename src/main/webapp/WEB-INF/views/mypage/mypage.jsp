@@ -33,8 +33,14 @@
 				<div class="profile-tab-nav border-right mt-2">
 					<div class="p-4">
 						<div class="img-circle text-center mb-3" style="position: relative;" >
-							<div id="userimg" data-aos="zoom-out" data-aos-duration="2000" >	
+							<div id="userimg" data-aos="zoom-out" data-aos-duration="2000" >
+							<c:if test="${userimg.osname != null}">	
 								<img src="${pageContext.request.contextPath}/resources/images/mypage/${userimg.asname}" alt="Image" class="shadow" style="width: 200px; height: 200px;">
+							</c:if>
+							<c:if test="${userimg.osname == null}">
+								<img src="${pageContext.request.contextPath}/resources/images/mypage/user.jpg" alt="Image" class="shadow" style="width: 200px; height: 200px;">
+							
+							</c:if>
 							</div>
 								<div class="fa fa-2x fa-camera  btn float-right " id="imgchange"  onclick="changeUserImg()" data-aos="zoom-out" data-aos-duration="3000">
 							</div>
@@ -235,16 +241,15 @@
 					        			<div class="col-md-6  text-right">
 											<input class="btn " type="submit" style="background-color: rgba(128, 128, 128, 0.614); color:white;" value="저장하기">
 										</div>
-					
-					    			</div> 
+										
+					    				</div> 
+					    			</form>
 								</c:forEach>
 								
 							</c:if>
 							<c:if test="${dentistSize == 0}">
 								<div>병원 정보가 없습니다.</div>
 							</c:if>
-							
-							
 						</div>
 						<div class="col-md-12" >
 							<div class="mt-5 d-flex ">
@@ -252,12 +257,10 @@
 									<div class="fa fa-plus " onclick="addinfo()">
 									</div>
 								</div>
-								<div class="col-md-6  text-right">
-									<input class="btn " type="submit" style="background-color: rgba(128, 128, 128, 0.614); color:white;" value="저장하기">
-								</div>
+								
 							</div>
 						</div>
-						</form>
+						
 					</div>
 					
 					<div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">

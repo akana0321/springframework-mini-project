@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 </h4>
-	
+	<form method="post" modelAttribute="dentist" action="dentalInfoAdd">
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
@@ -55,7 +55,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label>병원 평수</label>
-                <input type="number" class="form-control col-md-6" value="65" name="dpy">
+                <input type="number" class="form-control col-md-6" value="60" name="dpy">
             </div>
         </div>
         <div class="col-md-12 mt-2">

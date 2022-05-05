@@ -42,11 +42,15 @@ public class MypageController {
 	
 	// MyPage 로드시 실행
 	@RequestMapping("/mypage")
-	public String getMypage(Model model, HttpSession session) {
-		User user = userService.getUserByUid("userid02");
+	public String getMypage(Model model, HttpSession session,HttpServletRequest request) {
+		
+		String userId = (String) request.getSession().getAttribute("sessionUid");
+		log.info(userId);
+		User user = userService.getUserByUid(userId);
 		Attach attach = user.getUattach();
 		List<Dentist> dentist= dentistService.getDentistsByUid("userid04");
 		int dentistSize = dentist.size();
+		
 		
 		List<Attach> attachList = new ArrayList();
 		
@@ -75,15 +79,16 @@ public class MypageController {
 	@ResponseBody
 	public String changeProfile(Attach attach, HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
-		Attach attachSession = (Attach)session.getAttribute("userimg");
+		Attach attachSession = new Attach();
 		attachSession.setAttach(attach.getAttach());
+		attachSession.setAoname("profileImg_"+session.getAttribute("sessionUid").toString() +".jpg");
 		//String saveFilename = new Date().getTime() + "-" + attachSession.getAttach().getOriginalFilename(); 
-		File file = new File("/mypage/" + attachSession.getAsname());
+		File file = new File("/mypage/" + attachSession.getAoname());
 		attachSession.getAttach().transferTo(file);
 
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("result", "success");
-		jsonObject.put("saveFilename", attachSession.getAsname());
+		jsonObject.put("saveFilename", attachSession.getAoname());
 		String json = jsonObject.toString();
 		
 		session.removeAttribute("userimg");
@@ -190,7 +195,16 @@ public class MypageController {
 		return "redirect:/mypage/mypage";
 	}
 	
-	
+	//병원 정보 추가
+	@RequestMapping("/dentalInfoAdd")
+	public String dentalInfoAdd(String[] dnumber,String[] dname,String[] dtel,String[] dzipcode, 
+			String[] daddress1,String[] daddress2,int[] demployees, int[] dpy,HttpServletRequest request) {
+		
+		Dentist dentist = new Dentist();
+		
+		
+		return "/mypage/mypage";
+	}
 	
 	
 	
