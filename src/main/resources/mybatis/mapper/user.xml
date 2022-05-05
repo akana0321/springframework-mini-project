@@ -71,5 +71,10 @@
 			user_password = #{upassword}
 		WHERE user_id = #{uid}	
 	</update>
+	
+	<!-- <select id="idChk" resultType="int">
+		SELECT count(*) FROM users
+		WHERE user_id = #{uid}
+	</select> -->
 </mapper>
 
