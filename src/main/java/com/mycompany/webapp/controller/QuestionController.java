@@ -46,7 +46,7 @@ public class QuestionController {
 	@Resource
 	EstimateService estimateService;
 	
-	EstimateProcess ep = new EstimateProcess();
+	EstimateProcess ep;
 	
 	@RequestMapping("/questionIndex")
 	public String questionIndex() {		
@@ -184,28 +184,11 @@ public class QuestionController {
 	@PostMapping(value="/questionValue", produces="application/json; charset=UTF-8")
 	public String questionValue(Estimate estimate, HttpSession session) {
 		log.info(estimate.toString());
-		int py = estimate.getEpy();
-		HashMap<String, Double> twm = ep.getTypeWeightMap();
-		double buildingWeight = twm.get(estimate.getEbuildingType());
-		double dentalWeight = twm.get(estimate.getEdentalType());
-		int floorTotal = ep.categoryTotalPrice(estimate.getEfloorType(), py);
-		int wallTotal = ep.categoryTotalPrice(estimate.getEwallType(), py);
-		int k3000bTotal = ep.categoryTotalPrice("k3000b", estimate.getEk3000b());
-		int k5000bTotal = ep.categoryTotalPrice("k5000b", estimate.getEk5000b());
-		int s2100zTotal = ep.categoryTotalPrice("s2100z", estimate.getEs2100z());
-		int furniture1Total = ep.categoryTotalPrice("furniture1", estimate.getEfurniture1());
-		int furniture1Tota2 = ep.categoryTotalPrice("furniture2", estimate.getEfurniture2());
-		int furniture1Tota3 = ep.categoryTotalPrice("furniture3", estimate.getEfurniture3());
-		int totalPrice = ep.getTotalPrice();
+		ep = new EstimateProcess(estimate);
+			
+		estimate = ep.init();
+		log.info(estimate);
 		
-		/*		log.info("" + buildingWeight  + ", " + dentalWeight  + ", " + floorTotal  + ", " + 
-						floorTotal + ", " + wallTotal  + ", " + k3000bTotal  + ", " + k5000bTotal +
-						", " + s2100zTotal + ", " + furniture1Total + ", " + furniture1Tota2 + ", " +
-						", " + furniture1Tota3 + ", " + totalPrice);
-		*/		
-		JSONObject jsonObject = ep.jsonWrapper(estimate);
-		log.info(jsonObject.toString());
-		
-		return jsonObject.toString();
+		return "redirect:/question/questionResult";
 	}
 }
