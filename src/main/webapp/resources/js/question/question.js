@@ -111,13 +111,13 @@ function submitForm() {
 	console.log("ajax 시작 전");
 	$.ajax({
 		type: "post",
-		url: "questionValue",
+		url: "questionResult",
 		data: formJsonObject,
 		dataType: "json",		
 	}).done((data) => {
 		let result = data;
 		console.log(result);
-		$.ajax({
+		/*$.ajax({
 			type: "post",
 			url: "questionResult",
 			data: result,
@@ -125,6 +125,6 @@ function submitForm() {
 		}).done((data) => {
 			console.log("두번째 ajax");
 			console.log(data);
-		})
+		})*/
 	});
 } 
