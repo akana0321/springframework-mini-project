@@ -62,6 +62,130 @@
         		}
       		}).open();
     	}
+    	
+    	function signupCheck() {
+            event.preventDefault();
+            
+    		var uid = document.getElementById("uid");
+    		var upassword1 = document.getElementById("upassword1");
+    		var upassword2 = document.getElementById("upassword2");
+    		var uname = document.getElementById("uname");
+    		var zonecode = document.getElementById("zonecode");
+    		/* var address = document.getElementById("address"); */
+    		var uemail = document.getElementById("uemail");
+    		var utel = document.getElementById("utel");
+    		
+    		var id = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,10}$/;
+    		
+    		if(uid.value == "") {
+    			$('#idCheck').html('아이디를 입력하세요.');
+    	        $('#idCheck').css('color', '#ff0000');
+    	        uid.focus();
+    	        return false;
+    		} else {
+    			$('#idCheck').html('');
+    		}
+    		
+    		if(!id.test(uid.value)) {
+    			$('#idCheck').html('아이디 형식에 맞춰주세요.');
+    	        $('#idCheck').css('color', '#ff0000');
+    	        uid.focus();
+    	        return false;
+    		} else {
+    			$('#idCheck').html('');
+    		}
+
+    		var password = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/;
+    		
+    		if(upassword1.value == "") {
+    			$('#pwCheck').html('비밀번호를 입력하세요.');
+    	        $('#pwCheck').css('color', '#ff0000');
+    	        upassword1.focus();
+    	        return false;
+    		} else {
+    			$('#pwCheck').html('');
+    		}
+    		
+    		if(!password.test(upassword1.value)) {
+    			$('#pwCheck').html('비밀번호 형식에 맞춰주세요.');
+    	        $('#pwCheck').css('color', '#ff0000');
+    	        upassword1.focus();
+    	        return false;
+    		} else {
+    			$('#pwCheck').html('');
+    		}
+    		
+    		var name = /^[가-힣]+$/;
+    		
+    		if(uname.value == "") {
+    			$('#nameCheck').html('이름을 입력하세요.');
+    	        $('#nameCheck').css('color', '#ff0000');
+    	        uname.focus();
+    	        return false;
+    		} else {
+    			$('#nameCheck').html('');
+    		}
+    		
+    		if(!name.test(uname.value)) {
+    			$('#nameCheck').html('이름 형식에 맞춰주세요.');
+    	        $('#nameCheck').css('color', '#ff0000');
+    	        uname.focus();
+    	        return false;
+    		} else {
+    			$('#nameCheck').html('');
+    		}
+    		
+    		if(zonecode.value == "") {
+    			$('#zonecodeCheck').html('주소를 입력하세요.');
+    	        $('#zonecodeCheck').css('color', '#ff0000');
+    	        zonecode.focus();
+    	        return false;
+    		} else {
+    			$('#zonecodeCheck').html('');
+    		}
+
+    		var email = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+    			
+    		if(uemail.value == "") {
+    			$('#emailCheck').html('이메일을 입력하세요.');
+    	        $('#emailCheck').css('color', '#ff0000');
+    	        uemail.focus();
+    	        return false;
+    		} else {
+    			$('#emailCheck').html('');
+    		}
+    		
+    		if(!email.test(uemail.value)) {
+    			$('#emailCheck').html('이메일 형식에 맞춰주세요.');
+    	        $('#emailCheck').css('color', '#ff0000');
+    	        uemail.focus();
+    	        return false;
+    		} else {
+    			$('#emailCheck').html('');
+    		}
+
+    		var tel = /^\d{3}-\d{3,4}-\d{4}$/;
+    		
+    		if(utel.value == "") {
+    			$('#telCheck').html('전화번호를 입력하세요.');
+    	        $('#telCheck').css('color', '#ff0000');
+    	        utel.focus();
+    	        return false;
+    		} else {
+    			$('#telCheck').html('');
+    		}
+    		
+    		if(!tel.test(utel.value)) {
+    			$('#telCheck').html('전화번호 형식에 맞춰주세요.');
+    	        $('#telCheck').css('color', '#ff0000');
+    	        utel.focus();
+    	        return false;
+    		} else {
+    			$('#telCheck').html('');
+    		}
+
+    		document.signupform.submit();
+    	}
     </script>
   </head>
   <body>
@@ -69,33 +193,36 @@
   <%-- <script src="${pageContext.request.contextPath}/resources/js/signup.js"></script> --%>
   <script src="${pageContext.request.contextPath}/resources/js/signup.js"></script>
     <div class="signup2">
-      <form class="background col-6" action="${pageContext.request.contextPath}/user/signup2" method="post">
+      <form name="signupform" class="background col-6" action="${pageContext.request.contextPath}/user/signup2" method="post">
         <div style="text-align: center; margin-bottom: 4%">
           <a href="../main.html"><img src="${pageContext.request.contextPath}/resources/images/logo.png" style="width: 30%" /></a>
         </div>
         <div>
 	        <label>* 아이디</label>
-	        <input type="text" name="uid" value="${user.uid}" placeholder="아이디 입력" required/>
+	        <input type="text" name="uid" id="uid" value="${user.uid}" placeholder="아이디 입력"/>
 	        <c:if test="${error != null}">
 				<small style="color:red;" id="idError">${error}</small>		
 			</c:if>
+			<small id="idCheck"></small>
 		</div>
         <div class="row">
           <div class="col-6">
             <label>* 비밀번호</label>
-            <input type="password" name="upassword" id="upassword1" value="${user.upassword}" placeholder="비밀번호" required/>
+            <input type="password" name="upassword" id="upassword1" value="${user.upassword}" placeholder="비밀번호"/>
             <small>8~16자 영문 대소문자, 숫자, 특수문자</small>
           </div>
           <div class="col-6">
             <label>* 비밀번호 확인</label>
-            <input type="password" name="upassword" id="upassword2" placeholder="비밀번호 확인" required/>
+            <input type="password" name="upassword2" id="upassword2" placeholder="비밀번호 확인"/>
             <small id="pwCheck"></small>
+            <small id="pwsameCheck"></small>
           </div>
         </div>
         <div class="row">
           <div class="col-6">
             <label>* 이름</label>
-            <input type="text" name="uname" value="${user.uname}" placeholder="홍길동" required/>
+            <input type="text" name="uname" id="uname" value="${user.uname}" placeholder="홍길동"/>
+            <small id="nameCheck"></small>
           </div>
           <div class="col-6">
             <label>생년월일</label>
@@ -105,22 +232,27 @@
         <label>* 주소</label>
         <div class="row">
           <div class="col-6">
-            <input type="text" id="zonecode" name="uzipcode" value="${user.uzipcode}" placeholder="우편번호" required/>
+            <input type="text" id="zonecode" name="uzipcode" value="${user.uzipcode}" placeholder="우편번호"/>
           </div>
           <div class="col-6"><input type="button" class="button" style="margin-bottom: 1em" onclick="execDaumPostcode1()" value="우편번호 찾기" /><br /></div>
         </div>
         <div class="row">
-          <div class="col-7"><input type="text" id="address" name="uaddress1" value="${user.uaddress1}" placeholder="주소" required/><br /></div>
+          <div class="col-7"><input type="text" id="uaddress" name="uaddress1" value="${user.uaddress1}" placeholder="주소"/><br /></div>
           <div class="col-5">
             <input type="text" id="detailAddress" name="uaddress2" value="${user.uaddress2}" placeholder="상세주소" />
           </div>
         </div>
-        <label>* 이메일</label>
-        <input type="email" name="uemail" value="${user.uemail}"  placeholder="email@gmail.com" required/>
+        <small id="zonecodeCheck"></small>
+        <div>
+        	<label>* 이메일</label>
+	        <input type="email" name="uemail" id="uemail" value="${user.uemail}"  placeholder="email@gmail.com"/>
+	        <small id="emailCheck"></small>
+        </div>
         <label>* 휴대전화</label>
         <div class="row mb-2">
           <div class="col-9">
-            <input type="tel" name="utel" value="${user.utel}" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" placeholder="010-****-****" required/>
+            <input type="tel" name="utel" id="utel" value="${user.utel}"  placeholder="010-****-****"/>
+            <small id="telCheck"></small>
           </div>
           <!-- <div class="col-3">
             <input type="button" class="button" name="certification" value="인증번호 받기" />
@@ -129,57 +261,7 @@
         <!-- <input type="text" name="certification" placeholder="인증번호를 입력하세요" /> -->
         <br />
         <br />
-
-        <!-- <div class="col-6" style="padding-left: 0; ">
-          <label>* 병원 등록번호</label>
-          <input type="text" name="hospital_number" pattern="[0-9]{8}" placeholder="12345678" />
-        </div>
-        <div class="row">
-          <div class="col-6">
-            <label>* 병원 이름</label>
-            <input type="text" name="hospital_name" placeholder="홍길동" />
-          </div>
-          <div class="col-6">
-            <label>* 병원 전화번호</label>
-            <input type="tel" name="hospital_tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="02-***-****" />
-          </div>
-        </div>
-        <label>* 병원 주소</label>
-        <div class="row">
-          <div class="col-6">
-            <input type="text" name="addr3" placeholder="우편번호" />
-          </div>
-          <div class="col-6"><input type="button" class="button" style="margin-bottom: 1em" onclick="execDaumPostcode2()" value="우편번호 찾기" /><br /></div>
-        </div>
-        <div class="row">
-          <div class="col-7"><input type="text" name="addr4" placeholder="주소" /><br /></div>
-          <div class="col-5">
-            <input type="text" id="detailAddress" placeholder="상세주소" />
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-6">
-            <label>병원 직원수</label>
-            <input type="number" name="hospital_employee" placeholder="20" />
-          </div>
-          <div class="col-6">
-            <label>병원 평수</label>
-            <input type="number" name="hospital_employee" placeholder="50" />
-          </div>
-        </div>
-        <div>
-          <label>병원 도면</label>
-          <div id="image_container"></div>
-          <input type="file" value="도안" class="mt-2" onchange="setThumbnail(event);" />
-        </div> -->
-        <br />
-        <br />
-        <!-- Spring으로 넘어가면 살리기 -->
-        <input type="submit" class="button" onclick="inputCheck()" value="제출" />
-        <!-- <div class="text-center">
-                    <a href="../user/signUp2.html" class="btn" style="background-color: #ffb440; color: black; font-size: 1.1em; width: 15%">제출</a>
-                </div> -->
+        <input type="submit" class="button" onclick="signupCheck()" value="제출" />
       </form>
     </div>
   </body>
