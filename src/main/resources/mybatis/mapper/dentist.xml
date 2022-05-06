@@ -50,8 +50,26 @@
 
 	<insert id="insert" parameterType="dentist">
 		INSERT ALL
-			INTO dentist (dentist_number, user_id, dentist_name, dentist_tel, dentist_zipcode, dentist_address1, dentist_address2, dentist_employees, dentist_py) 
-			VALUES (#{dnumber}, #{uid}, #{dname}, #{dtel}, #{dzipcode}, #{daddress1}, #{daddress2}, #{demployees}, #{dpy})
+			<if test="demployees != null">
+				<if test="dpy != null">
+					INTO dentist (dentist_number, user_id, dentist_name, dentist_tel, dentist_zipcode, dentist_address1, dentist_address2, dentist_employees, dentist_py) 
+					VALUES (#{dnumber}, #{uid}, #{dname}, #{dtel}, #{dzipcode}, #{daddress1}, #{daddress2}, #{demployees}, #{dpy})
+				</if>
+				<if test="dpy == null">
+					INTO dentist (dentist_number, user_id, dentist_name, dentist_tel, dentist_zipcode, dentist_address1, dentist_address2, dentist_employees) 
+					VALUES (#{dnumber}, #{uid}, #{dname}, #{dtel}, #{dzipcode}, #{daddress1}, #{daddress2}, #{demployees})
+				</if>
+			</if>
+			<if test="demployees == null">
+				<if test="dpy != null">
+					INTO dentist (dentist_number, user_id, dentist_name, dentist_tel, dentist_zipcode, dentist_address1, dentist_address2, dentist_py) 
+					VALUES (#{dnumber}, #{uid}, #{dname}, #{dtel}, #{dzipcode}, #{daddress1}, #{daddress2}, #{dpy})
+				</if>
+				<if test="dpy == null">
+					INTO dentist (dentist_number, user_id, dentist_name, dentist_tel, dentist_zipcode, dentist_address1, dentist_address2) 
+					VALUES (#{dnumber}, #{uid}, #{dname}, #{dtel}, #{dzipcode}, #{daddress1}, #{daddress2})
+				</if>
+			</if>
 			<if test="dattaches != null">
 				<foreach collection="dattaches" item="dattach" separator=" " close="SELECT * FROM DUAL">
 					INTO attach (attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name)

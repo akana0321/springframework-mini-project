@@ -10,7 +10,10 @@ import com.mycompany.webapp.dao.QuestionDao;
 import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.Question;
 
+import lombok.extern.log4j.Log4j2;
+
 @Service
+@Log4j2
 public class QuestionService {
 	@Resource
 	private QuestionDao questionDao;
@@ -32,7 +35,8 @@ public class QuestionService {
 	
 	// Insert Question
 	public int insertQuestion(Question question) {
-		return questionDao.insert(question);
+		questionDao.insert(question);
+		return question.getQno();
 	}
 	
 	// Delete Question by qno

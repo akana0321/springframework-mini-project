@@ -39,13 +39,13 @@
 
 	<!-- eno 시퀀스 처리 -->
 	<insert id="insert" parameterType="estimate">
-		<selectKey keyProperty="qno" resultType="int" order="BEFORE">
-			seq_estimate_eno.nextval from dual
+		<selectKey keyProperty="eno" resultType="int" order="BEFORE">
+			select seq_estimate_eno.nextval from dual
 		</selectKey>
 		
 		INSERT INTO estimate 
 		(estimate_no, user_id, question_no, py, building_type, dental_type, floor_type, wall_type, k3000B, k5000b, s2100z, furniture1, furniture2, furniture3, estimate_date) 
-		VALUES (#{eno}, #{uid}, #{qno}, #{epy]}, #{ebuildingType}, #{edentalType}, #{efloorType}, #{ewallType}, #{ek3000B}, #{ek5000b}, #{es2100z}, #{efurniture1}, #{efurniture2}, #{efurniture3}, sysdate)
+		VALUES (#{eno}, #{uid}, #{qno}, #{epy}, #{ebuildingType}, #{edentalType}, #{efloorType}, #{ewallType}, #{ek3000b}, #{ek5000b}, #{es2100z}, #{efurniture1}, #{efurniture2}, #{efurniture3}, sysdate)
 	</insert>
 	
 	<delete id="deleteByEno" parameterType="int">

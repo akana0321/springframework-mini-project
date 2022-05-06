@@ -38,8 +38,14 @@
 
 	<insert id="insert" parameterType="product">
 		INSERT ALL 
-			INTO product (product_id, product_name, product_category, product_description, product_price, product_color) 
-			VALUES (#{pid}, #{pname}, #{pcategory}, #{pdescription}, #{pprice}, #{pcolor})
+			<if test="pcolor != null">
+				INTO product (product_id, product_name, product_category, product_description, product_price, product_color) 
+				VALUES (#{pid}, #{pname}, #{pcategory}, #{pdescription}, #{pprice}, #{pcolor})
+			</if>
+			<if test="pcolor == null">
+				INTO product (product_id, product_name, product_category, product_description, product_price) 
+				VALUES (#{pid}, #{pname}, #{pcategory}, #{pdescription}, #{pprice})
+			</if>
 		<if test="pattaches != null">
 			<foreach collection="pattaches" item="pattach" separator=" "  close="SELECT * FROM DUAL">
 				INTO attach (attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name)
