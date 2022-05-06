@@ -166,10 +166,10 @@
 								<c:forEach var="dentist" items="${dentistArray}" varStatus="status">
 								<form method="post" modelAttribute="dentist" action="dentalInfo">
 									<script>window.onload = function checkNumber(){count = ${status.count};}</script>
-									<div><strong>병원 정보 ${status.count}</strong></div>
+									<div><div class='fa fa-minus mr-2' onclick="removeinfoR(${status.count})"><strong> 병원 정보 ${status.count}</strong></div></div>
 									<hr>
 								    <div class="row">
-								    	
+							
 								        <div class="col-md-12">
 								            <div class="form-group">
 								                <label for="hnumber">병원 등록 번호</label>

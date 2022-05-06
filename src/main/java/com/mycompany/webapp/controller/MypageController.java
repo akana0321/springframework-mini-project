@@ -220,6 +220,15 @@ public class MypageController {
 		return "redirect:/mypage/mypage";
 	}
 	
+	//기존 병원 정보 삭제
+	@PostMapping(value = "/removeinfoR",produces = "application/json; charset=UTF-8")
+	@ResponseBody
+	public void removeInfoR(int value, String dnumber) {
+		log.info(dnumber);
+		//String deleteDnumber = dnumber[value];
+		//dentistService.deleteDentistByDnumber(deleteDnumber);
+	}
+	
 	
 	
 	//병원 정보 업로드 이미지 삭제

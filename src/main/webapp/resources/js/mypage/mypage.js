@@ -76,8 +76,23 @@ function requestAjaxIn() {
 	  });
 
 	}
+	//기존 병원 정보 삭제
+	function removeinfoR(value){
+		
+		const formData = new FormData();
+		formData.append("value", value);
+		//Ajax로 서버로 전송
+		$.ajax({
+			url: "removeinfoR",
+			method: "post",
+			data: formData,
+			cache: false,		// 파일이 포함되어 있으니, 브라우저 메모리에 저장 x
+			processData: false, // title=xxx&desc=yyy 식으로 x
+			contentType: false	// 파트마다 Content-Type이 포함되기 때문에 따로 헤더에 Content-Type에 추가 x
+		})
+	}
 	
-	//병원 정보 삭제
+	//추가된 병원 정보 삭제
 	function removeinfo(value){
 	  let div = document.getElementById(value);
 	  div.remove();
