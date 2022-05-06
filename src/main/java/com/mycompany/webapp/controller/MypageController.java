@@ -108,43 +108,46 @@ public class MypageController {
 		count++;
 		uploadFileCount++;
 		log.info("파일 : "+attach.getAttach().getOriginalFilename());
+		session.setAttribute("newAttach", attach.getAttach());
 		@SuppressWarnings("unchecked")
 		List<Attach> attachList = (List<Attach>) session.getAttribute("attachList");
 		session.setAttribute("OriginName", attach.getAttach().getOriginalFilename());
-		if (attachList.size() != 0){
-			attach.setAcontentType(attach.getAttach().getContentType());
-			attach.setAoname((String)session.getAttribute("OriginName"));
-			attach.setAsname(new Date().getTime() + "-" + attach.getAttach().getOriginalFilename());
-			attach.setAttable("DENTIST");
-			//attach.setAno(lastAno+1);
-			attach.setAtid(attachList.get(0).getAtid());
-			attach.setAtindex(String.valueOf(attachList.size()+1));
-			attachList.add(attach);
-			
-//			if(count > 1) {
-//				attachList.remove(attachList.size()-1);
-//				count = 1;
-//			}
-			session.setAttribute("attachList", attachList);
-			
-		}
-		else {
-			attach.setAcontentType(attach.getAttach().getContentType());
-			attach.setAoname((String)session.getAttribute("OriginName"));
-			attach.setAsname(new Date().getTime() + "-" + attach.getAttach().getOriginalFilename());
-			attach.setAttable("DENTIST");
-			//attach.setAno(lastAno+1);
-			attach.setAtindex("1");
-			//dnumber를 받아올 경우의 수 : 2가지(기존 정보에서, 새로 생성할 때)
-			//attach.setAtid("1111");
-			attachList.add(attach);
-			
-//			if(count > 1) {
-//				attachList.remove(attachList.size()-1);
-//				count = 1;
-//			}
-			session.setAttribute("attachList", attachList);
-		}
+	
+			if (attachList.size() != 0){
+				attach.setAcontentType(attach.getAttach().getContentType());
+				attach.setAoname((String)session.getAttribute("OriginName"));
+				attach.setAsname(new Date().getTime() + "-" + attach.getAttach().getOriginalFilename());
+				attach.setAttable("DENTIST");
+				//attach.setAno(lastAno+1);
+				attach.setAtid(attachList.get(0).getAtid());
+				attach.setAtindex(String.valueOf(attachList.size()+1));
+				attachList.add(attach);
+				
+//				if(count > 1) {
+//					attachList.remove(attachList.size()-1);
+//					count = 1;
+//				}
+				session.setAttribute("attachList", attachList);
+				
+			}
+			else {
+				attach.setAcontentType(attach.getAttach().getContentType());
+				attach.setAoname((String)session.getAttribute("OriginName"));
+				attach.setAsname(new Date().getTime() + "-" + attach.getAttach().getOriginalFilename());
+				attach.setAttable("DENTIST");
+				//attach.setAno(lastAno+1);
+				attach.setAtindex("1");
+				//dnumber를 받아올 경우의 수 : 2가지(기존 정보에서, 새로 생성할 때)
+				//attach.setAtid("1111");
+				attachList.add(attach);
+				
+	//			if(count > 1) {
+	//				attachList.remove(attachList.size()-1);
+	//				count = 1;
+	//			}
+				session.setAttribute("attachList", attachList);
+			}
+		
 	}
 	
 	//병원 정보 추가
@@ -179,7 +182,7 @@ public class MypageController {
 	@RequestMapping("/myInfo")
 	public String myInfo(
 			User user, String newPass, String reNewPass,Model model, HttpServletRequest request){
-
+		log.info(user.getUbirth());
 		
 		HttpSession session = request.getSession();
 		log.info(session.getAttribute("userSession"));
@@ -239,12 +242,22 @@ public class MypageController {
 		for(int i=0; i<attach.size(); i++) {
 			attach.get(i).setAtid(dnumber[0]);
 		}
-		attach.get(attach.size()-1).setAno(lastAno+1);
+		log.info(lastAno);
+		if(session.getAttribute("newAttach") != null) {
+			if(attach.size() != 0) {
+				attach.get(attach.size()-1).setAno(lastAno+1);
+				attachService.insertAttach(attach.get(attach.size()-1));
+			}
+			else {attach.get(attach.size()).setAno(lastAno+1);
+				attachService.insertAttach(attach.get(attach.size()));
+			}
+		}
+			
 
-		if(attach.size() != 0)
-			attachService.insertAttach(attach.get(attach.size()-1));
-	
 		log.info(session.getAttribute("attachList"));
+		session.removeAttribute("newAttach");
+		
+		
 		return "redirect:/mypage/mypage";
 	}
 	
