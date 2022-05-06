@@ -47,11 +47,12 @@
 				VALUES (#{pid}, #{pname}, #{pcategory}, #{pdescription}, #{pprice})
 			</if>
 		<if test="pattaches != null">
-			<foreach collection="pattaches" item="pattach" separator=" "  close="SELECT * FROM DUAL">
+			<foreach collection="pattaches" item="pattach" separator=" "  close=" ">
 				INTO attach (attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name)
 				VALUES (#{pattach.ano}, #{pattach.attable}, #{pattach.atid}, #{pattach.atindex}, #{pattach.acontentType}, #{pattach.asname}, #{pattach.aoname})
 			</foreach>
 		</if>
+		SELECT * FROM DUAL
 	</insert>
 	
 	<delete id="deleteByPid" parameterType="string">
@@ -73,8 +74,10 @@
 					product_name=#{pname},
 					product_category=#{pcategory},
 					product_description=#{pdescription},
-					product_price=#{pprice},
-					product_color=#{pcolor}
+					product_price=#{pprice}
+					<if test="pcolor != null">
+						, product_color=#{pcolor}
+					</if>
 			WHERE product_id = #{pid};
 			<if test="pattaches != null">
 				<foreach collection="pattaches" item="pattach" separator=" "  close="SELECT * FROM DUAL">

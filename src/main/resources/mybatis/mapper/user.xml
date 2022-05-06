@@ -62,12 +62,16 @@
 	
 	<update id="update" parameterType="user">
 		UPDATE users SET
-			user_birth = #{ubirth},
+			<if test="ubirth != null">
+				user_birth = TO_DATE(#{ubirth}, 'RR/MM/DD HH24:MI:SS'),
+			</if>
 			user_tel = #{utel},
 			user_email = #{uemail},
-			user_zipcode = #{uzipcode},
-			user_address1 = #{uaddress1},
-			user_address2 = #{uaddress2},
+			<if test="uzipcode != null">
+				user_zipcode = #{uzipcode},
+				user_address1 = #{uaddress1},
+				user_address2 = #{uaddress2},
+			</if>
 			user_password = #{upassword}
 		WHERE user_id = #{uid}	
 	</update>

@@ -71,7 +71,7 @@
 				</if>
 			</if>
 			<if test="dattaches != null">
-				<foreach collection="dattaches" item="dattach" separator=" "  close=" ">
+				<foreach collection="dattaches" item="dattach" separator=" " close=" ">
 
 					INTO attach (attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name)
 					VALUES (#{dattach.ano}, #{dattach.attable}, #{dattach.atid}, #{dattach.atindex}, #{dattach.acontentType}, #{dattach.asname}, #{dattach.aoname})
@@ -99,9 +99,13 @@
                dentist_tel = #{dtel},
                dentist_zipcode = #{dzipcode},
                dentist_address1 = #{daddress1},
-               dentist_address2 = #{daddress2},
-               dentist_employees = #{demployees},
-               dentist_py = #{dpy}
+               dentist_address2 = #{daddress2}
+               <if test="demployees != null">
+               		, dentist_employees = #{demployees}
+               </if>
+               <if test="dpy != null">
+               		, dentist_py = #{dpy}
+               </if>
          WHERE dentist_number = #{dnumber};
          <if test="dattaches != null">
             <foreach collection="dattaches" item="dattach" separator=" ">
