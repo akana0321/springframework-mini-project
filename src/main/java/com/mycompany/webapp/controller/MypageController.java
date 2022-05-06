@@ -78,18 +78,23 @@ public class MypageController {
 		
 		List<Question> getAllQuestion = questionService.getQuestionsByPager(new Pager(5,10,questionService.getTotalQuestionNum(),1));
 		log.info(getAllQuestion);
-		List<Question> getUidQuestion = new ArrayList();
+		List<Question> getUidQuestionIn = new ArrayList();
+		List<Question> getUidQuestionPro = new ArrayList();
 		
 		for(int i=0; i<getAllQuestion.size();i++) {
-			if(getAllQuestion.get(i).getUid().equals(userId)) {
-				getUidQuestion.add(getAllQuestion.get(i));
-				String date = getUidQuestion.get(0).getQdate().split(" ")[0];
-				getUidQuestion.get(0).setQdate(date);
+			if(getAllQuestion.get(i).getUid().equals(userId) && getAllQuestion.get(i).getQcategory().equals("INTERIOR")) {
+				getUidQuestionIn.add(getAllQuestion.get(i));
+				String date = getUidQuestionIn.get(0).getQdate().split(" ")[0];
+				getUidQuestionIn.get(0).setQdate(date);
+			}
+			if(getAllQuestion.get(i).getUid().equals(userId) && getAllQuestion.get(i).getQcategory().equals("PRODUCT")) {
+				getUidQuestionPro.add(getAllQuestion.get(i));
 			}
 		}
 		
 		
-		session.setAttribute("getUidQuestion", getUidQuestion);
+		session.setAttribute("getUidQuestionIn", getUidQuestionIn);
+		session.setAttribute("getUidQuestionPro", getUidQuestionPro);
 		return "mypage/mypage";
 	}
 
