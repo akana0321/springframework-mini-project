@@ -18,9 +18,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.webapp.dto.Attach;
 import com.mycompany.webapp.dto.Dentist;
+import com.mycompany.webapp.dto.Pager;
+import com.mycompany.webapp.dto.Question;
 import com.mycompany.webapp.dto.User;
 import com.mycompany.webapp.service.AttachService;
 import com.mycompany.webapp.service.DentistService;
+import com.mycompany.webapp.service.QuestionService;
 import com.mycompany.webapp.service.UserService;
 
 import lombok.extern.log4j.Log4j2;
@@ -39,6 +42,9 @@ public class MypageController {
 	
 	@Resource
 	private DentistService dentistService;
+	
+	@Resource
+	private QuestionService questionService;
 	
 	// MyPage 로드시 실행
 	@RequestMapping("/mypage")
@@ -62,7 +68,7 @@ public class MypageController {
 		session.setAttribute("attachList", attachList);
 		session.setAttribute("attachSize", dentistSize);
 		
-		user.setUbirth(user.getUbirth().split(" ")[0]);
+		user.setUbirth(user.getUbirth());
 		model.addAttribute("user",user);
 		session.setAttribute("userSession", user);
 		session.setAttribute("userimg", attach);
@@ -70,6 +76,20 @@ public class MypageController {
 		session.setAttribute("dentistArray", dentist);
 		session.setAttribute("dentistSize", dentistSize);
 		
+		List<Question> getAllQuestion = questionService.getQuestionsByPager(new Pager(5,10,questionService.getTotalQuestionNum(),1));
+		log.info(getAllQuestion);
+		List<Question> getUidQuestion = new ArrayList();
+		
+		for(int i=0; i<getAllQuestion.size();i++) {
+			if(getAllQuestion.get(i).getUid().equals(userId)) {
+				getUidQuestion.add(getAllQuestion.get(i));
+				String date = getUidQuestion.get(0).getQdate().split(" ")[0];
+				getUidQuestion.get(0).setQdate(date);
+			}
+		}
+		
+		
+		session.setAttribute("getUidQuestion", getUidQuestion);
 		return "mypage/mypage";
 	}
 
