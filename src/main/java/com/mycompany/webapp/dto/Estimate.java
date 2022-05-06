@@ -19,4 +19,17 @@ public class Estimate {
 	private int efurniture2;
 	private int efurniture3;
 	private String edate;
+	
+	// 결과 저장용
+	private double buildingWeight;
+	private double dentalWeight;
+	private int wallTotalPrice;
+	private int floorTotalPrice;
+	private int k3000bTotalPrice;
+	private int k5000bTotalPrice;
+	private int s2100zTotalPrice;
+	private int furniture1TotalPrice;
+	private int furniture2TotalPrice;
+	private int furniture3TotalPrice;
+	private int totalPrice;
 }
