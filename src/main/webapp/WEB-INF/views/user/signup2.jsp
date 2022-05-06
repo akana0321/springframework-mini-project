@@ -115,6 +115,25 @@
     			$('#pwCheck').html('');
     		}
     		
+    		if(upassword2.value == "") {
+    			$('#pwCheck').html('비밀번호를 확인하세요.');
+    	        $('#pwCheck').css('color', '#ff0000');
+    	        upassword2.focus();
+    	        return false;
+    		} else {
+    			$('#pwCheck').html('');
+    		}
+    		
+    		if(upassword1.value != upassword2.value) {
+    			$('#pwCheck').html('비밀번호가 일치하지 않습니다.');
+    	        $('#pwCheck').css('color', '#ff0000');
+    	        upassword2.focus();
+    	        return false;
+    		} else {
+    			$('#pwCheck').html('비밀번호가 일치합니다.');
+    	        $('#pwCheck').css('color', '#000000');
+    		}
+    		
     		var name = /^[가-힣]+$/;
     		
     		if(uname.value == "") {
@@ -209,13 +228,13 @@
           <div class="col-6">
             <label>* 비밀번호</label>
             <input type="password" name="upassword" id="upassword1" value="${user.upassword}" placeholder="비밀번호"/>
-            <small>8~16자 영문 대소문자, 숫자, 특수문자</small>
+            <small>8~16자 영문 대소문자, 숫자, 특수문자</small><br/>
           </div>
           <div class="col-6">
             <label>* 비밀번호 확인</label>
             <input type="password" name="upassword2" id="upassword2" placeholder="비밀번호 확인"/>
+            <!-- <small id="pwsameCheck"></small> -->
             <small id="pwCheck"></small>
-            <small id="pwsameCheck"></small>
           </div>
         </div>
         <div class="row">

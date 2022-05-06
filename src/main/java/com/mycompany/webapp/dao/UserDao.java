@@ -11,4 +11,7 @@ public interface UserDao {
 	public int insert(User user);
 	public int deleteByUid(String uid);
 	public int update(User user);
+	public User findId(String uid);
+	public User findPassword(String uid);
+	public User updatePassword(String uid);
 }

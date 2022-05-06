@@ -72,9 +72,21 @@
 		WHERE user_id = #{uid}	
 	</update>
 	
-	<!-- <select id="idChk" resultType="int">
-		SELECT count(*) FROM users
-		WHERE user_id = #{uid}
-	</select> -->
+	<select id="findId" resultType="user">
+		SELECT * FROM users
+		WHERE user_name = #{uname} 
+			AND user_tel = #{utel};
+	</select>
+	
+	<select id="findPassword" resultType="user">
+		SELECT * FROM users 
+		WHERE user_id=#{uid} 
+			AND user_name=#{uname} 
+			AND user_tel=#{utel}
+	</select>
+	
+	<update id="updatePassword">
+		UPDATE users SET user_password=#{upassword} WHERE user_id=#{uid} 
+	</update>
 </mapper>
 

@@ -22,7 +22,7 @@ function selectAll(selectAll) {
   });
 }
 
-$(function() {
+/* $(function() {
 	$('#upassword1').keyup(function(){
       $('#pwsameCheck').html('');
     });
@@ -36,4 +36,4 @@ $(function() {
           $('#pwsameCheck').css('color', '#000000');
         }
     });
-});
+}); */

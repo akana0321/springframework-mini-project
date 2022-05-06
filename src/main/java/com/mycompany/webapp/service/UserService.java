@@ -35,7 +35,7 @@ public class UserService {
 		return userDao.update(user);
 	}
 	
-	// Sing Up
+	// Sign Up
 	public JoinResult signUp(User user) {
 		try {
 			User dbUser = userDao.selectByUid(user.getUid());

@@ -15,6 +15,35 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/title.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/user/login.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/button.css" />
+    
+    <script>
+	    function idFindCheck() {
+	        event.preventDefault();
+	        
+			var uname = document.getElementById("uname");
+			var utel = document.getElementById("utel");
+			
+			if(uname.value == "") {
+				$('#idFindCheck').html('이름을 입력하세요.');
+		        $('#idFindCheck').css('color', '#ff0000');
+		        uname.focus();
+		        return false;
+			} else {
+				$('#idFindCheck').html('');
+			}
+			
+			if(utel.value == "") {
+				$('#idFindCheck').html('전화번호를 입력하세요.');
+		        $('#idFindCheck').css('color', '#ff0000');
+		        utel.focus();
+		        return false;
+			} else {
+				$('#idFindCheck').html('');
+			}
+			
+			document.signupform.submit();
+		}
+    </script>
   </head>
 	<body>
 	  	<%@ include file="/WEB-INF/views/common/mainheader.jsp" %>
@@ -35,8 +64,8 @@
 	        	<form class="Form" method="post" action="${pageContext.request.contextPath}/user/login">
 	          		<div class="login-title">로그인</div>
 	          		<div>
-	            		<input type="text" name="uid" class="form-control" value="${user.uid}" placeholder="아이디"/><br />
-	            		<input type="password" name=upassword class="form-control" placeholder="비밀번호" /><br />
+	            		<input type="text" name="uid" id="uid" class="form-control" value="${user.uid}" placeholder="아이디"/><br />
+	            		<input type="password" name="upassword" id="upassword" class="form-control" placeholder="비밀번호" /><br />
 	            		<c:if test="${error != null}">
 							<small style="color:red;" id="loginError">${error}</small>		
 						</c:if>
@@ -57,12 +86,12 @@
 	            		<div type="button" class="cancel" onclick="idFindclose()"><img src="${pageContext.request.contextPath}/resources/images/close.png" width="20em" /></div>
 	            		<div class="login-title">아이디 찾기</div>
 	
-	            		<input type="text" name="uname" class="popup_form_control" placeholder="이름" required /><br />
-	            		<input type="tel" name="utel" class="popup_form_control" placeholder="전화번호" required /><br />
-	
+	            		<input type="text" name="uname" id="uname" class="popup_form_control" placeholder="이름"/>
+	            		<input type="tel" name="utel" id="utel" class="popup_form_control" placeholder="전화번호"/>
+						<small id="idFindCheck"></small>
 	            		<!-- <button type="submit" class="btn">아이디 찾기</button> -->
 	            		<!-- <div class="btn" onclick="idFindCompleteopen()">아이디 찾기</div> -->
-	            		<input type="button" class="user_button" onclick="idFindCompleteopen()" value="아이디 찾기" />
+	            		<input type="button" class="user_button" onclick="idFindCheck()" onclick="idFindCompleteopen()" value="아이디 찾기" />
 	          		</form>
 	        	</div>
 	      	</div>
