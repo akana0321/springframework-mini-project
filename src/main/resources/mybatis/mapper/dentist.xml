@@ -71,13 +71,13 @@
 				</if>
 			</if>
 			<if test="dattaches != null">
-				<foreach collection="dattaches" item="dattach" separator=" " close="SELECT * FROM DUAL">
+				<foreach collection="dattaches" item="dattach" separator=" "  close=" ">
+
 					INTO attach (attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name)
 					VALUES (#{dattach.ano}, #{dattach.attable}, #{dattach.atid}, #{dattach.atindex}, #{dattach.acontentType}, #{dattach.asname}, #{dattach.aoname})
 				</foreach>
 			</if>
-			SELECT *
-			FROM DUAL
+			SELECT * FROM DUAL
 	</insert>
 	
 	<delete id="deleteByDnumber" parameterType="string">

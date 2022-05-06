@@ -21,10 +21,12 @@
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/mypage/mypage.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/mypage/style_mypage.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/mypage/style_FAQ.css">
-
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
 
 </head>
 <body>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 <div id="mypage">
 	<section class="py-5 my-5">
 		<div style="margin : 0px 8%"  >
@@ -394,4 +396,5 @@
     AOS.init();
 </script>
 </body>
+<!-- <%@ include file="/WEB-INF/views/common/footer.jsp" %> -->
 </html>

@@ -98,26 +98,27 @@ public class MypageController {
 	
 	public int count = 0;
 	
+
 	//병원 정보 업로드된 파일 가져오기
 	@PostMapping(value = "/fileuploadAjax2",produces = "application/json; charset=UTF-8")
 	@ResponseBody
 	public void uploadImg(Attach attach, HttpServletRequest request) throws Exception {
-		log.info("싫핼");
+		log.info("실행");
 		HttpSession session = request.getSession();
-		int lastAno = attachService.getLastAno();
+		//int lastAno = attachService.getLastAno();
 		count++;
-		log.info(attach);
+		//log.info(lastAno);
+		log.info("파일 : "+attach);
 		List<Attach> attachList = (List<Attach>) session.getAttribute("attachList");
 		if (attachList.size() != 0){
 			attach.setAcontentType(attach.getAttach().getContentType());
 			attach.setAoname(attach.getAttach().getOriginalFilename());
 			attach.setAsname(new Date().getTime() + "-" + attach.getAttach().getOriginalFilename());
 			attach.setAttable("DENTIST");
-			attach.setAno(lastAno+1);
+			//attach.setAno(lastAno+1);
 			attach.setAtid(attachList.get(0).getAtid());
 			attach.setAtindex(String.valueOf(attachList.size()+1));
 			attachList.add(attach);
-			log.info(lastAno);
 			
 			if(count > 1) {
 				attachList.remove(attachList.size()-1);
@@ -131,7 +132,7 @@ public class MypageController {
 			attach.setAoname(attach.getAttach().getOriginalFilename());
 			attach.setAsname(new Date().getTime() + "-" + attach.getAttach().getOriginalFilename());
 			attach.setAttable("DENTIST");
-			attach.setAno(lastAno+1);
+			//attach.setAno(lastAno+1);
 			attach.setAtindex("1");
 			//dnumber를 받아올 경우의 수 : 2가지(기존 정보에서, 새로 생성할 때)
 			//attach.setAtid("1111");
@@ -204,13 +205,16 @@ public class MypageController {
 			updateDentist.setDaddress2(daddress2[i]);
 			updateDentist.setDemployees(demployees[i]);
 			updateDentist.setDpy(dpy[i]);
-			//updateDentist.setDattaches((List<Attach>)dentist.get(i).getDattaches());
-			//log.info(updateDentist.getDattaches());
-			
-			//updateDentist.setDattaches(attach);
 			dentistService.updateDentist(updateDentist);
 		}
-		attachService.insertAttach(attach.get(attach.size()-1));
+		int lastAno = attachService.getLastAno();
+		for(int i=0; i<attach.size(); i++) {
+			attach.get(i).setAtid(dnumber[0]);
+		}
+		attach.get(attach.size()-1).setAno(lastAno+1);
+
+		if(attach.size() != 0)
+			attachService.insertAttach(attach.get(attach.size()-1));
 		return "redirect:/mypage/mypage";
 	}
 	
@@ -237,7 +241,6 @@ public class MypageController {
 		for(int i=0; i<dentist.getDattaches().size(); i++)
 			dentist.getDattaches().get(i).setAtid(dnumber);
 		log.info(dentist.getDattaches().size());
-		//log.info("::"+ dentist.getDattaches().get(0).getAtid());
 		dentistService.insertDentist(dentist);
 		
 
