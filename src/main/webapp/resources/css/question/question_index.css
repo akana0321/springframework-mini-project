@@ -335,17 +335,10 @@ html {
 }
 
 #questionContainer input[type="radio"]:checked + .card {
-    transform: scale(1, 1);
-    border-width: .3rem;
-    border-color: #ffb440;
-    background-color: #f5d19a;
-    /* opacity: 1;  선택시 배경 옅게 하기*/
+    outline: #a880ff solid 0.5rem;
+    transition: all .2s ease-in-out;
 }
-
-#questionContainer input[type="radio"]:checked + .card > .card-body > ul {
-    list-style-image: url('../../images/question/checkAfter.png');
-}
-
+ 
 #questionContainer .counting {
     text-align: center;
     font-size: 2rem;

@@ -190,7 +190,7 @@
 	</div>
 <script>
 	var controller = new ScrollMagic.Controller({
-		addIndicators : true
+		addIndicators : false
 	});
 
 	var tween = TweenMax.to("#animation", 0.5, {
