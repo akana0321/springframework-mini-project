@@ -46,7 +46,7 @@
 	<insert id="insert" parameterType="user">
 		INSERT INTO users 
 		(user_id, user_role, user_enabled, user_password, user_name, user_email, user_tel, user_sign_up_date, user_birth, user_zipcode, user_address1, user_address2) 
-		VALUES (#{uid}, #{urole}, #{uenabled}, #{upassword}, #{uname}, #{uemail}, #{utel}, sysdate, #{ubirth}, #{uzipcode}, #{uaddress1}, #{uaddress2})
+		VALUES (#{uid}, #{urole}, #{uenabled}, #{upassword}, #{uname}, #{uemail}, #{utel}, sysdate, TO_CHAR(#{ubirth}, 'YYYY-MM-DD'), #{uzipcode}, #{uaddress1}, #{uaddress2})
 	</insert>
 	
 	<delete id="deleteByUid" parameterType="string">
@@ -63,7 +63,7 @@
 	<update id="update" parameterType="user">
 		UPDATE users SET
 			<if test="ubirth != null">
-				user_birth = #{ubirth},
+				user_birth = TO_CHAR(#{ubirth}, 'YYYY-MM-DD"),
 			</if>
 			user_tel = #{utel},
 			user_email = #{uemail},
