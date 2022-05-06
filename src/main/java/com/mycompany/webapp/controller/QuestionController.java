@@ -1,12 +1,13 @@
 package com.mycompany.webapp.controller;
 
-import java.time.LocalDate;
 import java.util.HashMap;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.webapp.dto.Estimate;
 import com.mycompany.webapp.dto.Question;
+import com.mycompany.webapp.dto.User;
 import com.mycompany.webapp.items.EstimateProcess;
 import com.mycompany.webapp.service.AttachService;
 import com.mycompany.webapp.service.CommentService;
@@ -53,22 +55,22 @@ public class QuestionController {
 		log.info(userService.getUserByUid("userid04"));*/
 		
 		/*//Dentist Service Test
-		log.info(dentistService.getDentistsByUid("userid04")+"\n\n\n\n");
-		log.info(dentistService.getDentistByDnumber("1112233333"));
+		log.info(dentistService.getDentistsByUid("userid23")+"\n\n\n\n");
+		log.info(dentistService.getDentistByDnumber("8889900000"));
 		// 해당 번호가 있는지 없는지 체크
-		Dentist dentist = dentistService.getDentistByDnumber("5556677777");
+		Dentist dentist = dentistService.getDentistByDnumber("8889900000");
 		if(dentist == null) {
 			// 만약 없으면 새로 Dentist 객체를 만들고 값 세팅
 			dentist = new Dentist();
-			dentist.setDnumber("5556677777");
-			dentist.setUid("userid06");
-			dentist.setDname("정말 좋은 치과");
-			dentist.setDtel("070-1125-3245");
-			dentist.setDzipcode("55555");
-			dentist.setDaddress1("서울 송파구 가락동 321");
-			dentist.setDaddress2("2층 205호");
-			dentist.setDemployees(4);
-			dentist.setDpy(55);
+			dentist.setDnumber("8889900000");
+			dentist.setUid("userid23");
+			dentist.setDname("치과2234");
+			dentist.setDtel("070-2321-9877");
+			dentist.setDzipcode("6666");
+			dentist.setDaddress1("서울 송파구 가락동 456");
+			dentist.setDaddress2("6층 605호");
+			dentist.setDemployees(8);
+			dentist.setDpy(90);
 			
 			// Attach 테이블에 넣기 위해 현재 마지막 Attach_no값을 가져옴
 			int lastAno = attachService.getLastAno();
@@ -76,19 +78,19 @@ public class QuestionController {
 			Attach dattach1 = new Attach();
 			dattach1.setAno(lastAno+1);	// 손수 1씩 더해줘야 함...
 			dattach1.setAttable("DENTIST");
-			dattach1.setAtid("5556677777");
+			dattach1.setAtid("8889900000");
 			dattach1.setAtindex("1");
 			dattach1.setAcontentType("image/png");
-			dattach1.setAsname("1234557890123-floor_plan1.png");
+			dattach1.setAsname("1231157888123-floor_plan1.png");
 			dattach1.setAoname("floor_plan1.png");
 			
 			Attach dattach2 = new Attach();
 			dattach2.setAno(lastAno+2);
 			dattach2.setAttable("DENTIST");
-			dattach2.setAtid("5556677777");
+			dattach2.setAtid("8889900000");
 			dattach2.setAtindex("2");
 			dattach2.setAcontentType("image/jpeg");
-			dattach2.setAsname("1234557890123-floor_plan2.jpg");
+			dattach2.setAsname("1232257889123-floor_plan2.jpg");
 			dattach2.setAoname("floor_plan2.png");
 			
 			// Attach List를 만들어 dentist의 dattaches에 넣음
@@ -199,14 +201,16 @@ public class QuestionController {
 		question.setQcontent("INTERIOR QUESTION - " + userId);
 		question.setQno(questionService.insertQuestion(question));
 		
-		
 		estimate.setQno(question.getQno());
-		log.info(estimate.getQno());
 		
 		estimate.setUid(userId);
 		estimateService.insertEstimate(estimate);
 		
-		log.info(estimate);
-		return "/mypage/mypage";
+		return "/question/alert";
+	}
+	
+	@RequestMapping("/questionFinish")
+	public String qeustionFinish() {
+		return "redirect:/mypage/mypage";
 	}
 }
