@@ -24,7 +24,8 @@ public class EstimateService {
 	
 	// Insert Estimate
 	public int insertEstimate(Estimate estimate) {
-		return estimateDao.insert(estimate);
+		estimateDao.insert(estimate);
+		return estimate.getEno();
 	}
 	
 	// Delete Estimate by Estimate no

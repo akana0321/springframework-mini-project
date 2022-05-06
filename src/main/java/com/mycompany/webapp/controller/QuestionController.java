@@ -1,8 +1,10 @@
 package com.mycompany.webapp.controller;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.webapp.dto.Estimate;
+import com.mycompany.webapp.dto.Question;
 import com.mycompany.webapp.items.EstimateProcess;
 import com.mycompany.webapp.service.AttachService;
 import com.mycompany.webapp.service.CommentService;
@@ -103,17 +106,17 @@ public class QuestionController {
 		log.info(productService.getProductByPid("building-house"));
 		
 		// 우선 해당 product_id가 있는지 확인
-		Product product = productService.getProductByPid("chair-macaron2");
+		Product product = productService.getProductByPid("chair-macaron3");
 		log.info(product);
 		if(product == null) {
 			// 없다면 Product 객체 생성 후 값 세팅
 			product = new Product();
-			product.setPid("chair-macaron2");
-			product.setPname("macaron2");
+			product.setPid("chair-macaron3");
+			product.setPname("macaron3");
 			product.setPcategory("CHAIR");
-			product.setPdescription("마카롱 체어 보완버전");
-			product.setPprice(35);
-			product.setPcolor("red,blue,pink");
+			product.setPdescription("마카롱 체어 고급형");
+			product.setPprice(40);
+			product.setPcolor("black,bronwn");
 			
 			// 첨부 파일이 있을경우 현재 테이블의 마지막 Attach_no를 가져옴
 			int lastAno = attachService.getLastAno();
@@ -121,20 +124,20 @@ public class QuestionController {
 			Attach pattach1 = new Attach();
 			pattach1.setAno(lastAno + 1);	// Attach_no는 손수 1씩 더해줘야 함...
 			pattach1.setAttable("PRODUCT");
-			pattach1.setAtid("chair-macaron2");
+			pattach1.setAtid("chair-macaron3");
 			pattach1.setAtindex("1");
 			pattach1.setAcontentType("image/png");
-			pattach1.setAsname("1234557890123-macaron2.png");
-			pattach1.setAoname("macaron2.png");
+			pattach1.setAsname("1234557890124-macaron3_1.png");
+			pattach1.setAoname("macaron3_1.png");
 			
 			Attach pattach2 = new Attach();
 			pattach2.setAno(lastAno + 2);
 			pattach2.setAttable("PRODUCT");
-			pattach2.setAtid("chair-macaron2");
-			pattach2.setAtindex("1");
+			pattach2.setAtid("chair-macaron3");
+			pattach2.setAtindex("2");
 			pattach2.setAcontentType("image/png");
-			pattach2.setAsname("1234557890123-macaron2.png");
-			pattach2.setAoname("macaron2.png");
+			pattach2.setAsname("1234557890125-macaron3_2.png");
+			pattach2.setAoname("macaron3_2.png");
 			
 			// Attach List를 만들고 각각의 attach 객체를 추가한 뒤 product에 set
 			List<Attach> pattachList = new ArrayList<>();
@@ -185,9 +188,24 @@ public class QuestionController {
 	}
 	
 	@RequestMapping("/questionSending")
-	public String questionSending(HttpSession session) {
+	public String questionSending(HttpSession session, HttpServletRequest request) {
 		/* session으로 UID 받고 Question 객체 만들어서 삽입 후 qno 받고 estimate 객체 세팅한 후 insert */
+		String userId = (String) request.getSession().getAttribute("sessionUid");
 		Estimate estimate = ep.init();
+		
+		Question question = new Question();
+		question.setUid(userId);
+		question.setQcategory("INTERIOR");
+		question.setQcontent("INTERIOR QUESTION - " + userId);
+		question.setQno(questionService.insertQuestion(question));
+		
+		
+		estimate.setQno(question.getQno());
+		log.info(estimate.getQno());
+		
+		estimate.setUid(userId);
+		estimateService.insertEstimate(estimate);
+		
 		log.info(estimate);
 		return "/mypage/mypage";
 	}
