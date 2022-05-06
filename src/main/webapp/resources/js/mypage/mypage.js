@@ -46,7 +46,7 @@ function requestAjaxIn() {
 
 	    $.ajax({
 	    url: "ajax/addinfo",
-	    method: "get",
+	    method: "post",
 	    data: { pageNo: 1 },
 	    success: function (data) {
 	      tmp += data;
@@ -105,10 +105,27 @@ function requestAjaxIn() {
 	  div.remove();
 	}
 	
-	function removeFile(value){
+	function removeFile(value,idx){
 		console.log(value);
-	  var div = document.getElementById(value);
-	  div.remove();
+		var removeF = document.getElementById(value).innerText;
+		const sendData = document.getElementById(idx).getAttribute("value");
+		var sendDataR = removeF + " " + sendData;
+		console.log(sendDataR);
+		
+	  	var div = document.getElementById(value);
+	 	div.remove();
+	 	
+	 	const formData = new FormData();
+		formData.append("sendData", sendDataR);
+		
+		$.ajax({
+			url: "removeFile",
+			method: "post",
+			data: formData,
+			cache: false,		// 파일이 포함되어 있으니, 브라우저 메모리에 저장 x
+			processData: false, // title=xxx&desc=yyy 식으로 x
+			contentType: false	// 파트마다 Content-Type이 포함되기 때문에 따로 헤더에 Content-Type에 추가 x
+		})
 	}
 
 
@@ -183,15 +200,10 @@ function requestAjaxIn() {
 			url: "fileuploadAjax2",
 			method: "post",
 			data: formData2,
-			cache: false,		// 파일이 포함되어 있으니, 브라우저 메모리에 저장 x
+			cache: true,		// 파일이 포함되어 있으니, 브라우저 메모리에 저장 x
 			processData: false, // title=xxx&desc=yyy 식으로 x
 			contentType: false	// 파트마다 Content-Type이 포함되기 때문에 따로 헤더에 Content-Type에 추가 x
-		}).done((data) => {
-			console.log(data);
-			if(data.result === "success") {
-				window.alert("프로필 이미지 변경 완료");
-			}
-		});
+		})
 	  
 	  
 	}
@@ -219,15 +231,10 @@ function requestAjaxIn() {
 			url: "fileuploadAjax2",
 			method: "post",
 			data: formData1,
-			cache: false,		// 파일이 포함되어 있으니, 브라우저 메모리에 저장 x
+			cache: true,		// 파일이 포함되어 있으니, 브라우저 메모리에 저장 x
 			processData: false, // title=xxx&desc=yyy 식으로 x
 			contentType: false	// 파트마다 Content-Type이 포함되기 때문에 따로 헤더에 Content-Type에 추가 x
-		}).done((data) => {
-			console.log(data);
-			if(data.result === "success") {
-				window.alert("프로필 이미지 변경 완료");
-			}
-		});
+		})
 	  
 	  
 	}

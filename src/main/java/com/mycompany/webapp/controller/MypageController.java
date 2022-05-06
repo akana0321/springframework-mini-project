@@ -50,8 +50,7 @@ public class MypageController {
 		Attach attach = user.getUattach();
 		List<Dentist> dentist= dentistService.getDentistsByUid(userId);
 		int dentistSize = dentist.size();
-		
-		
+
 		List<Attach> attachList = new ArrayList();
 		
 		for(int i=0; i<dentistSize; i++) {
@@ -97,7 +96,7 @@ public class MypageController {
 	}
 	
 	public int count = 0;
-	
+	public int uploadFileCount = 0;
 
 	//병원 정보 업로드된 파일 가져오기
 	@PostMapping(value = "/fileuploadAjax2",produces = "application/json; charset=UTF-8")
@@ -105,14 +104,16 @@ public class MypageController {
 	public void uploadImg(Attach attach, HttpServletRequest request) throws Exception {
 		log.info("실행");
 		HttpSession session = request.getSession();
-		//int lastAno = attachService.getLastAno();
+		
 		count++;
-		//log.info(lastAno);
-		log.info("파일 : "+attach);
+		uploadFileCount++;
+		log.info("파일 : "+attach.getAttach().getOriginalFilename());
+		@SuppressWarnings("unchecked")
 		List<Attach> attachList = (List<Attach>) session.getAttribute("attachList");
+		session.setAttribute("OriginName", attach.getAttach().getOriginalFilename());
 		if (attachList.size() != 0){
 			attach.setAcontentType(attach.getAttach().getContentType());
-			attach.setAoname(attach.getAttach().getOriginalFilename());
+			attach.setAoname((String)session.getAttribute("OriginName"));
 			attach.setAsname(new Date().getTime() + "-" + attach.getAttach().getOriginalFilename());
 			attach.setAttable("DENTIST");
 			//attach.setAno(lastAno+1);
@@ -120,16 +121,16 @@ public class MypageController {
 			attach.setAtindex(String.valueOf(attachList.size()+1));
 			attachList.add(attach);
 			
-			if(count > 1) {
-				attachList.remove(attachList.size()-1);
-				count = 1;
-			}
+//			if(count > 1) {
+//				attachList.remove(attachList.size()-1);
+//				count = 1;
+//			}
 			session.setAttribute("attachList", attachList);
-			log.info(attachList);
+			
 		}
 		else {
 			attach.setAcontentType(attach.getAttach().getContentType());
-			attach.setAoname(attach.getAttach().getOriginalFilename());
+			attach.setAoname((String)session.getAttribute("OriginName"));
 			attach.setAsname(new Date().getTime() + "-" + attach.getAttach().getOriginalFilename());
 			attach.setAttable("DENTIST");
 			//attach.setAno(lastAno+1);
@@ -138,14 +139,41 @@ public class MypageController {
 			//attach.setAtid("1111");
 			attachList.add(attach);
 			
-			if(count > 1) {
-				attachList.remove(attachList.size()-1);
-				count = 1;
-			}
+//			if(count > 1) {
+//				attachList.remove(attachList.size()-1);
+//				count = 1;
+//			}
 			session.setAttribute("attachList", attachList);
-			log.info(attachList);
 		}
 	}
+	
+	//병원 정보 추가
+		@SuppressWarnings("unchecked")
+		@RequestMapping("/dentalInfoAdd")
+		public String dentalInfoAdd(String dnumber,String dname,String dtel,String dzipcode, 
+				String daddress1,String daddress2,int demployees, int dpy,HttpServletRequest request) {
+			HttpSession session = request.getSession();
+			String userId = (String) session.getAttribute("sessionUid");
+			
+			Dentist dentist = new Dentist();
+			dentist.setUid(userId);
+			dentist.setDaddress1(daddress1);
+			dentist.setDaddress2(daddress2);
+			dentist.setDemployees(demployees);
+			dentist.setDname(dname);
+			dentist.setDnumber(dnumber);
+			dentist.setDtel(dtel);
+			dentist.setDpy(dpy);
+			dentist.setDzipcode(dzipcode);
+			dentist.setDattaches((List<Attach>)session.getAttribute("attachList"));
+			for(int i=0; i<dentist.getDattaches().size(); i++)
+				dentist.getDattaches().get(i).setAtid(dnumber);
+			log.info(dentist.getDattaches().size());
+			dentistService.insertDentist(dentist);
+			
+
+			return "redirect:/mypage/mypage";
+		}
 
 	//내 정보 변경시 DB update
 	@RequestMapping("/myInfo")
@@ -175,8 +203,9 @@ public class MypageController {
 
 			}
 		}
-		log.info(userUpdate);
+
 		userService.updateUser(userUpdate);
+		//session.removeAttribute("attachList");
 		return "redirect:/mypage/mypage";
 	}
 	
@@ -188,13 +217,12 @@ public class MypageController {
 			String[] daddress1,String[] daddress2,int[] demployees, int[] dpy,HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		int dentalSize = (int) session.getAttribute("dentistSize");
-		log.info(dentalSize);
+
 		List<Dentist> dentist = (List<Dentist>) session.getAttribute("dentistArray");
-		log.info(dentist.get(0).getUid());
+
 		Dentist updateDentist = new Dentist();
 
 		List<Attach> attach = (List<Attach>) session.getAttribute("attachList");
-		log.info(attach);
 		for(int i=0; i<dentalSize;i++) {
 			updateDentist.setUid(dentist.get(i).getUid());
 			updateDentist.setDnumber(dnumber[i]);
@@ -215,37 +243,12 @@ public class MypageController {
 
 		if(attach.size() != 0)
 			attachService.insertAttach(attach.get(attach.size()-1));
+	
+		log.info(session.getAttribute("attachList"));
 		return "redirect:/mypage/mypage";
 	}
 	
-	//병원 정보 추가
-	@RequestMapping("/dentalInfoAdd")
-	public String dentalInfoAdd(String dnumber,String dname,String dtel,String dzipcode, 
-			String daddress1,String daddress2,int demployees, int dpy,HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		String userId = (String) session.getAttribute("sessionUid");
-		
-		
-		
-		Dentist dentist = new Dentist();
-		dentist.setUid(userId);
-		dentist.setDaddress1(daddress1);
-		dentist.setDaddress2(daddress2);
-		dentist.setDemployees(demployees);
-		dentist.setDname(dname);
-		dentist.setDnumber(dnumber);
-		dentist.setDtel(dtel);
-		dentist.setDpy(dpy);
-		dentist.setDzipcode(dzipcode);
-		dentist.setDattaches((List<Attach>)session.getAttribute("attachList"));
-		for(int i=0; i<dentist.getDattaches().size(); i++)
-			dentist.getDattaches().get(i).setAtid(dnumber);
-		log.info(dentist.getDattaches().size());
-		dentistService.insertDentist(dentist);
-		
-
-		return "redirect:/mypage/mypage";
-	}
+	
 	
 	//기존 병원 정보 삭제
 	@PostMapping(value = "/removeinfoR",produces = "application/json; charset=UTF-8")
@@ -267,8 +270,26 @@ public class MypageController {
 	
 	
 	//병원 정보 업로드 이미지 삭제
-	@RequestMapping("/dentalRemove")
-	public String dentalRemove(HttpServletRequest request, int dentist, int file) {
+	@RequestMapping("/removeFile")
+	public String removeFile(String sendData) {
+		String[] tmp = sendData.split(" ");
+		String fileName = tmp[0];
+		String dnumber = tmp[1];
+		
+		log.info(fileName);
+		log.info(dnumber);
+		
+		Dentist dentist = dentistService.getDentistByDnumber(dnumber);
+		List<Attach> attach = dentist.getDattaches();
+		int getNo = 0;
+		for(int i=0; i<attach.size(); i++) {
+			if(attach.get(i).getAsname().equals(fileName)) {
+				getNo = attach.get(i).getAno();
+				break;
+			}
+		}
+		
+		attachService.deleteAttachOne(getNo);
 		
 		return "/mypage/mypage";
 	}
