@@ -51,8 +51,8 @@ function requestAjaxIn() {
 	    success: function (data) {
 	      tmp += data;
 	      tmp += "<div id='image_container" + count;
-	      tmp += "'></div><input type='file'  name='dattaches' class='mt-2' onchange=\"setThumbnail(event,'image_container" + count;
-	      tmp += "');\"></div></div>";
+	      tmp += "'></div><input type='file' id='dentalimg"+count+"'  name='dattaches' class='mt-2' onchange=\"setThumbnail(event,'image_container" + count;
+	      tmp += "','dentalimg"+count+"');\" ></div></div>";
 	      tmp += "<div class='col-md-6  text-right'><input class='btn' type='submit' style='background-color: rgba(128, 128, 128, 0.614); color:white;' value='저장하기'></div></div> </form>";
 	      
 	      let div = document.createElement("div");
@@ -78,9 +78,11 @@ function requestAjaxIn() {
 	}
 	//기존 병원 정보 삭제
 	function removeinfoR(value){
+		const sendData = document.getElementById("dnumber_"+value).getAttribute("value");
+		console.log(sendData);
 		
 		const formData = new FormData();
-		formData.append("value", value);
+		formData.append("sendData", sendData);
 		//Ajax로 서버로 전송
 		$.ajax({
 			url: "removeinfoR",
@@ -89,7 +91,12 @@ function requestAjaxIn() {
 			cache: false,		// 파일이 포함되어 있으니, 브라우저 메모리에 저장 x
 			processData: false, // title=xxx&desc=yyy 식으로 x
 			contentType: false	// 파트마다 Content-Type이 포함되기 때문에 따로 헤더에 Content-Type에 추가 x
-		})
+		}).done((data) => {
+			console.log(data);
+			if(data.result === "success") {
+				window.alert("병원 정보 삭제 완료");
+			}
+		});
 	}
 	
 	//추가된 병원 정보 삭제
@@ -152,7 +159,7 @@ function requestAjaxIn() {
 	
 	
 	//추가하는 병원 정보 업로드 파일 미리보기
-	function setThumbnail(event,idx) {
+	function setThumbnail(event,idx,imgNum) {
 	  var reader = new FileReader();
 	  reader.onload = function (event) {
 	    var img = document.createElement("img");
@@ -161,10 +168,12 @@ function requestAjaxIn() {
 	    $("#" + idx).html(img);
 	  };
 	  reader.readAsDataURL(event.target.files[0]);
+
 	  
 	  const attach = document.querySelector("#"+imgNum).files[0];
+	  
 		//${"#attach"}[0].files[0];
-		console.log(attach);
+		
 		//Multipart/form-data
 		const formData2 = new FormData();
 		formData2.append("attach", attach);

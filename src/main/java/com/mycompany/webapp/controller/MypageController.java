@@ -108,23 +108,42 @@ public class MypageController {
 		count++;
 		log.info(attach);
 		List<Attach> attachList = (List<Attach>) session.getAttribute("attachList");
-		attach.setAcontentType(attach.getAttach().getContentType());
-		attach.setAoname(attach.getAttach().getOriginalFilename());
-		attach.setAsname(new Date().getTime() + "-" + attach.getAttach().getOriginalFilename());
-		attach.setAttable("DENTIST");
-		attach.setAno(lastAno+1);
-		attach.setAtid(attachList.get(0).getAtid());
-		attach.setAtindex(String.valueOf(attachList.size()+1));
-		attachList.add(attach);
-		log.info(lastAno);
-		
-		if(count > 1) {
-			attachList.remove(attachList.size()-1);
-			count = 1;
+		if (attachList.size() != 0){
+			attach.setAcontentType(attach.getAttach().getContentType());
+			attach.setAoname(attach.getAttach().getOriginalFilename());
+			attach.setAsname(new Date().getTime() + "-" + attach.getAttach().getOriginalFilename());
+			attach.setAttable("DENTIST");
+			attach.setAno(lastAno+1);
+			attach.setAtid(attachList.get(0).getAtid());
+			attach.setAtindex(String.valueOf(attachList.size()+1));
+			attachList.add(attach);
+			log.info(lastAno);
+			
+			if(count > 1) {
+				attachList.remove(attachList.size()-1);
+				count = 1;
+			}
+			session.setAttribute("attachList", attachList);
+			log.info(attachList);
 		}
-		session.setAttribute("attachList", attachList);
-		log.info(attachList);
-//		return json;
+		else {
+			attach.setAcontentType(attach.getAttach().getContentType());
+			attach.setAoname(attach.getAttach().getOriginalFilename());
+			attach.setAsname(new Date().getTime() + "-" + attach.getAttach().getOriginalFilename());
+			attach.setAttable("DENTIST");
+			attach.setAno(lastAno+1);
+			attach.setAtindex("1");
+			//dnumber를 받아올 경우의 수 : 2가지(기존 정보에서, 새로 생성할 때)
+			//attach.setAtid("1111");
+			attachList.add(attach);
+			
+			if(count > 1) {
+				attachList.remove(attachList.size()-1);
+				count = 1;
+			}
+			session.setAttribute("attachList", attachList);
+			log.info(attachList);
+		}
 	}
 
 	//내 정보 변경시 DB update
@@ -187,7 +206,7 @@ public class MypageController {
 			updateDentist.setDpy(dpy[i]);
 			//updateDentist.setDattaches((List<Attach>)dentist.get(i).getDattaches());
 			//log.info(updateDentist.getDattaches());
-
+			
 			//updateDentist.setDattaches(attach);
 			dentistService.updateDentist(updateDentist);
 		}
@@ -203,6 +222,7 @@ public class MypageController {
 		String userId = (String) session.getAttribute("sessionUid");
 		
 		
+		
 		Dentist dentist = new Dentist();
 		dentist.setUid(userId);
 		dentist.setDaddress1(daddress1);
@@ -213,7 +233,11 @@ public class MypageController {
 		dentist.setDtel(dtel);
 		dentist.setDpy(dpy);
 		dentist.setDzipcode(dzipcode);
-		
+		dentist.setDattaches((List<Attach>)session.getAttribute("attachList"));
+		for(int i=0; i<dentist.getDattaches().size(); i++)
+			dentist.getDattaches().get(i).setAtid(dnumber);
+		log.info(dentist.getDattaches().size());
+		//log.info("::"+ dentist.getDattaches().get(0).getAtid());
 		dentistService.insertDentist(dentist);
 		
 
@@ -223,10 +247,18 @@ public class MypageController {
 	//기존 병원 정보 삭제
 	@PostMapping(value = "/removeinfoR",produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public void removeInfoR(int value, String dnumber) {
-		log.info(dnumber);
-		//String deleteDnumber = dnumber[value];
-		//dentistService.deleteDentistByDnumber(deleteDnumber);
+	public String removeInfoR(int sendData) {
+		log.info(sendData);
+	
+		String deleteDnumber = String.valueOf(sendData);
+		dentistService.deleteDentistByDnumber(deleteDnumber);
+		
+		
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("result", "success");
+		String json = jsonObject.toString();
+		
+		return json;
 	}
 	
 	

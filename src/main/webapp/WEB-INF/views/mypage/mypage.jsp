@@ -173,7 +173,7 @@
 								        <div class="col-md-12">
 								            <div class="form-group">
 								                <label for="hnumber">병원 등록 번호</label>
-								                <input type="text" class="form-control col-md-4" value="${dentist.dnumber}" name="dnumber" />
+								                <input type="text" id="dnumber_${status.count}" class="form-control col-md-4" value="${dentist.dnumber}" name="dnumber" />
 								            </div>
 								        </div>
 								        <div class="col-md-7">
@@ -241,6 +241,7 @@
 					        			<div class="col-md-6  text-right">
 											<input class="btn " type="submit" style="background-color: rgba(128, 128, 128, 0.614); color:white;" value="저장하기">
 										</div>
+										
 										
 					    				</div> 
 					    			</form>
