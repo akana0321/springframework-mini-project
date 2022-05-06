@@ -63,7 +63,7 @@
 	<update id="update" parameterType="user">
 		UPDATE users SET
 			<if test="ubirth != null">
-				user_birth = TO_DATE(#{ubirth}, 'RR/MM/DD HH24:MI:SS'),
+				user_birth = #{ubirth},
 			</if>
 			user_tel = #{utel},
 			user_email = #{uemail},

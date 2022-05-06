@@ -6,8 +6,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,15 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.webapp.dto.Estimate;
 import com.mycompany.webapp.dto.Question;
-import com.mycompany.webapp.dto.User;
 import com.mycompany.webapp.items.EstimateProcess;
-import com.mycompany.webapp.service.AttachService;
-import com.mycompany.webapp.service.CommentService;
-import com.mycompany.webapp.service.DentistService;
 import com.mycompany.webapp.service.EstimateService;
-import com.mycompany.webapp.service.ProductService;
 import com.mycompany.webapp.service.QuestionService;
-import com.mycompany.webapp.service.UserService;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -32,17 +24,7 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class QuestionController {
 	@Resource
-	UserService userService;
-	@Resource
-	DentistService dentistService;
-	@Resource
-	ProductService productService;
-	@Resource
 	QuestionService questionService;
-	@Resource
-	CommentService commentService;
-	@Resource
-	AttachService attachService;
 	@Resource
 	EstimateService estimateService;
 	
