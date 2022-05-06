@@ -53,11 +53,12 @@
 			INTO comments (comment_no, user_id, question_no, comment_content, comment_date) 
 			VALUES(#{cno}, #{uid}, #{qno}, #{ccontent}, sysdate)
 		<if test="cattaches != null">
-			<foreach collection="cattaches" item="cattach" separator=" " close="SELECT * FROM DUAL">
+			<foreach collection="cattaches" item="cattach" separator=" " close=" ">
 				INTO attach (attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name)
 				VALUES (#{cattach.ano}, #{cattach.attable}, #{cattach.atid}, #{cattach.atindex}, #{cattach.acontentType}, #{cattach.asname}, #{cattach.aoname})
 			</foreach>
 		</if>
+		SELECT * FROM DUAL
 	</insert>
 	
 	<delete id="deleteByCno" parameterType="int">
