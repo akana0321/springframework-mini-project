@@ -17,6 +17,7 @@
       <typeAlias type="com.mycompany.webapp.dto.Question" alias="question"/> 
       <typeAlias type="com.mycompany.webapp.dto.Comment" alias="comment"/> 
       <typeAlias type="com.mycompany.webapp.dto.Estimate" alias="estimate"/> 
+      <typeAlias type="com.mycompany.webapp.dto.Events" alias="events"/>
       <typeAlias type="com.mycompany.webapp.dto.Pager" alias="pager"/>
    </typeAliases>
 	
