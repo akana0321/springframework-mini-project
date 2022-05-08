@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mycompany.webapp.dto.Attach;
 import com.mycompany.webapp.dto.Comment;
@@ -118,7 +119,7 @@ public class MypageController {
 	//프로필 사진 변경
 	@PostMapping(value = "/fileuploadAjax",produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public String changeProfile(Attach attach, HttpServletRequest request) throws Exception {
+	public String changeProfile(Attach attach, HttpServletRequest request,HttpSession ssion) throws Exception {
 		HttpSession session = request.getSession();
 		Attach attachSession = new Attach();
 		attachSession.setAttach(attach.getAttach());
@@ -131,8 +132,9 @@ public class MypageController {
 		jsonObject.put("result", "success");
 		jsonObject.put("saveFilename", attachSession.getAoname());
 		String json = jsonObject.toString();
-		
-		session.removeAttribute("userimg");
+
+		ssion.removeAttribute("userimg");
+		//session.setAttribute("userimg", attachSession);
 		
 		return json;
 	}
@@ -374,26 +376,31 @@ public class MypageController {
 		
 		return "mypage/interialQ";
 	}
-	@RequestMapping("/question")
-	public String InterialQuestion(String ccontent,HttpServletRequest request) {
-		log.info(ccontent);
-		HttpSession session = request.getSession();
-		Comment comment = new Comment();
-		String uid = (String) session.getAttribute("sessionUid");
-		int qno = (int) session.getAttribute("QuestionNo");
-		Date date = new Date();
-		//SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-
-		comment.setCno(commentService.getTotalCommentsNumInQuestion(qno)+1);
-		comment.setQno(qno);
-		comment.setUid(uid);
-		comment.setCcontent(ccontent);
-		//comment.setCdate(format.format(date));
+	@PostMapping("/question")
+	public String InterialQuestion(String ccontent,MultipartFile cattach,HttpServletRequest request) {
+		log.info(ccontent.equals(""));
+		log.info(cattach);
 		
-		commentService.insertComment(comment);
+		if(!ccontent.equals("") && !ccontent.split("").equals("")) {
+			HttpSession session = request.getSession();
+			Comment comment = new Comment();
+			String uid = (String) session.getAttribute("sessionUid");
+			int qno = (int) session.getAttribute("QuestionNo");
+			Date date = new Date();
+			//SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			
+			comment.setCno(commentService.getTotalCommentsNumInQuestion(qno)+1);
+			comment.setQno(qno);
+			comment.setUid(uid);
+			comment.setCcontent(ccontent);
+			//comment.setCdate(format.format(date));
+			
+			commentService.insertComment(comment);
+		}
 		
 		return "redirect:/mypage/interialQ";
 	}
+	
 	@RequestMapping("/removeQuestion")
 	public String removeQuestion(int cno) {
 		log.info(cno);

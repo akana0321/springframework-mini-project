@@ -208,9 +208,31 @@
               </div>
               <div class="text-center">
                 <div class="form-group m-4  text-right">
-                  <input type="file" class="btn" >
+                  <input id="cattach" type="file" class="btn form-control-file" name="cattach" oninput="uploadFile(event)" multiple>
                   <input type="submit"  class="btn btn-light" value="문의하기">
                 </div>
+                <script type="text/javascript">
+			      function clickimg(event) {
+	
+			  		const attach = document.querySelector("#file").files[0];
+					//${"#attach"}[0].files[0];
+					
+					//Multipart/form-data
+					const formData = new FormData();
+					formData.append("cattach", attach);
+					
+					//Ajax로 서버로 전송
+					$.ajax({
+						url: "QuestionFileUpload",
+						method: "post",
+						data: formData,
+						cache: false,		// 파일이 포함되어 있으니, 브라우저 메모리에 저장 x
+						processData: false, // title=xxx&desc=yyy 식으로 x
+						contentType: false	// 파트마다 Content-Type이 포함되기 때문에 따로 헤더에 Content-Type에 추가 x
+					})
+				}
+                
+                </script>
               </div>
             </form>
           </div>
