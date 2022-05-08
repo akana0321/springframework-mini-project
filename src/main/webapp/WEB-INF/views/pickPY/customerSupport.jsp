@@ -17,54 +17,57 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    <% request.setCharacterEncoding("euc-kr"); String productID=request.getParameter("product");
-      System.out.println("CustomerSupport=productID:"+productID); %>
+    <!-- title CSS -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aboutus/title.css" />
+
+    <% /* request.setCharacterEncoding("euc-kr"); String productID=request.getParameter("product"); */
+      /* System.out.println("CustomerSupport=productID:"+product.pname); */ %>
   </head>
 
   <body>
-    <div id="interialq" style="width: 80%" class="text-center">
-      <table class="mb-5">
-        <td id="">
-          <h1 class="mb-3 medium-title">제품 문의</font>
-          </h1>
-          <hr id="titleLine">
-        </td>
-      </table>
+    <div id="interialq" style="width: 100%; height:100% left:0;" class="text-center p-0 m-0">
       <div class="bg-white">
         <div class="d-flex flex-column">
-          <div class="d-flex shadow mb-3" style="background-color: #ffb3400c">
-            <div class="col-md-12 pt-5 text-left">
-              <div class="fa fa-3x fa-arrow-circle-left float-left ml-5" onclick="location.href='mypage'" id="back"
-                data-aos="fade-in" data-aos-duration="1500"></div>
-              <div style="font-size: 40px; color: #343434; font-weight: 700; text-align: center; margin: 0 10%;"
-                class="mb-5 " data-aos="fade-up" data-aos-duration="2000">예상 견적서</div>
-              <div data-aos="slide-up" data-aos-duration="3000">
-                <div>
-
+          <div  style="background-color: #ffb3400c">
+            <div class="col-md-12 p-0 m-0 text-left">
+              <!-- <div class="fa fa-3x fa-arrow-circle-left float-left ml-5" style="position:relative" onclick="location.href='productInfo'"
+                id="back"></div> -->
+              <div style="color: #343434; margin: 0 10%; position:relative" class="medium-title mb-5 ">
+                상품문의<br/>
+              </div>
+              <div>
+                <div class="small-title"> ${product.pname }</div>
+                <div style="text-align:center;">
+                  <img id="background-image"
+                    src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/1537517988_102268_1.jpg?gif=1&w=1280&h=1280&c=c"
+                    width="100px" height="100px" style="position:relative;'" />
+                  <br />
+                  <br />
+                  ${product.pdescription }
+                  <br /><br />
                 </div>
               </div>
             </div>
           </div>
 
 
-          <div class="col-md-12 shadow" id="inquire" data-aos="fade-out-down" data-aos-duration="3000"
-            data-aos-offset="200">
-            <div class="text-left mt-2 ml-2" style="font-size: 30px; font-weight: 600; padding-top: 2%;">
-              문의
+          <div class="col-md-12" id="inquire">
+            <div class="text-center mt-2 ml-2 small-title" >
+              문의 내용
             </div>
             <hr />
 
-            <form style="margin-top: 5%; margin-bottom: 5%" action="#">
+            <form method="post" modelAttribute="question" action="productCS">
               <div class="col-md-12">
                 <div class="form-group m-4">
-                  <textarea cols="60" class="form-control" id="content" rows="15" placeholder="문의 내용"
-                    style="resize: none"></textarea>
+                  <input type="text" class="form-control" id="content" name="qcontent" placeholder="문의 내용"
+                    style="resize: none"></input>
                 </div>
               </div>
               <div class="text-center">
                 <div class="form-group m-4  text-right">
                   <!-- <input type="file" class="btn"> -->
-                  <intput type="submit" class="btn btn-light" onclick="question()">문의하기
+                  <a href="questionProduct" class="btn  text-center ">문의하기</a>
                 </div>
               </div>
             </form>

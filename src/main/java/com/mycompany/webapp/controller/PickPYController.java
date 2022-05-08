@@ -1,11 +1,17 @@
 package com.mycompany.webapp.controller;
 
+import com.mycompany.webapp.dto.Estimate;
 import com.mycompany.webapp.dto.Product;
+import com.mycompany.webapp.dto.Question;
 import com.mycompany.webapp.service.ProductService;
+import com.mycompany.webapp.service.QuestionService;
 
 import lombok.extern.log4j.Log4j2;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -13,6 +19,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -22,6 +29,9 @@ public class PickPYController {
 
 	@Resource
 	private ProductService productService;
+	
+	@Resource
+	private QuestionService questionService;
 		
 		@RequestMapping("/content")
 		public String content() {
@@ -38,16 +48,42 @@ public class PickPYController {
 		public String PYroom() {
 			return "pickPY/PYroom";
 		}
-		@GetMapping("/customerSupport")
-		public String customerSupport() {
+		@RequestMapping("/customerSupport")
+		public String customerSupport(Model model, HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
+//			request.setCharacterEncoding("euc-kr");
+//			String pid = (String)request.getParameter("productId");
+//			log.info(pid);
+//			Product product = productService.getProductByPid(pid);
+//			session.setAttribute("product", product);
+//			log.info(product);
 			return "pickPY/customerSupport";
 		}
-		@GetMapping("/productInfo")
-		public String productInfo(Model model, HttpSession session) {
-			Product product = productService.getProductByPid("unit-k3000b");
-			//log.info(product);
+		@RequestMapping("/productInfo")
+		public String productInfo(Model model, HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
+			request.setCharacterEncoding("euc-kr");
+			String pid = (String)request.getParameter("productId");
+			log.info(pid);
+			Product product = productService.getProductByPid(pid);
 			session.setAttribute("product", product);
-			
+			log.info(product);
 			return "pickPY/productInfo";
+		}
+		
+		
+		@RequestMapping("/questionProduct")
+		public String myInfo(HttpSession session, HttpServletRequest request, Model model, Product product) {
+			String userId = (String) request.getSession().getAttribute("sessionUid");
+			
+			
+			Question question = new Question();
+			question.setUid(userId);
+			question.setQcategory("PRODUCT");
+			question.setQcontent("test");
+			//question.setPid(product.getPid());
+			log.info(product.getPid());
+			
+			//questionService.insertQuestion(question);
+			
+			return "/question/questionFinish";
 		}
 }

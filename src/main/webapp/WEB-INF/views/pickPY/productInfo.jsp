@@ -148,17 +148,20 @@
         alt=""
       />
       내용: ${product.pdescription }
-      <a
-        type="button"
-        class="btn btn-lg btn-block gray-button"
-        href="customerSupport?=${product.pid }"
-        style="color: white"
-      >
-        문의하기
-      </a>
+      <div id="pCS" type="button" class="btn btn-lg btn-block gray-button"
+          style="color: white; bottom:0;">
+          문의하기
+        </div>
       <script>
       /* Get product color from DB And add color div */
          $(document).ready(function () {
+        	 /* next page */  
+         	$("#pCS").on('click', function(e){
+         		console.log("hi");
+         		$("#product-container").load("customerSupport?productId="+product.pname);
+             	    console.log("workin?");
+             	 });
+        	 
         	 /* get product SVG */
         	 
         	 /* get product Image  */
