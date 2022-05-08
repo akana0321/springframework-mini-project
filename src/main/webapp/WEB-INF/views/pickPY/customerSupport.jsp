@@ -1,81 +1,52 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-  <!DOCTYPE html>
-  <html>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!doctype html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Studio765</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css"
-      href="${pageContext.request.contextPath }/resources/css/mypage/style_interialQ.css" />
-    <script src="${pageContext.request.contextPath }/resources/js/mypage/interialQ.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <% request.setCharacterEncoding("euc-kr"); String productID=request.getParameter("product");
-      System.out.println("CustomerSupport=productID:"+productID); %>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        
+         <!-- title CSS -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aboutus/title.css" />
+    <!-- button CSS -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aboutus/button.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" />
+
   </head>
-
   <body>
-    <div id="interialq" style="width: 80%" class="text-center">
-      <table class="mb-5">
-        <td id="">
-          <h1 class="mb-3 medium-title">제품 문의</font>
-          </h1>
-          <hr id="titleLine">
-        </td>
-      </table>
-      <div class="bg-white">
-        <div class="d-flex flex-column">
-          <div class="d-flex shadow mb-3" style="background-color: #ffb3400c">
-            <div class="col-md-12 pt-5 text-left">
-              <div class="fa fa-3x fa-arrow-circle-left float-left ml-5" onclick="location.href='mypage'" id="back"
-                data-aos="fade-in" data-aos-duration="1500"></div>
-              <div style="font-size: 40px; color: #343434; font-weight: 700; text-align: center; margin: 0 10%;"
-                class="mb-5 " data-aos="fade-up" data-aos-duration="2000">예상 견적서</div>
-              <div data-aos="slide-up" data-aos-duration="3000">
-                <div>
+    <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
-                </div>
-              </div>
+    <div class="d-flex row justify-content-center col-sm-12 mt-5" >
+        <div class="-sm-3" style="margin-right: 2vh;" >
+            <div style="object-fit:contain;"> <img src="${pageContext.request.contextPath }/resources/images/pickPY/k3000b.PNG" style="width:40vh; display: block;"> </div>
+            <div class="m-4" >
+                <div  style="font-weight: bold;"><font size="6">리프팅 의자</font></div>
+                <div>색상: 핑크, 블랙, 레드<br/><br/> A/S 2년 무료 <br/> 고객 평점 1위</div>
             </div>
-          </div>
-
-
-          <div class="col-md-12 shadow" id="inquire" data-aos="fade-out-down" data-aos-duration="3000"
-            data-aos-offset="200">
-            <div class="text-left mt-2 ml-2" style="font-size: 30px; font-weight: 600; padding-top: 2%;">
-              문의
-            </div>
-            <hr />
-
-            <form style="margin-top: 5%; margin-bottom: 5%" action="#">
-              <div class="col-md-12">
-                <div class="form-group m-4">
-                  <textarea cols="60" class="form-control" id="content" rows="15" placeholder="문의 내용"
-                    style="resize: none"></textarea>
-                </div>
-              </div>
-              <div class="text-center">
-                <div class="form-group m-4  text-right">
-                  <!-- <input type="file" class="btn"> -->
-                  <intput type="submit" class="btn btn-light" onclick="question()">문의하기
-                </div>
-              </div>
-            </form>
-          </div>
         </div>
-      </div>
+        <div class="col-sm-7">
+            <div  class="mb-4" style="font-weight: bold; border-bottom: 0.2rem solid;"><font size="6">문의하기</font></div>
+            <input  class="mb-1" type="text" style="height: 100%; width: 100%; background-color: #f1f3f5; border: none; text-align: top;">
+            <div class="m-1" style="text-align:center;">
+              <div class="text-center">
+                <a
+                  href="../user/signUp2.html"
+                  class="btn gray-button"
+                  >문의하기</a
+                >
+              </div>
+            </div>
+        </div>
     </div>
-
-    <script>
-      AOS.init();
-    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
-
-  </html>
+</html>

@@ -30,7 +30,7 @@
       </div>
       <div class="maincon" style="position: absolute; z-index: 1;">
         <label>
-          독보적 1위<br />
+          독보적 1위<br/>
           치과 인테리어
         </label>
         <p style="font-size: 1.3em">
@@ -42,9 +42,7 @@
             <a href="${pageContext.request.contextPath}/user/login" class="mainbtn1">튜토리얼 시작</a>
           </div>
           <div>
-            <a href="studio765/765_advantage.html" class="mainbtn2"
-              >비회원으로 시작</a
-            >
+            <a href="${pageContext.request.contextPath}/aboutus/content" class="mainbtn2">비회원으로 시작</a>
           </div>
         </div>
       </div>

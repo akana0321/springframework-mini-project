@@ -21,7 +21,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 	<title>Anything Zoomer | Image</title>
-
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/pickPY/anythingzoomer.css">
 
     <link
@@ -54,7 +54,7 @@
 	</script>
 </head>
 <body >
-
+	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 <div id="main-content" style="position: relative;">
     <div class="small-title" style="position: absolute; top: 0%; right:5%;">마우스를 올려 도면도 상세보기</div>
