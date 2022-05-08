@@ -13,12 +13,28 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/user/signup.css" />
+    
+    <script type="text/javascript">
+	    function signupCheck() {
+	        event.preventDefault();
+      		
+	        var agreement = document.getElementsByName("agreement");
+      				
+      		if(document.data.agreement[0].checked == false && 
+      			document.data.agreement[1].checked == false) {
+      			alert("필수 항목에 체크해주세요.");
+      			return false;
+     		}
+      	
+      		document.data.submit();
+    	}
+    </script>
   </head>
   <body>
     <%@ include file="/WEB-INF/views/common/header.jsp" %>
     <script src="${pageContext.request.contextPath}/resources/js/signup.js"></script>
     <div class="signup1">
-      <form class="background col-6" action="${pageContext.request.contextPath}/user/signup2" method="get">
+      <form class="background col-6" action="${pageContext.request.contextPath}/user/signup2" name="data" method="get">
         <div style="text-align: center; margin-bottom: 4%;"><a href="../main.html"><img src="${pageContext.request.contextPath}/resources/images/logo.png" style="width: 30%;"/></a></div>
         <div class="checkbox_group">
           <label class="title">STUDIO 765 이용약관 동의 (필수)</label>
@@ -98,7 +114,7 @@ STUDIO 765는 본 약관의 내용을 여러분이 쉽게 확인할 수 있도�
           </textarea>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="agreement" id="agree1" value="1" onclick="checkSelectAll() btnActive()" required oninvalid="this.setCustomValidity('필수 선택 사항입니다.')" />
+              <input type="checkbox" name="agreement" id="agree1" value="1" onclick="checkSelectAll()"/>
               <span>이용약관에 동의합니다.</span>
             </label>
           </div>
@@ -164,7 +180,7 @@ STUDIO 765는 본 약관의 내용을 여러분이 쉽게 확인할 수 있도�
         </textarea>
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="agreement" value="2" onclick="checkSelectAll()" required oninvalid="this.setCustomValidity('필수 선택 사항입니다.')"/>
+              <input type="checkbox" name="agreement" value="2" onclick="checkSelectAll()"/>
               <span>이용약관에 동의합니다.</span>
             </label>
           </div>
@@ -278,7 +294,7 @@ STUDIO 765에서 제공하는 이벤트/혜택 등 다양한 정보를 휴대전
         <br />
                 <br />
         <!-- Spring으로 넘어가면 살리기 -->
-        <input type="submit" class="button" value="제출" />
+        <input type="submit" class="button" onclick="signupCheck()" value="제출" />
         <!-- <div class="text-center">
           <a
             href="../user/signUp2.html"

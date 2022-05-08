@@ -23,6 +23,8 @@
 			var uname = document.getElementById("uname");
 			var utel = document.getElementById("utel");
 			
+			var name = /^[가-힣]+$/;
+			
 			if(uname.value == "") {
 				$('#idFindCheck').html('이름을 입력하세요.');
 		        $('#idFindCheck').css('color', '#ff0000');
@@ -32,6 +34,17 @@
 				$('#idFindCheck').html('');
 			}
 			
+			if(!name.test(uname.value)) {
+    			$('#idFindCheck').html('이름 형식에 맞춰주세요.');
+    	        $('#idFindCheck').css('color', '#ff0000');
+    	        uname.focus();
+    	        return false;
+    		} else {
+    			$('#idFindCheck').html('');
+    		}
+			
+			var tel = /^\d{3}-\d{3,4}-\d{4}$/;
+			
 			if(utel.value == "") {
 				$('#idFindCheck').html('전화번호를 입력하세요.');
 		        $('#idFindCheck').css('color', '#ff0000');
@@ -40,6 +53,85 @@
 			} else {
 				$('#idFindCheck').html('');
 			}
+			
+			if(!tel.test(utel.value)) {
+    			$('#idFindCheck').html('전화번호 형식에 맞춰주세요.');
+    	        $('#idFindCheck').css('color', '#ff0000');
+    	        utel.focus();
+    	        return false;
+    		} else {
+    			$('#idFindCheck').html('');
+    		}
+			
+			document.signupform.submit();
+		}
+	    
+	    function pwFindCheck() {
+	        event.preventDefault();
+	        
+	        var uid = document.getElementById("uid");
+			var uname = document.getElementById("uname");
+			var utel = document.getElementById("utel");
+			
+			var id = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,10}$/;
+    		
+    		if(uid.value == "") {
+    			$('#idCheck').html('아이디를 입력하세요.');
+    	        $('#idCheck').css('color', '#ff0000');
+    	        uid.focus();
+    	        return false;
+    		} else {
+    			$('#idCheck').html('');
+    		}
+    		
+    		if(!id.test(uid.value)) {
+    			$('#idCheck').html('아이디 형식에 맞춰주세요.');
+    	        $('#idCheck').css('color', '#ff0000');
+    	        uid.focus();
+    	        return false;
+    		} else {
+    			$('#idCheck').html('');
+    		}
+			
+			var name = /^[가-힣]+$/;
+			
+			if(uname.value == "") {
+				$('#idFindCheck').html('이름을 입력하세요.');
+		        $('#idFindCheck').css('color', '#ff0000');
+		        uname.focus();
+		        return false;
+			} else {
+				$('#idFindCheck').html('');
+			}
+			
+			if(!name.test(uname.value)) {
+    			$('#idFindCheck').html('이름 형식에 맞춰주세요.');
+    	        $('#idFindCheck').css('color', '#ff0000');
+    	        uname.focus();
+    	        return false;
+    		} else {
+    			$('#idFindCheck').html('');
+    		}
+			
+			var tel = /^\d{3}-\d{3,4}-\d{4}$/;
+			
+			if(utel.value == "") {
+				$('#idFindCheck').html('전화번호를 입력하세요.');
+		        $('#idFindCheck').css('color', '#ff0000');
+		        utel.focus();
+		        return false;
+			} else {
+				$('#idFindCheck').html('');
+			}
+			
+			if(!tel.test(utel.value)) {
+    			$('#idFindCheck').html('전화번호 형식에 맞춰주세요.');
+    	        $('#idFindCheck').css('color', '#ff0000');
+    	        utel.focus();
+    	        return false;
+    		} else {
+    			$('#idFindCheck').html('');
+    		}
 			
 			document.signupform.submit();
 		}
@@ -86,12 +178,12 @@
 	            		<div type="button" class="cancel" onclick="idFindclose()"><img src="${pageContext.request.contextPath}/resources/images/close.png" width="20em" /></div>
 	            		<div class="login-title">아이디 찾기</div>
 	
-	            		<input type="text" name="uname" id="uname" class="popup_form_control" placeholder="이름"/>
-	            		<input type="tel" name="utel" id="utel" class="popup_form_control" placeholder="전화번호"/>
+	            		<input type="text" name="uname" id="uname" class="form_control" placeholder="이름"/>
+	            		<input type="tel" name="utel" id="utel" class="form_control" placeholder="전화번호"/>
 						<small id="idFindCheck"></small>
 	            		<!-- <button type="submit" class="btn">아이디 찾기</button> -->
 	            		<!-- <div class="btn" onclick="idFindCompleteopen()">아이디 찾기</div> -->
-	            		<input type="button" class="user_button" onclick="idFindCheck()" onclick="idFindCompleteopen()" value="아이디 찾기" />
+	            		<input type="button" class="user_button" onclick="idFindCheck(); idFindCompleteopen()" value="아이디 찾기" />
 	          		</form>
 	        	</div>
 	      	</div>
@@ -119,11 +211,11 @@
 	            		<div type="button" class="cancel" onclick="pwFindclose()"><img src="${pageContext.request.contextPath}/resources/images/close.png" width="20em" /></div>
 	            		<div class="login-title">비밀번호 찾기</div>
 	
-						<input type="text" name="uid" class="popup_form_control" placeholder="아이디" required /><br />
-	            		<input type="text" name="uname" class="popup_form_control" placeholder="이름" required /><br />
-	            		<input type="tel" name="utel" class="popup_form_control" placeholder="전화번호" required /><br />
+						<input type="text" name="uid" class="form_control" placeholder="아이디" required /><br />
+	            		<input type="text" name="uname" class="form_control" placeholder="이름" required /><br />
+	            		<input type="tel" name="utel" class="form_control" placeholder="전화번호" required /><br />
 	
-	            		<input type="button" class="user_button" onclick="pwFindCompleteopen()" value="비밀번호 찾기" />
+	            		<input type="button" class="user_button" onclick="pwFindCheck(); pwFindCompleteopen()" value="비밀번호 찾기" />
 	          		</form>
 	        	</div>
 	      	</div>
@@ -134,8 +226,8 @@
 	            		<div type="button" class="cancel" onclick="pwFindCompleteclose()"><img src="${pageContext.request.contextPath}/resources/images/close.png" width="20em" /></div>
 	            		<div class="login-title">비밀번호 변경</div>
 	
-	            		<input type="password" name="upassword" class="popup_form_control" placeholder="새로운 비밀번호" required /><br />
-	            		<input type="password" name="upassword" class="popup_form_control" placeholder="새로운 비밀번호 확인" required /><br />
+	            		<input type="password" name="upassword" class="form_control" placeholder="새로운 비밀번호" required /><br />
+	            		<input type="password" name="upassword" class="form_control" placeholder="새로운 비밀번호 확인" required /><br />
 	            		<input type="button" class="user_button" onclick="pwFindCompleteclose()" value="완료" />
 	          		</form>
 	        	</div>

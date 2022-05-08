@@ -15,19 +15,99 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/user/signup.css" />
 
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <!-- <script>
-      function setThumbnail(event) {
-        var reader = new FileReader();
-        reader.onload = function (event) {
-          var img = document.createElement("img");
-          img.setAttribute("src", event.target.result);
-          img.setAttribute("style", "width: 70%; border-radius:1%;object-fit: cover;");
-          $("#image_container").html(img);
-        };
-        reader.readAsDataURL(event.target.files[0]);
-      }
-    </script> -->
+  </head>
+  <body>
+  <%@ include file="/WEB-INF/views/common/header.jsp" %>
+  <%-- <script src="${pageContext.request.contextPath}/resources/js/signup.js"></script> --%>
+  <script src="${pageContext.request.contextPath}/resources/js/signup.js"></script>
+    <div class="signup2">
+      <form name="signupform" class="background col-6" action="${pageContext.request.contextPath}/user/signup2" method="post">
+        <div style="text-align: center; margin-bottom: 4%">
+          <a href="../main.html"><img src="${pageContext.request.contextPath}/resources/images/logo.png" style="width: 30%" /></a>
+        </div>
+	    <label>* 아이디</label>
+	    <div class="row">
+	    	<div class="col-9">
+		    	<input type="text" name="uid" id="uid" value="${user.uid}" placeholder="아이디 입력"/>
+		   		<%-- <c:if test="${error != null}">
+					<small style="color:red;" id="idError">${error}</small>		
+				</c:if> --%>
+				<small id="idCheck"></small>
+	    	</div>
+	    	<div class="col-3">
+	    		<input type="button" class="button" style="margin-bottom: 1em" onclick="idOpen()" value="아이디 찾기" />
+	    	</div>
+	    </div>
+	    
+        <div class="row">
+          <div class="col-6">
+            <label>* 비밀번호</label>
+            <input type="password" name="upassword" id="upassword1" value="${user.upassword}" placeholder="비밀번호"/>
+            <small>8~16자 영문 대소문자, 숫자, 특수문자</small><br/>
+          </div>
+          <div class="col-6">
+            <label>* 비밀번호 확인</label>
+            <input type="password" name="upassword2" id="upassword2" placeholder="비밀번호 확인"/>
+            <!-- <small id="pwsameCheck"></small> -->
+            <small id="pwCheck"></small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <label>* 이름</label>
+            <input type="text" name="uname" id="uname" value="${user.uname}" placeholder="홍길동"/>
+            <small id="nameCheck"></small>
+          </div>
+          <div class="col-6">
+            <label>생년월일</label>
+            <input type="date" id="ubirth" name="ubirth" value="${user.ubirth}" name="birthday" />
+          </div>
+        </div>
+        <label>* 주소</label>
+        <div class="row">
+          <div class="col-6">
+            <input type="text" id="zonecode" name="uzipcode" value="${user.uzipcode}" placeholder="우편번호"/>
+          </div>
+          <div class="col-6"><input type="button" class="button" style="margin-bottom: 1em" onclick="execDaumPostcode1()" value="우편번호 찾기" /><br /></div>
+        </div>
+        <div class="row">
+          <div class="col-7"><input type="text" id="uaddress" name="uaddress1" value="${user.uaddress1}" placeholder="주소"/><br /></div>
+          <div class="col-5">
+            <input type="text" id="detailAddress" name="uaddress2" value="${user.uaddress2}" placeholder="상세주소" />
+          </div>
+        </div>
+        <small id="zonecodeCheck"></small>
+        <div>
+        	<label>* 이메일</label>
+	        <input type="email" name="uemail" id="uemail" value="${user.uemail}"  placeholder="email@gmail.com"/>
+	        <small id="emailCheck"></small>
+        </div>
+        <label>* 휴대전화</label>
+        <div class="row mb-2">
+          <div class="col-9">
+            <input type="tel" name="utel" id="utel" value="${user.utel}"  placeholder="010-****-****"/>
+            <small id="telCheck"></small>
+          </div>
+          <!-- <div class="col-3">
+            <input type="button" class="button" name="certification" value="인증번호 받기" />
+          </div> -->
+        </div>
+        <!-- <input type="text" name="certification" placeholder="인증번호를 입력하세요" /> -->
+        <br />
+        <br />
+        <input type="submit" class="button" onclick="signupCheck()" value="제출" />
+      </form>
+    </div>
+    
     <script>
+	    function idOpen(){
+	    	if(document.signupform.uid.value == "" || document.signupform.uid.value.length < 0){
+	    		alert("아이디를 먼저 입력해주세요")
+	    		document.signupform.uid.focus();
+	    	}else{
+	    		window.open("joinIdCheck.jsp?uid="+document.signupform.uid.value,"","width=500, height=300");
+	    	}
+	    }
     	function execDaumPostcode1() {
       		new daum.Postcode({
         		oncomplete: function(data) {
@@ -66,7 +146,7 @@
     	function signupCheck() {
             event.preventDefault();
             
-    		var uid = document.getElementById("uid");
+    		/* var uid = document.getElementById("uid"); */
     		var upassword1 = document.getElementById("upassword1");
     		var upassword2 = document.getElementById("upassword2");
     		var uname = document.getElementById("uname");
@@ -75,7 +155,7 @@
     		var uemail = document.getElementById("uemail");
     		var utel = document.getElementById("utel");
     		
-    		var id = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,10}$/;
+    		/* var id = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,10}$/;
     		
     		if(uid.value == "") {
     			$('#idCheck').html('아이디를 입력하세요.');
@@ -93,7 +173,7 @@
     	        return false;
     		} else {
     			$('#idCheck').html('');
-    		}
+    		} */
 
     		var password = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/;
     		
@@ -206,83 +286,6 @@
     		document.signupform.submit();
     	}
     </script>
-  </head>
-  <body>
-  <%@ include file="/WEB-INF/views/common/header.jsp" %>
-  <%-- <script src="${pageContext.request.contextPath}/resources/js/signup.js"></script> --%>
-  <script src="${pageContext.request.contextPath}/resources/js/signup.js"></script>
-    <div class="signup2">
-      <form name="signupform" class="background col-6" action="${pageContext.request.contextPath}/user/signup2" method="post">
-        <div style="text-align: center; margin-bottom: 4%">
-          <a href="../main.html"><img src="${pageContext.request.contextPath}/resources/images/logo.png" style="width: 30%" /></a>
-        </div>
-        <div>
-	        <label>* 아이디</label>
-	        <input type="text" name="uid" id="uid" value="${user.uid}" placeholder="아이디 입력"/>
-	        <c:if test="${error != null}">
-				<small style="color:red;" id="idError">${error}</small>		
-			</c:if>
-			<small id="idCheck"></small>
-		</div>
-        <div class="row">
-          <div class="col-6">
-            <label>* 비밀번호</label>
-            <input type="password" name="upassword" id="upassword1" value="${user.upassword}" placeholder="비밀번호"/>
-            <small>8~16자 영문 대소문자, 숫자, 특수문자</small><br/>
-          </div>
-          <div class="col-6">
-            <label>* 비밀번호 확인</label>
-            <input type="password" name="upassword2" id="upassword2" placeholder="비밀번호 확인"/>
-            <!-- <small id="pwsameCheck"></small> -->
-            <small id="pwCheck"></small>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-6">
-            <label>* 이름</label>
-            <input type="text" name="uname" id="uname" value="${user.uname}" placeholder="홍길동"/>
-            <small id="nameCheck"></small>
-          </div>
-          <div class="col-6">
-            <label>생년월일</label>
-            <input type="date" id="ubirth" name="ubirth" value="${user.ubirth}" name="birthday" />
-          </div>
-        </div>
-        <label>* 주소</label>
-        <div class="row">
-          <div class="col-6">
-            <input type="text" id="zonecode" name="uzipcode" value="${user.uzipcode}" placeholder="우편번호"/>
-          </div>
-          <div class="col-6"><input type="button" class="button" style="margin-bottom: 1em" onclick="execDaumPostcode1()" value="우편번호 찾기" /><br /></div>
-        </div>
-        <div class="row">
-          <div class="col-7"><input type="text" id="uaddress" name="uaddress1" value="${user.uaddress1}" placeholder="주소"/><br /></div>
-          <div class="col-5">
-            <input type="text" id="detailAddress" name="uaddress2" value="${user.uaddress2}" placeholder="상세주소" />
-          </div>
-        </div>
-        <small id="zonecodeCheck"></small>
-        <div>
-        	<label>* 이메일</label>
-	        <input type="email" name="uemail" id="uemail" value="${user.uemail}"  placeholder="email@gmail.com"/>
-	        <small id="emailCheck"></small>
-        </div>
-        <label>* 휴대전화</label>
-        <div class="row mb-2">
-          <div class="col-9">
-            <input type="tel" name="utel" id="utel" value="${user.utel}"  placeholder="010-****-****"/>
-            <small id="telCheck"></small>
-          </div>
-          <!-- <div class="col-3">
-            <input type="button" class="button" name="certification" value="인증번호 받기" />
-          </div> -->
-        </div>
-        <!-- <input type="text" name="certification" placeholder="인증번호를 입력하세요" /> -->
-        <br />
-        <br />
-        <input type="submit" class="button" onclick="signupCheck()" value="제출" />
-      </form>
-    </div>
   </body>
 </html>
 

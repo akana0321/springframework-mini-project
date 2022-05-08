@@ -15,11 +15,11 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aboutus/title.css" />
     <!-- button CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aboutus/button.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" />
 
-        
   </head>
   <body>
-    
+    <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
     <div class="d-flex row justify-content-center col-sm-12 mt-5" >
         <div class="-sm-3" style="margin-right: 2vh;" >

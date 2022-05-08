@@ -80,9 +80,11 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aboutus/title.css" />
     <!-- button CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aboutus/button.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" />
   	
   </head>
   <body>
+  <%@ include file="/WEB-INF/views/common/header.jsp" %>
    <div id="product-container">
 
     <?xml version="1.0" standalone="no"?>
