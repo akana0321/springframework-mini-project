@@ -34,8 +34,8 @@ $(document).ready(function(){
          <img id="PYimg" src="https://cdn-bhnll.nitrocdn.com/gSDMXibcJluvzIippFBvhCZIaoOxCvih/assets/static/optimized/rev-ccf470e/wp-content/uploads/handsome-study-interior-design-houston.png" width="100%" height="90%" usemap="#PYRoom" alt="" />
          <!-- Image Tag -->
          <div class="furniture" style="border-radius: 2rem; height: 2rem; width: 2rem; background-color: #ffb440; position: absolute; top: 37vh; left: 7vw;" product-data="unit-k3000b" onclick="changeContent()"></div>
-         <div class="furniture" style="border-radius: 2rem; height: 2rem; width: 2rem; background-color: #ffb440; position: absolute; top: 60vh; left: 20vw;" product-data="unit-k3000b" onclick="changeContent()"></div>
-         <div class="furniture" style="border-radius: 2rem; height: 2rem; width: 2rem; background-color: #ffb440; position: absolute; top: 60vh; left: 40vw; " product-data="unit-k3000b" onclick="changeContent()"></div>
+         <div class="furniture" style="border-radius: 2rem; height: 2rem; width: 2rem; background-color: #ffb440; position: absolute; top: 60vh; left: 20vw;" product-data="unit-k5000b" onclick="changeContent()"></div>
+         <div class="furniture" style="border-radius: 2rem; height: 2rem; width: 2rem; background-color: #ffb440; position: absolute; top: 60vh; left: 40vw; " product-data="unit-s2100z" onclick="changeContent()"></div>
          
          <!-- Get PYRoom version(PY) -->
          <%

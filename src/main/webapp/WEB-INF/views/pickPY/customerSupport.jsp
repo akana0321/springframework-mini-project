@@ -20,20 +20,18 @@
     <!-- title CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aboutus/title.css" />
 
-    <% /* request.setCharacterEncoding("euc-kr"); String productID=request.getParameter("product"); */
-      /* System.out.println("CustomerSupport=productID:"+product.pname); */ %>
   </head>
 
   <body>
     <div id="interialq" style="width: 100%; height:100% left:0;" class="text-center p-0 m-0">
       <div class="bg-white">
         <div class="d-flex flex-column">
-          <div  style="background-color: #ffb3400c">
+          <div style="background-color: #ffb3400c">
             <div class="col-md-12 p-0 m-0 text-left">
               <!-- <div class="fa fa-3x fa-arrow-circle-left float-left ml-5" style="position:relative" onclick="location.href='productInfo'"
                 id="back"></div> -->
               <div style="color: #343434; margin: 0 10%; position:relative" class="medium-title mb-5 ">
-                상품문의<br/>
+                상품문의<br />
               </div>
               <div>
                 <div class="small-title"> ${product.pname }</div>
@@ -49,36 +47,31 @@
               </div>
             </div>
           </div>
-
-
-          <div class="col-md-12" id="inquire">
-            <div class="text-center mt-2 ml-2 small-title" >
+	 <div class="col-md-12" id="inquire">
+            <div class="text-center mt-2 ml-2 small-title">
               문의 내용
             </div>
             <hr />
 
-            <form method="post" modelAttribute="question" action="productCS">
+            <form action="questionProduct?productId=${product.pid}" method="post">
               <div class="col-md-12">
                 <div class="form-group m-4">
-                  <input type="text" class="form-control" id="content" name="qcontent" placeholder="문의 내용"
-                    style="resize: none"></input>
+                <a name="hi" value="what"></a>
+                  <input type="text" name="qcontent" style="line-height: 4rem;"><br>
                 </div>
               </div>
               <div class="text-center">
                 <div class="form-group m-4  text-right">
                   <!-- <input type="file" class="btn"> -->
-                  <a href="questionProduct" class="btn  text-center ">문의하기</a>
+                  <input id="CSbtn" type="submit" value="문의하기">
                 </div>
               </div>
             </form>
           </div>
+
         </div>
       </div>
     </div>
-
-    <script>
-      AOS.init();
-    </script>
   </body>
 
   </html>
