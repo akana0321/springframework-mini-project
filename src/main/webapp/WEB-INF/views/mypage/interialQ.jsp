@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,7 +77,7 @@
                           <td>20,000 ₩</td>
                           <td>3</td>
                           <td>60,000 ₩</td>
-                        </tr>
+                        </tr> 
                       </table>
                       <div class="table text-left" id="table_bottom"></div>
                       <div class="text-left mt-5">
@@ -102,6 +103,41 @@
             </div>
           </div>
           <div id="question"> 
+           <c:forEach var="comment" items="${CommentList}" varStatus="counting">
+           <c:if test="${comment.uid eq sessionUid}">
+           <div class="col-md-12 shadow mb-3" style="background-color: rgb(239, 239, 239);"  data-aos="zoom-in-up" data-aos-duration="2000" data-aos-offset="200">
+              <div class="text-left mt-2 ml-2" style="font-size: 30px; font-weight: 600; padding-top: 2%;">문의</div>
+              <hr/>
+              <div class="text-left m-5">
+                  <div>
+<pre class="ml-3" >
+   ${comment.ccontent}
+</pre>
+                  </div>
+                  <div class="text-right"  style="padding-bottom: 2% ;">
+                      <span style="font-size: 20px; font-weight: 500;">${comment.cdate}</span>
+                  </div>
+              </div>
+            </div>
+          </c:if>
+          <c:if test="${comment.uid ne sessionUid}">
+           <div class="col-md-12 shadow mb-3" style="background-color: white;"  data-aos="zoom-in-up" data-aos-duration="2000" data-aos-offset="200">
+              <div class="text-left mt-2 ml-2" style="font-size: 30px; font-weight: 600; padding-top: 2%;">답변</div>
+              <hr/>
+              <div class="text-left m-5">
+                  <div>
+<pre class="ml-3" >
+   ${comment.ccontent}
+</pre>
+                  </div>
+                  <div class="text-right"  style="padding-bottom: 2% ;">
+                      <span style="font-size: 20px; font-weight: 500;">${comment.cdate}</span>
+                  </div>
+              </div>
+            </div>
+          </c:if>
+           </c:forEach>
+           <!-- 
             <div class="col-md-12 shadow mb-3" style="background-color: rgb(239, 239, 239);"  data-aos="zoom-in-up" data-aos-duration="2000" data-aos-offset="200">
               <div class="text-left mt-2 ml-2" style="font-size: 30px; font-weight: 600; padding-top: 2%;">문의</div>
               <hr/>
@@ -131,23 +167,24 @@
               </div>
             </div>
           </div>
-          
+           -->
+          </div>
           <div class="col-md-12 shadow" id="inquire" data-aos="fade-out-down" data-aos-duration="3000" data-aos-offset="200">
             <div class="text-left mt-2 ml-2" style="font-size: 30px; font-weight: 600; padding-top: 2%;">
               문의
             </div>
             <hr/>
             
-            <form style="margin-top: 5%; margin-bottom: 5%" action="#">
+            <form style="margin-top: 5%; margin-bottom: 5%" action="question" method="POST">
               <div class="col-md-12">
                 <div class="form-group m-4">
-                  <textarea cols="60" class="form-control" id="content" rows="15" placeholder="문의 내용" style="resize: none" ></textarea>
+                  <textarea cols="60" class="form-control" name="ccontent" rows="15" placeholder="문의 내용" style="resize: none" ></textarea>
                 </div>
               </div>
               <div class="text-center">
                 <div class="form-group m-4  text-right">
                   <input type="file" class="btn" >
-                  <intput type="submit"  class="btn btn-light" onclick="question()">문의하기
+                  <input type="submit"  class="btn btn-light" onclick="question()" value="문의하기">
                 </div>
               </div>
             </form>

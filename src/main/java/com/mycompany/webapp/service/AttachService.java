@@ -50,8 +50,8 @@ public class AttachService {
 	}
 	
 	// Delete Attach One
-	public int deleteAttachOne(Attach target) {
-		return attachDao.deleteByTargetOne(target.getAno());
+	public int deleteAttachOne(int ano) {
+		return attachDao.deleteByTargetOne(ano);
 	}
 	
 	// Update Attach

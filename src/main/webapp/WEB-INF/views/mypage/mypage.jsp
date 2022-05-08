@@ -21,10 +21,12 @@
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/mypage/mypage.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/mypage/style_mypage.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/mypage/style_FAQ.css">
-
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
 
 </head>
 <body>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 <div id="mypage">
 	<section class="py-5 my-5">
 		<div style="margin : 0px 8%"  >
@@ -166,14 +168,14 @@
 								<c:forEach var="dentist" items="${dentistArray}" varStatus="status">
 								<form method="post" modelAttribute="dentist" action="dentalInfo">
 									<script>window.onload = function checkNumber(){count = ${status.count};}</script>
-									<div><strong>병원 정보 ${status.count}</strong></div>
+									<div><div class='fa fa-minus mr-2' onclick="removeinfoR(${status.count})"><strong> 병원 정보 ${status.count}</strong></div></div>
 									<hr>
 								    <div class="row">
-								    	
+							
 								        <div class="col-md-12">
 								            <div class="form-group">
 								                <label for="hnumber">병원 등록 번호</label>
-								                <input type="text" class="form-control col-md-4" value="${dentist.dnumber}" name="dnumber" />
+								                <input type="text" id="dnumber_${status.count}" class="form-control col-md-4" value="${dentist.dnumber}" name="dnumber" />
 								            </div>
 								        </div>
 								        <div class="col-md-7">
@@ -234,13 +236,14 @@
 												
 												<input type="file" multiple class="mt-2" id="dentalimg${status.count}" oninput="setThumbnailF(event,'image_container_${status.count}','dentalimg${status.count}')">
 												<c:forEach var="attach" items="${dentist.dattaches}" varStatus="val">
-													<br><div id='${status.count}_${val.count}' class="fa fa-minus"  onclick="removeFile(this.id)"> ${attach.aoname}</div>
+													<br><div id='${status.count}_${val.count}' class="fa fa-minus pr-2" onclick="removeFile(this.id,'dnumber_${status.count}')">${attach.asname}</div>
 												</c:forEach>
 					          				</div>
 					        			</div>
 					        			<div class="col-md-6  text-right">
 											<input class="btn " type="submit" style="background-color: rgba(128, 128, 128, 0.614); color:white;" value="저장하기">
 										</div>
+										
 										
 					    				</div> 
 					    			</form>
@@ -271,14 +274,21 @@
 									<h4 class="mb-4"><a class="btn" onclick="requestAjaxIn()" id="int_btn"><strong>인테리어 문의</strong></a> 
 										<a class="btn" onclick="requestAjaxPr()" id="pro_btn">상품 문의</a></h4>
 									<table class="col-md-12 table table-borderless">
-										
 										<tr id="tbt" >
 											<th style="width: 10%;">번호</th>
 											<th id="line">문의 내용</th>
 											<th>문의 일자</th>
 										</tr>
-										
+										<c:forEach var="question" items="${getUidQuestionIn}" varStatus="counting">
 										<tr id="tb">
+											<td>${counting.count}</td>
+											<td id="line"><a href="interialQ">${question.qcontent}</a></td>
+											<td>${question.qdate}</td>
+											</a>
+										</tr>
+										
+										
+										<!-- <tr id="tb">
 											<td>1</td>
 											<td id="line"><a href="interialQ">인테리어 문의</a></td>
 											<td>2022/04/18</td>
@@ -313,8 +323,8 @@
 											<td>1</td>
 											<td id="line">인테리어 문의</td>
 											<td>2022/04/18</td>
-										</tr>
-
+										</tr> -->
+										</c:forEach>
 									</table>
 								</div>
 								
@@ -393,4 +403,5 @@
     AOS.init();
 </script>
 </body>
+<!-- <%@ include file="/WEB-INF/views/common/footer.jsp" %> -->
 </html>
