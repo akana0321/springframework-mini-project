@@ -38,6 +38,7 @@
 	   	LEFT OUTER JOIN attach a ON a.attach_target_table like 'COMMENTS'
 	   	 AND c.comment_no = a.attach_target_id
 	   	WHERE c.comment_no=#{cno}
+	   	ORDER BY c.comment_no DESC
 	</select>
 	
 	<select id="count" resultType="int">

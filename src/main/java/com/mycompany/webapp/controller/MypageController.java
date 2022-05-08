@@ -1,6 +1,7 @@
 package com.mycompany.webapp.controller;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,11 +18,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.webapp.dto.Attach;
+import com.mycompany.webapp.dto.Comment;
 import com.mycompany.webapp.dto.Dentist;
 import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.Question;
 import com.mycompany.webapp.dto.User;
 import com.mycompany.webapp.service.AttachService;
+import com.mycompany.webapp.service.CommentService;
 import com.mycompany.webapp.service.DentistService;
 import com.mycompany.webapp.service.QuestionService;
 import com.mycompany.webapp.service.UserService;
@@ -45,6 +48,9 @@ public class MypageController {
 	
 	@Resource
 	private QuestionService questionService;
+	
+	@Resource
+	private CommentService commentService;
 	
 	// MyPage 로드시 실행
 	@RequestMapping("/mypage")
@@ -86,15 +92,26 @@ public class MypageController {
 				getUidQuestionIn.add(getAllQuestion.get(i));
 				String date = getUidQuestionIn.get(0).getQdate().split(" ")[0];
 				getUidQuestionIn.get(0).setQdate(date);
+				if(getAllQuestion.get(i).getQcontent().length() > 10) {
+					getUidQuestionIn.get(0).setQcontent(getAllQuestion.get(i).getQcontent().substring(0, 10) + "...");
+				}
 			}
 			if(getAllQuestion.get(i).getUid().equals(userId) && getAllQuestion.get(i).getQcategory().equals("PRODUCT")) {
 				getUidQuestionPro.add(getAllQuestion.get(i));
+			}
+		}
+		for(int i=0; i<getUidQuestionPro.size(); i++) {
+			String date = getUidQuestionPro.get(i).getQdate().split(" ")[0];
+			getUidQuestionPro.get(i).setQdate(date);
+			if(getUidQuestionPro.get(i).getQcontent().length() > 10) {
+				getUidQuestionPro.get(i).setQcontent(getUidQuestionPro.get(i).getQcontent().substring(0, 10) + "...");
 			}
 		}
 		
 		
 		session.setAttribute("getUidQuestionIn", getUidQuestionIn);
 		session.setAttribute("getUidQuestionPro", getUidQuestionPro);
+		
 		return "mypage/mypage";
 	}
 
@@ -247,7 +264,7 @@ public class MypageController {
 		int dentalSize = (int) session.getAttribute("dentistSize");
 
 		List<Dentist> dentist = (List<Dentist>) session.getAttribute("dentistArray");
-
+		
 		Dentist updateDentist = new Dentist();
 
 		List<Attach> attach = (List<Attach>) session.getAttribute("attachList");
@@ -332,10 +349,50 @@ public class MypageController {
 		return "/mypage/mypage";
 	}
 
+
 	@RequestMapping("/interialQ")
-	public String getInterialQ() {
+	public String getInterialQ(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		List<Question> question = (List<Question>) session.getAttribute("getUidQuestionIn");
+		int qno = question.get(0).getQno();
+		
+		List<Comment> commentList =  commentService.getCommentsByQno(qno);
+		
+		for(int i=0; i<commentList.size()-1; i++) {
+			for(int j=i; j<commentList.size(); j++) {
+				if(commentList.get(i).getCno() > commentList.get(j).getCno()) {
+					Comment tmp =  commentList.get(i);
+					commentList.set(i, commentList.get(j));
+					commentList.set(j,tmp);
+				}
+			}
+		}
+		session.setAttribute("QuestionNo", qno);
+		session.setAttribute("CommentList", commentList);
+		log.info(commentList);
+		
+		
 		return "mypage/interialQ";
 	}
+	@RequestMapping("/question")
+	public String InterialQuestion(String ccontent,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		Comment comment = new Comment();
+		String uid = (String) session.getAttribute("sessionUid");
+		int qno = (int) session.getAttribute("QuestionNo");
+		Date date = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		
+		comment.setCno(commentService.getTotalCommentsNumInQuestion(qno)+1);
+		comment.setQno(qno);
+		comment.setUid(uid);
+		comment.setCdate(format.format(date));
+		
+		log.info(comment);
+		commentService.insertComment(comment);
+		return "redirect:/mypage/interialQ";
+	}
+	
 	@RequestMapping("/interialP")
 	public String getInterialP() {
 		return "mypage/interialP";
