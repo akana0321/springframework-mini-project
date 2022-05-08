@@ -105,8 +105,33 @@
           <div id="question"> 
            <c:forEach var="comment" items="${CommentList}" varStatus="counting">
            <c:if test="${comment.uid eq sessionUid}">
-           <div class="col-md-12 shadow mb-3" style="background-color: rgb(239, 239, 239);"  data-aos="zoom-in-up" data-aos-duration="2000" data-aos-offset="200">
+           <div id=${comment.cno} class="col-md-12 shadow mb-3" style="background-color: rgb(239, 239, 239);"  data-aos="zoom-in-up" data-aos-duration="2000" data-aos-offset="200">
               <div class="text-left mt-2 ml-2" style="font-size: 30px; font-weight: 600; padding-top: 2%;">문의</div>
+              <div id="minus" style="margin-left:70%" >
+              <form method="post" action="removeQuestion">
+              <input name="cno" value=${comment.cno } style="visibility: hidden;">
+              <input type="submit"  class="btn btn-light" value="삭제하기">
+              </form>
+              </div>
+              <!--  
+              <script type="text/javascript"> 
+              function removeQuestion(value){
+            		const formData = new FormData();
+            			formData.append("QuestionValue", value);
+            			console.log(value);
+            			//Ajax로 서버로 전송
+            			$.ajax({
+            				url: "removeQuestion",
+            				method: "post",
+            				data: formData,
+            				cache: false,		// 파일이 포함되어 있으니, 브라우저 메모리에 저장 x
+            				processData: false, // title=xxx&desc=yyy 식으로 x
+            				contentType: false	// 파트마다 Content-Type이 포함되기 때문에 따로 헤더에 Content-Type에 추가 x
+            			})
+            	}
+
+              </script>
+              -->
               <hr/>
               <div class="text-left m-5">
                   <div>
@@ -184,7 +209,7 @@
               <div class="text-center">
                 <div class="form-group m-4  text-right">
                   <input type="file" class="btn" >
-                  <input type="submit"  class="btn btn-light" onclick="question()" value="문의하기">
+                  <input type="submit"  class="btn btn-light" value="문의하기">
                 </div>
               </div>
             </form>

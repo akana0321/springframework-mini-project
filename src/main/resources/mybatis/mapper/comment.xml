@@ -46,9 +46,9 @@
 	</select>
 
 	<insert id="insert" parameterType="comment">
-		<selectKey keyProperty="cno" resultType="int" order="BEFORE">
+		<!-- <selectKey keyProperty="cno" resultType="int" order="BEFORE">
 			seq_comment_cno.nextval from dual
-		</selectKey>
+		</selectKey> -->
 	
 		INSERT ALL
 			INTO comments (comment_no, user_id, question_no, comment_content, comment_date) 
@@ -65,7 +65,7 @@
 	<delete id="deleteByCno" parameterType="int">
 		DECLARE
 		BEGIN
-			DELETE FROM comments WHERE comment_cno = #{cno};
+			DELETE FROM comments WHERE comment_no = #{cno};
 			
 			DELETE FROM attach
 			 WHERE attach_target_table like 'QUESTION'

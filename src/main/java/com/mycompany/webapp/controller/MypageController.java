@@ -376,20 +376,28 @@ public class MypageController {
 	}
 	@RequestMapping("/question")
 	public String InterialQuestion(String ccontent,HttpServletRequest request) {
+		log.info(ccontent);
 		HttpSession session = request.getSession();
 		Comment comment = new Comment();
 		String uid = (String) session.getAttribute("sessionUid");
 		int qno = (int) session.getAttribute("QuestionNo");
 		Date date = new Date();
-		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		
+		//SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+
 		comment.setCno(commentService.getTotalCommentsNumInQuestion(qno)+1);
 		comment.setQno(qno);
 		comment.setUid(uid);
-		comment.setCdate(format.format(date));
+		comment.setCcontent(ccontent);
+		//comment.setCdate(format.format(date));
 		
-		log.info(comment);
 		commentService.insertComment(comment);
+		
+		return "redirect:/mypage/interialQ";
+	}
+	@RequestMapping("/removeQuestion")
+	public String removeQuestion(int cno) {
+		log.info(cno);
+		commentService.deleteCommentByCno(cno);
 		return "redirect:/mypage/interialQ";
 	}
 	
