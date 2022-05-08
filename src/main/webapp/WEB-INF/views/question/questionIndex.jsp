@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +23,38 @@
 <body>
     
     <%@ include file="/WEB-INF/views/common/header.jsp" %>
+    
+    
+    <%-- Modal --%>    
+    <div class="modal fade" tabindex="-1" id="myModal" data-backdrop="static" data-keyboard="false">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <h5 class="modal-title">이벤트 안내</h5>
+	                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	                    <span aria-hidden="true">&times;</span>
+	                </button>
+	            </div>
+	            <div class="modal-body text-center">
+	                <p>지금부터 선착순으로 단 5명!</p>
+	                <p>견적문의를 완료하시고 문의하기를 하신 분께</p>
+	                <p>총 금액의 10%를 할인해드립니다!</p>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn" data-dismiss="modal" style="background-color: rgba(128, 128, 128, 0.614); color:white;">확인</button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+    <script>
+	   window.onload = function() {
+	    	var sessionData = '<%=session.getAttribute("2022-05-08") %>';
+	    	console.log(sessionData);
+	    	if(sessionData <= 10) {
+	        	$("#myModal").modal("show");
+	    	}
+	    };
+    </script>
 
     <div id="questionFormContainer">
         <div id="progressbarContainer" class="navbar">
