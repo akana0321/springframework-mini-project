@@ -19,16 +19,17 @@
 		<result column="furniture2" property="efurniture2"/>
 		<result column="furniture3" property="efurniture3"/>
 		<result column="estimate_date" property="edate"/>
+		<result column="estimate_event" property="eEvent"/>
 	</resultMap>
 	
 	<select id="selectByEno" parameterType="int" resultMap="estimateMap">
-		SELECT estimate_no, user_id, question_no, py, building_type, dental_type, floor_type, wall_type, k3000B, k5000b, s2100z, furniture1, furniture2, furniture3, estimate_date
+		SELECT estimate_no, user_id, question_no, py, building_type, dental_type, floor_type, wall_type, k3000B, k5000b, s2100z, furniture1, furniture2, furniture3, estimate_date, estimate_event
 		FROM estimate
 		WHERE estimate_no=#{eno}
 	</select>
 	
 	<select id="selectByQno" parameterType="int" resultMap="estimateMap">
-		SELECT estimate_no, user_id, question_no, py, building_type, dental_type, floor_type, wall_type, k3000B, k5000b, s2100z, furniture1, furniture2, furniture3, estimate_date
+		SELECT estimate_no, user_id, question_no, py, building_type, dental_type, floor_type, wall_type, k3000B, k5000b, s2100z, furniture1, furniture2, furniture3, estimate_date, estimate_event
 		FROM estimate
 		WHERE question_no=#{qno}
 	</select>
@@ -44,8 +45,8 @@
 		</selectKey>
 		
 		INSERT INTO estimate 
-		(estimate_no, user_id, question_no, py, building_type, dental_type, floor_type, wall_type, k3000B, k5000b, s2100z, furniture1, furniture2, furniture3, estimate_date) 
-		VALUES (#{eno}, #{uid}, #{qno}, #{epy}, #{ebuildingType}, #{edentalType}, #{efloorType}, #{ewallType}, #{ek3000b}, #{ek5000b}, #{es2100z}, #{efurniture1}, #{efurniture2}, #{efurniture3}, sysdate)
+		(estimate_no, user_id, question_no, py, building_type, dental_type, floor_type, wall_type, k3000B, k5000b, s2100z, furniture1, furniture2, furniture3, estimate_date, estimate_event) 
+		VALUES (#{eno}, #{uid}, #{qno}, #{epy}, #{ebuildingType}, #{edentalType}, #{efloorType}, #{ewallType}, #{ek3000b}, #{ek5000b}, #{es2100z}, #{efurniture1}, #{efurniture2}, #{efurniture3}, sysdate, #{eEvent})
 	</insert>
 	
 	<delete id="deleteByEno" parameterType="int">

@@ -19,6 +19,7 @@ public class Estimate {
 	private int efurniture2;
 	private int efurniture3;
 	private String edate;
+	private int eEvent = 0;
 	
 	// 결과 저장용
 	private double buildingWeight;
