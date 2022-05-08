@@ -11,4 +11,7 @@ public class Events {
 	private String eRewardKind;
 	private int eRewardValue;
 	private String eGetDate;
+	
+	private short eMaxOccupancy;	// 최대 당첨 인원수
+	private int eStatus;			// 이벤트 결과
 }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- dao의 interface와 연결하기 위해 namespace에 해당 인터페이스 경로를 줌 -->
+<mapper namespace="com.mycompany.webapp.dao.EventsDao">
+	<select id="selectByEid" parameterType="string" resultType="events">
+		SELECT events_no, user_id, events_id, events_user_index, events_reward_kind, events_reward_value, events_get_date
+		FROM events
+		WHERE events_id=#{eid}
+	</select>
+	
+	<select id="selectByUid" parameterType="string" resultType="events">
+		SELECT events_no, user_id, events_id, events_user_index, events_reward_kind, events_reward_value, events_get_date
+		FROM events
+		WHERE events_id=#{uid}
+	</select>
+	
+	<select id="selectByEidnUid" parameterType="events" resultType="events">
+		SELECT events_no, events_user_index, events_reward_kind, events_reward_value, events_get_date
+		FROM events
+		WHERE events_id=#{eid}
+		  AND user_id=#{uid}
+	</select>
+	
+	<select id="countEid" parameterType="string" resultType="int">
+		SELECT count(*) FROM events WHERE events_id=#{eid}
+	</select>
+
+	<insert id="insert" statementType="CALLABLE" parameterType="events">
+		{
+			CALL event_proc(
+				#{uid, mode=IN, jdbcType=VARCHAR},
+			    #{eid ,mode=IN, jdbcType=VARCHAR},
+			    #{eRewardKind ,mode=IN, jdbcType=VARCHAR},
+			    #{eRewardValue ,mode=IN, jdbcType=INTEGER},
+			    #{eMaxOccupancy ,mode=IN, jdbcType=INTEGER},
+			    #{eStatus, javaType=int, jdbcType=INTEGER, mode=OUT}
+			)
+		}
+	</insert>
+	
+	<delete id="deleteByEid" parameterType="string">
+		DELETE FROM events WHERE events_id=#{eid}
+	</delete>
+	
+	<delete id="deleteByEidnUid" parameterType="events">
+		DELETE FROM events WHERE events_id=#{eid} AND user_id=#{uid}
+	</delete>
+</mapper>
+

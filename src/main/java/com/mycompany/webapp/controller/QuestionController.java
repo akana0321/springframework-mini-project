@@ -1,5 +1,6 @@
 package com.mycompany.webapp.controller;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 
 import javax.annotation.Resource;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.webapp.dto.Estimate;
+import com.mycompany.webapp.dto.Events;
 import com.mycompany.webapp.dto.Question;
 import com.mycompany.webapp.items.EstimateProcess;
 import com.mycompany.webapp.service.EstimateService;
+import com.mycompany.webapp.service.EventsService;
 import com.mycompany.webapp.service.QuestionService;
 
 import lombok.extern.log4j.Log4j2;
@@ -27,16 +30,24 @@ public class QuestionController {
 	QuestionService questionService;
 	@Resource
 	EstimateService estimateService;
+	@Resource
+	EventsService eventsService;
 	
 	EstimateProcess ep;
+	String eventName;
 	
 	@RequestMapping("/questionIndex")
-	public String questionIndex(HttpServletRequest request) {		
+	public String questionIndex(HttpSession session, HttpServletRequest request) {		
 		String userId = (String) request.getSession().getAttribute("sessionUid");
 		if(userId == null) {
 			return "/question/goBackHome";
+		} else {
+			eventName = LocalDate.now().toString();
+			int isEvent = eventsService.getTotalEidCount(eventName);
+			session.setAttribute(eventName, isEvent);
+			log.info((int)request.getSession().getAttribute(eventName));
+			return "/question/questionIndex";
 		}
-		return "/question/questionIndex";
 	} 
 	
 	@PostMapping(value="/questionResult", produces="application/json; charset=UTF-8")
@@ -62,6 +73,7 @@ public class QuestionController {
 		String userId = (String) request.getSession().getAttribute("sessionUid");
 		Estimate estimate = ep.init();
 		
+		// 질문 작성
 		Question question = new Question();
 		question.setUid(userId);
 		question.setQcategory("INTERIOR");
@@ -69,11 +81,31 @@ public class QuestionController {
 		/*model.addAttribute("question", question);*/
 		questionService.insertQuestion(question);
 		
-		estimate.setQno(question.getQno());
+		/*// 이벤트에 들었는지 확인
+		Events event = new Events();
+		event.setUid(userId);
+		event.setEid(eventName);
+		event.setERewardKind("DISCOUNT");	// % 할인
+		event.setERewardValue(10);			// 10% 할인
+		event.setERewardValue(5);			// 최대 5명
+		eventsService.insertEvents(event);
+		int eventResult = event.getEStatus();
+		log.info("Events 객체의 eStatus: " + eventResult);
 		
+		// 견적 내용 작성
+		// 이벤트 유무에 따라 할인 여부 저장
+		if(eventResult == 1) {
+			estimate.setEEvent(1);
+		} else {
+			estimate.setEEvent(0);
+		}*/
+		estimate.setQno(question.getQno());
 		estimate.setUid(userId);
+	
 		estimateService.insertEstimate(estimate);
 		
+		request.getSession().removeAttribute("estimate");
+		request.getSession().removeAttribute("priceMap");
 		return "/question/questionFinish";
 	}
 	
