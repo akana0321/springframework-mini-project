@@ -42,28 +42,32 @@ public class QuestionController {
 	@PostMapping(value="/questionResult", produces="application/json; charset=UTF-8")
 	public String questionResult(Estimate estimate, Model model) {
 		log.info(estimate.toString());
+		// EstimateProcess에 estimate 객체를 넣어 EP 초기화
 		ep = new EstimateProcess(estimate);
-			
+		
+		// EstimateProcess에서 재정의한 Estimate 객체를 받음
 		estimate = ep.init();
+		// 제품 하나의 가격을 저장한 priceMap을 받음
 		HashMap<String, Integer> priceMap = ep.getpPiceMap();
 		log.info(estimate);
 		
+		// View에서 출력하기 위해 estimate와 priceMap을 넘김
 		model.addAttribute("estimate", estimate);
 		model.addAttribute("priceMap", priceMap);
 		return "/question/questionResult";
 	}
 	
 	@RequestMapping("/questionSending")
-	public String questionSending(HttpSession session, HttpServletRequest request) {
-		/* session으로 UID 받고 Question 객체 만들어서 삽입 후 qno 받고 estimate 객체 세팅한 후 insert */
+	public String questionSending(HttpSession session, HttpServletRequest request, Model model) {
 		String userId = (String) request.getSession().getAttribute("sessionUid");
 		Estimate estimate = ep.init();
 		
 		Question question = new Question();
 		question.setUid(userId);
 		question.setQcategory("INTERIOR");
-		question.setQcontent("INTERIOR QUESTION - " + userId);
-		question.setQno(questionService.insertQuestion(question));
+		question.setQcontent("견적 문의");
+		/*model.addAttribute("question", question);*/
+		questionService.insertQuestion(question);
 		
 		estimate.setQno(question.getQno());
 		
@@ -74,7 +78,8 @@ public class QuestionController {
 	}
 	
 	@RequestMapping("/questionFinish")
-	public String questionFinish() {
+	public String questionFinish(Model model) {
+		/*Question question = (Question) model.getAttribute("question");*/
 		return "redirect:/mypage/mypage";
 	}
 	
