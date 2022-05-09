@@ -76,7 +76,6 @@ public class PickPYController {
 			return "pickPY/productInfo";
 		}
 		
-		@ResponseBody
 		@PostMapping("/questionProduct")
 		public String questionProduct(HttpServletRequest request, Locale locale, Model model, String qcontent, String name) {
 			String userId = (String) request.getSession().getAttribute("sessionUid");

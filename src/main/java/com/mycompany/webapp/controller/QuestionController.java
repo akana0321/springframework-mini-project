@@ -79,15 +79,15 @@ public class QuestionController {
 		question.setQcategory("INTERIOR");
 		question.setQcontent("견적 문의");
 		/*model.addAttribute("question", question);*/
-		questionService.insertQuestion(question);
+		//questionService.insertQuestion(question);
 		
-		/*// 이벤트에 들었는지 확인
+		// 이벤트에 들었는지 확인
 		Events event = new Events();
 		event.setUid(userId);
 		event.setEid(eventName);
 		event.setERewardKind("DISCOUNT");	// % 할인
 		event.setERewardValue(10);			// 10% 할인
-		event.setERewardValue(5);			// 최대 5명
+		event.setEMaxOccupancy(3);			// 최대 5명
 		eventsService.insertEvents(event);
 		int eventResult = event.getEStatus();
 		log.info("Events 객체의 eStatus: " + eventResult);
@@ -98,12 +98,13 @@ public class QuestionController {
 			estimate.setEEvent(1);
 		} else {
 			estimate.setEEvent(0);
-		}*/
+		}
 		estimate.setQno(question.getQno());
 		estimate.setUid(userId);
 	
-		estimateService.insertEstimate(estimate);
+		//estimateService.insertEstimate(estimate);
 		
+		session.setAttribute("isEvent", eventResult);
 		request.getSession().removeAttribute("estimate");
 		request.getSession().removeAttribute("priceMap");
 		return "/question/questionFinish";
