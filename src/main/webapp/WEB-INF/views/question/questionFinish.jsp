@@ -29,6 +29,10 @@
                 </button>
             </div>
             <div class="modal-body">
+            	<c:if test="${ sessionScope.isEvent == 1 }">
+            		<p>할인된 가격이 적용되었습니다!</p>
+            		<p>마이페이지 > 인테리어 문의에서 확인해주세요.</p>
+            	</c:if>
                 <p>마이페이지로 이동합니다.</p>
             </div>
             <div class="modal-footer">

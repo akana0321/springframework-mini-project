@@ -81,25 +81,25 @@
     <!-- button CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aboutus/button.css" />
   </head>
-
+	 <!-- Get PYRoom version(PY) -->
+         <%
+    	request.setCharacterEncoding("euc-kr");
+		int version = Integer.parseInt(request.getParameter("version"));
+		System.out.println("PYRoom = version:"+version);
+    	%>
   <body>
-    <div id="product-container">
-      <%@ include file="/WEB-INF/views/pickPY/svg.jsp" %>
+    <div id="product-container" style="text-align:center;">
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <div class="small-title"> ${product.pname }</div>
+        <div class="medium-title" style="margin-top:15%"> <%=version%>PY</div>
+        <div style="margin-top:10%"> 가구를 클릭하여<br/> 상세 정보를 확인해보세요 </div>
         <div id="colors" style="display: flex">
         </div>
-        <img id="background-image"
-          src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/1537517988_102268_1.jpg?gif=1&w=1280&h=1280&c=c"
-          alt="" />
-        내용: ${product.pdescription }
-        <div id="pCS" type="button" class="btn btn-lg btn-block gray-button" style="color: white; bottom:0;">
-          문의하기
-        </div>
+        
+        
         <script>
           /* Get product color from DB And add color div */
           $(document).ready(function () {
@@ -110,37 +110,6 @@
               console.log("workin?");
             });
 
-            /* get product SVG */
-
-            /* get product Image  */
-
-            /* get product */
-            var productId = '${product.pid}';
-            /* get product color */
-            var productColorStr = '${product.pcolor}';
-            // since product pcolor is String not list | we need to split the colors
-            var productArr = productColorStr.split(",");
-
-            for (var i = 0; i < productArr.length; i++) {
-              $("#colors").append(
-                '<div class="color" style="background-color: ' + productArr[i] + '" data-hex="' + productArr[i] + '">' +
-                "</div>"
-              );
-            }
-            /* Get Product Div */
-            var els = document.getElementsByClassName("color");
-            for (var i = 0; i < els.length; i++) {
-              els[i].onclick = fun1;
-            }
-            /* Change Product Color
-          get color from data-hex */
-            function fun1(e) {
-              const overlay = document.getElementById("product-shape");
-              console.log(overlay);
-              var color = e.target.getAttribute("data-hex");
-              console.log(color);
-              overlay.style.fill = color;
-            }
           });
 
         </script>

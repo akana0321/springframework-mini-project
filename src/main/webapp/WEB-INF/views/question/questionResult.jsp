@@ -258,7 +258,7 @@
 						<div onclick="location.href='${ pageContext.request.contextPath }/mypage/mypage'" class="btn float" style="background-color: #ffb440;  width:20%; margin-top:5%"><span style="font-size: 1.5em">문의하기</span>
 						</div>
 					</div>
-					
+
 				</div>
 			</div>
 		</div>
