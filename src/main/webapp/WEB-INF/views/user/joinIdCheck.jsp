@@ -16,18 +16,18 @@
 		//2. MemberDAO객체생성 -> 전달받은 정보 모두 저장
 		UserDao udao;
 		
-		//3. joinIdCheck(ID)메서드
+		/*//3. joinIdCheck(ID)메서드
 		Object result = udao.selectByUid(uid);
 		if (result != null){
-			out.print("사용가능한 아이디입니다");
+			out.print("사용가능한 아이디입니다");*/
 			//5. 아이디사용하기버튼추가 => 동기방식사용 but 요즘은 비동기방식을 더 많이사용한다
 			%>
 			 <input type="button" value="아이디 사용하기" onclick="result();">
 			<%
 			
-		} else {
+		/*} else {
 			out.print("에러 발생!!!(-1)"); 
-		}
+		}*/
 		
 		/* else if(result == 0){
 			out.print("중복된 아이디입니다");

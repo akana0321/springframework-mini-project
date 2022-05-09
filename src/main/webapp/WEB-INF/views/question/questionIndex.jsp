@@ -59,9 +59,9 @@
     <div id="questionFormContainer">
         <form id="questionForm" method="post" action="questionResult">
             <div id="questionContainer" class="d-flex align-items-center">
-            	<div style="width:25%; height:100vh; background-image:  url('${pageContext.request.contextPath }/resources/images/question/side_image.jpg;">견적문의</div>
+            	<div style="width:20%; height:200%; position:fixed; margin-top: 0; background-image:  url('${pageContext.request.contextPath }/resources/images/question/side_image.jpg; object-fit:cover;"></div>
                 <div class="fullscrean text-center" style="flex-grow:10; padding-left: 0; padding-right: 0;">
-                    <div id="questionStart" class="fullscrean d-flex flex-column" style="padding-left:10rem;">
+                    <div id="questionStart" class="fullscrean d-flex flex-column align-items-center">
                         <p class="card-title mb-5">나의 치과 견적 오스템과 함께 알아볼까요?</p>
                         <img src="${ pageContext.request.contextPath }/resources/images/question/calc.png" class="mb-5"/>
                         <a onclick="pyInputOpen()" class="btn-start">
