@@ -46,13 +46,15 @@
 	</select>
 
 	<insert id="insert" parameterType="comment">
-		<selectKey keyProperty="cno" resultType="int" order="BEFORE">
+		<!-- <selectKey keyProperty="cno" resultType="int" order="BEFORE">
 			seq_comment_cno.nextval from dual
-		</selectKey>
-	
+		</selectKey> -->
+
 		INSERT ALL
+		
 			INTO comments (comment_no, user_id, question_no, comment_content, comment_date) 
 			VALUES(#{cno}, #{uid}, #{qno}, #{ccontent}, sysdate)
+		
 		<if test="cattaches != null">
 			<foreach collection="cattaches" item="cattach" separator=" " close=" ">
 				INTO attach (attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name)
@@ -60,12 +62,13 @@
 			</foreach>
 		</if>
 		SELECT * FROM DUAL
+
 	</insert>
 	
 	<delete id="deleteByCno" parameterType="int">
 		DECLARE
 		BEGIN
-			DELETE FROM comments WHERE comment_cno = #{cno};
+			DELETE FROM comments WHERE comment_no = #{cno};
 			
 			DELETE FROM attach
 			 WHERE attach_target_table like 'QUESTION'

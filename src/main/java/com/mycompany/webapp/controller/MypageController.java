@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mycompany.webapp.dto.Attach;
 import com.mycompany.webapp.dto.Comment;
@@ -82,7 +83,7 @@ public class MypageController {
 		session.setAttribute("dentistArray", dentist);
 		session.setAttribute("dentistSize", dentistSize);
 		
-		List<Question> getAllQuestion = questionService.getQuestionsByPager(new Pager(5,10,questionService.getTotalQuestionNum(),1));
+		List<Question> getAllQuestion = questionService.getQuestionsByPager(new Pager(5,10,questionService.getTotalQuestionNum(),1,userId));
 		log.info(getAllQuestion);
 		List<Question> getUidQuestionIn = new ArrayList();
 		List<Question> getUidQuestionPro = new ArrayList();
@@ -95,6 +96,7 @@ public class MypageController {
 				if(getAllQuestion.get(i).getQcontent().length() > 10) {
 					getUidQuestionIn.get(0).setQcontent(getAllQuestion.get(i).getQcontent().substring(0, 10) + "...");
 				}
+				log.info(i);
 			}
 			if(getAllQuestion.get(i).getUid().equals(userId) && getAllQuestion.get(i).getQcategory().equals("PRODUCT")) {
 				getUidQuestionPro.add(getAllQuestion.get(i));
@@ -107,7 +109,8 @@ public class MypageController {
 				getUidQuestionPro.get(i).setQcontent(getUidQuestionPro.get(i).getQcontent().substring(0, 10) + "...");
 			}
 		}
-		
+		log.info("getUidQuestionIn : " + getUidQuestionIn);
+		log.info("getUidQuestionPro : " + getUidQuestionPro);
 		
 		session.setAttribute("getUidQuestionIn", getUidQuestionIn);
 		session.setAttribute("getUidQuestionPro", getUidQuestionPro);
@@ -131,8 +134,9 @@ public class MypageController {
 		jsonObject.put("result", "success");
 		jsonObject.put("saveFilename", attachSession.getAoname());
 		String json = jsonObject.toString();
-		
+
 		session.removeAttribute("userimg");
+		//session.setAttribute("userimg", attachSession);
 		
 		return json;
 	}
@@ -374,22 +378,35 @@ public class MypageController {
 		
 		return "mypage/interialQ";
 	}
-	@RequestMapping("/question")
-	public String InterialQuestion(String ccontent,HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		Comment comment = new Comment();
-		String uid = (String) session.getAttribute("sessionUid");
-		int qno = (int) session.getAttribute("QuestionNo");
-		Date date = new Date();
-		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	@PostMapping("/question")
+	public String InterialQuestion(String ccontent,MultipartFile cattach,HttpServletRequest request) {
+		log.info(ccontent.equals(""));
+		log.info(cattach);
 		
-		comment.setCno(commentService.getTotalCommentsNumInQuestion(qno)+1);
-		comment.setQno(qno);
-		comment.setUid(uid);
-		comment.setCdate(format.format(date));
+		if(!ccontent.equals("") && !ccontent.split("").equals("")) {
+			HttpSession session = request.getSession();
+			Comment comment = new Comment();
+			String uid = (String) session.getAttribute("sessionUid");
+			int qno = (int) session.getAttribute("QuestionNo");
+			Date date = new Date();
+			//SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			
+			comment.setCno(commentService.getTotalCommentsNumInQuestion(qno)+1);
+			comment.setQno(qno);
+			comment.setUid(uid);
+			comment.setCcontent(ccontent);
+			//comment.setCdate(format.format(date));
+			
+			commentService.insertComment(comment);
+		}
 		
-		log.info(comment);
-		commentService.insertComment(comment);
+		return "redirect:/mypage/interialQ";
+	}
+	
+	@RequestMapping("/removeQuestion")
+	public String removeQuestion(int cno) {
+		log.info(cno);
+		commentService.deleteCommentByCno(cno);
 		return "redirect:/mypage/interialQ";
 	}
 	

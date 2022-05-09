@@ -45,6 +45,9 @@
 #interialq #back:hover{
     cursor: pointer;
 }
+#interialq #minus:hover{
+	 cursor: pointer;
+}
 
 #interialq pre{
     font-size: 15px;
