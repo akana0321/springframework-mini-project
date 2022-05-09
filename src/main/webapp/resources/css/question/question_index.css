@@ -12,6 +12,8 @@ html {
     height: auto;
     z-index: 999;
     margin-top: 3.5em;
+    margin-left: 85%;
+    top: 12rem;
 }
 
 #progressbarContainer #progressbar {
@@ -202,6 +204,7 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 25rem;
     height: 100%;
 }
 
@@ -284,6 +287,13 @@ html {
 #questionContainer input {
     text-align:center;
     border: none;
+}
+
+#questionContainer .questionContentContainer {
+	width: 80%;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 #questionContainer .card{

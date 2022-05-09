@@ -57,23 +57,12 @@
     </script>
 
     <div id="questionFormContainer">
-        <div id="progressbarContainer" class="navbar">
-            <ul id="progressbar">
-                <li class="questionContent01">치과 목적</li>
-                <li class="questionContent02">건물 유형</li>
-                <li class="questionContent03">바닥재</li>
-                <li class="questionContent04">벽지</li>
-                <li class="questionContent05">치과용 의자</li>
-                <li class="questionContent06">가구</li>
-                <li class="questionResult01">완료!</li>
-            </ul>
-        </div>
-
         <form id="questionForm" method="post" action="questionResult">
-            <div id="questionContainer" class="d-flex justify-content-center align-items-center">
-                <div class="fullscrean text-center" style="padding-left: 0; padding-right: 0;">
-                    <div id="questionStart" class="fullscrean d-flex flex-column align-items-center" style="padding-left: 7rem;">
-                        <p class="card-title mb-5">나의 치과 견적 765Studio와 함께 알아볼까요?</p>
+            <div id="questionContainer" class="d-flex align-items-center">
+            	<div style="width:25%; height:100vh; background-image:  url('${pageContext.request.contextPath }/resources/images/question/side_image.jpg;">견적문의</div>
+                <div class="fullscrean text-center" style="flex-grow:10; padding-left: 0; padding-right: 0;">
+                    <div id="questionStart" class="fullscrean d-flex flex-column" style="padding-left:10rem;">
+                        <p class="card-title mb-5">나의 치과 견적 오스템과 함께 알아볼까요?</p>
                         <img src="${ pageContext.request.contextPath }/resources/images/question/calc.png" class="mb-5"/>
                         <a onclick="pyInputOpen()" class="btn-start">
                             <div class="wrap-start">
@@ -101,6 +90,7 @@
                 <div id="questionContent01" class="form-group fullscrean" style="display: none; background-color: #f1f3f5;">
                     <p class="card-title" style="padding-left: 10rem;">시공할 치과의 건물 유형을 선택해주세요</p>
                     <div class="d-flex justify-content-center align-content-center" style="padding-left: 10rem;">
+                    	<img src="${ pageContext.request.contextPath }/resources/images/portfolio/sub_1.jpg" style="position:fixed; width:20%; height:inherit; z-index:999;"/>
                         <!-- 단독 -->
                         <div>
                             <label>
@@ -526,7 +516,19 @@
                     </div>
                 </div>
             </div>
-        </form>    
+        </form>
+        
+        <div id="progressbarContainer" class="navbar">
+            <ul id="progressbar">
+                <li class="questionContent01">치과 목적</li>
+                <li class="questionContent02">건물 유형</li>
+                <li class="questionContent03">바닥재</li>
+                <li class="questionContent04">벽지</li>
+                <li class="questionContent05">치과용 의자</li>
+                <li class="questionContent06">가구</li>
+                <li class="questionResult01">완료!</li>
+            </ul>
+        </div>    
     </div>
 </body>
 </html>
