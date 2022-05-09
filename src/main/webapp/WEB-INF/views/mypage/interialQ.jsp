@@ -21,7 +21,7 @@
 
 <body>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-	<div id="interialq" style="width: 80%; margin: 6% 1% 5% 10%" class="text-center">
+	<div id="interialq" style="width: 80%; margin: 6% 0% 7% 10%" class="text-center">
       <table class="mb-5">
         <td>
           <h1 class="mb-3"><font color="black" size="10" data-aos="zoom-in" data-aos-duration="1000">인테리어 문의</font></h1>
@@ -37,7 +37,7 @@
             <div class="col-md-12 pt-5 text-left">
               <div class="fa fa-3x fa-arrow-circle-left float-left ml-5" onclick="location.href='mypage'" id="back" data-aos="fade-in" data-aos-duration="1500"></div>
                 <div style="font-size: 40px; color: #343434; font-weight: 700; text-align: center; margin: 0 10%;" class="mb-5 " data-aos="fade-up" data-aos-duration="2000">예상 견적서</div>
-              <div data-aos="slide-up" data-aos-duration="3000">
+              <div data-aos="zoom-in" data-aos-duration="2000">
                 <div>
                   <div style="clear: both">
                     <div style="width: 90%" class="m-auto">
@@ -200,15 +200,15 @@
           </div>
           
           </div>
-          <div class="col-md-4 " style="overflow: scroll; height: 1000px">
+          <div class="col-md-4 " style="overflow: scroll; height: 1060px;">
           <div id="question" > 
           <c:forEach var="comment" items="${CommentList}" varStatus="counting">
             <c:if test="${comment.uid eq sessionUid}">
-           <div id=${comment.cno} class="col-md-12 shadow mb-3" style="background-color: rgb(239, 239, 239);">
+           <div id=${comment.cno} class="col-md-12 shadow mb-3" style="background-color: rgb(239, 239, 239); ">
               <div class="text-left mt-2 ml-2" style="font-size: 30px; font-weight: 600; padding-top: 2%;">문의</div>
               <div id="minus" style="margin-left:70%; top:0; right:1%;" class="position-absolute" >
               <form method="post" action="removeQuestion">
-              <input name="cno" value=${comment.cno } style="visibility: hidden;">
+              <input name="cno" value=${comment.cno } style="visibility: hidden; ">
               <input type="submit"  class="btn btn-light" value="삭제하기">
               </form>
               </div>
@@ -216,7 +216,7 @@
               <hr/>
               <div class="text-left m-5">
                   <div>
-<pre class="ml-3" >
+<pre class="ml-3" style="overflow: scroll;">
    ${comment.ccontent}
 </pre>
                   </div>
@@ -232,7 +232,7 @@
               <hr/>
               <div class="text-left m-5">
                   <div>
-<pre class="ml-3" >
+<pre class="ml-3" style="overflow: scroll;">
    ${comment.ccontent}
 </pre>
                   </div>

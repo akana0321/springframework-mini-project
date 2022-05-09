@@ -19,12 +19,12 @@
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/mainheader.css" />
+<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/header.css" />
 <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/title.css" />
 <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/question/question_result.css" />
 </head> <!-- background-image:url('${ pageContext.request.contextPath }/resources/images/mypage/backgroundimg.jpg') -->
-<body style="background-color: #DFDFDF; background-image:url('${ pageContext.request.contextPath }/resources/images/mypage/backgroundImg2.jpg')">
-	<%@ include file="/WEB-INF/views/common/mainheader.jsp"%>
+<body style="background-color: white">
+	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 	<div id="questionResult" >
 		<div class="text-center" id="table" data-aos="fade-in" data-aos-duration="2000" >
 			
@@ -33,7 +33,7 @@
 					<div class="d-flex" >
 					
 					
-					<div class="col-md-4 p-3 shadow" style="margin:1% 0% 5% 3%; background-color: #E1E1E1" >
+					<div class="col-md-4 p-5 shadow" style="margin:1% 0% 5% 3%; background-color: #E1E1E1" >
 					<div class="row">
 							<div class="col-md-12 mb-3 text-center">
 							<span style="font-weight: 700; font-size: 1.5em">바닥재</span>
