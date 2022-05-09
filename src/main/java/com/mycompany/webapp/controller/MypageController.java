@@ -353,7 +353,7 @@ public class MypageController {
 		return "/mypage/mypage";
 	}
 
-
+	//인테리어 문의
 	@RequestMapping("/interialQ")
 	public String getInterialQ(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -378,7 +378,35 @@ public class MypageController {
 		
 		return "mypage/interialQ";
 	}
-	@PostMapping("/question")
+	//상품 문의
+	@RequestMapping("/interialP")
+	public String getInterialP(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		List<Question> question = (List<Question>) session.getAttribute("getUidQuestionPro");
+		int qno = question.get(0).getQno();
+		
+		List<Comment> commentList =  commentService.getCommentsByQno(qno);
+		
+		for(int i=0; i<commentList.size()-1; i++) {
+			for(int j=i; j<commentList.size(); j++) {
+				if(commentList.get(i).getCno() > commentList.get(j).getCno()) {
+					Comment tmp =  commentList.get(i);
+					commentList.set(i, commentList.get(j));
+					commentList.set(j,tmp);
+				}
+			}
+		}
+		session.setAttribute("QuestionNo", qno);
+		session.setAttribute("CommentList", commentList);
+		log.info(commentList);
+		
+		
+		return "mypage/interialP";
+	}
+	
+	
+	
+	@PostMapping("/questionQ")
 	public String InterialQuestion(String ccontent,MultipartFile cattach,HttpServletRequest request) {
 		log.info(ccontent.equals(""));
 		log.info(cattach);
@@ -403,6 +431,31 @@ public class MypageController {
 		return "redirect:/mypage/interialQ";
 	}
 	
+	@PostMapping("/questionP")
+	public String InterialQuestionP(String ccontent,MultipartFile cattach,HttpServletRequest request) {
+		log.info(ccontent.equals(""));
+		log.info(cattach);
+		
+		if(!ccontent.equals("") && !ccontent.split("").equals("")) {
+			HttpSession session = request.getSession();
+			Comment comment = new Comment();
+			String uid = (String) session.getAttribute("sessionUid");
+			int qno = (int) session.getAttribute("QuestionNo");
+			Date date = new Date();
+			//SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			
+			comment.setCno(commentService.getTotalCommentsNumInQuestion(qno)+1);
+			comment.setQno(qno);
+			comment.setUid(uid);
+			comment.setCcontent(ccontent);
+			//comment.setCdate(format.format(date));
+			
+			commentService.insertComment(comment);
+		}
+		
+		return "redirect:/mypage/interialP";
+	}
+	
 	@RequestMapping("/removeQuestion")
 	public String removeQuestion(int cno) {
 		log.info(cno);
@@ -410,10 +463,7 @@ public class MypageController {
 		return "redirect:/mypage/interialQ";
 	}
 	
-	@RequestMapping("/interialP")
-	public String getInterialP() {
-		return "mypage/interialP";
-	}
+	
 	@RequestMapping("/ajax/addinfo")
 	public String getAddinfo() {
 		return "mypage/ajax/addinfo";

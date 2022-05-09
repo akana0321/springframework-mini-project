@@ -30,7 +30,7 @@
 <div id="mypage">
 	<section class="py-5 my-5">
 		<div style="margin : 0px 8%"  >
-			<h1 class="mb-5 " style=" width: 40%; float:none; margin:0 90px; font-weight: bold; font-size:3em" data-aos="fade-in" data-aos-duration="1000" >My Page </h1>
+			
 			<div class=" rounded-lg d-block d-sm-flex shadow-lg " style="width: 100%; background-color: #faf5ee4e; " data-aos="fade-in" data-aos-duration="3000">
 				<div class="profile-tab-nav border-right mt-2">
 					<div class="p-4">
@@ -53,7 +53,7 @@
 					<div class="text-right ">
 						<a class="mr-3" href="#" style="color: black; "> 회원 탈퇴</a>
 					</div>
-					<div class="nav flex-column nav-tabs mt-3" style="background-color: #fcc57396;"  role="tablist" aria-orientation="vertical" >
+					<div class="nav flex-column nav-tabs mt-3" style="background-color: #ffb440;"  role="tablist" aria-orientation="vertical" >
 						<a class="nav-link active" id="account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="account" style="color: black;">
 							<i class="fa fa-user text -center mr-1"></i> 
 							내 정보
@@ -153,7 +153,7 @@
 							</div>
 						</div>
 						<div class="mt-5 text-right">
-							<input type="submit" class="btn" style="background-color: rgba(128, 128, 128, 0.614); color:white;" value="저장하기">
+							<input type="submit" class="btn" style="background-color: #ffb440; color:black;" value="저장하기">
 						</div>
 						</form>
 					</div>
@@ -241,7 +241,7 @@
 					          				</div>
 					        			</div>
 					        			<div class="col-md-6  text-right">
-											<input class="btn " type="submit" style="background-color: rgba(128, 128, 128, 0.614); color:white;" value="저장하기">
+											<input class="btn " type="submit" style="background-color: #ffb440; color:black;" value="저장하기">
 										</div>
 										
 										
