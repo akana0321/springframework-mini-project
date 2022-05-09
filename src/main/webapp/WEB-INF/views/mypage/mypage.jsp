@@ -306,39 +306,45 @@
 												<div class="accordion-card">
 													<div class="accordion-card__header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
 														<h5 class="mb-0">
-															<span>질문 1</span>
+															<span style="font-size: 1.5em; font-weight: 600">Q .</span>
+															<span>Studio 765에서는 어떤 것을 하나요?</span>
 														</h5>
 														<i class="fa fa-caret-down drop-icon"></i>
 													</div>					  
 													<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
 														<div class="accordion-card__body">
-															답변1
+															<span style="font-size: 1.5em; font-weight: 600">A .</span>
+															<span> 인테리어를 처음 접하는 분들을 위해 단계별로 안내합니다.</span>
 														</div>
 													</div>
 												</div>
 												<div class="accordion-card">
 													<div class="accordion-card__header collapsed" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
 														<h5 class="mb-0">
-															<span>질문 2</span>
+															<span style="font-size: 1.5em; font-weight: 600">Q .</span>
+															<span>상품의 자세한 정보는 어떻게 알 수 있나요?</span>
 														</h5>
 														<i class="fa fa-caret-down drop-icon"></i>
 													</div>
 													<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
 														<div class="accordion-card__body">
-															답변2
+															<span style="font-size: 1.5em; font-weight: 600">A .</span>
+															<span> 각 상품의 상세 정보는 문의를 통해 확인 가능합니다.</span>
 														</div>
 													</div>
 												</div>
 												<div class="accordion-card">
 													<div class="accordion-card__header collapsed" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
 														<h5 class="mb-0">
-															<span>질문 3</span>
+															<span style="font-size: 1.5em; font-weight: 600">Q .</span>
+															<span>상담 방법과 상담 가능 시간 유선번호는 어떻게 되나요?</span>
 														</h5>
 														<i class="fa fa-caret-down drop-icon"></i>
 													</div>
 													<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
 														<div class="accordion-card__body">
-															답변3
+															<span style="font-size: 1.5em; font-weight: 600">A .</span>
+															<span> 상담 시간은 평일 09:00 ~ 18:00 (주말 & 공휴일 제외)이며, 전화번호는 1120-1334 입니다.</span>
 														</div>
 													</div>
 												</div>

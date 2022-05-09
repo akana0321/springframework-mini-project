@@ -16,23 +16,21 @@
 <link rel="stylesheet"	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
 <script	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
 <script	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-<script	src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
-<script	src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
-<script	src="//cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/mainheader.css" />
 <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/title.css" />
 <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/question/question_result.css" />
 </head> <!-- background-image:url('${ pageContext.request.contextPath }/resources/images/mypage/backgroundimg.jpg') -->
-<body style="background-color: #DFDFDF; background-image:url('${ pageContext.request.contextPath }/resources/images/mypage/backgroundImg2.jpg')" >
+<body style="background-color: #DFDFDF; background-image:url('${ pageContext.request.contextPath }/resources/images/mypage/backgroundImg2.jpg')">
 	<%@ include file="/WEB-INF/views/common/mainheader.jsp"%>
 	<div id="questionResult" >
-		<div class="text-center" id="table" >
+		<div class="text-center" id="table" data-aos="fade-in" data-aos-duration="2000" >
 			
 			<div>
 				<div>
-					<div class="d-flex">
+					<div class="d-flex" >
 					
 					
 					<div class="col-md-4 p-3 shadow" style="margin:1% 0% 5% 3%; background-color: #E1E1E1" >
@@ -72,15 +70,15 @@
 							</div>
 							<div class="col-md-4 mb-3">
 								<img src='${ pageContext.request.contextPath }/resources/images/question/k3000b.PNG' style="width:100%; height: 100%">
-								<span>k3000b</span>
+								<span>K3000B</span>
 							</div>
 							<div class="col-md-4 mb-3">
 								<img src='${ pageContext.request.contextPath }/resources/images/question/k5000b.PNG' style="width:100%; height: 100%; border: solid">
-								<span>k5000b</span>
+								<span>K5000B</span>
 							</div>
 							<div class="col-md-4 mb-3">
 								<img src='${ pageContext.request.contextPath }/resources/images/question/s2100z.PNG' style="width:100%; height: 100%; border: solid">
-								<span>s2100z</span>
+								<span>S2100Z</span>
 							</div>
 							
 							<div class="col-md-12 mb-3 mt-5 text-center">
@@ -263,5 +261,9 @@
 			</div>
 		</div>
 	</div>
+
 </body>
+<script>
+    AOS.init();
+</script>
 </html>

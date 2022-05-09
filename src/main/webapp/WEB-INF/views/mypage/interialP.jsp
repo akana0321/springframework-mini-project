@@ -56,7 +56,7 @@
            <div id=${comment.cno} class="col-md-12 shadow mb-3" style="background-color: rgb(239, 239, 239);"  data-aos="zoom-in-up" data-aos-duration="2000" data-aos-offset="200">
               <div class="text-left mt-2 ml-2" style="font-size: 30px; font-weight: 600; padding-top: 2%;">문의</div>
               <div id="minus" style="margin-left:70%" >
-              <form method="post" action="removeQuestion">
+              <form method="post" action="removeQuestionP">
               <input name="cno" value=${comment.cno } style="visibility: hidden;">
               <input type="submit"  class="btn btn-light" value="삭제하기">
               </form>
@@ -99,14 +99,14 @@
              <form style="margin-top: 5%; margin-bottom: 5%" action="questionP" method="POST">
               <div class="col-md-12">
                 <div class="form-group m-4">
-                  <textarea cols="60" class="form-control" id="content" rows="15" placeholder="문의 내용" style="resize: none" ></textarea>
+                  <textarea cols="60" class="form-control" name="ccontent" rows="15" placeholder="문의 내용" style="resize: none" ></textarea>
                 </div>
               </div>
               <div class="text-center">
                 <div class="form-group m-4  text-right">
+                  <input id="cattach" type="file" class="btn form-control-file" name="cattach" oninput="uploadFile(event)" multiple>
                   <input type="submit"  class="btn btn-light" value="문의하기">
                 </div>
-              </div>
             </form>
           </div>
         </div>

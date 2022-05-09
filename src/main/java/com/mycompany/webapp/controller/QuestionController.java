@@ -105,7 +105,7 @@ public class QuestionController {
 		//estimateService.insertEstimate(estimate);
 		
 		session.setAttribute("isEvent", eventResult);
-		request.getSession().removeAttribute("estimate");
+		//request.getSession().removeAttribute("estimate");
 		request.getSession().removeAttribute("priceMap");
 		return "/question/questionFinish";
 	}

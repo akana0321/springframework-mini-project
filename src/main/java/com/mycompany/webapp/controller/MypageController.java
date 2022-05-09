@@ -463,6 +463,13 @@ public class MypageController {
 		return "redirect:/mypage/interialQ";
 	}
 	
+	@RequestMapping("/removeQuestionP")
+	public String removeQuestionP(int cno) {
+		log.info(cno);
+		commentService.deleteCommentByCno(cno);
+		return "redirect:/mypage/interialP";
+	}
+	
 	
 	@RequestMapping("/ajax/addinfo")
 	public String getAddinfo() {
