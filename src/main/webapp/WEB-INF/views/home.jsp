@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/mainheader.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mainheader.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
   </head>
 <%@ include file="/WEB-INF/views/common/mainheader.jsp" %>
@@ -38,12 +39,17 @@
           차별화된 디자인, 그리고 완벽한 시공 품질까지
         </p>
         <div class="btn ml-0">
-          <div class="mr-3">
-            <a href="${pageContext.request.contextPath}/user/login" class="mainbtn1">튜토리얼 시작</a>
-          </div>
-          <div>
-            <a href="${pageContext.request.contextPath}/aboutus/content" class="mainbtn2">비회원으로 시작</a>
-          </div>
+        	<c:if test="${sessionUid == null}">
+	        	<div class="mr-3">
+	           		<a href="${pageContext.request.contextPath}/user/login" class="mainbtn1">튜토리얼 시작</a>
+	          	</div>
+	          	<div>
+	            	<a href="${pageContext.request.contextPath}/aboutus/content" class="mainbtn2">비회원으로 시작</a>
+	          	</div>
+        	</c:if>
+          	<c:if test="${sessionUid != null}">
+          		<a href="${pageContext.request.contextPath}/aboutus/content" class="mainbtn1">튜토리얼 시작</a>
+          	</c:if>
         </div>
       </div>
     </div>

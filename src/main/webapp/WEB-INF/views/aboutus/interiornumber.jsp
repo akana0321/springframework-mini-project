@@ -3,8 +3,8 @@
   <!-- interior number  -->
   <div>
     <div style="width:100%; postion:relative; display: flex;
-    justify-content: center;
-    align-items: center; top:0;">
+    justify-content: left;
+    align-items: center; top:0; left:0; margin:0;">
       <div class="title" style="position: absolute; left: 5%; color:white; ">OSSTEM INTERIOR</div>
       <img
         src="https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/4ldB/image/Ca3BiJdRVNaFRg_hOAdI2fZXlfw"

@@ -36,11 +36,11 @@
 					<div class="p-4">
 						<div class="img-circle text-center mb-3" style="position: relative;" >
 							<div id="userimg" data-aos="zoom-out" data-aos-duration="2000" >
-							<c:if test="${userimg.osname != null}">	
-								<img src="${pageContext.request.contextPath}/resources/images/mypage/${userimg.asname}" alt="Image" class="shadow" style="width: 200px; height: 200px;">
+							<c:if test="${userimg.aoname != null}">	
+								<img src="${pageContext.request.contextPath}/resources/images/mypage/${userimg.aoname}" alt="Image" class="shadow" style="width: 200px; height: 200px;">
 							</c:if>
-							<c:if test="${userimg.osname == null}">
-								<img src="${pageContext.request.contextPath}/resources/images/mypage/user.jpg" alt="Image" class="shadow" style="width: 200px; height: 200px;">
+							<c:if test="${userimg.aoname == null}">
+								<img src="${pageContext.request.contextPath}/resources/images/mypage/basicimg.png" alt="Image" class="shadow" style="width: 200px; height: 200px;">
 							
 							</c:if>
 							</div>
@@ -286,44 +286,6 @@
 											<td>${question.qdate}</td>
 											</a>
 										</tr>
-										
-										
-										<!-- <tr id="tb">
-											<td>1</td>
-											<td id="line"><a href="interialQ">인테리어 문의</a></td>
-											<td>2022/04/18</td>
-											</a>
-										</tr>
-										<tr id="tb">
-											<td>1</td>
-											<td id="line">인테리어 문의</td>
-											<td>2022/04/18</td>
-										</tr>
-										<tr id="tb">
-											<td>1</td>
-											<td id="line">인테리어 문의</td>
-											<td>2022/04/18</td>
-										</tr>
-										<tr id="tb">
-											<td>1</td>
-											<td id="line">인테리어 문의</td>
-											<td>2022/04/18</td>
-										</tr>
-										<tr id="tb">
-											<td>1</td>
-											<td id="line">인테리어 문의</td>
-											<td>2022/04/18</td>
-										</tr>
-										<tr id="tb">
-											<td>1</td>
-											<td id="line">인테리어 문의</td>
-											<td>2022/04/18</td>
-										</tr>
-										<tr id="tb">
-											<td>1</td>
-											<td id="line">인테리어 문의</td>
-											<td>2022/04/18</td>
-										</tr> -->
 										</c:forEach>
 									</table>
 								</div>

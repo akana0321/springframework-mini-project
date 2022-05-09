@@ -30,6 +30,7 @@
 		  FROM (
 		    SELECT question_no, user_id, question_category, question_content, question_date, product_id
 		    FROM question
+		    WHERE user_id = #{userId}
 		    ORDER BY question_no DESC
 		  )
 		  WHERE rownum &lt;= #{endRowNo}  

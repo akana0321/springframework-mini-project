@@ -182,7 +182,7 @@
 						</div>
 					</div>
 					<a href="questionSending" class="btn  text-center " style="opacity: 0;" id="animation">문의하기</a>
-					<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+					<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 					<a href="questionIndex" class="btn  text-center " style="opacity: 0;" id="animation2">다시하기</a>
 				</div>
 			</div>

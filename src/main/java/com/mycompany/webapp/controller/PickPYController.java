@@ -54,6 +54,12 @@ public class PickPYController {
 		public String PYroom() {
 			return "pickPY/PYroom";
 		}
+		
+		@GetMapping("/blankInfo")
+		public String blankInfo() {
+			return "pickPY/blankInfo";
+		}
+		
 		@RequestMapping("/customerSupport")
 		public String customerSupport(Model model, HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
 			request.setCharacterEncoding("euc-kr");
@@ -76,7 +82,6 @@ public class PickPYController {
 			return "pickPY/productInfo";
 		}
 		
-		@ResponseBody
 		@PostMapping("/questionProduct")
 		public String questionProduct(HttpServletRequest request, Locale locale, Model model, String qcontent, String name) {
 			String userId = (String) request.getSession().getAttribute("sessionUid");
