@@ -8,7 +8,7 @@
       <div class="title" style="position: absolute; left: 5%; color:white; ">OSSTEM INTERIOR</div>
       <img
         src="https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/4ldB/image/Ca3BiJdRVNaFRg_hOAdI2fZXlfw"
-        style="width: 50%; object-fit: cover; margin:0;" />
+        style="width: 33%; object-fit: cover; margin:0;" />
 
       <div class="row ml-4" style="text-align:center;">
         <div class="col-6 col-md-4"><span class="small-title">치과 인테리어수</span></div>

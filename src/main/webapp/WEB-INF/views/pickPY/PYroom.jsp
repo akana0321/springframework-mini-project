@@ -6,7 +6,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mainheader.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 <script>
@@ -25,7 +25,7 @@ $(document).ready(function(){
 </head>
 
 <body>
-
+	<%@ include file="/WEB-INF/views/common/mainheader.jsp" %>
 
     <div class="d-flex row col-sm-12 p-0 m-0" style="width: 100%; height: 100%;">
         <!-- left page -->

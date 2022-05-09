@@ -39,7 +39,7 @@
 	<%@ include file="/WEB-INF/views/common/mainheader.jsp" %>
     <div style="top:0; position:absolute; z-index: -1; width: 100%; height: 100%;">
         <!-- vid -->
-        <video src="${pageContext.request.contextPath }/resources/images/pickPY/lasttouch.mov" muted autoplay width="100%" style="top: 0%;"></video>
+        <video src="${pageContext.request.contextPath }/resources/images/pickPY/lastplz.mov" loop muted autoplay width="100%" style="top: 0%;"></video>
 
         <!-- card -->
       <div>

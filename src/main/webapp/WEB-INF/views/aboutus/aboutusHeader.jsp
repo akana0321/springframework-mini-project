@@ -8,6 +8,6 @@
     justify-content: center;
     align-items: center; top:0;">
       <div class="title" style="position: absolute; ">OSSTEM INTERIOR</div>
-      <img src="${pageContext.request.contextPath }/resources/images/aboutus/osstembackground.jpeg"
+      <img src="${pageContext.request.contextPath }/resources/images/aboutus/osstembackground2.jpeg"
         style="width: 100%; object-fit: cover" />
     </div>
