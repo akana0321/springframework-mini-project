@@ -95,50 +95,17 @@
   </head>
   <body>
     <div id="product-container">
-      <!-- Product svg Info -->
-      <?xml version="1.0" standalone="no"?>
-      <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-      <svg
-        id="product-svg"
-        version="1.0"
-        xmlns="http://www.w3.org/2000/svg"
-        width="150.000000pt"
-        height="150.000000pt"
-        viewBox="0 0 500.000000 500.000000"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        <g
-          transform="translate(000.000000,500.000000) scale(0.100000,-0.100000)"
-          fill="#000000"
-          stroke="none"
-        >
-          <path
-            id="product-shape"
-            d="M2392 1870 c-30 -10 -57 -22 -61 -26 -4 -5 -18 -44 -30 -88 -12 -43
-  -51 -145 -86 -227 -80 -186 -95 -236 -95 -318 0 -138 127 -836 166 -913 27
-  -54 85 -107 140 -128 79 -29 213 -43 359 -37 149 6 216 25 282 82 74 63 93
-  131 174 620 69 413 68 432 -43 685 -31 69 -68 163 -83 210 -34 102 -70 145
-  -110 130 -14 -5 -38 -19 -54 -31 -26 -19 -44 -21 -212 -24 -202 -4 -215 -1
-  -244 55 -18 34 -30 36 -103 10z"
-          />
-        </g>
-      </svg>
+       <%@ include file="/WEB-INF/views/pickPY/svg.jsp" %>
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
       <script
-        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
       ></script>
       <script
         src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"
       ></script>
       <script
         src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"
       ></script>
       <div class="small-title"> ${product.pname }</div>
       <div id="colors" style="display: flex">
@@ -175,21 +142,26 @@
         alt=""
       />
       내용: ${product.pdescription }
-      <a
-        type="button"
-        class="btn btn-lg btn-block gray-button"
-        href="customerSupport?=${product.pid }"
-        style="color: white"
-      >
-        문의하기
-      </a>
+      <div id="pCS" type="button" class="btn btn-lg btn-block gray-button"
+          style="color: white; bottom:0;">
+          문의하기
+        </div>
       <script>
       /* Get product color from DB And add color div */
          $(document).ready(function () {
+        	 /* next page */  
+         	$("#pCS").on('click', function(e){
+         		console.log("productId: "+productId);
+         		$("#product-container").load("customerSupport?productId="+productId);
+             	    console.log("workin?");
+             	 });
+        	 
         	 /* get product SVG */
         	 
         	 /* get product Image  */
         	 
+        	 /* get product */
+        	 var productId = '${product.pid}';
         /* get product color */
          var productColorStr = '${product.pcolor}';
           // since product pcolor is String not list | we need to split the colors

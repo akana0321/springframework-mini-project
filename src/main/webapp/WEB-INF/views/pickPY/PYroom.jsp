@@ -13,7 +13,9 @@
 
 $(document).ready(function(){
 	 $(".furniture").on('click', function(e){
-	    $("#div1").load("productInfo");
+		 var product = e.target.getAttribute('product-data');
+		 console.log(product);
+	    $("#div1").load("productInfo?productId="+product);
 	    console.log("workin?");
 	 });
 });
@@ -31,9 +33,9 @@ $(document).ready(function(){
          <!-- PYRoom Image -->
          <img id="PYimg" src="https://cdn-bhnll.nitrocdn.com/gSDMXibcJluvzIippFBvhCZIaoOxCvih/assets/static/optimized/rev-ccf470e/wp-content/uploads/handsome-study-interior-design-houston.png" width="100%" height="90%" usemap="#PYRoom" alt="" />
          <!-- Image Tag -->
-         <div class="furniture" style="border-radius: 2rem; height: 2rem; width: 2rem; background-color: #ffb440; position: absolute; top: 37vh; left: 7vw;" product-data="flowerbottle" onclick="changeContent()"></div>
-         <div class="furniture" style="border-radius: 2rem; height: 2rem; width: 2rem; background-color: #ffb440; position: absolute; top: 60vh; left: 20vw;" product-data="flowerbottle" onclick="changeContent()"></div>
-         <div class="furniture" style="border-radius: 2rem; height: 2rem; width: 2rem; background-color: #ffb440; position: absolute; top: 60vh; left: 40vw; " product-data="flowerbottle" onclick="changeContent()"></div>
+         <div class="furniture" style="border-radius: 2rem; height: 2rem; width: 2rem; background-color: #ffb440; position: absolute; top: 37vh; left: 7vw;" product-data="unit-k3000b" onclick="changeContent()"></div>
+         <div class="furniture" style="border-radius: 2rem; height: 2rem; width: 2rem; background-color: #ffb440; position: absolute; top: 60vh; left: 20vw;" product-data="unit-k5000b" onclick="changeContent()"></div>
+         <div class="furniture" style="border-radius: 2rem; height: 2rem; width: 2rem; background-color: #ffb440; position: absolute; top: 60vh; left: 40vw; " product-data="unit-s2100z" onclick="changeContent()"></div>
          
          <!-- Get PYRoom version(PY) -->
          <%
@@ -85,8 +87,10 @@ $(document).ready(function(){
             </script>
       </div>
        <div class="col-sm-3 p-0 m-0" >
-		<div id="div1" style=" "></div>
+		<div id="div1" style="height:100%; width:100% ">
+	
 		</div>
+          </div>
 		</div>
 
 
