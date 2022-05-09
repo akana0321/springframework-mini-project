@@ -57,7 +57,7 @@
               <div class="col-md-12">
                 <div class="form-group m-4">
                 <a name="hi" value="what"></a>
-                  <input type="text" name="qcontent" style="line-height: 4rem;"><br>
+                  <input type="text" name="qcontent" style="line-height: 9rem;"><br>
                 </div>
               </div>
               <div class="text-center">

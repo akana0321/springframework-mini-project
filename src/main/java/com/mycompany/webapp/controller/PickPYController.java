@@ -54,6 +54,12 @@ public class PickPYController {
 		public String PYroom() {
 			return "pickPY/PYroom";
 		}
+		
+		@GetMapping("/blankInfo")
+		public String blankInfo() {
+			return "pickPY/blankInfo";
+		}
+		
 		@RequestMapping("/customerSupport")
 		public String customerSupport(Model model, HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
 			request.setCharacterEncoding("euc-kr");
