@@ -17,6 +17,7 @@
 		UserDao udao;
 		
 		//3. joinIdCheck(ID)메서드
+		/*
 		Object result = udao.selectByUid(uid);
 		if (result != null){
 			out.print("사용가능한 아이디입니다");
@@ -27,7 +28,7 @@
 			
 		} else {
 			out.print("에러 발생!!!(-1)"); 
-		}
+		}*/
 		
 		/* else if(result == 0){
 			out.print("중복된 아이디입니다");
