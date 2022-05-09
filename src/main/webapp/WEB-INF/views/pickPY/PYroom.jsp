@@ -80,6 +80,8 @@ $(document).ready(function(){
                 	var product = e.target.getAttribute('product-data');
                 	console.log(product);
                 });
+                /* blankPage load */
+                $("#div1").load("blankInfo?version="+<%=version%>);
             });
             
             
