@@ -107,7 +107,7 @@ public class QuestionController {
 		log.info("estimate insert 결과: " + eresult);
 		
 		session.setAttribute("isEvent", eventResult);
-		request.getSession().removeAttribute("estimate");
+		//request.getSession().removeAttribute("estimate");
 		request.getSession().removeAttribute("priceMap");
 		return "/question/questionFinish";
 	}
