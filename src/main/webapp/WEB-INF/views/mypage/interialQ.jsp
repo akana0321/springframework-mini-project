@@ -21,14 +21,17 @@
 
 <body>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-	<div id="interialq" style="width: 80%" class="text-center">
+	<div id="interialq" style="width: 80%; margin: 6% 1% 5% 10%" class="text-center">
       <table class="mb-5">
         <td>
           <h1 class="mb-3"><font color="black" size="10" data-aos="zoom-in" data-aos-duration="1000">인테리어 문의</font></h1>
           <hr id="titleLine">
         </td>
       </table>
-      <div class="bg-white">
+      <div class="bg-white d-flex row">
+      <div class="row">
+      <div class="col-md-8">
+      
         <div class="d-flex flex-column" >
           <div class="d-flex shadow mb-3" style="background-color: white">
             <div class="col-md-12 pt-5 text-left">
@@ -37,10 +40,10 @@
               <div data-aos="slide-up" data-aos-duration="3000">
                 <div>
                   <div style="clear: both">
-                    <div style="width: 70%" class="m-auto">
-                      <div id="tableContainer">
+                    <div style="width: 90%" class="m-auto">
+                      <div id="tableContainer" >
 								
-								<h4 style="margin-top: 5%; font-weight: 600">바닥재 & 벽지</h4> <%-- about us에서 가져오기 --%>
+								<h4 style="margin-top: 5%; font-weight: 600" class="text-center">바닥재 & 벽지</h4> <%-- about us에서 가져오기 --%>
 								<table class="table text-center ">
 									<tr id="table_top" class="box table-borderless">
 										<th style="width: 50%; text-align: left;">재질</th>
@@ -75,7 +78,7 @@
 								</table>
 								<div class="table text-left" id="table_bottom"></div>
 								<br/><br/>
-								<h4 style="font-weight: 600">치과 의자 & 가구</h4> <%-- about us에서 가져오기 --%>
+								<h4 style="font-weight: 600" class="text-center">치과 의자 & 가구</h4> <%-- about us에서 가져오기 --%>
 								<table class="table text-center">
 									<tr id="table_top" class="box table-borderless">
 										<th style="width: 50%; text-align: left;">제품명</th>
@@ -195,18 +198,21 @@
               </div>
             </div>
           </div>
-          <div id="question"> 
-           <c:forEach var="comment" items="${CommentList}" varStatus="counting">
-           <c:if test="${comment.uid eq sessionUid}">
-           <div id=${comment.cno} class="col-md-12 shadow mb-3" style="background-color: rgb(239, 239, 239);"  data-aos="zoom-in-up" data-aos-duration="2000" data-aos-offset="200">
+          
+          </div>
+          <div class="col-md-4 " style="overflow: scroll; height: 1000px">
+          <div id="question" > 
+          <c:forEach var="comment" items="${CommentList}" varStatus="counting">
+            <c:if test="${comment.uid eq sessionUid}">
+           <div id=${comment.cno} class="col-md-12 shadow mb-3" style="background-color: rgb(239, 239, 239);">
               <div class="text-left mt-2 ml-2" style="font-size: 30px; font-weight: 600; padding-top: 2%;">문의</div>
-              <div id="minus" style="margin-left:70%" >
+              <div id="minus" style="margin-left:70%; top:0; right:1%;" class="position-absolute" >
               <form method="post" action="removeQuestion">
               <input name="cno" value=${comment.cno } style="visibility: hidden;">
               <input type="submit"  class="btn btn-light" value="삭제하기">
               </form>
               </div>
-       
+ 				<br>
               <hr/>
               <div class="text-left m-5">
                   <div>
@@ -221,7 +227,7 @@
             </div>
           </c:if>
           <c:if test="${comment.uid ne sessionUid}">
-           <div class="col-md-12 shadow mb-3" style="background-color: white;"  data-aos="zoom-in-up" data-aos-duration="2000" data-aos-offset="200">
+           <div class="col-md-12 shadow mb-3" style="background-color: white;">
               <div class="text-left mt-2 ml-2" style="font-size: 30px; font-weight: 600; padding-top: 2%;">답변</div>
               <hr/>
               <div class="text-left m-5">
@@ -237,8 +243,11 @@
             </div>
           </c:if>
            </c:forEach>
-
+	
           </div>
+          
+          </div>
+          <div class="col-md-12">
           <div class="col-md-12 shadow" id="inquire" data-aos="fade-out-down" data-aos-duration="3000" data-aos-offset="200">
             <div class="text-left mt-2 ml-2" style="font-size: 30px; font-weight: 600; padding-top: 2%;">
               문의
@@ -253,7 +262,6 @@
               </div>
               <div class="text-center">
                 <div class="form-group m-4  text-right">
-                  <input id="cattach" type="file" class="btn form-control-file" name="cattach" oninput="uploadFile(event)" multiple>
                   <input type="submit"  class="btn btn-light" value="문의하기">
                 </div>
                 <script type="text/javascript">
@@ -280,6 +288,8 @@
                 </script>
               </div>
             </form>
+          </div>
+          </div>
           </div>
         </div>
       </div>
