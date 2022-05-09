@@ -23,7 +23,7 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 	<div id="interialq" style="width: 80%" class="text-center">
       <table class="mb-5">
-        <td id="">
+        <td>
           <h1 class="mb-3"><font color="black" size="10" data-aos="zoom-in" data-aos-duration="1000">인테리어 문의</font></h1>
           <hr id="titleLine">
         </td>

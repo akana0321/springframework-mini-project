@@ -25,13 +25,13 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
 
 </head>
-<body>
+<body style="background-color: #F2F2F2">
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <div id="mypage">
 	<section class="py-5 my-5">
 		<div style="margin : 0px 8%"  >
 			
-			<div class=" rounded-lg d-block d-sm-flex shadow-lg " style="width: 100%; background-color: #faf5ee4e; " data-aos="fade-in" data-aos-duration="3000">
+			<div class=" rounded-lg d-block d-sm-flex shadow-lg " style="width: 100%; background-color: white; " data-aos="fade-in" data-aos-duration="3000">
 				<div class="profile-tab-nav border-right mt-2">
 					<div class="p-4">
 						<div class="img-circle text-center mb-3" style="position: relative;" >
