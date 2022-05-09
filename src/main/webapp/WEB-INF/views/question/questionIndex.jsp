@@ -55,11 +55,22 @@
 	    	}
 	    };
     </script>
+    <div style="display:flex;">
+    <div id="progressbarContainer" class="navbar">
+        <ul id="progressbar">
+            <li class="questionContent01">치과 목적</li>
+            <li class="questionContent02">건물 유형</li>
+            <li class="questionContent03">바닥재</li>
+            <li class="questionContent04">벽지</li>
+            <li class="questionContent05">치과용 의자</li>
+            <li class="questionContent06">가구</li>
+            <li class="questionResult01">완료!</li>
+        </ul>
+    </div>
 
-    <div id="questionFormContainer">
+    <div id="questionFormContainer" style="flex-grow:12; margin-left: 17%;">        
         <form id="questionForm" method="post" action="questionResult">
             <div id="questionContainer" class="d-flex align-items-center">
-            	<div style="width:20%; height:200%; position:fixed; margin-top: 0; background-image:  url('${pageContext.request.contextPath }/resources/images/question/side_image.jpg; object-fit:cover;"></div>
                 <div class="fullscrean text-center" style="flex-grow:10; padding-left: 0; padding-right: 0;">
                     <div id="questionStart" class="fullscrean d-flex flex-column align-items-center">
                         <p class="card-title mb-5">나의 치과 견적 오스템과 함께 알아볼까요?</p>
@@ -88,8 +99,8 @@
                     </div>
                 </div>
                 <div id="questionContent01" class="form-group fullscrean" style="display: none; background-color: #f1f3f5;">
-                    <p class="card-title" style="padding-left: 10rem;">시공할 치과의 건물 유형을 선택해주세요</p>
-                    <div class="d-flex justify-content-center align-content-center" style="padding-left: 10rem;">
+                    <p class="card-title" >시공할 치과의 건물 유형을 선택해주세요</p>
+                    <div class="d-flex justify-content-center align-content-center" >
                     	<img src="${ pageContext.request.contextPath }/resources/images/portfolio/sub_1.jpg" style="position:fixed; width:20%; height:inherit; z-index:999;"/>
                         <!-- 단독 -->
                         <div>
@@ -122,13 +133,13 @@
                             </label>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-center align-content-center" style="padding-left: 10rem;">
+                    <div class="d-flex justify-content-center align-content-center">
                         <a href="#questionContent02" onclick="setDisplay('questionContent02')" class="btn-move-even"><img id="arrow" src="${ pageContext.request.contextPath }/resources/images/question/arrow.png"/></a>
                     </div>
                 </div>
                 <div id="questionContent02" class="form-group fullscrean" style="display: none;">
-                    <p class="card-title mb-5" style="padding-left: 10rem;">치과의 목적을 선택해주세요</p>
-                    <div class="d-flex justify-content-center align-content-center" style="padding-left: 10rem;">
+                    <p class="card-title mb-5" >치과의 목적을 선택해주세요</p>
+                    <div class="d-flex justify-content-center align-content-center" >
                         <!-- 일반치과 -->
                         <div>
                             <label>
@@ -187,11 +198,11 @@
                             </label>
                         </div>
                     </div>              
-                    <a href="#questionContent03" onclick="setDisplay('questionContent03')" class="btn-move-odd" style="padding-left: 8rem;"><img id="arrow" src="${ pageContext.request.contextPath }/resources/images/question/arrow.png"/></a>
+                    <a href="#questionContent03" onclick="setDisplay('questionContent03')" class="btn-move-odd" ><img id="arrow" src="${ pageContext.request.contextPath }/resources/images/question/arrow.png"/></a>
                 </div>
                 <div id="questionContent03" class="form-group fullscrean" style="display: none; background-color: #f1f3f5;">
-                    <p class="card-title" style="padding-left: 10rem;">바닥재를 선택해주세요</p>
-                    <div class="d-flex justify-content-center align-content-center" style="padding-left: 10rem;">
+                    <p class="card-title" >바닥재를 선택해주세요</p>
+                    <div class="d-flex justify-content-center align-content-center" >
                         <!-- 강화마루 -->
                         <div>
                             <label>
@@ -250,11 +261,11 @@
                             </label>
                         </div>
                     </div>
-                    <a href="#questionContent04" onclick="setDisplay('questionContent04')" class="btn-move-even" style="padding-left: 8rem;"><img id="arrow" src="${ pageContext.request.contextPath }/resources/images/question/arrow.png"/></a>
+                    <a href="#questionContent04" onclick="setDisplay('questionContent04')" class="btn-move-even" ><img id="arrow" src="${ pageContext.request.contextPath }/resources/images/question/arrow.png"/></a>
                 </div>
                 <div id="questionContent04" class="form-group fullscrean" style="display: none;">
-                    <p class="card-title" style="padding-left: 10rem;">시공할 벽지를 선택해주세요</p>
-                    <div class="d-flex justify-content-center align-content-center" style="padding-left: 10rem;">
+                    <p class="card-title" >시공할 벽지를 선택해주세요</p>
+                    <div class="d-flex justify-content-center align-content-center" >
                         <!-- 합지 -->
                         <div>
                             <label>
@@ -316,11 +327,11 @@
                             </label>
                         </div>
                     </div>
-                    <a href="#questionContent05" onclick="setDisplay('questionContent05')" class="btn-move-odd" style="padding-left: 8rem;"><img id="arrow" src="${ pageContext.request.contextPath }/resources/images/question/arrow.png"/></a>
+                    <a href="#questionContent05" onclick="setDisplay('questionContent05')" class="btn-move-odd" ><img id="arrow" src="${ pageContext.request.contextPath }/resources/images/question/arrow.png"/></a>
                 </div>
                 <div id="questionContent05" class="form-group fullscrean"  style="display: none; background-color: #f1f3f5;">
-                    <p class="card-title" style="padding-left: 10rem;">치과용 의자 수량을 선택해주세요</p>
-                    <div class="d-flex justify-content-center align-content-center" style="padding-left: 10rem;">
+                    <p class="card-title" >치과용 의자 수량을 선택해주세요</p>
+                    <div class="d-flex justify-content-center align-content-center" >
                         <!-- K3000B -->
                         <div>
                             <label>
@@ -397,12 +408,12 @@
                             </label>
                         </div>
                     </div>
-                    <a href="#questionContent06" onclick="setDisplay('questionContent06')" class="btn-move-even" style="padding-left: 8rem; margin-top: 0%;"><img id="arrow" src="${ pageContext.request.contextPath }/resources/images/question/arrow.png"/></a>
+                    <a href="#questionContent06" onclick="setDisplay('questionContent06')" class="btn-move-even" style="margin-top: 0%;"><img id="arrow" src="${ pageContext.request.contextPath }/resources/images/question/arrow.png"/></a>
                 </div>
                 <div id="questionContent06" class="form-group fullscrean text-center mb-5" style="display: none;">
-                    <p class="card-title" style="padding-left: 10rem;">가구 수량을 선택해주세요</p>
+                    <p class="card-title" >가구 수량을 선택해주세요</p>
                     <!-- 가구 수량 선택 테이블 -->
-                    <div class="col-md-9 d-flex justify-content-center align-items-center" style="padding-left: 10rem;">
+                    <div class="col-md-9 d-flex justify-content-center align-items-center" >
                         <table class="table table-borderless">
                             <thead>
                                 <tr>
@@ -500,12 +511,12 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="d-flex justify-content-center align-items-center" style="padding-left: 10rem; margin-top: 0%;">
+                    <div class="d-flex justify-content-center align-items-center" style="; margin-top: 0%;">
                         <a href="#questionResult01" onclick="setDisplay('questionResult01')" class="btn-move-odd"><img id="arrow" src="${ pageContext.request.contextPath }/resources/images/question/arrow.png"/></a>
                     </div>
                 </div>
 
-                <div id="questionResult01" class="fullscrean" style="display: none; background-color: #f1f3f5; padding-left: 10rem;">    
+                <div id="questionResult01" class="fullscrean" style="display: none; background-color: #f1f3f5; ;">    
                     <p class="card-title">나만의 치과에 최적화된 결과가 도착했습니다!</p>
                     <img src="${ pageContext.request.contextPath }/resources/images/question/bill.png" class="mb-5"/>
                     <div class="spin-btn d-flex justify-content-center align-content-center">
@@ -516,19 +527,8 @@
                     </div>
                 </div>
             </div>
-        </form>
-        
-        <div id="progressbarContainer" class="navbar">
-            <ul id="progressbar">
-                <li class="questionContent01">치과 목적</li>
-                <li class="questionContent02">건물 유형</li>
-                <li class="questionContent03">바닥재</li>
-                <li class="questionContent04">벽지</li>
-                <li class="questionContent05">치과용 의자</li>
-                <li class="questionContent06">가구</li>
-                <li class="questionResult01">완료!</li>
-            </ul>
-        </div>    
+        </form>   
+    </div>
     </div>
 </body>
 </html>

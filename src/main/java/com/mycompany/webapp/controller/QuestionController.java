@@ -79,7 +79,8 @@ public class QuestionController {
 		question.setQcategory("INTERIOR");
 		question.setQcontent("견적 문의");
 		/*model.addAttribute("question", question);*/
-		//questionService.insertQuestion(question);
+		int qresult = questionService.insertQuestion(question);
+		log.info("Question insert 결과: " + qresult);
 		
 		// 이벤트에 들었는지 확인
 		Events event = new Events();
@@ -102,7 +103,8 @@ public class QuestionController {
 		estimate.setQno(question.getQno());
 		estimate.setUid(userId);
 	
-		//estimateService.insertEstimate(estimate);
+		int eresult = estimateService.insertEstimate(estimate);
+		log.info("estimate insert 결과: " + eresult);
 		
 		session.setAttribute("isEvent", eventResult);
 		request.getSession().removeAttribute("estimate");

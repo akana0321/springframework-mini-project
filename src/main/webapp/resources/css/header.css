@@ -19,6 +19,7 @@ header {
 	z-index: 2;
 	top: 0;
 	width: 100%;
+	z-index: 11;
 	/* height: 5em; */
 	background-color: #f1f3f5;
 	box-shadow: 0em 0em 1em 0.05em rgb(189, 189, 189);
