@@ -29,10 +29,10 @@
       </table>
       <div class="bg-white">
         <div class="d-flex flex-column">
-          <div class="d-flex shadow mb-3" style="background-color: #ffb3400c" >
+          <div class="d-flex shadow mb-3" style="background-color: white" >
             <div class="text-left col-md-7"> 
                 <div class="fa fa-3x fa-arrow-circle-left float-left ml-5 mt-5" onclick="location.href='mypage'" id="back" data-aos="fade-in" data-aos-duration="2500"></div>
-                <img src="${pageContext.request.contextPath }/resources/images/mypage/chair.png" class="m-5" style="width: 70%; border-radius: 2%;" data-aos="flip-left" data-aos-duration="3000"> 
+                <img src="${pageContext.request.contextPath }/resources/images/mypage/chair.jpg" class="m-5" style="width: 70%; border-radius: 2%;" data-aos="flip-left" data-aos-duration="3000"> 
             </div>
             <div class="col-md-5 mt-5" >
                 <div style="margin: 10% 20% 10% 0;" data-aos="fade-in" data-aos-duration="1000" >

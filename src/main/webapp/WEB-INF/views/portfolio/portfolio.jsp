@@ -38,65 +38,65 @@
                     <div data-aos="fade-up" data-aos-duration="1000" id="showimg" class="col-md-4" onmouseenter="show('sub_10')" onmouseleave="document.getElementById('sub_10').style.visibility = 'hidden'">
                         <a href="#" class="trigger"><img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_10.jpg"  id="thumbnail" /></a>
                     </div>
-                    <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_10">안녕하세요</strong></div>
+                    <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_10">좋은 치과</strong></div>
                     
                     <div data-aos="fade-up" data-aos-duration="2000" id="showimg" class="col-md-4" onmouseenter="show('sub_6')" onmouseleave="document.getElementById('sub_6').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_6.jpg"  id="thumbnail" />
                     </div>
-                    <div id="content" class="text-center col-md-10" ><strong id="sub_6">안녕하세요.</strong></div>
+                    <div id="content" class="text-center col-md-10" ><strong id="sub_6">바른 치과</strong></div>
 
                     <div data-aos="fade-up" data-aos-duration="3000" id="showimg" class="col-md-4" onmouseenter="show('sub_3')" onmouseleave="document.getElementById('sub_3').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_3.jpg"  id="thumbnail"/>
                     </div>
-                    <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_3">안녕하세요.</strong></div>
+                    <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_3">사과 치과</strong></div>
                 </div>
                 <div id="portfolioImg" class="d-flex justify-content-center m-4" >
                     <div data-aos="fade-up" data-aos-offset="350" data-aos-duration="1000" id="showimg" class="col-md-4" onmouseenter="show('sub_20')" onmouseleave="document.getElementById('sub_20').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_20.jpg"  id="thumbnail" />
                     </div>
-                    <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_20">안녕하세요</strong></div>
+                    <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_20">서울 위드 치과</strong></div>
                     
                     <div data-aos="fade-up" data-aos-offset="350" data-aos-duration="2000" id="showimg" class="col-md-4" onmouseenter="show('sub_19')" onmouseleave="document.getElementById('sub_19').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_19.jpg"  id="thumbnail" />
                     </div>
-                    <div id="content" class="text-center col-md-10" ><strong id="sub_19">안녕하세요.</strong></div>
+                    <div id="content" class="text-center col-md-10" ><strong id="sub_19">스탠다드 치과</strong></div>
 
                     <div data-aos="fade-up" data-aos-offset="350" data-aos-duration="3000" id="showimg" class="col-md-4" onmouseenter="show('sub_18')" onmouseleave="document.getElementById('sub_18').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_18.jpg"  id="thumbnail"/>
                     </div>
-                    <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_18">안녕하세요.</strong></div>
+                    <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_18">강변 맑은 치과</strong></div>
                 </div>
                 <div id="portfolioImg" class="d-flex justify-content-center m-4" >
                     <div data-aos="fade-up" data-aos-offset="350" data-aos-duration="1000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_17')" onmouseleave="document.getElementById('sub_17').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_17.jpg"  id="thumbnail" />
                     </div>
-                    <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_17">안녕하세요</strong></div>
+                    <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_17">이로움 치과</strong></div>
                     
                     <div data-aos="fade-up" data-aos-offset="350" data-aos-duration="2000"  data-aos-easing="easw-out-cublic"id="showimg" class="col-md-4" onmouseenter="show('sub_16')" onmouseleave="document.getElementById('sub_16').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_16.jpg"  id="thumbnail" />
                     </div>
-                    <div id="content" class="text-center col-md-10" ><strong id="sub_16">안녕하세요.</strong></div>
+                    <div id="content" class="text-center col-md-10" ><strong id="sub_16">이로움 치과</strong></div>
 
                     <div data-aos="fade-up" data-aos-offset="350" data-aos-duration="3000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_15')" onmouseleave="document.getElementById('sub_15').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_15.jpg"  id="thumbnail"/>
                     </div>
-                    <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_15">안녕하세요.</strong></div>
+                    <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_15">이로움 치과</strong></div>
                 </div>
                 <div id="portfolioImg" class="d-flex justify-content-center m-4" >
                     <div  data-aos="fade-up" data-aos-offset="150" data-aos-duration="1000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_14')" onmouseleave="document.getElementById('sub_14').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_14.jpg"  id="thumbnail" />
                     </div>
-                    <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_14">안녕하세요</strong></div>
+                    <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_14">이로움 치과</strong></div>
                     
                     <div  data-aos="fade-up" data-aos-offset="150" data-aos-duration="2000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_13')" onmouseleave="document.getElementById('sub_13').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_13.jpg"  id="thumbnail" />
                     </div>
-                    <div id="content" class="text-center col-md-10" ><strong id="sub_13">안녕하세요.</strong></div>
+                    <div id="content" class="text-center col-md-10" ><strong id="sub_13">이로움 치과</strong></div>
 
                     <div  data-aos="fade-up" data-aos-offset="150" data-aos-duration="3000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_12')" onmouseleave="document.getElementById('sub_12').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_12.jpg"  id="thumbnail"/>
                     </div>
-                    <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_12">안녕하세요.</strong></div>
+                    <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_12">이로움 치과.</strong></div>
                 </div>
             </div>
             <div class="modal-wrapper">
@@ -160,66 +160,66 @@
                     <div data-aos="fade-up" data-aos-duration="1000"  id="showimg" class="col-md-4" onmouseenter="show('sub_11')" onmouseleave="document.getElementById('sub_11').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_11.jpg"  id="thumbnail" />
                     </div>
-                    <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_11">안녕하세요.z</strong></div>
+                    <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_11">이로움 치과</strong></div>
                     
                     <div data-aos="fade-up" data-aos-duration="2000" id="showimg" class="col-md-4" onmouseenter="show('sub_7')" onmouseleave="document.getElementById('sub_7').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_7.jpg"  id="thumbnail" />
                     </div>
-                    <div id="content" class="text-center col-md-10" ><strong id="sub_7">안녕하세요.</strong></div>
+                    <div id="content" class="text-center col-md-10" ><strong id="sub_7">초이스 치과</strong></div>
 
                     <div data-aos="fade-up" data-aos-duration="3000" id="showimg" class="col-md-4" onmouseenter="show('sub_4')" onmouseleave="document.getElementById('sub_4').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_4.jpg"  id="thumbnail"/>
                     </div>
-                    <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_4">안녕하세요.</strong></div>
+                    <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_4">아이디 치과</strong></div>
                 </div>
                 
                 <div id="portfolioImg" class="d-flex justify-content-center m-4" >
                     <div data-aos="fade-up" data-aos-offset="350" data-aos-duration="1000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_17')" onmouseleave="document.getElementById('sub_17').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_17.jpg"  id="thumbnail" />
                     </div>
-                    <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_17">안녕하세요</strong></div>
+                    <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_17">아이디 치과</strong></div>
                     
                     <div data-aos="fade-up" data-aos-offset="350" data-aos-duration="2000"  data-aos-easing="easw-out-cublic"id="showimg" class="col-md-4" onmouseenter="show('sub_16')" onmouseleave="document.getElementById('sub_16').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_16.jpg"  id="thumbnail" />
                     </div>
-                    <div id="content" class="text-center col-md-10" ><strong id="sub_16">안녕하세요.</strong></div>
+                    <div id="content" class="text-center col-md-10" ><strong id="sub_16">아이디 치과</strong></div>
 
                     <div data-aos="fade-up" data-aos-offset="350" data-aos-duration="3000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_15')" onmouseleave="document.getElementById('sub_15').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_15.jpg"  id="thumbnail"/>
                     </div>
-                    <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_15">안녕하세요.</strong></div>
+                    <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_15">아이디 치과</strong></div>
                 </div>
                 <div id="portfolioImg" class="d-flex justify-content-center m-4" >
                     <div data-aos="fade-up" data-aos-offset="150" data-aos-duration="1000" id="showimg" class="col-md-4" onmouseenter="show('sub_20')" onmouseleave="document.getElementById('sub_20').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_20.jpg"  id="thumbnail" />
                     </div>
-                    <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_20">안녕하세요</strong></div>
+                    <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_20">아이디 치과</strong></div>
                     
                     <div data-aos="fade-up" data-aos-offset="200" data-aos-duration="2000" id="showimg" class="col-md-4" onmouseenter="show('sub_19')" onmouseleave="document.getElementById('sub_19').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_19.jpg"  id="thumbnail" />
                     </div>
-                    <div id="content" class="text-center col-md-10" ><strong id="sub_19">안녕하세요.</strong></div>
+                    <div id="content" class="text-center col-md-10" ><strong id="sub_19">아이디 치과.</strong></div>
 
                     <div data-aos="fade-up" data-aos-offset="250" data-aos-duration="3000" id="showimg" class="col-md-4" onmouseenter="show('sub_18')" onmouseleave="document.getElementById('sub_18').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_18.jpg"  id="thumbnail"/>
                     </div>
-                    <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_18">안녕하세요.</strong></div>
+                    <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_18">아이디 치과</strong></div>
                 </div>
                 <div id="portfolioImg" class="d-flex justify-content-center m-4" >
                     <div  data-aos="fade-up" data-aos-offset="100" data-aos-duration="1000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_14')" onmouseleave="document.getElementById('sub_14').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_14.jpg"  id="thumbnail" />
                     </div>
-                    <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_14">안녕하세요</strong></div>
+                    <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_14">아이디 치과</strong></div>
                     
                     <div  data-aos="fade-up" data-aos-offset="200" data-aos-duration="2000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_13')" onmouseleave="document.getElementById('sub_13').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_13.jpg"  id="thumbnail" />
                     </div>
-                    <div id="content" class="text-center col-md-10" ><strong id="sub_13">안녕하세요.</strong></div>
+                    <div id="content" class="text-center col-md-10" ><strong id="sub_13">아이디 치과</strong></div>
 
                     <div  data-aos="fade-up" data-aos-offset="300" data-aos-duration="3000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_12')" onmouseleave="document.getElementById('sub_12').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_12.jpg"  id="thumbnail"/>
                     </div>
-                    <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_12">안녕하세요.</strong></div>
+                    <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_12">아이디 치과</strong></div>
                 </div>
             </div>
             <!-- 100PY -->
@@ -228,65 +228,65 @@
                     <div id="showimg" data-aos="fade-up" data-aos-duration="1000" class="col-md-4" onmouseenter="show('sub_1')" onmouseleave="document.getElementById('sub_1').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_1.jpg"  id="thumbnail" />
                     </div>
-                    <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_1">안녕하세요.z</strong></div>
+                    <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_1">에스플란트 치과</strong></div>
                     
                     <div id="showimg" data-aos="fade-up" data-aos-duration="2000" class="col-md-4" onmouseenter="show('sub_8')" onmouseleave="document.getElementById('sub_8').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_8.jpg"  id="thumbnail" />
                     </div>
-                    <div id="content" class="text-center col-md-10" ><strong id="sub_8">안녕하세요.</strong></div>
+                    <div id="content" class="text-center col-md-10" ><strong id="sub_8">보스톤 치과</strong></div>
 
                     <div id="showimg" data-aos="fade-up" data-aos-duration="3000" class="col-md-4" onmouseenter="show('sub_9')" onmouseleave="document.getElementById('sub_9').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_9.jpg"  id="thumbnail"/>
                     </div>
-                    <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_9">안녕하세요.</strong></div>
+                    <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_9">사랑 치과</strong></div>
                 </div>
                 <div id="portfolioImg" class="d-flex justify-content-center m-4" >
                     <div  data-aos="fade-up" data-aos-offset="300" data-aos-duration="1000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_14')" onmouseleave="document.getElementById('sub_14').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_14.jpg"  id="thumbnail" />
                     </div>
-                    <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_14">안녕하세요</strong></div>
+                    <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_14">보스톤 치과</strong></div>
                     
                     <div  data-aos="fade-up" data-aos-offset="300" data-aos-duration="2000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_13')" onmouseleave="document.getElementById('sub_13').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_13.jpg"  id="thumbnail" />
                     </div>
-                    <div id="content" class="text-center col-md-10" ><strong id="sub_13">안녕하세요.</strong></div>
+                    <div id="content" class="text-center col-md-10" ><strong id="sub_13">보스톤 치과</strong></div>
 
                     <div  data-aos="fade-up" data-aos-offset="300" data-aos-duration="3000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_12')" onmouseleave="document.getElementById('sub_12').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_12.jpg"  id="thumbnail"/>
                     </div>
-                    <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_12">안녕하세요.</strong></div>
+                    <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_12">보스톤 치과</strong></div>
                 </div>
                 <div id="portfolioImg" class="d-flex justify-content-center m-4" >
                     <div data-aos="fade-up" data-aos-offset="350" data-aos-duration="1000" id="showimg" class="col-md-4" onmouseenter="show('sub_20')" onmouseleave="document.getElementById('sub_20').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_20.jpg"  id="thumbnail" />
                     </div>
-                    <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_20">안녕하세요</strong></div>
+                    <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_20">보스톤 치과</strong></div>
                     
                     <div data-aos="fade-up" data-aos-offset="350" data-aos-duration="2000" id="showimg" class="col-md-4" onmouseenter="show('sub_19')" onmouseleave="document.getElementById('sub_19').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_19.jpg"  id="thumbnail" />
                     </div>
-                    <div id="content" class="text-center col-md-10" ><strong id="sub_19">안녕하세요.</strong></div>
+                    <div id="content" class="text-center col-md-10" ><strong id="sub_19">보스톤 치과</strong></div>
 
                     <div data-aos="fade-up" data-aos-offset="350" data-aos-duration="3000" id="showimg" class="col-md-4" onmouseenter="show('sub_18')" onmouseleave="document.getElementById('sub_18').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_18.jpg"  id="thumbnail"/>
                     </div>
-                    <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_18">안녕하세요.</strong></div>
+                    <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_18">보스톤 치과</strong></div>
                 </div>
                 <div id="portfolioImg" class="d-flex justify-content-center m-4" >
                     <div data-aos="fade-up" data-aos-offset="350" data-aos-duration="1000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_17')" onmouseleave="document.getElementById('sub_17').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_17.jpg"  id="thumbnail" />
                     </div>
-                    <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_17">안녕하세요</strong></div>
+                    <div id="content" class="text-left col-md-10" style="margin-left: 10%;"><strong id="sub_17">보스톤 치과</strong></div>
                     
                     <div data-aos="fade-up" data-aos-offset="300" data-aos-duration="2000"  data-aos-easing="easw-out-cublic"id="showimg" class="col-md-4" onmouseenter="show('sub_16')" onmouseleave="document.getElementById('sub_16').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_16.jpg"  id="thumbnail" />
                     </div>
-                    <div id="content" class="text-center col-md-10" ><strong id="sub_16">안녕하세요.</strong></div>
+                    <div id="content" class="text-center col-md-10" ><strong id="sub_16">보스톤 치과</strong></div>
 
                     <div data-aos="fade-up" data-aos-offset="300" data-aos-duration="3000" data-aos-easing="easw-out-cublic" id="showimg" class="col-md-4" onmouseenter="show('sub_15')" onmouseleave="document.getElementById('sub_15').style.visibility = 'hidden'">
                         <img src="${pageContext.request.contextPath }/resources/images/portfolio/sub_15.jpg"  id="thumbnail"/>
                     </div>
-                    <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_15">안녕하세요.</strong></div>
+                    <div id="content" class="text-right col-md-10" style="margin-right: 10%;" ><strong id="sub_15">보스톤 치과</strong></div>
                 </div>
                 
             </div>

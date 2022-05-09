@@ -20,23 +20,6 @@
     width: 8%;
 }
 
-/* #interialq{
-    margin-top: 6%;
-    margin-left: 10%;
-} */
-
-/* #interialq .box{
-    opacity: 0;
-}
-#interialq .box.visible{
-    opacity: 1;
-}
-#interialq .box2{
-    opacity: 0;
-}
-#interialq .box2.visible{
-    opacity: 1;
-} */
 #interialq #animation:hover{
     font-weight: 900;
     
