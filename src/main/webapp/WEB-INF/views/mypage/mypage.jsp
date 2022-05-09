@@ -286,44 +286,6 @@
 											<td>${question.qdate}</td>
 											</a>
 										</tr>
-										
-										
-										<!-- <tr id="tb">
-											<td>1</td>
-											<td id="line"><a href="interialQ">인테리어 문의</a></td>
-											<td>2022/04/18</td>
-											</a>
-										</tr>
-										<tr id="tb">
-											<td>1</td>
-											<td id="line">인테리어 문의</td>
-											<td>2022/04/18</td>
-										</tr>
-										<tr id="tb">
-											<td>1</td>
-											<td id="line">인테리어 문의</td>
-											<td>2022/04/18</td>
-										</tr>
-										<tr id="tb">
-											<td>1</td>
-											<td id="line">인테리어 문의</td>
-											<td>2022/04/18</td>
-										</tr>
-										<tr id="tb">
-											<td>1</td>
-											<td id="line">인테리어 문의</td>
-											<td>2022/04/18</td>
-										</tr>
-										<tr id="tb">
-											<td>1</td>
-											<td id="line">인테리어 문의</td>
-											<td>2022/04/18</td>
-										</tr>
-										<tr id="tb">
-											<td>1</td>
-											<td id="line">인테리어 문의</td>
-											<td>2022/04/18</td>
-										</tr> -->
 										</c:forEach>
 									</table>
 								</div>

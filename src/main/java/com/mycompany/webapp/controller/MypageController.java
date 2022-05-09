@@ -83,7 +83,7 @@ public class MypageController {
 		session.setAttribute("dentistArray", dentist);
 		session.setAttribute("dentistSize", dentistSize);
 		
-		List<Question> getAllQuestion = questionService.getQuestionsByPager(new Pager(5,10,questionService.getTotalQuestionNum(),1));
+		List<Question> getAllQuestion = questionService.getQuestionsByPager(new Pager(5,10,questionService.getTotalQuestionNum(),1,userId));
 		log.info(getAllQuestion);
 		List<Question> getUidQuestionIn = new ArrayList();
 		List<Question> getUidQuestionPro = new ArrayList();
@@ -96,6 +96,7 @@ public class MypageController {
 				if(getAllQuestion.get(i).getQcontent().length() > 10) {
 					getUidQuestionIn.get(0).setQcontent(getAllQuestion.get(i).getQcontent().substring(0, 10) + "...");
 				}
+				log.info(i);
 			}
 			if(getAllQuestion.get(i).getUid().equals(userId) && getAllQuestion.get(i).getQcategory().equals("PRODUCT")) {
 				getUidQuestionPro.add(getAllQuestion.get(i));
@@ -108,7 +109,8 @@ public class MypageController {
 				getUidQuestionPro.get(i).setQcontent(getUidQuestionPro.get(i).getQcontent().substring(0, 10) + "...");
 			}
 		}
-		
+		log.info("getUidQuestionIn : " + getUidQuestionIn);
+		log.info("getUidQuestionPro : " + getUidQuestionPro);
 		
 		session.setAttribute("getUidQuestionIn", getUidQuestionIn);
 		session.setAttribute("getUidQuestionPro", getUidQuestionPro);
@@ -119,7 +121,7 @@ public class MypageController {
 	//프로필 사진 변경
 	@PostMapping(value = "/fileuploadAjax",produces = "application/json; charset=UTF-8")
 	@ResponseBody
-	public String changeProfile(Attach attach, HttpServletRequest request,HttpSession ssion) throws Exception {
+	public String changeProfile(Attach attach, HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
 		Attach attachSession = new Attach();
 		attachSession.setAttach(attach.getAttach());
@@ -133,7 +135,7 @@ public class MypageController {
 		jsonObject.put("saveFilename", attachSession.getAoname());
 		String json = jsonObject.toString();
 
-		ssion.removeAttribute("userimg");
+		session.removeAttribute("userimg");
 		//session.setAttribute("userimg", attachSession);
 		
 		return json;
