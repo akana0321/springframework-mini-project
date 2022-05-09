@@ -30,7 +30,7 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
     crossorigin="anonymous"
   />
-
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mainheader.css" />
   <!-- title CSS -->
   <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aboutus/title.css" />
   <!-- button CSS -->
@@ -54,7 +54,7 @@
 	</script>
 </head>
 <body >
-
+<%@ include file="/WEB-INF/views/common/mainheader.jsp" %> 
 
 <div id="main-content" style="position: relative;">
     <div class="small-title" style="position: absolute; top: 0%; right:5%;">마우스를 올려 도면도 상세보기</div>
