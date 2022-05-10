@@ -36,7 +36,7 @@
 	                </button>
 	            </div>
 	            <div class="modal-body text-center">
-	                <p>지금부터 선착순으로 단 5명!</p>
+	                <p>지금부터 선착순으로 단 ${ remain }명!</p>
 	                <p>견적문의를 완료하시고 문의하기를 하신 분께</p>
 	                <p>총 금액의 10%를 할인해드립니다!</p>
 	            </div>
@@ -50,7 +50,7 @@
 	   window.onload = function() {
 	    	var sessionData = '<%=session.getAttribute("2022-05-10") %>';
 	    	console.log(sessionData);
-	    	if(sessionData <= 10) {
+	    	if(sessionData < 3) {
 	        	$("#myModal").modal("show");
 	    	}
 	    };
