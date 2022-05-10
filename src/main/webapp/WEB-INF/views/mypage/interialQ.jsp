@@ -23,10 +23,12 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 	<div id="interialq" style="width: 80%; margin: 6% 0% 7% 10%" class="text-center">
       <table class="mb-5">
+      <tr>
         <td>
           <h1 class="mb-3"><font color="black" size="10" data-aos="zoom-in" data-aos-duration="1000">인테리어 문의</font></h1>
           <hr id="titleLine">
         </td>
+       </tr>
       </table>
       <div class="bg-white d-flex row">
       <div class="row">
@@ -199,10 +201,7 @@
 										</p>
 									</c:if>
 								</div>
-
-								
 							</div>
-							
 						</div>
                       </div>
                     </div>
@@ -256,9 +255,7 @@
             </div>
           </c:if>
            </c:forEach>
-	
           </div>
-          
           </div>
           <div class="col-md-12">
           <div class="col-md-12 shadow" id="inquire" data-aos="fade-out-down" data-aos-duration="3000" data-aos-offset="200">
@@ -306,8 +303,6 @@
           </div>
         </div>
       </div>
-    </div>
-
 
     <script>
       AOS.init();
