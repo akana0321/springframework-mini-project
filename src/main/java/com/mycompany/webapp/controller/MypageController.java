@@ -496,21 +496,22 @@ public class MypageController {
 	
 	//상품 이미지 가져오기
 	@PostMapping("/productQ")
-	public void productQ(int productQ,HttpSession session) {
+	public String productQ(int productQ,HttpSession session) {
 		
 		String productId = questionService.getQuestionByQno(productQ).getPid();
 		
 		Attach attach = new Attach();
 		attach.setAttable("PRODUCT");
 		attach.setAtid(productId);
-		attach.setAtindex("2");
-		log.info(productId);
+		attach.setAtindex("1");
+		log.info(attach);
 		
-		if(attachService.getAttachOne(attach).getAoname() != null) {
-			String fileName = attachService.getAttachOne(attach).getAoname();
-			log.info(fileName);
-			session.setAttribute("fileName",fileName);
-		}
+		String fileName = attachService.getAttachOne(attach).getAoname();
+		log.info(fileName);
+		session.setAttribute("fileName",fileName);
+		
+		
+		return "/mypage/interialP";
 	}
 	
 	@RequestMapping("/removeQuestion")
