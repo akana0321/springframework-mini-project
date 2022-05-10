@@ -338,19 +338,15 @@ public class MypageController {
 	}
 	
 	//기존 병원 정보 삭제
-	@PostMapping(value = "/removeinfoR",produces = "application/json; charset=UTF-8")
-	@ResponseBody
+	@PostMapping("/removeinfoR")
+
 	public String removeInfoR(int sendData) {
 		
 		//해당 병원의 Dnumber를 가져와 DB에서 삭제한다.
 		String deleteDnumber = String.valueOf(sendData);
 		dentistService.deleteDentistByDnumber(deleteDnumber);
-		
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("result", "success");
-		String json = jsonObject.toString();
-		
-		return json;
+
+		return "redirect:/mypage/mypage";
 	}
 	
 	
@@ -452,6 +448,8 @@ public class MypageController {
 		List<Question> question = (List<Question>) session.getAttribute("getUidQuestionPro");
 		int qno = question.get(0).getQno();
 		
+		log.info(question);
+		
 		List<Comment> commentList =  commentService.getCommentsByQno(qno);
 		
 		for(int i=0; i<commentList.size()-1; i++) {
@@ -490,6 +488,26 @@ public class MypageController {
 		}
 		
 		return "redirect:/mypage/interialP";
+	}
+	
+	//상품 이미지 가져오기
+	@PostMapping("/productQ")
+	public String productQ(int productQ,HttpSession session) {
+		
+		String productId = questionService.getQuestionByQno(productQ).getPid();
+		
+		Attach attach = new Attach();
+		attach.setAttable("PRODUCT");
+		attach.setAtid(productId);
+		attach.setAtindex("1");
+		log.info(attach);
+		
+		String fileName = attachService.getAttachOne(attach).getAoname();
+		log.info(fileName);
+		session.setAttribute("fileName",fileName);
+		
+		
+		return "/mypage/interialP";
 	}
 	
 	@RequestMapping("/removeQuestion")
