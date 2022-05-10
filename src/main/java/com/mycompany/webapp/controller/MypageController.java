@@ -1,9 +1,9 @@
 package com.mycompany.webapp.controller;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -21,12 +21,15 @@ import org.springframework.web.multipart.MultipartFile;
 import com.mycompany.webapp.dto.Attach;
 import com.mycompany.webapp.dto.Comment;
 import com.mycompany.webapp.dto.Dentist;
+import com.mycompany.webapp.dto.Estimate;
 import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.dto.Question;
 import com.mycompany.webapp.dto.User;
+import com.mycompany.webapp.items.EstimateProcess;
 import com.mycompany.webapp.service.AttachService;
 import com.mycompany.webapp.service.CommentService;
 import com.mycompany.webapp.service.DentistService;
+import com.mycompany.webapp.service.EstimateService;
 import com.mycompany.webapp.service.QuestionService;
 import com.mycompany.webapp.service.UserService;
 
@@ -52,6 +55,10 @@ public class MypageController {
 	
 	@Resource
 	private CommentService commentService;
+	
+	@Resource
+	private EstimateService estimateService;
+	EstimateProcess ep;
 	
 	// MyPage 로드시 실행
 	@RequestMapping("/mypage")
@@ -355,12 +362,21 @@ public class MypageController {
 
 	//인테리어 문의
 	@RequestMapping("/interialQ")
-	public String getInterialQ(HttpServletRequest request) {
+	public String getInterialQ(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		List<Question> question = (List<Question>) session.getAttribute("getUidQuestionIn");
 		int qno = question.get(0).getQno();
 		
 		List<Comment> commentList =  commentService.getCommentsByQno(qno);
+		
+		// Estimate Setting
+		Estimate estimate = estimateService.getEstimateByQno(qno);
+		ep = new EstimateProcess(estimate);
+		estimate = ep.init();
+		HashMap<String, Integer> priceMap = ep.getpPiceMap();
+		model.addAttribute("estimate", estimate);
+		model.addAttribute("priceMap", priceMap);
+		log.info(estimate);
 		
 		for(int i=0; i<commentList.size()-1; i++) {
 			for(int j=i; j<commentList.size(); j++) {

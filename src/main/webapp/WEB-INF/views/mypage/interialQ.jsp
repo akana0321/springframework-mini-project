@@ -178,15 +178,28 @@
 											<td style="font-weight: 600;">Sales Tax</td>
 											<td style="font-weight: 600;"> <fmt:formatNumber value="${ estimate.totalPrice * 0.1 }" pattern="#,###"/> ₩</td>
 										</tr>
+										<c:if test="${ estimate.eEvent == 1 }">
+											<tr>
+												<td style="font-weight: 600;">Discount</td>
+												<td style="font-weight: 600;"> - <fmt:formatNumber value="${ estimate.totalPrice * 0.1 }" pattern="#,###"/> ₩</td>
+											</tr>
+										</c:if>
 									</table>
 								</div>
 							
 								
 								<div class=" text-left col-md-4" style="margin-top:10%; padding-left:10%">
 									<p class="mb-2" style="font-weight: 600;">Invoice Total</p>
-									<p style="font-size: 200%;">
-										<strong> <fmt:formatNumber value="${ estimate.totalPrice }" pattern="#,###"/> ₩</strong>
-									</p>
+									<c:if test="${ estimate.eEvent == 1 }">
+										<p style="font-size: 200%;">
+											<strong> <fmt:formatNumber value="${ estimate.totalPrice }" pattern="#,###"/> ₩</strong>
+										</p>
+									</c:if>
+									<c:if test="${ estimate.eEvent != 1 }">
+										<p style="font-size: 200%;">
+											<strong> <fmt:formatNumber value="${ estimate.totalPrice * 0.9 }" pattern="#,###"/> ₩</strong>
+										</p>
+									</c:if>
 								</div>
 							</div>
 						</div>

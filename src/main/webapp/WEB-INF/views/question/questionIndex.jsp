@@ -48,7 +48,7 @@
 	</div>
     <script>
 	   window.onload = function() {
-	    	var sessionData = '<%=session.getAttribute("2022-05-09") %>';
+	    	var sessionData = '<%=session.getAttribute("2022-05-10") %>';
 	    	console.log(sessionData);
 	    	if(sessionData <= 10) {
 	        	$("#myModal").modal("show");
