@@ -168,7 +168,7 @@
 								<c:forEach var="dentist" items="${dentistArray}" varStatus="status">
 								<form method="post" modelAttribute="dentist" action="dentalInfo">
 									<script>window.onload = function checkNumber(){count = ${status.count};}</script>
-									<div><div class='fa fa-minus mr-2' onclick="removeinfoR(${status.count})"><strong> 병원 정보 ${status.count}</strong></div></div>
+									<div><button class='fa fa-minus mr-2' onclick="removeinfoR(${status.count})" style="background-color: white; border:0px"></button><strong> 병원 정보 ${status.count}</strong></div>
 									<hr>
 								    <div class="row">
 							

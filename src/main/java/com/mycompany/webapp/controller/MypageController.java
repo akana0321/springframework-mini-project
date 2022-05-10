@@ -338,19 +338,15 @@ public class MypageController {
 	}
 	
 	//기존 병원 정보 삭제
-	@PostMapping(value = "/removeinfoR",produces = "application/json; charset=UTF-8")
-	@ResponseBody
+	@PostMapping("/removeinfoR")
+
 	public String removeInfoR(int sendData) {
 		
 		//해당 병원의 Dnumber를 가져와 DB에서 삭제한다.
 		String deleteDnumber = String.valueOf(sendData);
 		dentistService.deleteDentistByDnumber(deleteDnumber);
-		
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("result", "success");
-		String json = jsonObject.toString();
-		
-		return json;
+
+		return "redirect:/mypage/mypage";
 	}
 	
 	
