@@ -37,7 +37,7 @@ public class QuestionController {
 	String eventName;
 	
 	@RequestMapping("/questionIndex")
-	public String questionIndex(HttpSession session, HttpServletRequest request) {		
+	public String questionIndex(HttpSession session, HttpServletRequest request, Model model) {		
 		String userId = (String) request.getSession().getAttribute("sessionUid");
 		if(userId == null) {
 			return "/question/goBackHome";
@@ -45,6 +45,8 @@ public class QuestionController {
 			eventName = LocalDate.now().toString();
 			int isEvent = eventsService.getTotalEidCount(eventName);
 			session.setAttribute(eventName, isEvent);
+			session.setAttribute("remain", 3-isEvent);
+			model.addAttribute("remain", 3-isEvent);
 			log.info((int)request.getSession().getAttribute(eventName));
 			return "/question/questionIndex";
 		}

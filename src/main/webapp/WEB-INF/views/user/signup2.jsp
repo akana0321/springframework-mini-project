@@ -83,15 +83,11 @@
 	        <small id="emailCheck"></small>
         </div>
         <label>* 휴대전화</label>
-        <div class="row mb-2">
-          <div class="col-9">
             <input type="tel" name="utel" id="utel" value="${user.utel}"  placeholder="010-****-****"/>
             <small id="telCheck"></small>
-          </div>
           <!-- <div class="col-3">
             <input type="button" class="button" name="certification" value="인증번호 받기" />
           </div> -->
-        </div>
         <!-- <input type="text" name="certification" placeholder="인증번호를 입력하세요" /> -->
         <br />
         <br />
