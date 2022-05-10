@@ -36,9 +36,9 @@
               <div>
                 <div class="small-title"> ${product.pname }</div>
                 <div style="text-align:center;">
-                  <img id="background-image"
-                    src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/1537517988_102268_1.jpg?gif=1&w=1280&h=1280&c=c"
-                    width="100px" height="100px" style="position:relative;'" />
+                  <img 
+                    src="${attach.aoname }"
+                    width="200rem" height="200rem" style="position:relative;'" />
                   <br />
                   <br />
                   ${product.pdescription }

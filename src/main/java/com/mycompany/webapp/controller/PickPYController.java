@@ -1,14 +1,17 @@
 package com.mycompany.webapp.controller;
 
+import com.mycompany.webapp.dto.Attach;
 import com.mycompany.webapp.dto.Estimate;
 import com.mycompany.webapp.dto.Product;
 import com.mycompany.webapp.dto.Question;
+import com.mycompany.webapp.service.AttachService;
 import com.mycompany.webapp.service.ProductService;
 import com.mycompany.webapp.service.QuestionService;
 
 import lombok.extern.log4j.Log4j2;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 import java.util.Locale;
 
 import javax.annotation.Resource;
@@ -38,6 +41,9 @@ public class PickPYController {
 	
 	@Resource
 	private QuestionService questionService;
+	
+	@Resource
+	private AttachService attachService;
 		
 		@RequestMapping("/content")
 		public String content() {
@@ -60,13 +66,25 @@ public class PickPYController {
 			return "pickPY/blankInfo";
 		}
 		
+		@GetMapping("/test")
+		public String test() {
+			return "pickPY/test";
+		}
+		
+		@GetMapping("/test2")
+		public String test2() {
+			return "pickPY/test2";
+		}
+		
 		@RequestMapping("/customerSupport")
 		public String customerSupport(Model model, HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
 			request.setCharacterEncoding("euc-kr");
 			String pid = (String)request.getParameter("productId");
 			log.info(pid);
 			Product product = productService.getProductByPid(pid);
+			Attach attach = attachService.getAttachOne(pid);
 			session.setAttribute("product", product);
+			session.setAttribute("attach", attach);
 			//log.info(product);
 			
 			return "pickPY/customerSupport";
@@ -77,7 +95,22 @@ public class PickPYController {
 			String pid = (String)request.getParameter("productId");
 			log.info(pid);
 			Product product = productService.getProductByPid(pid);
+			Attach attach = attachService.getAttachOne(pid);
 			session.setAttribute("product", product);
+			session.setAttribute("attach", attach);
+			log.info(attach.getAoname());
+			
+//			recommand List
+			List<Product> recommandProduct = productService.get2ProductsByPcategoryExceptPid(product);
+			log.info(recommandProduct.get(0).toString());
+			//log.info(recommandProduct.get(1).toString());에러
+			
+			Product recommand1= recommandProduct.get(0);
+			Attach recommandAttach1 = attachService.getAttachOne(recommand1.getPid());
+			session.setAttribute("recommand1", recommand1);
+			session.setAttribute("recommandAttach1", recommandAttach1);
+			log.info(recommandAttach1.getAoname());
+			
 			//log.info(product);
 			return "pickPY/productInfo";
 		}
