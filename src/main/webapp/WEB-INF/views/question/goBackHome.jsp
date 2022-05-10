@@ -31,7 +31,7 @@
                 <p>로그인 후 사용하실 수 있는 메뉴입니다.</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn" onclick="location.href='goBackHome'" style="background-color: rgba(128, 128, 128, 0.614); color:white;">확인</button>
+                <button type="button" class="btn" onclick="location.href='goBackHome'" style="background-color: #ffb440; color:white;">확인</button>
             </div>
         </div>
     </div>
