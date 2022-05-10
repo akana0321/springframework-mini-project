@@ -32,6 +32,17 @@
 		WHERE p.product_id=#{pid}
 	</select>
 	
+	<select id="selectByPcategoryExceptPid" parameterType="product" resultMap="productMap">
+		SELECT product_id, product_name, product_category, product_description, product_price, product_color,
+			   attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name
+		FROM product p
+		LEFT OUTER JOIN attach a ON a.attach_target_table like 'PRODUCT'
+	   	 AND p.product_id = a.attach_target_id
+		WHERE p.product_category=#{pcategory}
+		 AND p.product_id!=#{pid}
+		 AND rownum &lt; 2
+	</select>
+	
 	<select id="count" resultType="int">
 		SELECT count(*) FROM product
 	</select>
