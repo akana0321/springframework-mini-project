@@ -42,7 +42,7 @@
 	</select>
 	
 	<select id="count" resultType="int">
-		SELECT count(*) FROM comments
+		SELECT comment_no FROM comments WHERE rownum = 1 ORDER BY comment_no DESC
 	</select>
 
 	<insert id="insert" parameterType="comment">

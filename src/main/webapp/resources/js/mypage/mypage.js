@@ -304,7 +304,6 @@ function execDaumPostcode3() {
     oncomplete: function (data) {
       var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
           var extraRoadAddr = ''; // 도로명 조합형 주소 변수
-
           // 법정동명이 있을 경우 추가
           if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
               extraRoadAddr += data.bname;
