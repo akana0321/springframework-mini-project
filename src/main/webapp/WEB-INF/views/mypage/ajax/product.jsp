@@ -14,10 +14,23 @@
   <c:forEach var="question" items="${getUidQuestionPro}" varStatus="counting">
 	<tr id="tb">
 		<td>${counting.count}</td>
-		<td id="line"><a href="interialP">${question.qcontent}</a></td>
+		<td id="line"><a href="interialP" onclick="clickProduct(${question.qno})">${question.qcontent}</a></td>
 		<td>${question.qdate}</td>
-
 	</tr>
 	</c:forEach>
-  
+  	<script>
+  		function clickProduct(val){
+  			const productQ = new FormData();
+  			productQ.append("productQ", val);
+  			
+  			$.ajax({
+  				url: "productQ",
+  				method: "post",
+  				data: productQ,
+  				cache: false,		
+  				processData: false, 
+  				contentType: false	
+  			})
+  		}
+  	</script>
 </table>

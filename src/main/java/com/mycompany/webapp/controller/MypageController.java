@@ -452,6 +452,8 @@ public class MypageController {
 		List<Question> question = (List<Question>) session.getAttribute("getUidQuestionPro");
 		int qno = question.get(0).getQno();
 		
+		log.info(question);
+		
 		List<Comment> commentList =  commentService.getCommentsByQno(qno);
 		
 		for(int i=0; i<commentList.size()-1; i++) {
@@ -490,6 +492,25 @@ public class MypageController {
 		}
 		
 		return "redirect:/mypage/interialP";
+	}
+	
+	//상품 이미지 가져오기
+	@PostMapping("/productQ")
+	public void productQ(int productQ,HttpSession session) {
+		
+		String productId = questionService.getQuestionByQno(productQ).getPid();
+		
+		Attach attach = new Attach();
+		attach.setAttable("PRODUCT");
+		attach.setAtid(productId);
+		attach.setAtindex("2");
+		log.info(productId);
+		
+		if(attachService.getAttachOne(attach).getAoname() != null) {
+			String fileName = attachService.getAttachOne(attach).getAoname();
+			log.info(fileName);
+			session.setAttribute("fileName",fileName);
+		}
 	}
 	
 	@RequestMapping("/removeQuestion")
