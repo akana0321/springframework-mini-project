@@ -229,7 +229,7 @@
               <div class="text-left m-5">
                   <div>
 <pre class="ml-3" style="overflow: scroll;">
-   ${comment.ccontent}
+${comment.ccontent}
 </pre>
                   </div>
                   <div class="text-right"  style="padding-bottom: 2% ;">
@@ -245,7 +245,7 @@
               <div class="text-left m-5">
                   <div>
 <pre class="ml-3" style="overflow: scroll;">
-   ${comment.ccontent}
+${comment.ccontent}
 </pre>
                   </div>
                   <div class="text-right"  style="padding-bottom: 2% ;">
