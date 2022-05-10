@@ -36,7 +36,7 @@
                 <p>마이페이지로 이동합니다.</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn" onclick="location.href='questionFinish'" style="background-color: rgba(128, 128, 128, 0.614); color:white;">확인</button>
+                <button type="button" class="btn" onclick="location.href='questionFinish'" style="background-color: #ffb440; color:white;">확인</button>
             </div>
         </div>
     </div>
