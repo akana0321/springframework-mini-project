@@ -16,7 +16,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.js"></script>
 </head>
-<body style="background-image:  url('${pageContext.request.contextPath }/resources/images/mypage/background.jpg'); background-size: cover; background-repeat: no-repeat;">
+<body style="background-image:  url('${pageContext.request.contextPath}/resources/images/mypage/background.jpg'); background-size: cover; background-repeat: no-repeat;">
 <div id="interialq" >
     <div  class="text-center" style="padding-right: 10%;" id="table">
             <div style="font-size: 40px; color: #343434; font-weight: 700;" class="mb-5">예상 견적서</div>
