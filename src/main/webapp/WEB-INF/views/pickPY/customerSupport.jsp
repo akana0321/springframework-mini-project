@@ -26,19 +26,19 @@
     <div id="interialq" style="width: 100%; height:100% left:0;" class="text-center p-0 m-0">
       <div class="bg-white">
         <div class="d-flex flex-column">
-          <div style="background-color: #ffb3400c">
+          <div style=" ">
             <div class="col-md-12 p-0 m-0 text-left">
               <!-- <div class="fa fa-3x fa-arrow-circle-left float-left ml-5" style="position:relative" onclick="location.href='productInfo'"
                 id="back"></div> -->
-              <div style="color: #343434; margin: 0 10%; position:relative" class="medium-title mb-5 ">
+              <div style=" margin: 0 10%; position:relative" class="medium-title mb-5 ">
                 상품문의<br />
               </div>
               <div>
                 <div class="small-title"> ${product.pname }</div>
                 <div style="text-align:center;">
-                  <img id="background-image"
-                    src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/1537517988_102268_1.jpg?gif=1&w=1280&h=1280&c=c"
-                    width="100px" height="100px" style="position:relative;'" />
+                  <img 
+                    src="${attach.aoname }"
+                    width="200rem" height="200rem" style="position:relative;'" />
                   <br />
                   <br />
                   ${product.pdescription }
@@ -47,7 +47,7 @@
               </div>
             </div>
           </div>
-	 <div class="col-md-12" id="inquire">
+	 <div class="col-md-12" id="inquire" style="background-color:white;'">
             <div class="text-center mt-2 ml-2 small-title">
               문의 내용
             </div>
@@ -57,7 +57,7 @@
               <div class="col-md-12">
                 <div class="form-group m-4">
                 <a name="hi" value="what"></a>
-                  <input type="text" name="qcontent" style="line-height: 15rem;"><br>
+                  <input type="text" name="qcontent" style="line-height: 15rem; width: 100%"><br>
                 </div>
               </div>
               <div class="text-center">

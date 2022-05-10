@@ -55,26 +55,51 @@
 </head>
 <body >
 <%@ include file="/WEB-INF/views/common/mainheader.jsp" %> 
-
-<div id="main-content" style="position: relative;">
-    <div class="small-title" style="position: absolute; top: 0%; right:5%;">마우스를 올려 도면도 상세보기</div>
-    <div class="title" style="position: absolute; top: 40%; left:15%;">
-        50PY
-    </div>
-	<div class="zoom m-4" >
-		<div class="small">
-			<img src="https://i0.wp.com/916er.com/wp-content/uploads/%EC%B9%98%EA%B3%BC%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B405-1.jpg" alt="small rushmore">
-		</div>
-		<div class="large">
-			<img src="https://i0.wp.com/916er.com/wp-content/uploads/%EC%B9%98%EA%B3%BC%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B405-1.jpg" alt="big rushmore">
-		</div>
-	</div>
-    <div class="card-subtitle" style="position: absolute; top: 25%; right:10%;">
-    	<%
+<%
     	request.setCharacterEncoding("euc-kr");
 		int version = Integer.parseInt(request.getParameter("version"));
 		System.out.println("version:"+version);
     	%>
+<div id="main-content" style="position: relative;">
+    <div class="title" style="position: absolute; top: 40%; left:15%;">
+        
+    </div>
+	<div class="zoom m-4" >
+		<div class="small">
+            <c:set var="version" value="<%=version%>" scope="session"/>
+            <c:if test="${version == '50'}">
+            <img alt="" src="http://www.dentalnews.or.kr/data/photos/20180101/art_15150287232013_314f2c.jpg" alt="small rushmore">
+            </c:if>
+            <c:if test="${version == '65'}">
+    		<img alt="" src="https://i0.wp.com/916er.com/wp-content/uploads/%EC%B9%98%EA%B3%BC%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B405-1.jpg" alt="small rushmore">
+           </c:if>
+		<c:if test="${version == '100'}">
+		<img alt="" src="https://t1.daumcdn.net/cfile/blog/25128936520BA58E2B" alt="small rushmore">
+		</c:if>
+		</div>
+		<div class="large">
+		<c:if test="${version == '50'}">
+			<img src="http://www.dentalnews.or.kr/data/photos/20180101/art_15150287232013_314f2c.jpg" alt="big rushmore">
+		</c:if>
+		<c:if test="${version == '65'}">
+			<img src="https://i0.wp.com/916er.com/wp-content/uploads/%EC%B9%98%EA%B3%BC%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B405-1.jpg" alt="big rushmore">
+		</c:if>
+		<c:if test="${version == '100'}">
+			<img src="https://t1.daumcdn.net/cfile/blog/25128936520BA58E2B" alt="big rushmore">
+		</c:if>
+		</div>
+	</div>
+    <div class="card-subtitle" style="position: absolute; top: 25%; right:10%;">
+     <h1
+                  class="card-title pricing-card-title"
+                  style="
+                    font-weight: bold;
+                    font-size: 2.5em;
+                  "
+                >
+                  <font color="black">50PY</font>
+                </h1>
+    
         <ul class="card-subtitle list-unstyled mt-3 mb-4 ml-3">
             <li>
               <img src="${pageContext.request.contextPath }/resources/images/pickPY/check.png" class="m-2" />대기실
@@ -96,7 +121,6 @@
               <img src="${pageContext.request.contextPath }/resources/images/pickPY/check.png" class="m-2" />진료실
               수납기구
             </li>
-            <c:set var="version" value="<%=version%>" scope="session"/>
 			  <c:if test="${version != '50'}">
 			     <li>
               <img src="${pageContext.request.contextPath }/resources/images/pickPY/check.png" class="m-2" />기공실
