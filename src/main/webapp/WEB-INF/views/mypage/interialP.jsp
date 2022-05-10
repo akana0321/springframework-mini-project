@@ -22,10 +22,12 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <div id="interialq" style="width: 80%" class="text-center">
       <table class="mb-5">
-        <td id="">
-          <h1 class="mb-3"><font color="black" size="10" data-aos="zoom-in" data-aos-duration="1000">상품 문의</font></h1>
-          <hr id="titleLine">
-        </td>
+	      <tr>
+	        <td>
+	          <h1 class="mb-3"><font color="black" size="10" data-aos="zoom-in" data-aos-duration="1000">상품 문의</font></h1>
+	          <hr id="titleLine">
+	        </td>
+	      </tr>
       </table>
       <div class="bg-white">
         <div class="d-flex flex-column">
@@ -36,7 +38,7 @@
             </div>
             <div class="col-md-5 mt-5" >
                 <div style="margin: 10% 20% 10% 0;" data-aos="fade-in" data-aos-duration="1000" >
-                    <sapn style="font-size: 200%; font-weight: 700;" >A체어 인테리어 심플 의자 8colors </sapn>
+                    <span style="font-size: 200%; font-weight: 700;" >A체어 인테리어 심플 의자 8colors </span>
                 </div>
                 <div style="margin: 20% 20% 10% 0;" class="text-left">
                     <ul>
@@ -47,8 +49,6 @@
                     </ul>
                 </div>
             </div>
-
-
           </div>
           <div id="question"> 
             <c:forEach var="comment" items="${CommentList}" varStatus="counting">
@@ -107,13 +107,14 @@
                   <input id="cattach" type="file" class="btn form-control-file" name="cattach" oninput="uploadFile(event)" multiple>
                   <input type="submit"  class="btn btn-light" value="문의하기">
                 </div>
+               </div>
             </form>
           </div>
         </div>
       </div>
     </div>
+    </div>
   </body>
-</div>
 <script>
   AOS.init();
 </script>

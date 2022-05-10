@@ -351,18 +351,11 @@
 											</div>
 										</div>
 									</div>
-									<!-- <a class="btn mt-3" id="back" onclick="location.href='mypage.html'">뒤로가기</a> -->
 								</div>
 							</section>
 						</div>
 					</div>
-
-					
-					
 				</div>
-				<!-- <div class="flex-column">
-					<img src="../images/mypage/qna.png" class="btn btn-outline-light m-1" onclick="location.href='FAQ.html'" width="100px" height="100px" id="qna">
-				</div> -->
 			</div>
 		</div>
 	</section>

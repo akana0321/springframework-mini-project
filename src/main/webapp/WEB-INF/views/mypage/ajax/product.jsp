@@ -16,7 +16,7 @@
 		<td>${counting.count}</td>
 		<td id="line"><a href="interialP">${question.qcontent}</a></td>
 		<td>${question.qdate}</td>
-		</a>
+
 	</tr>
 	</c:forEach>
   

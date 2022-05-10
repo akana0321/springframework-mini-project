@@ -1,4 +1,6 @@
+//comment 수를 세기 위한 변수 선언 
 var count=0;
+
 function question() {
     count += 1;
     var tmp = document.getElementById("content");

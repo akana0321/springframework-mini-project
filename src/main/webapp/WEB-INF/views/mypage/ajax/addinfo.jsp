@@ -62,9 +62,4 @@
             <div class="form-group">
                 <label>병원 도면</label>
                 <br>
-              <!-- <div id="image_container2"></div>
-                <input type="file"  value="도안" class="mt-2" onchange="setThumbnail(event,'image_container1');" >
-          </div>
-        </div>
-
-    </div> -->
+              
