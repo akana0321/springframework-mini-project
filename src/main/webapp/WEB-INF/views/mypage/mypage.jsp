@@ -36,10 +36,10 @@
 					<div class="p-4">
 						<div class="img-circle text-center mb-3" style="position: relative;" >
 							<div id="userimg" data-aos="zoom-out" data-aos-duration="2000" >
-							<c:if test="${userimg.aoname != null}">	
+							<c:if test="${userimg.aoname ne null}">	
 								<img src="${pageContext.request.contextPath}/resources/images/mypage/${userimg.aoname}" alt="Image" class="shadow" style="width: 200px; height: 200px;">
 							</c:if>
-							<c:if test="${userimg.aoname == null}">
+							<c:if test="${userimg.aoname eq null}">
 								<img src="${pageContext.request.contextPath}/resources/images/mypage/basicimg.png" alt="Image" class="shadow" style="width: 200px; height: 200px;">
 							
 							</c:if>

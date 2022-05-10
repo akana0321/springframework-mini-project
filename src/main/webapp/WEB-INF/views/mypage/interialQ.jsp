@@ -145,8 +145,8 @@
 								
 									<table class="table text-center col-md-4" >
 										<tr id="table_top" class="box table-borderless">
-											<th style="width: 70%; text-align: left;">유형</th>
-											<th style="width: 30%">추가 비율</th>
+											<th style="width: 60%; text-align: left;">유형</th>
+											<th style="width: 40%">추가 비율</th>
 										</tr>
 										<tr>
 											<td style="text-align: left;">
@@ -178,24 +178,24 @@
 											<td style="font-weight: 600;">Sales Tax</td>
 											<td style="font-weight: 600;"> <fmt:formatNumber value="${ estimate.totalPrice * 0.1 }" pattern="#,###"/> ₩</td>
 										</tr>
-										<c:if test="${ estimate.eEvent == 1 }">
+										<c:if test="${ estimate.EEvent == 1 }">
 											<tr>
-												<td style="font-weight: 600;">Discount</td>
-												<td style="font-weight: 600;"> - <fmt:formatNumber value="${ estimate.totalPrice * 0.1 }" pattern="#,###"/> ₩</td>
+												<td style="font-weight: 600; color:red">Discount</td>
+												<td style="font-weight: 600; color:red"> - <fmt:formatNumber value="${ estimate.totalPrice * 0.1 }" pattern="#,###"/> ₩</td>
 											</tr>
 										</c:if>
 									</table>
 								</div>
 							
 								
-								<div class=" text-left col-md-4" style="margin-top:10%; padding-left:10%">
+								<div class=" text-left col-md-4" style="margin-top:10%; padding-left:5%">
 									<p class="mb-2" style="font-weight: 600;">Invoice Total</p>
-									<c:if test="${ estimate.eEvent == 1 }">
+									<c:if test="${ estimate.EEvent == 1 }">
 										<p style="font-size: 200%;">
 											<strong> <fmt:formatNumber value="${ estimate.totalPrice }" pattern="#,###"/> ₩</strong>
 										</p>
 									</c:if>
-									<c:if test="${ estimate.eEvent != 1 }">
+									<c:if test="${ estimate.EEvent != 1 }">
 										<p style="font-size: 200%;">
 											<strong> <fmt:formatNumber value="${ estimate.totalPrice * 0.9 }" pattern="#,###"/> ₩</strong>
 										</p>
