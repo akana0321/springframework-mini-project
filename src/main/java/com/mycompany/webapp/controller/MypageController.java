@@ -101,7 +101,6 @@ public class MypageController {
 		
 		//문의 내역을 Service를 통해 DB에서 가져옴
 		List<Question> getAllQuestion = questionService.getQuestionsByPager(new Pager(5,10,questionService.getTotalQuestionNum(),1,userId));
-		log.info(getAllQuestion);
 		//인테리어 문의
 		List<Question> getUidQuestionIn = new ArrayList<Question>();
 		//상품 문의
@@ -140,8 +139,7 @@ public class MypageController {
 	}
 
 	//프로필 사진 변경
-	@PostMapping(value = "/fileuploadAjax",produces = "application/json; charset=UTF-8")
-	@ResponseBody
+	@PostMapping("/fileuploadAjax")
 	public String changeProfile(Attach attach, HttpServletRequest request,Model model) throws Exception {
 		HttpSession session = request.getSession();
 		Attach attachSession = new Attach();
@@ -169,13 +167,8 @@ public class MypageController {
 			
 			attachService.updateAttach((Attach)session.getAttribute("userimg"));
 		}
-		
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("result", "success");
-		jsonObject.put("saveFilename", attachSession.getAoname());
-		String json = jsonObject.toString();
-		
-		return json;
+
+		return "redirect:/mypage/mypage";
 	}
 	
 	//내 정보 변경시 DB update
