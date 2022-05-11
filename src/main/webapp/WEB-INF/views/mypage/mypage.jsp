@@ -78,54 +78,49 @@
 					<div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
 						<form method="post" action="myInfo">
 						<h3 class="mb-4"><strong>내 정보</strong></h3>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-								  	<label>이름</label>
-								  	<input type="text" class="form-control col-md-9" value="${user.uname}" name="uname" readonly>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-md-6">
+									<label>이름</label>
+									<input type="text" class="form-control" value="${user.uname}" name="uname" readonly>
+								</div>
+								<div class="col-md-6">
+									<label>생년월일</label>
+									<input type="date" class="form-control" value="${user.ubirth}" name="ubirth">
 								</div>
 							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-								  	<label>생년월일</label>
-								  	<input type="date" class="form-control col-md-9" value="${user.ubirth}" name="ubirth">
+						</div>
+						
+						<div class="form-group">
+							<div class="row">
+								<div class="col-md-6">
+									<label>휴대전화</label>
+									<input type="text" class="form-control" value="${user.utel}" name="utel">
+								</div>
+								<div class="col-md-6">
+									<label>이메일</label>
+									<input type="text" class="form-control" value="${user.uemail}" name="uemail">
 								</div>
 							</div>
-
-							<div class="col-md-6">
-								<div class="form-group">
-								  	<label>휴대전화</label>
-								  	<input type="text" class="form-control col-md-9" value="${user.utel}" name="utel">
+						</div>
+						
+						<div class="form-group">
+							<label>주소</label>
+							<div>
+								<div class="row">
+									<div class="col-md-6">
+										<input class="form-control" type="text"  name="uzipcode" value="${user.uzipcode}" placeholder="우편번호" />
+									</div>
+									<div class="col-md-6">
+										<input class="form-control" type="button" class="button" style="background-color: #808080; color: white;" onclick="execDaumPostcode3()" value="우편번호 찾기" /><br />
+									</div>
 								</div>
-							</div>
-							
-							<div class="col-md-6">
-								<div class="form-group">
-								  	<label>이메일</label>
-								  	<input type="text" class="form-control col-md-9" value="${user.uemail}" name="uemail">
-								  	
-								</div>
-							</div>
-							<div class="col-md-12">
-								<div class="form-group">
-									<label>주소</label>
-									<div class="row">
-										<div class="col-md-12 row">
-											<div class="col-md-6">
-												<input class="form-control col-md-9" type="text"  name="uzipcode" value="${user.uzipcode}" placeholder="우편번호" />
-											</div>
-											<div class="col-md-6">
-												<input class="form-control col-md-9" type="button" class="button" style="margin-bottom: 1em" onclick="execDaumPostcode3()" value="우편번호 찾기" /><br />
-											</div>
-										</div>
-										<div class="col-md-12 row">
-											<div class="col-md-6">
-												<input class="form-control" type="text"  name="uaddress1" value="${user.uaddress1}" placeholder="주소" /><br />
-											</div>
-											<div class="col-md-6">
-												<input class="form-control col-md-9" type="text" id="detailAddress" placeholder="상세주소" value="${user.uaddress2}"  name="uaddress2"/>
-											</div>
-										</div>
+								<div class="row">
+									<div class="col-md-8">
+										<input class="form-control" type="text"  name="uaddress1" value="${user.uaddress1}" placeholder="주소" /><br />
+									</div>
+									<div class="col-md-4">
+										<input class="form-control" type="text" id="detailAddress" placeholder="상세주소" value="${user.uaddress2}"  name="uaddress2"/>
 									</div>
 								</div>
 							</div>
@@ -137,7 +132,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>새로운 비밀번호</label>
-								  	<input type="password" class="form-control col-md-9" name="newPass">
+								  	<input type="password" class="form-control" name="newPass">
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -148,7 +143,7 @@
 			  								${error}
 										</span>			
 									</c:if>
-								  	<input type="password" class="form-control col-md-9" name="reNewPass">
+								  	<input type="password" class="form-control" name="reNewPass">
 								</div>
 							</div>
 						</div>
@@ -166,87 +161,73 @@
 							
 							<c:if test="${dentistSize != 0}">
 								<c:forEach var="dentist" items="${dentistArray}" varStatus="status">
-								<form method="post" modelAttribute="dentist" action="dentalInfo">
-									<script>window.onload = function checkNumber(){count = ${status.count};}</script>
-									<div><button class='fa fa-minus mr-2' onclick="removeinfoR(${status.count})" style="background-color: white; border:0px"></button><strong> 병원 정보 ${status.count}</strong></div>
-									<hr>
-								    <div class="row">
-							
-								        <div class="col-md-12">
-								            <div class="form-group">
-								                <label for="hnumber">병원 등록 번호</label>
-								                <input type="text" id="dnumber_${status.count}" class="form-control col-md-4" value="${dentist.dnumber}" name="dnumber" />
-								            </div>
+									<form method="post" modelAttribute="dentist" action="dentalInfo">
+										<script>window.onload = function checkNumber(){count = ${status.count};}</script>
+										<div><button class='fa fa-minus mr-2' onclick="removeinfoR(${status.count})" style="background-color: white; border:0px"></button><strong> 병원 정보 ${status.count}</strong></div>
+										<hr>
+								    	<div class="form-group">
+								    		<div class="col-md-6">
+								    			<label for="hnumber">병원 등록 번호</label>
+								            	<input type="text" id="dnumber_${status.count}" class="form-control" value="${dentist.dnumber}" name="dnumber" />
+								    		</div>
 								        </div>
-								        <div class="col-md-7">
-								            <div class="form-group">
-								                <label>병원 이름</label>
-								                <input type="text" class="form-control col-md-8" value="${dentist.dname}" name="dname"/>
-								            </div>
+								        <div class="row">
+									        <div class="col-md-6">
+									           	<label>병원 이름</label>
+									           	<input type="text" class="form-control" value="${dentist.dname}" name="dname"/>
+									        </div>
+									        <div class="col-md-6">
+									         	<label>병원 전화번호</label>
+									         	<input type="text" class="form-control" value="${dentist.dtel}" name="dtel"/>
+									        </div>
 								        </div>
-								        <div class="col-md-5">
-								            <div class="form-group">
-								                <label>병원 전화번호</label>
-								                <input type="text" class="form-control col-md-8" value="${dentist.dtel}" name="dtel"/>
-								            </div>
-								        </div>
-								        <div class="col-md-12">
-								            <div class="form-group">
-								                <label>병원 주소</label>
-								                <div class="row">
-								                    <div class="col-md-12 row">
-								                        <div class="col-md-6">
-								                            <input class="form-control col-md-8" type="text" id="zonecode${status.count}" placeholder="우편번호" name="dzipcode" value="${dentist.dzipcode}"/>
-								                        </div>
-								                        <div class="col-md-6">
-								                            <input onclick="execDaumPostcode1(${status.count})" class="form-control col-md-6" type="button" class="button" style="margin-bottom: 1em" value="우편번호 찾기" /><br />
-								                        </div>
-								                    </div>
-								                    <div class="col-md-12 row">
-								                        <div class="col-md-6">
-								                            <input class="form-control col-md-12" type="text" id="address${status.count}" placeholder="주소" name="daddress1" value="${dentist.daddress1}" /><br />
-								                        </div>
-								                        <div class="col-md-6">
-								                            <input class="form-control col-md-6" type="text" id="detailAddress${status.count}" placeholder="상세주소" name="daddress2" value="${dentist.daddress2}"/>
-								                        </div>
-								                    </div>
-								                </div>
-								            </div>
+								     
+										<div class="form-group">
+											<label>병원 주소</label>
+											<div>
+												<div class="row">
+													<div class="col-md-6">
+														<input class="form-control" type="text"  name="uzipcode" value="${user.uzipcode}" placeholder="우편번호" />
+													</div>
+													<div class="col-md-6">
+														<input class="form-control" type="button" class="button" style="background-color: #808080; color: white;" onclick="execDaumPostcode3()" value="우편번호 찾기" /><br />
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-8">
+														<input class="form-control" type="text"  name="uaddress1" value="${user.uaddress1}" placeholder="주소" /><br />
+													</div>
+													<div class="col-md-4">
+														<input class="form-control" type="text" id="detailAddress" placeholder="상세주소" value="${user.uaddress2}"  name="uaddress2"/>
+													</div>
+												</div>
+											</div>
+										</div>
+								        <div class="row">
+									        <div class="col-md-6">
+									           	<label>병원 직원수</label>
+									           	<input type="number" class="form-control"  name="demployees" value="${dentist.demployees}">
+									        </div>
+									        <div class="col-md-6">
+									           	<label>병원 평수</label>
+									         	<input type="number" class="form-control"  name="dpy" value="${dentist.dpy}">
+									        </div>
 								        </div>
 								        
-								        <div class="col-md-6">
-								            <div class="form-group ">
-								                <label>병원 직원수</label>
-								                <input type="number" class="form-control col-md-6"  name="demployees" value="${dentist.demployees}">
-								            </div>
-								        </div>
-								        <div class="col-md-12"></div>
-								        <div class="col-md-6">
-								            <div class="form-group">
-								                <label>병원 평수</label>
-								                <input type="number" class="form-control col-md-6"  name="dpy" value="${dentist.dpy}">
-								            </div>
-								        </div>
-								        <div class="col-md-12 mt-2">
-								            <div class="form-group">
-								                <label>병원 도면</label>
-								                <br>
-												<div id="image_container_${status.count}">
-												</div>							
-												
-												<input type="file" multiple class="mt-2" id="dentalimg${status.count}" oninput="setThumbnailF(event,'image_container_${status.count}','dentalimg${status.count}')">
+								      	<div>
+								         	<label>병원 도면</label>
+								          	<br>
+											<div id="image_container_${status.count}"></div>							
+											<input type="file" multiple class="mt-2" id="dentalimg${status.count}" oninput="setThumbnailF(event,'image_container_${status.count}','dentalimg${status.count}')">
 												<c:forEach var="attach" items="${dentist.dattaches}" varStatus="val">
 													<br><div id='${status.count}_${val.count}' class="fa fa-minus pr-2" onclick="removeFile(this.id,'dnumber_${status.count}')">${attach.asname}</div>
 												</c:forEach>
-					          				</div>
-					        			</div>
+					          			</div>
 					        			<div class="col-md-6  text-right">
 											<input class="btn" type="submit" style="color: white; background-color: #808080;" value="저장하기">
 										</div>
-					    				</div> 
 					    			</form>
 								</c:forEach>
-								
 							</c:if>
 							<c:if test="${dentistSize == 0}">
 								<div>병원 정보가 없습니다.</div>
