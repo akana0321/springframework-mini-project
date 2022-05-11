@@ -53,6 +53,7 @@
 </head>
 <body >
 <%@ include file="/WEB-INF/views/common/mainheader.jsp" %> 
+<%@ include file="/WEB-INF/views/common/loginModal.jsp" %>
 <%
     	request.setCharacterEncoding("euc-kr");
 		int version = Integer.parseInt(request.getParameter("version"));

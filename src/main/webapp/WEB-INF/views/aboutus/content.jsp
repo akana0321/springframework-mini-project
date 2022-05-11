@@ -36,6 +36,7 @@
 
   <body>
     <%@ include file="/WEB-INF/views/common/mainheader.jsp" %> 
+    <%@ include file="/WEB-INF/views/common/loginModal.jsp" %>
       <div style="top: 0; position:absolute; z-index: -1; width: 100%; height: 100%; padding-top:4%; background-image: url('${pageContext.request.contextPath }/resources/images/pickPY/osstembackgroundmd.jpeg'); background-repeat: no-repeat;">
       <%-- <%@ include file="/WEB-INF/views/aboutus/aboutusHeader.jsp" %> --%>
       <%@ include file="/WEB-INF/views/aboutus/aboutus.jsp" %>

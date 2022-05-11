@@ -12,12 +12,13 @@
             src="http://davidlynch.org/projects/maphilight/jquery.maphilight.min.js"></script>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mainheader.css" />
         <script type="text/javascript" src="js/jquery.easing.min.js"></script>
-
+		<title>Studio 765</title>
 
     </head>
 
     <body>
         <%@ include file="/WEB-INF/views/common/mainheader.jsp" %>
+        <%@ include file="/WEB-INF/views/common/loginModal.jsp" %>
         <!-- Get PYRoom version(PY) -->
          <%
     	request.setCharacterEncoding("euc-kr");
