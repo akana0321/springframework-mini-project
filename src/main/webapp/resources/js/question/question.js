@@ -96,6 +96,9 @@ function pyInputComplete() {
         if(!check.test(pyValue)) {
             $("#pyHelp").html('<span style="color: red;">숫자만 입력해주세요</span>');
             $("#pyHelp").removeAttr("hidden");
+        } else if(pyValue == 0) {
+            $("#pyHelp").html('<span style="color: red;">0이상의 값을 입력해주세요</span>');
+            $("#pyHelp").removeAttr("hidden");
         } else {
             $("#pyHelp").attr("hidden");
             pyValue = parseInt(pyValue);
@@ -103,7 +106,7 @@ function pyInputComplete() {
             setDisplay("questionContent01");
             location.href = "#questionContent01";
         }
-    } 
+    }
 }   
 
 function submitForm() {

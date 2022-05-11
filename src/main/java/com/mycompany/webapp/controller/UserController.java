@@ -25,19 +25,16 @@ public class UserController {
 	
 	@RequestMapping("/home")
 	public String home() {
-		log.info("실행");
 		return "redirect:/home";
 	}
 	
 	@RequestMapping("/signup1")
 	public String signup1() {
-		log.info("실행");
 		return "user/signup1";
 	}
 	
 	@RequestMapping("/signup2")
 	public String signup2() {
-		log.info("실행");
 		return "user/signup2";
 	}
 	
@@ -60,7 +57,6 @@ public class UserController {
 	
 	@RequestMapping("/login")
 	public String login() {
-		log.info("실행");
 		return "user/login";
 	}
 	

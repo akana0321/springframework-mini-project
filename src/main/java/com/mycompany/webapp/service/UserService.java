@@ -48,7 +48,6 @@ public class UserService {
 				return JoinResult.DUPLICATED;
 			}
 		} catch(Exception e) {
-			e.printStackTrace();
 			return JoinResult.FAIL;
 		}
 		
@@ -56,12 +55,12 @@ public class UserService {
 	
 	// Login
 	public LoginResult login(User user) {
-		User dbUser = userDao.selectByUid(user.getUid());
-		if(dbUser == null) {
+		String dbPassword = userDao.selectLoginInfoByUid(user.getUid());
+		if(dbPassword == null) {
 			return LoginResult.FAIL_UID;
 		} else {
 			PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-			if(passwordEncoder.matches(user.getUpassword(), dbUser.getUpassword())) {
+			if(passwordEncoder.matches(user.getUpassword(), dbPassword)) {
 				return LoginResult.SUCCESS;
 			} else {
 				return LoginResult.FAIL_UPASSWORD;

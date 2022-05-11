@@ -519,11 +519,13 @@
                 <div id="questionResult01" class="fullscrean" style="display: none; background-color: #f1f3f5; ;">    
                     <p class="card-title">나만의 치과에 최적화된 결과가 도착했습니다!</p>
                     <img src="${ pageContext.request.contextPath }/resources/images/question/bill.png" class="mb-5"/>
-                    <div class="spin-btn d-flex justify-content-center align-content-center">
-                        <!-- 이거 submit으로 만들어주기 -->
-                        <span>
-                           <input id="submitIp" type="submit" value="확인하기" />
-                        </span>
+                    <div class="btn-end">
+                        <div class="d-flex justify-content-center align-content-center wrap-end">
+                            <!-- 이거 submit으로 만들어주기 -->
+                            <span>
+                                <input id="submitIp" type="submit" value="확인하기" />
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>

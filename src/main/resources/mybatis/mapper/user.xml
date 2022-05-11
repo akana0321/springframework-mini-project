@@ -29,13 +29,19 @@
 		</association>
 	</resultMap>
 	
-	<select id="selectByUid" parameterType="string" resultMap="userMap">
+	<select id="selectByUid" parameterType="string" resultMap="userMap" fetchSize="1000">
 		SELECT user_id, user_role, user_enabled, user_password, user_name, user_email, user_tel, user_sign_up_date, user_birth, user_zipcode, user_address1, user_address2,
 			   attach_no, attach_target_table, attach_target_id, attach_target_index, attach_content_type, attach_save_name, attach_original_name
 	   	FROM users u
 	    LEFT OUTER JOIN attach a ON a.attach_target_table like 'USERS'
 	   	 AND u.user_id = a.attach_target_id
 	   	WHERE u.user_id = #{uid}
+	</select>
+	
+	<select id="selectLoginInfoByUid" parameterType="string" resultType="string" fetchSize="1000">
+		SELECT user_password
+		FROM users
+		WHERE user_id = #{uid}
 	</select>
 	
 	
