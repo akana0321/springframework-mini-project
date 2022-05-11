@@ -34,9 +34,9 @@
   border-style: none;
   width: 100%;
   padding: 0.6em;
-  background-color: #ffb440;
+  background-color: #808080;
   border: none;
-  color: black;
+  color: white;
   font-size: medium;
   text-decoration: none;
   cursor: pointer;
@@ -70,9 +70,9 @@
 }
 
 .signup2 .button {
-  background-color: #ffb440;
+  background-color: #808080;
   border: none;
-  color: black;
+  color: white;
   font-size: medium;
   text-decoration: none;
   cursor: pointer;

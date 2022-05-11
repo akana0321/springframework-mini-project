@@ -51,7 +51,7 @@
 						<h4 class="text-center" style="font-weight: 700;">${user.uname}</h4>
 					</div>
 					<div class="text-right ">
-						<a class="mr-3" href="#" style="color: black; "> 회원 탈퇴</a>
+						<a class="mr-3" href="x" style="color: black; "> 회원 탈퇴</a>
 					</div>
 					<div class="nav flex-column nav-tabs mt-3" style="background-color: #f1f3f5;" role="tablist" aria-orientation="vertical" >
 						<a class="nav-link active" id="account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="account" style="color: black;">
@@ -241,10 +241,8 @@
 					          				</div>
 					        			</div>
 					        			<div class="col-md-6  text-right">
-											<input class="btn " type="submit" style="color: white; background-color: #808080;" value="저장하기">
+											<input class="btn" type="submit" style="color: white; background-color: #808080;" value="저장하기">
 										</div>
-										
-										
 					    				</div> 
 					    			</form>
 								</c:forEach>

@@ -143,7 +143,7 @@
                 </a>
                 <a
                   type="button"
-                  class="btn btn-lg btn-block white-round-button"
+                  class="btn btn-lg btn-block white-button"
                   href="content"
                   style="font-size: 1.1em;"
                 >
