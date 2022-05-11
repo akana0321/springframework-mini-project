@@ -3,22 +3,23 @@
 </h4>
 	<form method="post" modelAttribute="dentist" action="dentalInfoAdd">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="form-group">
                 <label for="hnumber">병원 등록 번호</label>
-                <input type="text" class="form-control col-md-4" value="1111" name="dnumber"/>
+                <input type="text" class="form-control col-md-12" value="1111" name="dnumber"/>
             </div>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
             <div class="form-group">
                 <label>병원 이름</label>
-                <input type="text" class="form-control col-md-8" value="병원 이름" name="dname"/>
+                <input type="text" class="form-control col-md-12" value="병원 이름" name="dname"/>
             </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-6">
             <div class="form-group">
                 <label>병원 전화번호</label>
-                <input type="text" class="form-control col-md-8" value="연락처" name="dtel"/>
+                <input type="text" class="form-control col-md-12" value="연락처" name="dtel"/>
             </div>
         </div>
         <div class="col-md-12">
@@ -27,18 +28,18 @@
                 <div class="row">
                     <div class="col-md-12 row">
                         <div class="col-md-6">
-                            <input class="form-control col-md-8" type="text" id="zonecode" placeholder="우편번호" name="dzipcode"/>
+                            <input class="form-control col-md-12" type="text" id="zonecode" placeholder="우편번호" name="dzipcode"/>
                         </div>
                         <div class="col-md-6">
-                            <input id="buttonForFind" class="form-control col-md-6" type="button" class="button" style="margin-bottom: 1em" value="우편번호 찾기" /><br />
+                            <input id="buttonForFind" class="form-control col-md-12" type="button" class="button" style="background-color: #808080; color: white;" value="우편번호 찾기" /><br />
                         </div>
                     </div>
                     <div class="col-md-12 row">
-                        <div class="col-md-6">
+                        <div class="col-md-8">
                             <input class="form-control col-md-12" type="text" id="address" placeholder="주소" name="daddress1" /><br />
                         </div>
-                        <div class="col-md-6">
-                            <input class="form-control col-md-6" type="text" id="detailAddress" placeholder="상세주소" name="daddress2"/>
+                        <div class="col-md-4">
+                            <input class="form-control col-md-12" type="text" id="detailAddress" placeholder="상세주소" name="daddress2"/>
                         </div>
                     </div>
                 </div>

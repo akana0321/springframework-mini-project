@@ -165,13 +165,15 @@
 										<script>window.onload = function checkNumber(){count = ${status.count};}</script>
 										<div><button class='fa fa-minus mr-2' onclick="removeinfoR(${status.count})" style="background-color: white; border:0px"></button><strong> 병원 정보 ${status.count}</strong></div>
 										<hr>
-								    	<div class="form-group">
-								    		<div class="col-md-6">
-								    			<label for="hnumber">병원 등록 번호</label>
-								            	<input type="text" id="dnumber_${status.count}" class="form-control" value="${dentist.dnumber}" name="dnumber" />
-								    		</div>
+										<div class="row mb-3">
+									    	
+									    		<div class="col-md-6">
+									    			<label for="hnumber">병원 등록 번호</label>
+									            	<input type="text" id="dnumber_${status.count}" class="form-control" value="${dentist.dnumber}" name="dnumber" />
+									    		</div>
+									       
 								        </div>
-								        <div class="row">
+								        <div class="row mb-3">
 									        <div class="col-md-6">
 									           	<label>병원 이름</label>
 									           	<input type="text" class="form-control" value="${dentist.dname}" name="dname"/>
@@ -182,10 +184,10 @@
 									        </div>
 								        </div>
 								     
-										<div class="form-group">
+										<div class="form-group ">
 											<label>병원 주소</label>
 											<div>
-												<div class="row">
+												<div class="row mb-3">
 													<div class="col-md-6">
 														<input class="form-control" type="text"  name="uzipcode" value="${user.uzipcode}" placeholder="우편번호" />
 													</div>
@@ -193,7 +195,7 @@
 														<input class="form-control" type="button" class="button" style="background-color: #808080; color: white;" onclick="execDaumPostcode3()" value="우편번호 찾기" /><br />
 													</div>
 												</div>
-												<div class="row">
+												<div class="row mb-3">
 													<div class="col-md-8">
 														<input class="form-control" type="text"  name="uaddress1" value="${user.uaddress1}" placeholder="주소" /><br />
 													</div>
@@ -203,7 +205,7 @@
 												</div>
 											</div>
 										</div>
-								        <div class="row">
+								        <div class="row mb-3">
 									        <div class="col-md-6">
 									           	<label>병원 직원수</label>
 									           	<input type="number" class="form-control"  name="demployees" value="${dentist.demployees}">
