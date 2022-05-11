@@ -23,7 +23,7 @@
 <body>
     
     <%@ include file="/WEB-INF/views/common/header.jsp" %>
-    
+    <%@ include file="/WEB-INF/views/common/loginModal.jsp" %>
     
     <%-- Modal --%>    
     <div class="modal fade" tabindex="-1" id="myModal" data-backdrop="static" data-keyboard="false">

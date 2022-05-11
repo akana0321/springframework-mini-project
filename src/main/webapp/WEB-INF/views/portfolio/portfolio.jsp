@@ -23,6 +23,7 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
+	<%@ include file="/WEB-INF/views/common/loginModal.jsp" %>
  	<div id="portfolio" class="d-flex flex-column justify-content-center align-content-center mt-5">
 		<nav >
             <div class="nav nav-pills justify-content-center" id="nav-tab" role="tablist" >

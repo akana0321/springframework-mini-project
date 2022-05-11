@@ -10,11 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     
-    <script>
-	    $(document).ready(function (){
-	        $("#myModal").modal("show");
-	    });
-    </script>
+    
 </head>
 <body>
 <%-- modal --%>
@@ -31,10 +27,15 @@
                 <p>로그인 후 사용하실 수 있는 메뉴입니다.</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn" onclick="location.href='goBackHome'" style="background-color: #ffb440; color:white;">확인</button>
+                <button type="button" class="btn" onclick="location.href='goBackHome'" style="background-color: #808080; color:white;">확인</button>
             </div>
         </div>
     </div>
 </div>
+<script>
+	$(document).ready(function (){
+	    $("#myModal").modal("show");
+	});
+</script>
 </body>
 </html>

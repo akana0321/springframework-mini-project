@@ -9,14 +9,12 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class HomeController {
 	@RequestMapping("/")
-	public String home() {
-		log.info("실행");
+	public String home() {;
 		return "home";
 	}
 	
 	@RequestMapping("/home")
 	public String home2() {
-		log.info("실행");
 		return "home";
 	}
 }

@@ -21,5 +21,6 @@
         </div>
       </div>
     </footer>
+    <%@ include file="/WEB-INF/views/common/loginModal.jsp" %>
   </body>
 </html>
