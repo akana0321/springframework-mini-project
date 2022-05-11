@@ -82,7 +82,11 @@ public class PickPYController {
 			String pid = (String)request.getParameter("productId");
 			log.info(pid);
 			Product product = productService.getProductByPid(pid);
-			Attach attach = attachService.getAttachOne(pid);
+			Attach attach = new Attach();
+			attach.setAttable("PRODUCT");
+			attach.setAtid(pid);
+			attach.setAtindex("1");
+			attach = attachService.getAttachOne(attach);
 			session.setAttribute("product", product);
 			session.setAttribute("attach", attach);
 			//log.info(product);
@@ -95,7 +99,11 @@ public class PickPYController {
 			String pid = (String)request.getParameter("productId");
 			log.info(pid);
 			Product product = productService.getProductByPid(pid);
-			Attach attach = attachService.getAttachOne(pid);
+			Attach attach = new Attach();
+			attach.setAttable("PRODUCT");
+			attach.setAtid(pid);
+			attach.setAtindex("1");
+			attach = attachService.getAttachOne(attach);
 			session.setAttribute("product", product);
 			session.setAttribute("attach", attach);
 			log.info(attach.getAoname());
@@ -103,10 +111,14 @@ public class PickPYController {
 //			recommand List
 			List<Product> recommandProduct = productService.get2ProductsByPcategoryExceptPid(product);
 			log.info(recommandProduct.get(0).toString());
-			//log.info(recommandProduct.get(1).toString());에러
+			log.info(recommandProduct.get(1).toString());
 			
 			Product recommand1= recommandProduct.get(0);
-			Attach recommandAttach1 = attachService.getAttachOne(recommand1.getPid());
+			Attach recommandAttach1 = new Attach();
+			recommandAttach1.setAttable("PRODUCT");
+			recommandAttach1.setAtid(recommand1.getPid());
+			recommandAttach1.setAtindex("1");
+			recommandAttach1 = attachService.getAttachOne(recommandAttach1);
 			session.setAttribute("recommand1", recommand1);
 			session.setAttribute("recommandAttach1", recommandAttach1);
 			log.info(recommandAttach1.getAoname());

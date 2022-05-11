@@ -40,7 +40,7 @@
 	   	 AND p.product_id = a.attach_target_id
 		WHERE p.product_category=#{pcategory}
 		 AND p.product_id!=#{pid}
-		 AND rownum &lt; 2
+		 AND rownum &lt; 3
 	</select>
 	
 	<select id="count" resultType="int">
