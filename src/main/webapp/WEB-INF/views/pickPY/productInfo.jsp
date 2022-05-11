@@ -100,7 +100,7 @@
         <div style="margin:0; justify-content: center; margin: 1.5em 2em;">
         ${product.pdescription }
         </div>
-	        <div id="pCS" type="button" class="btn btn-lg btn-block gray-button px-3" style="color: white; width: fit-content; margin: 1em auto">
+	        <div id="pCS" type="button" class="btn btn-lg btn-block px-3" style="color: white; background-color: #808080; width: fit-content; margin: 1em auto">
 	          문의하기
 	        </div>
         </div>

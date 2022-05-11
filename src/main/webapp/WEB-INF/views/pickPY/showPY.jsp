@@ -27,8 +27,6 @@
     <link
     rel="stylesheet"
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-    crossorigin="anonymous"
   />
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mainheader.css" />
   <!-- title CSS -->
@@ -64,7 +62,8 @@
     <div class="title" style="position: absolute; top: 40%; left:15%;">
         
     </div>
-	<div class="zoom m-4" >
+    <div class="row">
+    	<div class="zoom m-4 col-9" >
 		<div class="small">
             <c:set var="version" value="<%=version%>" scope="session"/>
             <c:if test="${version == '50'}">
@@ -89,7 +88,7 @@
 		</c:if>
 		</div>
 	</div>
-    <div class="card-subtitle" style="position: absolute; top: 25%; right:10%;">
+    <div class="card-subtitle col-3" style="position: absolute; top:5em; right: 0; padding-right: 3em;">
      <h1
                   class="card-title pricing-card-title"
                   style="
@@ -101,34 +100,34 @@
                 </h1>
     
         <ul class="card-subtitle list-unstyled mt-3 mb-4 ml-3">
-            <li>
+            <li style="font-size: 0.9em;">
               <img src="${pageContext.request.contextPath }/resources/images/pickPY/check.png" class="m-2" />대기실
             </li>
-            <li>
+            <li style="font-size: 0.9em;">
               <img src="${pageContext.request.contextPath }/resources/images/pickPY/check.png" class="m-2" />상담실
             </li>
-            <li>
+            <li style="font-size: 0.9em;">
               <img src="${pageContext.request.contextPath }/resources/images/pickPY/check.png" class="m-2" />교정
               진료실 3개
             </li>
-            <li>
+            <li style="font-size: 0.9em;">
               <img src="${pageContext.request.contextPath }/resources/images/pickPY/check.png" class="m-2" />수술실
             </li>
-            <li>
+            <li style="font-size: 0.9em;">
               <img src="${pageContext.request.contextPath }/resources/images/pickPY/check.png" class="m-2" />소독실
             </li>
-            <li>
+            <li style="font-size: 0.9em;">
               <img src="${pageContext.request.contextPath }/resources/images/pickPY/check.png" class="m-2" />진료실
               수납기구
             </li>
 			  <c:if test="${version != '50'}">
-			     <li>
+			     <li style="font-size: 0.9em;">
               <img src="${pageContext.request.contextPath }/resources/images/pickPY/check.png" class="m-2" />기공실
             	</li>
             	
 			  </c:if>
 			  <c:if test="${version > '65'}">
-			     <li>
+			     <li style="font-size: 0.9em;">
               <img src="${pageContext.request.contextPath }/resources/images/pickPY/check.png" class="m-2" />메이크업실 
             	</li>
 			  </c:if>
@@ -136,15 +135,17 @@
           <div class="card-div-button mt-5 p-0" style="position: relative;">
                 <a
                   type="button"
-                  class="btn btn-lg btn-block gray-button"
+                  class="btn btn-lg btn-block"
                   href="PYroom?version=${version}"
+                  style="color: white; font-size: 1.2em; background-color: #808080;"
                 >
                   구경하기
                 </a>
                 <a
                   type="button"
-                  class="btn btn-lg btn-block white-round-button"
+                  class="btn btn-lg btn-block white-button"
                   href="content"
+                  style="font-size: 1.1em;"
                 >
                   이전
                 </a>
@@ -152,7 +153,7 @@
                   상품 디자인은 실제와 다를 수 있습니다
                 </div>
               </div>
-
+    	</div>
     </div>
 
 </div>

@@ -132,9 +132,9 @@
                 >
                   <a
                     type="button"
-                    class="btn btn-lg btn-block gray-button"
+                    class="btn btn-lg btn-block"
                     href="showPY?version=50"
-                    style="color: white;"
+                    style="color: white; background-color: #808080;"
                   >
                     구경하기
                   </a>
@@ -217,9 +217,9 @@
                 >
                 <a
                     type="button"
-                    class="btn btn-lg btn-block gray-button"
+                    class="btn btn-lg btn-block"
                     href="showPY?version=65"
-                    style="color: white;"
+                    style="color: white; background-color: #808080;"
                   >
                구경하기
               </a>
@@ -312,9 +312,9 @@
                 >
                   <a
                     type="button"
-                    class="btn btn-lg btn-block gray-button"
+                    class="btn btn-lg btn-block"
                     href="showPY?version=100"
-                    style="color: white;"
+                    style="color: white; background-color: #808080;"
                   >
                    구경하기
                   </a>

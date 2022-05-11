@@ -61,9 +61,9 @@
                 </div>
               </div>
               <div class="text-center">
-                <div class="form-group m-4  text-right">
+                <div class="form-group m-4">
                   <!-- <input type="file" class="btn"> -->
-                  <input id="CSbtn" type="submit" value="문의하기">
+                  <input id="CSbtn" type="submit" class="btn btn-lg" style="color: white; font-size: 1.2em; background-color: #808080;" value="문의하기">
                 </div>
               </div>
             </form>
