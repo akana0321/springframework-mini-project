@@ -52,9 +52,9 @@ $.ajax({
 	success: function (data) {
 	  tmp += data;
 	  tmp += "<div id='image_container" + count;
-	  tmp += "'></div><input type='file' id='dentalimg"+count+"'  name='dattaches' class='mt-2' onchange=\"setThumbnail(event,'image_container" + count;
+	  tmp += "'></div><input type='file' id='dentalimg"+count+"'  name='dattaches' onchange=\"setThumbnail(event,'image_container" + count;
 	  tmp += "','dentalimg"+count+"');\" ></div></div>";
-	  tmp += "<div class='col-md-6  text-right'><input class='btn' type='submit' style='color: white; background-color: #808080;' value='저장하기'></div></div> </form>";
+	  tmp += "<div style='margin: 0 auto;'><input class='btn' type='submit' style='color: white; background-color: #808080;' value='저장하기'></div></div> </form>";
 	  
 	  let div = document.createElement("div");
 	  div.setAttribute("id",count);
