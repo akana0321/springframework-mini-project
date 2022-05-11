@@ -28,7 +28,7 @@
 <body style="background-color: #F2F2F2">
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <div id="mypage">
-	<section class="py-5 my-5">
+	<section class="my-5">
 		<div style="margin : 0px 8%"  >
 			
 			<div class=" rounded-lg d-block d-sm-flex shadow-lg " style="width: 100%; background-color: white; " data-aos="fade-in" data-aos-duration="3000">
@@ -53,7 +53,7 @@
 					<div class="text-right ">
 						<a class="mr-3" href="#" style="color: black; "> 회원 탈퇴</a>
 					</div>
-					<div class="nav flex-column nav-tabs mt-3" style="background-color: #ffb440;"  role="tablist" aria-orientation="vertical" >
+					<div class="nav flex-column nav-tabs mt-3" style="background-color: #f1f3f5;" role="tablist" aria-orientation="vertical" >
 						<a class="nav-link active" id="account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="account" style="color: black;">
 							<i class="fa fa-user text -center mr-1"></i> 
 							내 정보
@@ -82,27 +82,27 @@
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>이름</label>
-								  	<input type="text" class="form-control col-md-6" value="${user.uname}" name="uname" readonly>
+								  	<input type="text" class="form-control col-md-9" value="${user.uname}" name="uname" readonly>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>생년월일</label>
-								  	<input type="date" class="form-control col-md-6" value="${user.ubirth}" name="ubirth">
+								  	<input type="date" class="form-control col-md-9" value="${user.ubirth}" name="ubirth">
 								</div>
 							</div>
 
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>휴대전화</label>
-								  	<input type="text" class="form-control col-md-6" value="${user.utel}" name="utel">
+								  	<input type="text" class="form-control col-md-9" value="${user.utel}" name="utel">
 								</div>
 							</div>
 							
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>이메일</label>
-								  	<input type="text" class="form-control col-md-8" value="${user.uemail}" name="uemail">
+								  	<input type="text" class="form-control col-md-9" value="${user.uemail}" name="uemail">
 								  	
 								</div>
 							</div>
@@ -112,18 +112,18 @@
 									<div class="row">
 										<div class="col-md-12 row">
 											<div class="col-md-6">
-												<input class="form-control col-md-8" type="text"  name="uzipcode" value="${user.uzipcode}" placeholder="우편번호" />
+												<input class="form-control col-md-9" type="text"  name="uzipcode" value="${user.uzipcode}" placeholder="우편번호" />
 											</div>
 											<div class="col-md-6">
-												<input class="form-control col-md-6" type="button" class="button" style="margin-bottom: 1em" onclick="execDaumPostcode3()" value="우편번호 찾기" /><br />
+												<input class="form-control col-md-9" type="button" class="button" style="margin-bottom: 1em" onclick="execDaumPostcode3()" value="우편번호 찾기" /><br />
 											</div>
 										</div>
 										<div class="col-md-12 row">
 											<div class="col-md-6">
-												<input class="form-control col-md-12" type="text"  name="uaddress1" value="${user.uaddress1}" placeholder="주소" /><br />
+												<input class="form-control" type="text"  name="uaddress1" value="${user.uaddress1}" placeholder="주소" /><br />
 											</div>
 											<div class="col-md-6">
-												<input class="form-control col-md-6" type="text" id="detailAddress" placeholder="상세주소" value="${user.uaddress2}"  name="uaddress2"/>
+												<input class="form-control col-md-9" type="text" id="detailAddress" placeholder="상세주소" value="${user.uaddress2}"  name="uaddress2"/>
 											</div>
 										</div>
 									</div>
@@ -137,7 +137,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>새로운 비밀번호</label>
-								  	<input type="password" class="form-control col-md-8" name="newPass">
+								  	<input type="password" class="form-control col-md-9" name="newPass">
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -148,12 +148,12 @@
 			  								${error}
 										</span>			
 									</c:if>
-								  	<input type="password" class="form-control col-md-8" name="reNewPass">
+								  	<input type="password" class="form-control col-md-9" name="reNewPass">
 								</div>
 							</div>
 						</div>
-						<div class="mt-5 text-right">
-							<input type="submit" class="btn" style="background-color: #ffb440; color:black;" value="저장하기">
+						<div class="mt-5 text-center">
+							<input type="submit" class="btn" style="color: white; background-color: #808080;" value="저장하기">
 						</div>
 						</form>
 					</div>
@@ -241,7 +241,7 @@
 					          				</div>
 					        			</div>
 					        			<div class="col-md-6  text-right">
-											<input class="btn " type="submit" style="background-color: #ffb440; color:black;" value="저장하기">
+											<input class="btn " type="submit" style="color: white; background-color: #808080;" value="저장하기">
 										</div>
 										
 										

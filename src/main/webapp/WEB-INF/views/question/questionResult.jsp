@@ -252,8 +252,8 @@
 								
 							</div>
 							
-						</div>
-						<div onclick="location.href='questionSending'" class="btn float" style="background-color: #ffb440;  width:20%; margin-top:5%"><span style="font-size: 1.5em">문의하기</span>
+						</div style="text-align: center;">
+						<div onclick="location.href='questionSending'" class="btn btn-lg" style="width:10em; color: white; background-color: #808080;">문의하기
 						</div>
 					</div>
 
