@@ -78,6 +78,8 @@ public class PickPYController {
 		
 		@RequestMapping("/customerSupport")
 		public String customerSupport(Model model, HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
+//			String userId = (String) request.getSession().getAttribute("sessionUid");
+//			if(userId != null) {
 			request.setCharacterEncoding("euc-kr");
 			String pid = (String)request.getParameter("productId");
 			log.info(pid);
@@ -92,6 +94,10 @@ public class PickPYController {
 			//log.info(product);
 			
 			return "pickPY/customerSupport";
+//			}
+//			else {
+//				return "redirect:/user/login";
+//			}
 		}
 		@RequestMapping("/productInfo")
 		public String productInfo(Model model, HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
@@ -107,12 +113,12 @@ public class PickPYController {
 			session.setAttribute("product", product);
 			session.setAttribute("attach", attach);
 			log.info(attach.getAoname());
-			
+
 //			recommand List
 			List<Product> recommandProduct = productService.get2ProductsByPcategoryExceptPid(product);
 			log.info(recommandProduct.get(0).toString());
 			log.info(recommandProduct.get(1).toString());
-			
+
 			Product recommand1= recommandProduct.get(0);
 			Attach recommandAttach1 = new Attach();
 			recommandAttach1.setAttable("PRODUCT");
@@ -121,12 +127,21 @@ public class PickPYController {
 			recommandAttach1 = attachService.getAttachOne(recommandAttach1);
 			session.setAttribute("recommand1", recommand1);
 			session.setAttribute("recommandAttach1", recommandAttach1);
-			log.info(recommandAttach1.getAoname());
+			
+			Product recommand2= recommandProduct.get(1);
+			Attach recommandAttach2 = new Attach();
+			recommandAttach2.setAttable("PRODUCT");
+			recommandAttach2.setAtid(recommand2.getPid());
+			recommandAttach2.setAtindex("1");
+			recommandAttach2 = attachService.getAttachOne(recommandAttach2);
+			session.setAttribute("recommand2", recommand2);
+			session.setAttribute("recommandAttach2", recommandAttach2);
 			
 			//log.info(product);
 			return "pickPY/productInfo";
 		}
 		
+		@ResponseBody
 		@PostMapping("/questionProduct")
 		public String questionProduct(HttpServletRequest request, Locale locale, Model model, String qcontent, String name) {
 			String userId = (String) request.getSession().getAttribute("sessionUid");

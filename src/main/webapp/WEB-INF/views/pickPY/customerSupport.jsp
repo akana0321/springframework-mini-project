@@ -28,17 +28,13 @@
         <div class="d-flex flex-column">
           <div style=" ">
             <div class="col-md-12 p-0 m-0 text-left">
-              <!-- <div class="fa fa-3x fa-arrow-circle-left float-left ml-5" style="position:relative" onclick="location.href='productInfo'"
-                id="back"></div> -->
               <div style=" margin: 0 10%; position:relative" class="medium-title mb-5 ">
                 상품문의<br />
               </div>
               <div>
                 <div class="small-title"> ${product.pname }</div>
                 <div style="text-align:center;">
-                  <img 
-                    src="${attach.aoname }"
-                    width="200rem" height="200rem" style="position:relative;'" />
+                  <img src="${attach.aoname }" width="200rem" height="200rem" style="position:relative;'" />
                   <br />
                   <br />
                   ${product.pdescription }
@@ -47,7 +43,7 @@
               </div>
             </div>
           </div>
-	 <div class="col-md-12" id="inquire" style="background-color:white;'">
+          <div class="col-md-12" id="inquire" style="background-color:white;'">
             <div class="text-center mt-2 ml-2 small-title">
               문의 내용
             </div>
@@ -56,8 +52,8 @@
             <form action="questionProduct?productId=${product.pid}" method="post">
               <div class="col-md-12">
                 <div class="form-group m-4">
-                <a name="hi" value="what"></a>
-                  <input type="text" name="qcontent" style="line-height: 15rem; width: 100%"><br>
+                  <a name="hi" value="what"></a>
+                  <input id="qcontent" type="text" name="qcontent" style="line-height: 7rem; width: 100%"><br>
                 </div>
               </div>
               <div class="text-center">
@@ -68,7 +64,17 @@
               </div>
             </form>
           </div>
-
+			<script>
+			$(document).ready(function () {
+				$("#CSbtn").click(function (){
+					if($("#qcontent").val().length==0){
+						alert("내용을 입력해주세요");
+						$("#qcontent").focus();
+						return false;
+					}
+				});
+			});
+			</script>
         </div>
       </div>
     </div>
