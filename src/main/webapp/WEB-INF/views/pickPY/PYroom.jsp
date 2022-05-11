@@ -62,8 +62,12 @@
                             src="https://cdn-bhnll.nitrocdn.com/gSDMXibcJluvzIippFBvhCZIaoOxCvih/assets/static/optimized/rev-ccf470e/wp-content/uploads/handsome-study-interior-design-houston.png"
                              width="900px" height="600px" border="0" usemap="#Map">
                         <map name="Map">
-                   
-                            <area href="#" title="책장" shape="poly" coords="119,118,202,118,203,288,129,293">
+                   			<area href="#" title="의자" shape="poly" data-maphilight='{"strokeWidth":2,"fillOpacity":0.3}'
+                                coords="23,345,24,544,106,558,157,513,143,454,137,374,70,390,54,346"
+                                class="furniture" product-data="wood-chair">
+                            <area href="#" title="책장" shape="poly" data-maphilight='{"strokeWidth":2,"fillOpacity":0.3}'
+                                coords="766,95,885,32,885,560,767,491,766,298"
+                                class="furniture" product-data="bookshelf">
                             <area href="#" title="책상" shape="poly" data-maphilight='{"strokeWidth":2,"fillOpacity":0.3}'
                                 coords="294,367,265,391,264,580,284,421,615,418,624,564,637,394,615,363"
                                 class="furniture" product-data="wood-table">
@@ -73,7 +77,8 @@
           실용성과 스타일을 동시에 더하다<br/>
           치과 공간 용도와 치과의사 의도를 잘 이해하고 이를 바탕으로 디자인과 설계 되었습니다.  치과 규모, 진료과목, 운영방식에 따라 최적의 공간 디자인을 선보이며, 고품질의 빠른 시공을 자랑합니다.
           의료진 동선 분석, 최적의 체어 수, 레이아웃을 제시하고 진료실, 대기실, 수술실, 상담실, 영상실, 기계실, 직원실 등 모든 공간을 대상으로 조형 연구를 진행하고 있습니다. 
-          이를 통해 심미성과 실용성, 내구성을 두루 갖춘 최적의 진료 환경을 선보이며, 고품질 치과 인테리어 디자인으로 명성을 이어가고 있습니다.
+          이를 통해 심미성과 실용성, 내구성을 두루 갖춘 최적의 진료 환경을 선보이며, 고품질 치과 인테리어 디자인으로 명성을 이어가고 있습니다.<br/>
+          <a href="${pageContext.request.contextPath}/portfolio/portfolio">더 많은 사진 보러가기</a>
                     </div>
                 </div>
                 <div class="col-sm-4 p-0 m-0">
@@ -86,7 +91,7 @@
 
             <script type="text/javascript">
                 $(function () {
-                    $('.map').maphilight();
+                   /*  $('.map').maphilight(); */
                 });
             </script>
             <script type="text/javascript">
@@ -96,8 +101,13 @@
                         e.target.getAttribute("menu-data");
                         var menu = e.target.getAttribute("menu-data");
                         console.log("${pageContext.request.contextPath }/resources/images/pickPY/" + menu + "Room.png");
-                        $("#PYimg").attr("src", "${pageContext.request.contextPath }/resources/images/pickPY/" + menu + "Room.png");
-
+                       /*  $(".PYimg p img")[0].src += "?width=500"; */
+                       var img = $("#PYimg");
+						console.log(img);
+                         $("#PYimg").attr("src", "${pageContext.request.contextPath }/resources/images/pickPY/" + menu + "Room.png?"+Math.random());
+						console.log(img);
+						/* img.src = "${pageContext.request.contextPath }/resources/images/pickPY/" + menu + "Room.png";
+						console.log(img); */
                     });
                     /* Get ProductName form ImageTag */
                     $(".furniture").on('click', function (e) {
@@ -108,6 +118,8 @@
                     });
                     /* right load */
                     $("#div1").load("blankInfo?version="+<%=version%>);
+                    
+                    $('.map').maphilight();
                 });
 
 
