@@ -85,16 +85,16 @@
 							<span style="font-weight: 700; font-size: 1.5em">가구</span>
 							</div>
 							<div class="col-md-4 mb-3">
-								<img src='${ pageContext.request.contextPath }/resources/images/question/item03.png' style="width:100%; height: 100%">
-								<span>마카롱 테이블</span>
+								<img src='http://m.sortiedesign.kr/web/product/big/202102/64777b3dfee81d65e511589df3c73642.jpg' style="width:100%; height: 100%">
+								<span>우드 테이블</span>
 							</div>
 							<div class="col-md-4 mb-3">
-								<img src='${ pageContext.request.contextPath }/resources/images/question/item03.png' style="width:100%; height: 100%; border: solid">
-								<span>블랑드 테이블</span>
+								<img src='https://i1.wp.com/thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2018/05/25/14/3/b2962b0b-21c9-4063-8d20-fa383cb87832.jpg?resize=400%2C400&ssl=1' style="width:100%; height: 100%; border: solid">
+								<span>화이트 테이블</span>
 							</div>
 							<div class="col-md-4 mb-3">
-								<img src='${ pageContext.request.contextPath }/resources/images/question/item03.png' style="width:100%; height: 100%; border: solid;">
-								<span>마카롱 체어</span>
+								<img src='http://img.danawa.com/prod_img/500000/390/939/img/14939390_1.jpg?shrink=330:330&_v=20210806111240' style="width:100%; height: 100%; border: solid;">
+								<span>우드 체어</span>
 							</div>
 					</div>
 					

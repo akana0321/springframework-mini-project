@@ -348,7 +348,7 @@ html {
 }
 
 #questionContainer input[type="radio"]:checked + .card {
-    outline: #ffb440 solid 0.5rem;
+    outline: #808080 solid 0.5rem;
     transition: all .2s ease-in-out;
 }
  
@@ -375,7 +375,7 @@ html {
 
 #questionContainer #questionContent06 table {
     width: 100%;
-    height: auto;
+    height: 100%;
     margin: 0 0;
 }
 

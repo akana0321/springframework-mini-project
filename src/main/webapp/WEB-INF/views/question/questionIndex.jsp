@@ -427,10 +427,10 @@
                                 <tr>
                                     <th id="grayTh" scope="row" style="width: 50%;">
                                         <div class="d-flex">
-                                            <img src="${ pageContext.request.contextPath }/resources/images/question/item03.png" class="col-md-4"/>
+                                            <img src="http://m.sortiedesign.kr/web/product/big/202102/64777b3dfee81d65e511589df3c73642.jpg" class="col-md-4"/>
                                             <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
-                                                <span style="font-size: 2rem;">마카롱 테이블</span>
-                                                <span>color: white</span>
+                                                <span style="font-size: 1.5rem;">우드 테이블</span>
+                                                <span>color: brown</span>
                                             </div>
                                         </div>
                                     </th>
@@ -455,10 +455,10 @@
                                 <tr>
                                     <th id="grayTh" scope="row" style="width: 50%;">
                                         <div class="d-flex">
-                                            <img src="${ pageContext.request.contextPath }/resources/images/question/item03.png" class="col-md-4"/>
+                                            <img src="https://i1.wp.com/thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2018/05/25/14/3/b2962b0b-21c9-4063-8d20-fa383cb87832.jpg?resize=400%2C400&ssl=1" class="col-md-4"/>
                                             <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
-                                                <span style="font-size: 2rem;">블랑드 테이블</span>
-                                                <span>color: ivory</span>
+                                                <span style="font-size: 1.5rem;">화이트 테이블</span>
+                                                <span>color: white</span>
                                             </div>
                                         </div>
                                     </th>
@@ -483,10 +483,10 @@
                                 <tr>
                                     <th id="grayTh" scope="row" style="width: 50%;">
                                         <div class="d-flex">
-                                            <img src="${ pageContext.request.contextPath }/resources/images/question/item03.png" class="col-md-4"/>
+                                            <img src="http://img.danawa.com/prod_img/500000/390/939/img/14939390_1.jpg?shrink=330:330&_v=20210806111240" class="col-md-4"/>
                                             <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
-                                                <span style="font-size: 2rem;">블랑드 체어</span>
-                                                <span>color: ivory, white</span>
+                                                <span style="font-size: 1.5rem;">우드 체어</span>
+                                                <span>color: brown</span>
                                             </div>
                                         </div>
                                     </th>
