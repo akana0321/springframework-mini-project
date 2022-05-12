@@ -33,7 +33,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/pickPY")
 @Log4j2
 public class PickPYController {
-	private static final Logger log = LoggerFactory.getLogger(AboutUsController.class);
+	private static final Logger log = LoggerFactory.getLogger(PickPYController.class);
 	
 
 	@Resource
@@ -47,7 +47,6 @@ public class PickPYController {
 		
 		@RequestMapping("/content")
 		public String content() {
-			log.info("실행");
 			return "pickPY/content";
 		}
 		
@@ -82,7 +81,6 @@ public class PickPYController {
 //			if(userId != null) {
 			request.setCharacterEncoding("euc-kr");
 			String pid = (String)request.getParameter("productId");
-			log.info(pid);
 			Product product = productService.getProductByPid(pid);
 			Attach attach = new Attach();
 			attach.setAttable("PRODUCT");
@@ -103,7 +101,7 @@ public class PickPYController {
 		public String productInfo(Model model, HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
 			request.setCharacterEncoding("euc-kr");
 			String pid = (String)request.getParameter("productId");
-			log.info(pid);
+			
 			Product product = productService.getProductByPid(pid);
 			Attach attach = new Attach();
 			attach.setAttable("PRODUCT");
@@ -112,12 +110,9 @@ public class PickPYController {
 			attach = attachService.getAttachOne(attach);
 			session.setAttribute("product", product);
 			session.setAttribute("attach", attach);
-			log.info(attach.getAoname());
 
 //			recommand List
 			List<Product> recommandProduct = productService.get2ProductsByPcategoryExceptPid(product);
-			log.info(recommandProduct.get(0).toString());
-			log.info(recommandProduct.get(1).toString());
 
 			Product recommand1= recommandProduct.get(0);
 			Attach recommandAttach1 = new Attach();
