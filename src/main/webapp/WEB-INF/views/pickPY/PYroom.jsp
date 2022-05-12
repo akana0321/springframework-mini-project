@@ -12,10 +12,12 @@
             src="http://davidlynch.org/projects/maphilight/jquery.maphilight.min.js"></script>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mainheader.css" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
+		<title>STUDIO 765</title>
     </head>
 
     <body>
         <%@ include file="/WEB-INF/views/common/mainheader.jsp" %>
+        <%@ include file="/WEB-INF/views/common/loginModal.jsp" %>
             <!-- Get PYRoom version(PY) -->
             <% request.setCharacterEncoding("euc-kr"); int version=Integer.parseInt(request.getParameter("version"));
                 System.out.println("PYRoom=version:"+version); %>
@@ -146,7 +148,7 @@
 
                 </script>
 		<a href="${pageContext.request.contextPath }/pickPY/content"><img style="position:fixed; bottom: 1em; left: 1em; width: 3em;" src="${pageContext.request.contextPath }/resources/images/pre.png" /></a>
-		<c:if test="${sessionUid == null}">
+		<c:if test="${sessionUid != null}">
 			<a href="${pageContext.request.contextPath }/question/questionIndex"><img style="position:fixed; bottom: 1em; right: 1em; width: 3em;" src="${pageContext.request.contextPath }/resources/images/next.png" /></a>
 		</c:if>
     </body>

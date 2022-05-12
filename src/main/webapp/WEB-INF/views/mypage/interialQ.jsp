@@ -191,12 +191,12 @@
 								
 								<div class=" text-left col-md-4" style="margin-top:10%; padding-left:5%">
 									<p class="mb-2" style="font-weight: 600;">Invoice Total</p>
-									<c:if test="${ estimate.EEvent == 1 }">
+									<c:if test="${ estimate.EEvent != 1 }">
 										<p style="font-size: 200%;">
 											<strong> <fmt:formatNumber value="${ estimate.totalPrice }" pattern="#,###"/> ₩</strong>
 										</p>
 									</c:if>
-									<c:if test="${ estimate.EEvent != 1 }">
+									<c:if test="${ estimate.EEvent == 1 }">
 										<p style="font-size: 200%;">
 											<strong> <fmt:formatNumber value="${ estimate.totalPrice * 0.9 }" pattern="#,###"/> ₩</strong>
 										</p>

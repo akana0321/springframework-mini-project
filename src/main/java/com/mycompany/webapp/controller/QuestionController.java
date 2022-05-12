@@ -77,28 +77,29 @@ public class QuestionController {
 		int qresult = questionService.insertQuestion(question);
 		
 		// 이벤트에 들었는지 확인
-		Events event = new Events();
-		event.setUid(userId);
-		event.setEid(eventName);
-		event.setERewardKind("DISCOUNT");	// % 할인
-		event.setERewardValue(10);			// 10% 할인
-		event.setEMaxOccupancy(3);			// 최대 5명
-		eventsService.insertEvents(event);
-		int eventResult = event.getEStatus();
-
-		// 견적 내용 작성
-		// 이벤트 유무에 따라 할인 여부 저장
-		if(eventResult == 1) {
-			estimate.setEEvent(1);
-		} else {
-			estimate.setEEvent(0);
+		int eventsCondition = eventsService.getTotalEidCount(eventName);
+		if(eventsCondition <= 3) {
+			Events event = new Events();
+			event.setUid(userId);
+			event.setEid(eventName);
+			event.setERewardKind("DISCOUNT");	// % 할인
+			event.setERewardValue(10);			// 10% 할인
+			event.setEMaxOccupancy(3);			// 최대 3명
+			eventsService.insertEvents(event);
+			int eventResult = event.getEStatus();
+			session.setAttribute("isEvent", eventResult);
+			// 이벤트 유무에 따라 할인 여부 저장
+			if(eventResult == 1) {
+				estimate.setEEvent(1);
+			} else {
+				estimate.setEEvent(0);
+			}
 		}
 		estimate.setQno(question.getQno());
 		estimate.setUid(userId);
 	
 		int eresult = estimateService.insertEstimate(estimate);
 		
-		session.setAttribute("isEvent", eventResult);
 		//request.getSession().removeAttribute("estimate");
 		request.getSession().removeAttribute("priceMap");
 		return "/question/questionFinish";

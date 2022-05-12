@@ -23,7 +23,6 @@
 <body>
     
     <%@ include file="/WEB-INF/views/common/header.jsp" %>
-    <%@ include file="/WEB-INF/views/common/loginModal.jsp" %>
     
     <%-- Modal --%>    
     <div class="modal fade" tabindex="-1" id="myModal" data-backdrop="static" data-keyboard="false">
@@ -48,7 +47,7 @@
 	</div>
     <script>
 	   window.onload = function() {
-	    	var sessionData = '<%=session.getAttribute("2022-05-10") %>';
+	    	var sessionData = '<%=session.getAttribute("2022-05-12") %>';
 	    	console.log(sessionData);
 	    	if(sessionData < 3) {
 	        	$("#myModal").modal("show");
