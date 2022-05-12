@@ -85,16 +85,16 @@
 							<span style="font-weight: 700; font-size: 1.5em">가구</span>
 							</div>
 							<div class="col-md-4 mb-3">
-								<img src='http://m.sortiedesign.kr/web/product/big/202102/64777b3dfee81d65e511589df3c73642.jpg' style="width:100%; height: 100%">
-								<span>우드 테이블</span>
+								<img src='http://www.bians.co.kr/shopimages/buy4in/mobile/3/1055003_represent' style="width:100%; height: 100%">
+								<span>책장</span>
 							</div>
 							<div class="col-md-4 mb-3">
-								<img src='https://i1.wp.com/thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2018/05/25/14/3/b2962b0b-21c9-4063-8d20-fa383cb87832.jpg?resize=400%2C400&ssl=1' style="width:100%; height: 100%; border: solid">
-								<span>화이트 테이블</span>
+								<img src='http://m.sortiedesign.kr/web/product/big/202102/64777b3dfee81d65e511589df3c73642.jpg' style="width:100%; height: 100%; border: solid">
+								<span>테이블</span>
 							</div>
 							<div class="col-md-4 mb-3">
 								<img src='http://img.danawa.com/prod_img/500000/390/939/img/14939390_1.jpg?shrink=330:330&_v=20210806111240' style="width:100%; height: 100%; border: solid;">
-								<span>우드 체어</span>
+								<span>의자</span>
 							</div>
 					</div>
 					
@@ -175,7 +175,7 @@
 									</c:if>
 									<c:if test="${ estimate.efurniture1 != 0 }">
 										<tr>
-											<td  style="text-align: left;"> 가구 - 마카롱 테이블 </td>
+											<td  style="text-align: left;"> 가구 - 책장 </td>
 											<td> <fmt:formatNumber value="${ priceMap['furniture1']}" pattern="#,###"/> ₩</td>
 											<td> <fmt:formatNumber value="${ estimate.efurniture1 }" pattern="#,###"/></td>
 											<td> <fmt:formatNumber value="${ estimate.furniture1TotalPrice }" pattern="#,###"/> ₩</td>
@@ -183,7 +183,7 @@
 									</c:if>
 									<c:if test="${ estimate.efurniture2 != 0 }">
 										<tr>
-											<td  style="text-align: left;"> 가구 - 블랑드 테이블 </td>
+											<td  style="text-align: left;"> 가구 - 테이블 </td>
 											<td> <fmt:formatNumber value="${ priceMap['furniture2']}" pattern="#,###"/> ₩</td>
 											<td> <fmt:formatNumber value="${ estimate.efurniture2 }" pattern="#,###"/></td>
 											<td> <fmt:formatNumber value="${ estimate.furniture2TotalPrice }" pattern="#,###"/> ₩</td>
@@ -191,7 +191,7 @@
 									</c:if>
 									<c:if test="${ estimate.efurniture3 != 0 }">
 										<tr>
-											<td  style="text-align: left;"> 가구 - 마카롱 체어 </td>
+											<td  style="text-align: left;"> 가구 - 의자 </td>
 											<td> <fmt:formatNumber value="${ priceMap['furniture3']}" pattern="#,###"/> ₩</td>
 											<td> <fmt:formatNumber value="${ estimate.efurniture3 }" pattern="#,###"/></td>
 											<td> <fmt:formatNumber value="${ estimate.furniture3TotalPrice }" pattern="#,###"/> ₩</td>
