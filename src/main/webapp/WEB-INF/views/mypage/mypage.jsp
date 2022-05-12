@@ -189,7 +189,7 @@
 											<div>
 												<div class="row mb-3">
 													<div class="col-md-6">
-														<input class="form-control" type="text"  name="uzipcode" value="${user.uzipcode}" placeholder="우편번호" />
+														<input class="form-control" type="text"  name="dzipcode" value="${dentist.dzipcode}" placeholder="우편번호" />
 													</div>
 													<div class="col-md-6">
 														<input class="form-control" type="button" class="button" style="background-color: #808080; color: white;" onclick="execDaumPostcode3()" value="우편번호 찾기" /><br />
@@ -197,10 +197,10 @@
 												</div>
 												<div class="row mb-3">
 													<div class="col-md-8">
-														<input class="form-control" type="text"  name="uaddress1" value="${user.uaddress1}" placeholder="주소" /><br />
+														<input class="form-control" type="text"  name="daddress1" value="${dentist.daddress1}" placeholder="주소" /><br />
 													</div>
 													<div class="col-md-4">
-														<input class="form-control" type="text" id="detailAddress" placeholder="상세주소" value="${user.uaddress2}"  name="uaddress2"/>
+														<input class="form-control" type="text" id="detailAddress" placeholder="상세주소" value="${dentist.daddress2}"  name="daddress2"/>
 													</div>
 												</div>
 											</div>
