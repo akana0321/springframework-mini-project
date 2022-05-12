@@ -161,10 +161,12 @@
 							
 							<c:if test="${dentistSize != 0}">
 								<c:forEach var="dentist" items="${dentistArray}" varStatus="status">
+								<div id="dentist_${status.count}">
 									<form method="post" modelAttribute="dentist" action="dentalInfo">
 										<script>window.onload = function checkNumber(){count = ${status.count};}</script>
-										<div><button class='fa fa-minus mr-2' onclick="removeinfoR(${status.count})" style="background-color: white; border:0px"></button><strong> 병원 정보 ${status.count}</strong></div>
+										<div><div class='fa fa-minus mr-2 btn' onclick="removeinfoR(${status.count})" style="background-color: white; border:0px"></div><strong> 병원 정보 ${status.count}</strong></div>
 										<hr>
+										
 										<div class="row mb-3">
 									    	
 									    		<div class="col-md-6">
@@ -189,7 +191,7 @@
 											<div>
 												<div class="row mb-3">
 													<div class="col-md-6">
-														<input class="form-control" type="text"  name="uzipcode" value="${user.uzipcode}" placeholder="우편번호" />
+														<input class="form-control" type="text"  name="dzipcode" value="${dentist.dzipcode}" placeholder="우편번호" />
 													</div>
 													<div class="col-md-6">
 														<input class="form-control" type="button" class="button" style="background-color: #808080; color: white;" onclick="execDaumPostcode3()" value="우편번호 찾기" /><br />
@@ -197,10 +199,10 @@
 												</div>
 												<div class="row mb-3">
 													<div class="col-md-8">
-														<input class="form-control" type="text"  name="uaddress1" value="${user.uaddress1}" placeholder="주소" /><br />
+														<input class="form-control" type="text"  name="daddress1" value="${dentist.daddress1}" placeholder="주소" /><br />
 													</div>
 													<div class="col-md-4">
-														<input class="form-control" type="text" id="detailAddress" placeholder="상세주소" value="${user.uaddress2}"  name="uaddress2"/>
+														<input class="form-control" type="text" id="detailAddress" placeholder="상세주소" value="${dentist.daddress2}"  name="daddress2"/>
 													</div>
 												</div>
 											</div>
@@ -228,7 +230,9 @@
 					        			<div class="col-md-6  text-right">
 											<input class="btn" type="submit" style="color: white; background-color: #808080;" value="저장하기">
 										</div>
+										
 					    			</form>
+					    			</div>
 								</c:forEach>
 							</c:if>
 							<c:if test="${dentistSize == 0}">

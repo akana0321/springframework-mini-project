@@ -281,7 +281,7 @@ public class MypageController {
 	@RequestMapping("/dentalInfo")
 	public String dentalInfo(
 			String[] dnumber,String[] dname,String[] dtel,String[] dzipcode, 
-			String[] daddress1,String[] daddress2,int[] demployees, int[] dpy,HttpServletRequest request) {
+			String[] daddress1,String[] daddress2,int[] demployees, int[] dpy,HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
 		int dentalSize = (int) session.getAttribute("dentistSize");
 

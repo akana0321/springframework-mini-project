@@ -77,8 +77,9 @@ $.ajax({
 }
 //기존 병원 정보 삭제
 function removeinfoR(value){
+	let div = document.getElementById("dentist_" + value);
+  	
 	const sendData = document.getElementById("dnumber_"+value).getAttribute("value");
-	console.log(sendData);
 	
 	const formData = new FormData();
 	formData.append("sendData", sendData);
@@ -96,6 +97,7 @@ function removeinfoR(value){
 			window.alert("병원 정보 삭제 완료");
 		}
 	});
+	div.remove();
 }
 	
 //추가된 병원 정보 삭제
