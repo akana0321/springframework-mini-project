@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studio 765</title>
+    <title>STUDIO 765</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
@@ -75,8 +75,8 @@
             <div id="questionContainer" class="d-flex align-items-center">
                 <div class="fullscrean text-center" style="flex-grow:10; padding-left: 0; padding-right: 0;">
                     <div id="questionStart" class="fullscrean d-flex flex-column align-items-center">
-                        <p class="card-title mb-5">나의 치과 견적 오스템과 함께 알아볼까요?</p>
-                        <img src="${ pageContext.request.contextPath }/resources/images/question/calc.png" class="mb-5"/>
+                        <p class="card-title mb-5">나의 치과 견적 STUDIO 765과 함께 알아볼까요?</p>
+                        <img src="${ pageContext.request.contextPath }/resources/images/question/calc.png" class="mb-3"/>
                         <a onclick="pyInputOpen()" class="btn-start">
                             <div class="wrap-start">
                                 <span>시작하기</span>

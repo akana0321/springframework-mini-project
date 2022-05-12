@@ -65,7 +65,7 @@
             class="row-1 align-self-center"
             style="text-align: center; font-size: 1.5em"
           >
-            오스템은 3가지의 PY를 제공합니다
+            STUDIO 765 3가지의 PY를 제공합니다
           </div>
         </div>
         <div id="pickPYBody" class="d-flex justify-content-center row">
