@@ -85,7 +85,6 @@
          <%
     	request.setCharacterEncoding("euc-kr");
 		int version = Integer.parseInt(request.getParameter("version"));
-		System.out.println("PYRoom = version:"+version);
     	%>
   <body>
     <div id="product-container" style="text-align:center;">
@@ -105,9 +104,7 @@
           $(document).ready(function () {
             /* next page */
             $("#pCS").on('click', function (e) {
-              console.log("productId: " + productId);
               $("#product-container").load("customerSupport?productId=" + productId);
-              console.log("workin?");
             });
 
           });
