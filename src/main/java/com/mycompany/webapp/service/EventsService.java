@@ -40,7 +40,7 @@ public class EventsService {
 	}
 	
 	// Insert Events
-	@Transactional(isolation = Isolation.READ_COMMITTED)
+	@Transactional(isolation = Isolation.REPEATABLE_READ)
 	public int insertEvents(Events events) {
 		return eventsDao.insert(events);
 	}
