@@ -8,13 +8,12 @@ html {
 
 #progressbarContainer {
     position:fixed;
-    width: 20%;
+    width: 18em;
     height: 100vh;
     z-index: 10;
-    margin-top: 0;
     top: 0rem;
-    padding: 5em 0 50vh 0;
-    /* text-align: center; */
+    padding: 0;
+    align-items: start;
     background-color: #f1f3f5;
     /* box-shadow: 0.1em 0em 1em 0em rgb(189, 189, 189); */
 }
@@ -35,7 +34,7 @@ html {
     color: #595959;
     text-transform: uppercase;
     font-size: 1.2rem;
-    padding: 0.5em;
+    padding: 1.2em 2em;
     /* border-right: 0.1em solid rgb(160, 160, 160); */
 }
 
@@ -59,7 +58,6 @@ html {
     /* background: #cde0f3; */
     /* left: -50%; */
     /* top: 9px; */
-    border-right-color: #595959;
     z-index: -1;
 }
 
@@ -68,7 +66,7 @@ html {
 }
 
 #progressbarContainer #progressbar li.active {
-	border-right: 0.2em solid #595959;
+	border-right: 0.3em solid #595959;
     font-size: 1.2rem;
 }
 

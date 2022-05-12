@@ -58,6 +58,7 @@
     <div style="display:flex;">
     <div id="progressbarContainer" class="navbar">
         <ul id="progressbar">
+        	<a href="${pageContext.request.contextPath}/home"><img src="${pageContext.request.contextPath}/resources/images/logo.png" style="width: 8em; margin-top: 0.2em; margin-left: 2.5em;" /></a>
             <li class="questionContent01">치과 목적</li>
             <li class="questionContent02">건물 유형</li>
             <li class="questionContent03">바닥재</li>
