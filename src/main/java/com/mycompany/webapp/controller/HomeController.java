@@ -25,15 +25,25 @@ public class HomeController {
 	
 	@RequestMapping("/home")
 	public String home2() {
+		int ecount = eventService.getTotalEidCount("Test");
+		if(ecount  < 10) {
+			Events event = new Events();
+			event.setUid("userid" + (int)(Math.random()*100));
+			event.setEid("Test");
+			event.setERewardKind("DISCOUNT");
+			event.setERewardValue(10);
+			event.setEMaxOccupancy(10);
+			eventService.insertEvents(event);
+		}
+		
 		Events event = new Events();
-		event.setUid("userid" + counter);
+		event.setUid("userid" + (int)(Math.random()*100));
 		event.setEid("Test");
-		event.setERewardKind("DISCOUNT");	// % 할인
-		event.setERewardValue(10);			// 10% 할인
-		event.setEMaxOccupancy(3);
+		event.setERewardKind("DISCOUNT");
+		event.setERewardValue(10);
+		event.setEMaxOccupancy(10);
 		eventService.insertEvents(event);
-		counter++;
-		log.info(counter);
+
 		return "home";
 	}
 }
