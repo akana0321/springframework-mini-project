@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aboutus/title.css" />
     <!-- button CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/aboutus/button.css" />
-
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
 
   </head>
   <body>
@@ -328,6 +328,7 @@
           </div>
         </div>
       </div>
+      <%@ include file="/WEB-INF/views/common/footer.jsp" %>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -347,4 +348,5 @@
       crossorigin="anonymous"
     ></script>
   </body>
+  
 </html>

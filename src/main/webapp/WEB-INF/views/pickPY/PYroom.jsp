@@ -11,8 +11,7 @@
         <script type="text/javascript"
             src="http://davidlynch.org/projects/maphilight/jquery.maphilight.min.js"></script>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mainheader.css" />
-
-
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
     </head>
 
     <body>
@@ -152,5 +151,5 @@
 
                 </script>
     </body>
-
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
     </html>
