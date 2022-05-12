@@ -65,7 +65,7 @@
             <li class="questionContent04">벽지</li>
             <li class="questionContent05">치과용 의자</li>
             <li class="questionContent06">가구</li>
-            <li class="questionResult01">완료!</li>
+            <li class="questionResult01">완료!</li> 
         </ul>
     </div>
 
