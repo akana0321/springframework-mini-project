@@ -14,11 +14,8 @@ import com.mycompany.webapp.service.UserService;
 import com.mycompany.webapp.service.UserService.JoinResult;
 import com.mycompany.webapp.service.UserService.LoginResult;
 
-import lombok.extern.log4j.Log4j2;
-
 @Controller
 @RequestMapping("/user")
-@Log4j2
 public class UserController {
 	@Resource
 	private UserService userService;
