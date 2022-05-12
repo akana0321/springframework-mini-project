@@ -75,8 +75,8 @@
             <div id="questionContainer" class="d-flex align-items-center">
                 <div class="fullscrean text-center" style="flex-grow:10; padding-left: 0; padding-right: 0;">
                     <div id="questionStart" class="fullscrean d-flex flex-column align-items-center">
-                        <p class="card-title mb-5">나의 치과 견적 STUDIO 765과 함께 알아볼까요?</p>
-                        <img src="${ pageContext.request.contextPath }/resources/images/question/calc.png" class="mb-3"/>
+                        <p class="card-title mb-5" style="z-index: 1;">나의 치과 견적 STUDIO 765과 함께 알아볼까요?</p>
+                        <img src="${ pageContext.request.contextPath }/resources/images/question/calc.png"/>
                         <a onclick="pyInputOpen()" class="btn-start">
                             <div class="wrap-start">
                                 <span>시작하기</span>
