@@ -115,13 +115,10 @@
 
                             e.target.getAttribute("menu-data");
                             var menu = e.target.getAttribute("menu-data");
-                            console.log("${pageContext.request.contextPath }/resources/images/pickPY/" + menu + "Room.png");
                             /*  $(".PYimg p img")[0].src += "?width=500"; */
                             var img = $("#PYimg");
-                            console.log(img);
 
                             $("#PYimg").attr("src", "${pageContext.request.contextPath }/resources/images/pickPY/" + menu + "Room.png?" + Math.random());
-                            console.log(img);
                             
                             $("#PYimg").css('height','600');
                             $("#PYimg").css('width','900');
@@ -138,9 +135,7 @@
                         /* Get ProductName form ImageTag */
                         $(".furniture").on('click', function (e) {
                             var product = e.target.getAttribute('product-data');
-                            console.log(product);
                             $("#div1").load("productInfo?productId=" + product);
-                            console.log("workin?");
                         });
                         /* right load */
                         $("#div1").load("blankInfo?version=" +<%=version %>);

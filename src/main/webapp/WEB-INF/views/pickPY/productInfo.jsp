@@ -127,13 +127,11 @@
         /* next page */
         $("#pCS").on('click', function (e) {
         	var uid = "<%=(String)session.getAttribute("sessionUid")%>"
-        	console.log(uid);
 			if(uid=="null"){
 					alert("로그인을 해주세요");
 					$(location).attr('href', '${pageContext.request.contextPath}/user/login')
 				}
 			else{
-			console.log("productId: " + productId);
           $("#product-container").load("customerSupport?productId=" + productId);
           console.log("workin?");	
 			}
@@ -166,9 +164,7 @@
       get color from data-hex */
         function fun1(e) {
           const overlay = document.getElementById("product-shape");
-          console.log(overlay);
           var color = e.target.getAttribute("data-hex");
-          console.log(color);
           overlay.style.fill = color;
         }
       });
