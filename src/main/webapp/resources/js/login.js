@@ -16,7 +16,7 @@ function slideShow() {
 	}
 
 	x[index - 1].style.display = "block";
-	setTimeout(slideShow, 4000);
+	setTimeout(slideShow, 3000);
 }
 
 function idFindopen() {

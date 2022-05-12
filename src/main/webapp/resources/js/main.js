@@ -14,5 +14,5 @@ var index = 0;
           index = 1;
         }
         x[index - 1].style.display = "block";
-        setTimeout(slideShow, 4000);
+        setTimeout(slideShow, 3000);
       }

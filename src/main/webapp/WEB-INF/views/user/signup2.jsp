@@ -26,17 +26,17 @@
           <a href="../main.html"><img src="${pageContext.request.contextPath}/resources/images/logo.png" style="width: 30%" /></a>
         </div>
 	    <label>* 아이디</label>
-	    <div class="row">
-	    	<div class="col-9">
+	    <div>
+	    	<div>
 		    	<input type="text" name="uid" id="uid" value="${user.uid}" placeholder="아이디 입력"/>
 		   		<%-- <c:if test="${error != null}">
 					<small style="color:red;" id="idError">${error}</small>		
 				</c:if> --%>
 				<small id="idCheck"></small>
 	    	</div>
-	    	<div class="col-3">
+	    	<!-- <div class="col-3">
 	    		<input type="button" class="button" style="margin-bottom: 1em" onclick="idOpen()" value="아이디 찾기" />
-	    	</div>
+	    	</div> -->
 	    </div>
 	    
         <div class="row">
@@ -96,18 +96,18 @@
     </div>
     
     <script>
-	    function idOpen(){
+	    /* function idOpen(){
 	    	if(document.signupform.uid.value == "" || document.signupform.uid.value.length < 0){
 	    		alert("아이디를 먼저 입력해주세요")
 	    		document.signupform.uid.focus();
 	    	}else{
 	    		window.open("joinIdCheck.jsp?uid="+document.signupform.uid.value,"","width=500, height=300");
 	    	}
-	    }
+	    } */
     	function execDaumPostcode1() {
       		new daum.Postcode({
         		oncomplete: function(data) {
-          			var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+        			var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
           			var extraRoadAddr = ''; // 도로명 조합형 주소 변수
 
           			// 법정동명이 있을 경우 추가
@@ -136,13 +136,21 @@
               		$("[name=uzipcode]").val(data.zonecode);
               		$("[name=uaddress1]").val(fullRoadAddr);
         		}
-      		}).open();
+      		});
+      		
+      		new daum.Postcode({
+      			width: 500,
+      			height: 600
+      		}).open({
+      			left: 100,
+      			top: 250
+      		});
     	}
     	
     	function signupCheck() {
             event.preventDefault();
             
-    		/* var uid = document.getElementById("uid"); */
+    		var uid = document.getElementById("uid");
     		var upassword1 = document.getElementById("upassword1");
     		var upassword2 = document.getElementById("upassword2");
     		var uname = document.getElementById("uname");
@@ -151,7 +159,7 @@
     		var uemail = document.getElementById("uemail");
     		var utel = document.getElementById("utel");
     		
-    		/* var id = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,10}$/;
+    		var id = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,10}$/;
     		
     		if(uid.value == "") {
     			$('#idCheck').html('아이디를 입력하세요.');
@@ -169,7 +177,7 @@
     	        return false;
     		} else {
     			$('#idCheck').html('');
-    		} */
+    		}
 
     		var password = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/;
     		
