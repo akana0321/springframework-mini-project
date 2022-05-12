@@ -19,7 +19,7 @@
 #questionResult #table_top td{
     width: 5%;
 }
-#questionResult img{
+#questionResult .col-md-4 img{
 	width: 100%;
 	height: 100%;
 }

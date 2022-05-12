@@ -12,6 +12,7 @@
             src="http://davidlynch.org/projects/maphilight/jquery.maphilight.min.js"></script>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mainheader.css" />
         <script type="text/javascript" src="js/jquery.easing.min.js"></script>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
 		<title>Studio 765</title>
 
     </head>
@@ -127,5 +128,5 @@
 
             </script>
     </body>
-
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
     </html>

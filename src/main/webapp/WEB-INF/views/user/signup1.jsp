@@ -307,5 +307,4 @@ STUDIO 765에서 제공하는 이벤트/혜택 등 다양한 정보를 휴대전
     </div>
   </body>
 </html>
-
-<%-- <%@ include file="/WEB-INF/views/common/footer.jsp" %> --%>
+<%@ include file="/WEB-INF/views/common/footer.jsp" %> 

@@ -2,7 +2,7 @@
 <footer>
       <div class="content">
         <div>
-          <img src="${pageContext.request.contextPath}/resources/images/footer/logo2.png" class="img" />
+          <img src="${pageContext.request.contextPath}/resources/images/footer/logo2.png" class="imgF" />
           <div style="text-align: center">
             <a href="https://www.instagram.com/osstem/"><img src="${pageContext.request.contextPath}/resources/images/footer/instagram.png" style="height: 1.2em; width: 1.2em" /></a>
             <a href="https://www.youtube.com/"><img src="${pageContext.request.contextPath}/resources/images/footer/youtube.png" style="height: 1.2em; width: 1.2em" /></a>

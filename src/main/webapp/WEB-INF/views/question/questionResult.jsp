@@ -18,7 +18,7 @@
 <script	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
 <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/header.css" />
 <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/title.css" />
 <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/question/question_result.css" />
@@ -267,3 +267,4 @@
     AOS.init();
 </script>
 </html>
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>

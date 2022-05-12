@@ -1,5 +1,5 @@
 footer {
-  position: static;
+  position: absolute;
   left: 0;
   /* bottom: 0; */
   top: 100%;
@@ -13,7 +13,7 @@ footer .content {
   justify-content: center;
 }
 
-footer .imgF {
+footer .img {
   width: 8em;
   margin: 2em 3em 0.5em 2em;
 }

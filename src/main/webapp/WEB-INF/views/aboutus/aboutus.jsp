@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css" />
   <!-- aboutus  -->
   <div class="row " style="margin:4%; margin-bottom:0; ">
     <div class="col-sm medium-title" style="text-align:center; margin-bottom:5%; background-color:white; padding-top:5%; padding-bottom:3; opacity:0.8;"> ABOUT US </div>
@@ -94,4 +95,4 @@ width="100%" style="margin-bottom:2%;">
 </div>        
         
   </div>
- 
+ <%@ include file="/WEB-INF/views/common/footer.jsp" %>
