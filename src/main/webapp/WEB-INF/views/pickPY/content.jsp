@@ -347,6 +347,7 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+    <a href="${pageContext.request.contextPath }/aboutus/content"><img style="position:fixed; bottom: 1em; left: 1em; width: 3em;" src="${pageContext.request.contextPath }/resources/images/pre.png" /></a>
   </body>
   
 </html>

@@ -150,6 +150,8 @@
 
 
                 </script>
+		<a href="${pageContext.request.contextPath }/pickPY/content"><img style="position:fixed; bottom: 1em; left: 1em; width: 3em;" src="${pageContext.request.contextPath }/resources/images/pre.png" /></a>
+		<a href="${pageContext.request.contextPath }/question/questionIndex"><img style="position:fixed; bottom: 1em; right: 1em; width: 3em;" src="${pageContext.request.contextPath }/resources/images/next.png" /></a>
     </body>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
     </html>

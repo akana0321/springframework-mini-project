@@ -59,5 +59,7 @@
       <!-- magic scroll -->
       <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
+      <a href="${pageContext.request.contextPath }/home"><img style="position:fixed; bottom: 1em; left: 1em; width: 3em;" src="${pageContext.request.contextPath }/resources/images/pre.png" /></a>
+      <a href="${pageContext.request.contextPath }/pickPY/content"><img style="position:fixed; bottom: 1em; right: 1em; width: 3em;" src="${pageContext.request.contextPath }/resources/images/next.png" /></a>
   </body>
   </html>

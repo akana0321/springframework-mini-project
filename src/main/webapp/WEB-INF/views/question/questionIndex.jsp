@@ -66,6 +66,7 @@
             <li class="questionContent05">치과용 의자</li>
             <li class="questionContent06">가구</li>
             <li class="questionResult01">완료!</li> 
+            <a href="${pageContext.request.contextPath}/pickPY/content"><img style="position:fixed; bottom: 1em; left: 1em; width: 3em;" src="${pageContext.request.contextPath}/resources/images/pre.png" /></a>
         </ul>
     </div>
 
