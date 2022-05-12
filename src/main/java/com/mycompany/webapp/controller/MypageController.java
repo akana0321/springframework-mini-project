@@ -10,7 +10,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.json.JSONObject;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -35,12 +34,8 @@ import com.mycompany.webapp.service.EstimateService;
 import com.mycompany.webapp.service.QuestionService;
 import com.mycompany.webapp.service.UserService;
 
-import lombok.extern.log4j.Log4j2;
-
 @Controller
 @RequestMapping("/mypage")
-@Log4j2
-
 public class MypageController {
 	
 	@Resource
@@ -448,8 +443,6 @@ public class MypageController {
 		List<Question> question = (List<Question>) session.getAttribute("getUidQuestionPro");
 		int qno = question.get(0).getQno();
 		
-		log.info(question);
-		
 		List<Comment> commentList =  commentService.getCommentsByQno(qno);
 		
 		for(int i=0; i<commentList.size()-1; i++) {
@@ -477,8 +470,6 @@ public class MypageController {
 			String uid = (String) session.getAttribute("sessionUid");
 			int qno = (int) session.getAttribute("QuestionNo");
 			
-			log.info(commentService.getTotalCommentsNumInQuestion(qno));
-			
 			comment.setCno(commentService.getTotalCommentsNumInQuestion(qno)+1);
 			comment.setQno(qno);
 			comment.setUid(uid);
@@ -500,10 +491,8 @@ public class MypageController {
 		attach.setAttable("PRODUCT");
 		attach.setAtid(productId);
 		attach.setAtindex("1");
-		log.info(attach);
 		
 		String fileName = attachService.getAttachOne(attach).getAoname();
-		log.info(fileName);
 		session.setAttribute("fileName",fileName);
 		
 		

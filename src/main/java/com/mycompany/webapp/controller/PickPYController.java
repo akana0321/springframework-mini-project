@@ -1,15 +1,5 @@
 package com.mycompany.webapp.controller;
 
-import com.mycompany.webapp.dto.Attach;
-import com.mycompany.webapp.dto.Estimate;
-import com.mycompany.webapp.dto.Product;
-import com.mycompany.webapp.dto.Question;
-import com.mycompany.webapp.service.AttachService;
-import com.mycompany.webapp.service.ProductService;
-import com.mycompany.webapp.service.QuestionService;
-
-import lombok.extern.log4j.Log4j2;
-
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Locale;
@@ -18,24 +8,23 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.mycompany.webapp.dto.Attach;
+import com.mycompany.webapp.dto.Product;
+import com.mycompany.webapp.dto.Question;
+import com.mycompany.webapp.service.AttachService;
+import com.mycompany.webapp.service.ProductService;
+import com.mycompany.webapp.service.QuestionService;
 
 @Controller
 @RequestMapping("/pickPY")
-@Log4j2
 public class PickPYController {
-	private static final Logger log = LoggerFactory.getLogger(AboutUsController.class);
-	
-
 	@Resource
 	private ProductService productService;
 	
@@ -47,7 +36,6 @@ public class PickPYController {
 		
 		@RequestMapping("/content")
 		public String content() {
-			log.info("실행");
 			return "pickPY/content";
 		}
 		
@@ -78,11 +66,8 @@ public class PickPYController {
 		
 		@RequestMapping("/customerSupport")
 		public String customerSupport(Model model, HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
-//			String userId = (String) request.getSession().getAttribute("sessionUid");
-//			if(userId != null) {
 			request.setCharacterEncoding("euc-kr");
 			String pid = (String)request.getParameter("productId");
-			log.info(pid);
 			Product product = productService.getProductByPid(pid);
 			Attach attach = new Attach();
 			attach.setAttable("PRODUCT");
@@ -91,19 +76,13 @@ public class PickPYController {
 			attach = attachService.getAttachOne(attach);
 			session.setAttribute("product", product);
 			session.setAttribute("attach", attach);
-			//log.info(product);
 			
 			return "pickPY/customerSupport";
-//			}
-//			else {
-//				return "redirect:/user/login";
-//			}
 		}
 		@RequestMapping("/productInfo")
 		public String productInfo(Model model, HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
 			request.setCharacterEncoding("euc-kr");
 			String pid = (String)request.getParameter("productId");
-			log.info(pid);
 			Product product = productService.getProductByPid(pid);
 			Attach attach = new Attach();
 			attach.setAttable("PRODUCT");
@@ -112,13 +91,10 @@ public class PickPYController {
 			attach = attachService.getAttachOne(attach);
 			session.setAttribute("product", product);
 			session.setAttribute("attach", attach);
-			log.info(attach.getAoname());
 
 //			recommand List
 			List<Product> recommandProduct = productService.get2ProductsByPcategoryExceptPid(product);
-			log.info(recommandProduct.get(0).toString());
-			log.info(recommandProduct.get(1).toString());
-
+			
 			Product recommand1= recommandProduct.get(0);
 			Attach recommandAttach1 = new Attach();
 			recommandAttach1.setAttable("PRODUCT");
@@ -137,7 +113,6 @@ public class PickPYController {
 			session.setAttribute("recommand2", recommand2);
 			session.setAttribute("recommandAttach2", recommandAttach2);
 			
-			//log.info(product);
 			return "pickPY/productInfo";
 		}
 		
@@ -159,4 +134,13 @@ public class PickPYController {
 			return "redirect:/mypage/mypage";
 		}
 		
+		@RequestMapping("/nextPage")
+		public String nextPage() {
+			return "question/questionIndex";
+		}
+		
+		@RequestMapping("/prevPage")
+		public String prevPage() {
+			return "aboutus/content";
+		}
 }

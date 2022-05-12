@@ -20,11 +20,8 @@ import com.mycompany.webapp.service.EstimateService;
 import com.mycompany.webapp.service.EventsService;
 import com.mycompany.webapp.service.QuestionService;
 
-import lombok.extern.log4j.Log4j2;
-
 @Controller
 @RequestMapping("/question")
-@Log4j2
 public class QuestionController {
 	@Resource
 	QuestionService questionService;
@@ -47,14 +44,12 @@ public class QuestionController {
 			session.setAttribute(eventName, isEvent);
 			session.setAttribute("remain", 3-isEvent);
 			model.addAttribute("remain", 3-isEvent);
-			log.info((int)request.getSession().getAttribute(eventName));
 			return "/question/questionIndex";
 		}
 	} 
 	
 	@PostMapping(value="/questionResult", produces="application/json; charset=UTF-8")
 	public String questionResult(Estimate estimate, Model model) {
-		log.info(estimate.toString());
 		// EstimateProcess에 estimate 객체를 넣어 EP 초기화
 		ep = new EstimateProcess(estimate);
 		
@@ -62,7 +57,6 @@ public class QuestionController {
 		estimate = ep.init();
 		// 제품 하나의 가격을 저장한 priceMap을 받음
 		HashMap<String, Integer> priceMap = ep.getpPiceMap();
-		log.info(estimate);
 		
 		// View에서 출력하기 위해 estimate와 priceMap을 넘김
 		model.addAttribute("estimate", estimate);
@@ -80,9 +74,7 @@ public class QuestionController {
 		question.setUid(userId);
 		question.setQcategory("INTERIOR");
 		question.setQcontent("견적 문의");
-		/*model.addAttribute("question", question);*/
 		int qresult = questionService.insertQuestion(question);
-		log.info("Question insert 결과: " + qresult);
 		
 		// 이벤트에 들었는지 확인
 		Events event = new Events();
@@ -93,8 +85,7 @@ public class QuestionController {
 		event.setEMaxOccupancy(3);			// 최대 5명
 		eventsService.insertEvents(event);
 		int eventResult = event.getEStatus();
-		log.info("Events 객체의 eStatus: " + eventResult);
-		
+
 		// 견적 내용 작성
 		// 이벤트 유무에 따라 할인 여부 저장
 		if(eventResult == 1) {
@@ -106,7 +97,6 @@ public class QuestionController {
 		estimate.setUid(userId);
 	
 		int eresult = estimateService.insertEstimate(estimate);
-		log.info("estimate insert 결과: " + eresult);
 		
 		session.setAttribute("isEvent", eventResult);
 		//request.getSession().removeAttribute("estimate");
@@ -123,5 +113,10 @@ public class QuestionController {
 	@RequestMapping("/goBackHome")
 	public String goBackHome() {
 		return "redirect:/home";
+	}
+
+	@RequestMapping("/prevPage")
+	public String prevPage() {
+		return "pickPY/content";
 	}
 }
